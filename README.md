@@ -2,7 +2,7 @@
 
 【度盘】https://pan.baidu.com/s/1QUzz10hxc7HIlRzhB0jVKg?pwd=arch
 
-传不到git上的文件会在网盘里
+网盘的文档更新会比github慢，传不到git上的文件会在网盘里。
 
 本文档创建时制作的视频，虽然已经过时，但是依旧值得一看：
 
