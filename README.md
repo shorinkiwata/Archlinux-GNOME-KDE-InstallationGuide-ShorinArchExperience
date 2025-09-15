@@ -1336,6 +1336,8 @@ ibus-mozc是日语输入法
 
 打开系统设置>键盘>自定义快捷键，添加一个ablert的快捷键，命令填```ablert toggle```，快捷键super+R（这是我的，你随意）
 
+后面安装了rouned corner扩展之后在设置里面把albert加到黑名单，先激活黑名单选择窗口的功能，然后用快捷键打开albert就能选中了。
+
 ### amber-ce和星火应用商店（国产商店）
 
 [Amber CE: 琥珀兼容环境：一款Bubblewrap容器，极轻量系统容器](https://gitee.com/amber-ce)
