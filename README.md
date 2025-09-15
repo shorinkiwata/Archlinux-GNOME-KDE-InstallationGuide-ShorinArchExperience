@@ -1183,7 +1183,7 @@ ibus-mozc是日语输入法
 - pacman
 
   ```
-  sudo pacman -S --needed mission-center gnome-text-editor gnome-disk-utility gnome-font-viewer gnome-clocks gnome-weather gnome-calculator loupe snapshot baobab celluloid fragments file-roller foliate firefox gst-plugin-pipewire gst-plugins-good pacman-contrib decibels
+  sudo pacman -S --needed mission-center gnome-text-editor gnome-disk-utility gnome-font-viewer gnome-clocks gnome-weather gnome-calculator loupe snapshot baobab celluloid fragments file-roller foliate firefox gst-plugin-pipewire gst-plugins-good pacman-contrib decibels papers
   ```
 
   ```
@@ -1205,6 +1205,7 @@ ibus-mozc是日语输入法
   gst-plugin-pipewire gst-plugins-good 是gnome截图工具自带的录屏，需登出一次
   pacman-contrib 提供pacman的一些额外功能，比如checkupdates用来检查更新
   decibels 是可以显示波形的音频播放器，这只是个音频播放器，不是音乐播放器
+  papers 精简的pdf阅读器
   ```
   
 - 从aur安装常用软件
@@ -4655,19 +4656,19 @@ distrobox enter debian
 - debian:stable
 
   ```
-  distrobox create -n debian -i debian:stable --home ~/Distroboxhome/debian --nvidia
+  distrobox create -n debian -i debian:stable --home ~/Distroboxhome/debian
   ```
 
 - archlinux:latest
 
   ```
-  distrobox create -n arch -i archlinux:latest --home ~/Distroboxhome/arch --nvidia
+  distrobox create -n arch -i archlinux:latest --home ~/Distroboxhome/arch
   ```
 
 - fedora
 
   ```
-  distrobox create -n fedora -i fedora:latest --home ~/Distroboxhome/fedora --nvidia
+  distrobox create -n fedora -i fedora:latest --home ~/Distroboxhome/fedora
   ```
 
 ### 在主机创建容器内程序的快捷方式
@@ -4717,6 +4718,32 @@ flatpak install flathub io.github.dvlv.boxbuddyrs
 ## 更高效地使用终端
 
 我也是初学者，如果有什么建议欢迎提出。
+
+## 终端文本阅读器
+
+我最近在看《linux unix 大学教程》，在里面知道了less工具，主要用途是在终端文本阅读器，注意不是编辑器是阅读器。终端运行命令通常会一次性输出所有内容，阅读起来相当麻烦，这个时候就可以用管道符把输出给到less进行阅读。
+
+less每次只显示一页内容，空格下一页，b键上一页，q键退出，左斜杠键搜索，g键跳转第一行，shit+g跳转最后一行，-N显示行号，-S禁止换行，更深入的使用可以自行搜索。
+
+```
+sudo pacman -S less
+```
+
+#### 使用方法
+
+- 打开一个文件
+
+  ```
+  less /path/to/file
+  ```
+
+- 阅读终端输出
+
+  比如运行一个输出很长很长的命令，然后用less阅读输出结果
+
+  ```
+  find /usr | less
+  ```
 
 ### 切换目录
 
