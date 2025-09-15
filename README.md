@@ -2727,7 +2727,7 @@ sudo systemctl enable --now vmware-usbarbitrator.service
 
 4. 重启电脑
 
-2025.9.14记 这个包会因为下载vmware-tools失败而安装失败。解决办法是先yay -S vmware-workstation下载其他需要的文件，然后修改PKGBUILD跳过vmware-tools相关的内容，然后进行本地安装。修改后的PKGBUILD文件我分享在文件里了，下载后替换到```/home/shorin/.cache/yay/vmware-workstation```目录里，然后在该目录打开终端运行命令本地安装：
+2025.9.14记 这个包会因为下载vmware-tools失败而安装失败。解决办法是先yay -S vmware-workstation下载其他需要的文件，然后修改PKGBUILD跳过vmware-tools相关的内容，然后进行本地安装。修改后的PKGBUILD文件我分享在文件里了，下载后替换到```~/.cache/yay/vmware-workstation```目录里，然后在该目录打开终端运行命令本地安装：
 
 ```
 makepkg -si --skipinteg
@@ -2831,7 +2831,13 @@ https://wiki.archlinux.org/title/VirtualBox
 sudo pacman -S virtualbox virtualbox-host-modules-arch
 ```
 
-不同内核需要安装的包不一样，zen内核是virtualbox-host-dkms，其他的具体看wiki。
+不同内核需要安装的包不一样，zen内核是virtualbox-host-dkms，其他的看wiki。
+
+## Linux上的Linux子系统：distrobox
+
+我愿称其为"Linux Subsystem for Linux"。可以利用容器创建一个跟主机Linux深度集成、共享显卡的Linux子系统。比如你想用的软件只提供deb包，那就可以创建一个debian系发行版的盒子安装。比如我最近想用达芬奇剪视频，但是在arch上安装达芬奇需要处理很多依赖和兼容问题，那我可以安装一个redhat系发行版的盒子专门装达芬奇。
+
+由于内容偏离虚拟机这一节的主题所以放在附录了，有兴趣的看[附录 distrobox](#distrobox)
 
 ## KVM/QEMU虚拟机
 
@@ -4139,7 +4145,7 @@ shotcut
 
 ## 星火商店在fish下的问题
 
-PS：这是临时的解决办法，重启电脑之后桌面快捷方式还是会消失。就算自己创建.desktop新安装的软件也没法自动创建.desktop，每次手动创建太麻烦了，如果要用星火商店的话还是用[zsh](#zsh)吧 T_T
+（2025.9.15记：重启电脑之后桌面快捷方式还是会消失。就算自己创建.desktop新安装的软件也没法自动创建.desktop，每次手动创建太麻烦了，如果要用星火商店的话还是用[zsh](#zsh)吧 T_T）
 
 1. 把本机shell从fish改成bash
 
