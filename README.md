@@ -1328,9 +1328,7 @@ ibus-mozc是日语输入法
 
 ### albert设置
 
-打开gnome-tweaks，没有的话用pacman安装，开机启动程序里添加albert。
-
-打开pinapps，编辑albert的.desktop文件，Exec那里改成albert  %u
+打开pinapps，编辑albert的.desktop文件，激活autostart，Exec那里改成albert  %u
 
 终端打开albert settings，取消勾选show tray icon。Window页面取消quit on close的勾选，勾选clear input line on hide；plugins里勾选albert、applications、calculator、clipboard、date and time、web search、files，其他的自己按需设置。web search里面选择add，url填写```https://search.bilibili.com/all?keyword=%s```可以把b站也加进搜索候选里面。
 
