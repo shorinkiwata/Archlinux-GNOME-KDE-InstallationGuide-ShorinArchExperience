@@ -1213,7 +1213,7 @@ ibus-mozc是日语输入法
   [WPS Office - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/WPS_Office)
 
   ```
-  yay -S linuxqq-appimage wechat-appimage wps-office-cn wps-office-mui-zh-cn typora-free
+  yay -S linuxqq-appimage wechat-appimage wps-office-cn wps-office-mui-zh-cn typora-free albert
   ```
 
   ```
@@ -1222,6 +1222,7 @@ ibus-mozc是日语输入法
   wps-office-cn 是wps
   wps-office-mui-zh-cn 是wps的中文语言包
   typora-free 是markdown编辑器
+  albert 是一个启动器，类似plasma的kruner。在桌面弹出一个置顶的搜索框，有一系列功能
   ```
   
   - 关于字体
@@ -1324,6 +1325,16 @@ ibus-mozc是日语输入法
 - 方法三：gnome扩展
 
   商店搜索extension，安装扩展管理器。然后安装apphider扩展。就可以右键概览里的快捷方式隐藏了。
+
+### albert设置
+
+打开gnome-tweaks，没有的话用pacman安装，开机启动程序里添加albert。
+
+打开pinapps，编辑albert的.desktop文件，Exec那里改成albert  %u
+
+终端打开albert settings，取消勾选show tray icon。Window页面取消quit on close的勾选，勾选clear input line on hide；plugins里勾选albert、applications、calculator、clipboard、date and time、web search、files，其他的自己按需设置。web search里面选择add，url填写```https://search.bilibili.com/all?keyword=%s```可以把b站也加进搜索候选里面。
+
+打开系统设置>键盘>自定义快捷键，添加一个ablert的快捷键，命令填```ablert toggle```，快捷键super+R（这是我的，你随意）
 
 ### amber-ce和星火应用商店（国产商店）
 
@@ -1775,7 +1786,7 @@ power profile indicator  配合powerProfilesDaemon使用，面板显示当前模
 
    - 可选：arcmenu
 
-     这是功能强大的开始菜单扩展
+     这是功能强大的开始菜单扩展。需要pacman安装gnome-menus。
 
    - 可选：just perfection
 
