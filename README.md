@@ -1557,7 +1557,7 @@ super+T   ghostty
 super+`    missioncenter
 super+E   nautilus
 super+shift+S   flatpak run be.alexandervanhee.gradia --screenshot=INTERACTIVE
-super+R wofi --show drun
+super+R albert toggle
 super+M gnome-text-editor
 ctrl+alt+S gnome-control-center
 ```
