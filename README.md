@@ -1183,13 +1183,14 @@ ibus-mozc是日语输入法
 - pacman
 
   ```
-  sudo pacman -S --needed mission-center gnome-text-editor gnome-disk-utility gnome-font-viewer gnome-clocks gnome-weather gnome-calculator loupe snapshot baobab celluloid fragments file-roller foliate firefox gst-plugin-pipewire gst-plugins-good pacman-contrib decibels papers
+  sudo pacman -S --needed mission-center gnome-text-editor gnome-disk-utility ntfs-3g dosfstools gnome-font-viewer gnome-clocks gnome-weather gnome-calculator loupe snapshot baobab celluloid fragments file-roller foliate firefox gst-plugin-pipewire gst-plugins-good pacman-contrib decibels papers
   ```
 
   ```
   mission-center 类似win11的任务管理器，强烈推荐
   gnome-text-editor gnome标配记事本
   gnome-disk-utility 磁盘管理工具，可以调节分区大小和格式化分区等等
+  ntfs-3g和dosfstools补全gnome-disk-utility的功能
   gnome-font-viewer 方便安装和查看字体
   gnome-clocks 时钟工具，可以设置闹钟和计时
   gnome-weather 天气，设置地区之后可以在系统托盘里显示天气，安装扩展后可以在时间边上显示天气组件
@@ -2144,18 +2145,18 @@ XMODIFIERS=@im=fcitx
 - 安装后没显示图标的话登出一次
 
 ```
-sudo pacman -S --needed mission-center zen-browser zen-browser-i18n-zh-cn ark gwenview kcalc kate pacman-contrib gnome-disk-utility baobab haruna 
+sudo pacman -S --needed mission-center firefox ark gwenview kcalc kate pacman-contrib gnome-disk-utility ntfs-3g dosfstools baobab haruna 
 ```
 
 ```
 mission-center 类win11任务管理器
-zen-browser zen浏览器，也可以安装firefox或者discover商店搜索chrome或edge
-zen-browser-i18n-zh-cn zen的中文语言包
+firefox浏览器
 ark kde标配解压缩工具
 gwenview 图片编辑查看工具
 kcalc 计算器
 pacman-contrib 提供pacman的一些额外功能，比如checkupdates用来检查更新
 gnome-disk-utility磁盘管理器
+ntfs-3g dosfstools是对gnome-disk-utility功能的补全
 baobab磁盘使用情况分析工具
 haruna是基于mpv的视频播放器
 ```
