@@ -1715,12 +1715,6 @@ power tracker 显示电池充放电
 auto power profile 配合powerProfilesDaemon使用，可以自动切换模式
 power profile indicator  配合powerProfilesDaemon使用，面板显示当前模式
 
-### 设置充电阈值 
-
-未经验证，不一定生效。
-
-安装扩展：Battery Health Charging，然后在设置里面安装polkit。在系统快捷设置面板里面可以快速调节充电阈值。
-
 ---
 
 
