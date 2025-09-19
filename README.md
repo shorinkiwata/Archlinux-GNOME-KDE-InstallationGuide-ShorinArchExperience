@@ -1329,7 +1329,7 @@ ibus-mozc是日语输入法
   [WPS Office - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/WPS_Office)
 
   ```
-  yay -S linuxqq-appimage wechat-appimage wps-office-cn wps-office-mui-zh-cn typora-free albert
+  yay -S linuxqq-appimage wechat-appimage wps-office-cn wps-office-mui-zh-cn typora-free
   ```
 
   ```
@@ -1441,16 +1441,6 @@ ibus-mozc是日语输入法
 - 方法三：gnome扩展
 
   商店搜索extension，安装扩展管理器。然后安装apphider扩展。就可以右键概览里的快捷方式隐藏了。
-
-### albert设置
-
-打开pinapps，编辑albert的.desktop文件，激活autostart，Exec那里改成albert  %u
-
-终端打开albert settings，取消勾选show tray icon。Window页面取消quit on close的勾选，勾选clear input line on hide；plugins里勾选albert、applications、calculator、clipboard、date and time、web search、files，其他的自己按需设置。web search里面选择add，url填写```https://search.bilibili.com/all?keyword=%s```可以把b站也加进搜索候选里面。
-
-打开系统设置>键盘>自定义快捷键，添加一个ablert的快捷键，命令填```ablert toggle```，快捷键super+R（这是我的，你随意）
-
-后面安装了rouned corner扩展之后在设置里面把albert加到黑名单，先激活黑名单选择窗口的功能，然后用快捷键打开albert就能选中了。
 
 ### amber-ce和星火应用商店（国产商店）
 
@@ -1618,7 +1608,6 @@ super+T   ghostty
 super+`    missioncenter
 super+E   nautilus
 super+shift+S   flatpak run be.alexandervanhee.gradia --screenshot=INTERACTIVE
-super+R albert toggle
 super+M gnome-text-editor
 ctrl+alt+S gnome-control-center
 ```
@@ -4726,6 +4715,22 @@ source ~/.zshrc
 sudo pacman -S zen-browser zen-browser-i18n-zh-cn
 ```
 
+## albert launcher
+
+```
+yay -S albert
+```
+
+打开pinapps，编辑albert的.desktop文件，激活autostart，Exec那里改成albert  %u
+
+终端打开albert settings，取消勾选show tray icon。Window页面取消quit on close的勾选，勾选clear input line on hide；plugins里勾选albert、applications、calculator、clipboard、date and time、web search、files，其他的自己按需设置。web search里面选择add，url填写```https://search.bilibili.com/all?keyword=%s```可以把b站也加进搜索候选里面。
+
+打开系统设置>键盘>自定义快捷键，添加一个ablert的快捷键，命令填```ablert toggle```，快捷键super+R（这是我的，你随意）
+
+后面安装了rouned corner扩展之后在设置里面把albert加到黑名单，先激活黑名单选择窗口的功能，然后用快捷键打开albert就能选中了。
+
+
+
 ## distrobox
 
 [distrobox.it](https://distrobox.it/)
@@ -4842,7 +4847,7 @@ flatpak install flathub io.github.dvlv.boxbuddyrs
 
 我也是初学者，如果有什么建议欢迎提出。
 
-## 终端文本阅读器
+### 终端文本阅读器
 
 我最近在看《linux unix 大学教程》，在里面知道了less工具，顺便一提这本书对新手太友好了，强烈推荐，可以当小说看。主要用途是在终端文本阅读器，注意不是编辑器是阅读器。终端运行命令通常会一次性输出所有内容，阅读起来相当麻烦，这个时候就可以用管道符把输出给到less进行阅读。
 
@@ -4934,8 +4939,12 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 
 使用方法：[Quick Start](https://yazi-rs.github.io/docs/quick-start)
 
+
+
 ---
 
-## 许可证
 
-本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。f
+
+# 许可证
+
+本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。
