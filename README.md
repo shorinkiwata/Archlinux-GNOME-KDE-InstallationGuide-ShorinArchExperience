@@ -491,7 +491,7 @@ pacman -S fastfetch lolcat cmatrix
 
 cmatrix是代码雨，输入cmatrix回车运行。
 
-接下来看[配置系统](#配置系统)
+接下来看[配置系统](#安装桌面环境前的准备)
 
 ---
 
