@@ -865,7 +865,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 
 ## 桌面环境 
 
-### [KDE Plasma](#KDE)和[GNOME](#GNOME) 自己选择一个安装 点击即可跳转
+### [KDE Plasma](#KDE)和[GNOME](#GNOME) 选择一个安装。
 
 kde和gnome的区别可以自行网上搜索，简单来说：
 
@@ -874,6 +874,8 @@ KDE更符合windows用户的直觉，系统占用更低，个性化起来更方�
 Gnome的中文输入法体验更好，更符合mac用户的直觉，外观更好看，动画更流畅，设计更简洁，运行更稳定。
 
 值得一提的是，Debian、Ubuntu、Fedora这样的主流发行版都默认使用Gnome。
+
+#### 注意：本文后面所有的自定义配置都是我个人喜好，你可以按照你的喜好来。
 
 ##  GNOME
 
@@ -932,6 +934,139 @@ sudo vim /etc/locale.gen
 sudo locale-gen
 ```
 
+### 安装yay
+
+yay是aur助手，可以从aur安装软件（paru也是一个aur助手，但是会出现有些软件无法安装的情况，所以建议还是用yay）
+
+- 方法一：直接从archlinuxcn源安装（推荐）
+
+  ```
+  sudo vim /etc/pacman.conf
+  ```
+
+  文件底部写入（ctrl+shift+V粘贴）：
+
+  ```
+  [archlinuxcn]
+  Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
+  Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
+  Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch 
+  Server = https://repo.huaweicloud.com/archlinuxcn/$arch 
+  ```
+
+  同步数据库并安装archlinuxcn密钥
+
+  ```
+  sudo pacman -Sy archlinuxcn-keyring 
+  ```
+
+  安装yay
+
+  ```
+  sudo pacman -S yay 
+  ```
+
+- 方法二：从github安装
+
+  [GitHub - Jguer/yay: Yet another Yogurt - An AUR Helper written in Go](https://github.com/Jguer/yay)
+
+  ```
+  sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+  ```
+
+  这条命令有四步，每步之间用&&隔开。第一步用pacman安装git和base-devel，这是git管理工具和编译软件需要的包。第二步git clone把连接里的文件下载到本地。第三步cd命令进入yay目录。第四步makepkg编译包。
+
+- 方法三：从cachyos源安装（不推荐）
+
+  见[更换CachyOS源](#更换CachyOS源)
+
+  ```
+  sudo pacman -S yay
+  ```
+
+### 快照（⚠️重点）
+
+**快照相当于存档，养成习惯，每次做自己不了解的事情之前都存个档**，如果出了问题或者后悔了可以恢复到快照时的状态。
+
+timeshift操作简单，但是速度很慢且容易出bug，建议用snapper
+
+#### 方法一：snapper
+
+```
+sudo pacman -S snapper snap-pac btrfs-assistant
+```
+
+```
+snapper 是创建快照的主要程序
+snap-pac 是利用钩子在进行一些pacman命令的时候自动创建快照
+btrfs-assistant 是图形化管理btrfs和快照的软件
+```
+
+- 自动生成快照启动项
+
+```
+sudo pacman -S grub-btrfs inotify-tools
+```
+
+```
+reboot
+```
+
+```
+sudo systemctl enable --now grub-btrfsd
+```
+
+##### 具体使用方法
+
+1. 创建配置
+
+   打开btrfs assistant，切换到snapper settings页面。我们创建子卷的时候至少创建了一个@子卷和一个@home子卷，所以需要两个config（配置）。
+
+   - root 根目录快照
+
+     点击new config新建配置，config name写root，backup path选择 / ，然后点击save保存。
+
+     接着进行一些设置。systemd unit settings里面有三个服务。 timeline是按照时间计划自动创建快照；cleanup是快照数量达到number设定的数量上限之后自动清理快照；boot是每次开机自动创建快照。按需设置，设置完记得点apply。
+
+   - home目录快照
+
+     按照同样的方法创建一个home目录的配置。
+
+2. 创建快照
+
+   到snapper页面，select config选择配置，要创建root子卷的快照就选择刚刚创建的名为root的配置。点击new创建快照，description是快照的自定义文字描述（注释）。
+
+3. 使用快照进行恢复
+
+   snapper页面--> Browse/restore页面
+
+   select target选择想恢复的子卷，再选择想使用的快照，点击restore，此时会自动帮你创建一个额外的子卷用来备份当前的数据然后弹出一个确认窗口让你填写这个子卷的名字（可以空着不填写）
+
+4. 使用快照进行全盘恢复
+
+   因为root子卷和home子卷在创建的时候是平级的，所以虽然root目录包含了home目录，但是创建root子卷的快照时不会包含home子卷里的内容。这样的子卷布局叫作“扁平布局”。因此，需要分别创建root和home的快照，然后分别恢复root子卷和home子卷。
+
+#### 方法二：[timeshift](#timeshift)
+
+速度慢且有bug，我已弃用，有需要的可以看附录。
+
+### 关于滚挂和良好的系统使用习惯
+
+- 滚挂
+
+  archlinux是滚动发行版。滚动是英文直译，原词是rolling，指一种推送更新的方式，只要有新版本就会推送，由用户管理更新。对应的另一种更新方式是定期更新一个大版本，例如fedora是六个月一更新，由发行方管理更新。 滚挂，指的是滚动更新的发行版因为更新导致系统异常。这通常是用户操作不当、忽略官方公告等原因导致的。只要学习一下正确的更新方式和快照的使用方法就不用担心滚挂问题。 
+
+  通常软件更新不用担心。**出现密钥（keyring）、内核、驱动、固件、引导程序之类的更新要留个心眼，先不第一时间更新，等一手社区或者官方消息。** 另一个重点是滚动更新的发行版的软件通常会适配最新的依赖，如果长期不更新可能会无法使用软件。
+
+- 良好的使用习惯
+
+  btrfs文件系统已经足够稳定，“不作死就不会死”。使用时遵循以下几点：
+
+  1. **别第一时间更新，别长时间不更新，密钥单独更新，重要程序更新前创建快照**
+  2. **非必要不修改，弄坏系统的通常是用户自己的不当操作，明白自己的行为会造成怎样的后果，做不了解的事情前创建快照**
+
+#### ⚠️现在你学会了快照的使用方法，接下来的每一步请自行判断要不要创建快照⚠️
+
 ### 安装声音固件和声音服务
 
 - 安装声音固件
@@ -974,63 +1109,11 @@ sudo systemctl enable --now bluetooth
 sudo pacman -S --needed network-manager-applet dnsmasq
 ```
 
-### 安装yay
-
-yay是aur助手，可以从aur安装软件（paru也是一个aur助手，但是会出现有些软件无法安装的情况，所以建议还是用yay）
-
-- 方法一：直接从archlinuxcn源安装
-
-  ```
-  sudo vim /etc/pacman.conf
-  ```
-
-  文件底部写入（ctrl+shift+V粘贴）：
-
-  ```
-  [archlinuxcn]
-  Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
-  Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
-  Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch 
-  Server = https://repo.huaweicloud.com/archlinuxcn/$arch 
-  ```
-
-  同步数据库并安装archlinuxcn密钥
-
-  ```
-  sudo pacman -Sy archlinuxcn-keyring 
-  ```
-
-  安装yay
-
-  ```
-  sudo pacman -S yay 
-  ```
-
-- 方法二：从github安装
-
-  [GitHub - Jguer/yay: Yet another Yogurt - An AUR Helper written in Go](https://github.com/Jguer/yay)
-
-  ```
-  sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-  ```
-
-  这条命令有四步，每步之间用&&隔开。第一步用pacman安装git和base-devel，这是git管理工具和编译软件需要的包。第二步git clone把连接里的文件下载到本地。第三步cd命令进入yay目录。第四步makepkg编译包。
-
-- 方法三：从cachyos源安装
-
-  见[更换CachyOS源](#更换CachyOS源)
-
-  ```
-  sudo pacman -S yay
-  ```
-
 ### 安装输入法
 
 [ibus](#ibus-rime)和[fcitx5](#fcitx5)，按喜好选择。fcitx5跟gnome的兼容性一般，但是功能更强大，推荐使用。
 
 #### fcitx5
-
-已知问题：在某些应用里面会吞字，或者某个按键没能被输入法获取直接变成英文字母输入。
 
 ```
 sudo pacman -S fcitx5-im fcitx5-mozc fcitx5-rime rime-ice-pinyin-git
@@ -1083,6 +1166,8 @@ XDG_CURRENT_DESKTOP=GNOME #解决某些软件里面输入法吞字的问题
 2. 浏览器搜索fcitx5 themes，下载自己喜欢的，存放路径为：~/.local/share/fcitx5/themes
 
 3. 打开fcitx配置 选择附组件，点击“经典用户界面”右边的扳手螺丝刀图标，设置主题。这里有一大堆自定义的选项，自己研究吧。
+
+   
 
 
 - 卸载fcitx5
@@ -1208,7 +1293,7 @@ ibus-mozc是日语输入法
   snapshot 相机，摄像头
   baobab 磁盘使用情况分析工具
   celluloid 是基于mpv的视频播放器
-  fragments 是符合gnome设计理念的种子下载器，或者安装qtbittorrent
+  fragments 是符合gnome设计理念的种子下载器
   file-roller 压缩解压缩
   foliate 电子书阅读器
   firefox linux上性能表现最佳的浏览器，需要别的可以商店自行搜索安装
@@ -1366,7 +1451,7 @@ ibus-mozc是日语输入法
    yay -S amber-ce-trixie
    ```
 
-2. 安装完成后重启电脑
+2. 安装完成后没有显示图标的话登出一次
 
 3. 官网下载星火应用商店的deb包
 
@@ -1383,10 +1468,10 @@ ibus-mozc是日语输入法
    ```
    apt是debian的包管理器
    install代表安装
-   后面指定了安装包的绝对路径，可以手动输入，也可以把安装包拖拽进终端里输入路径
+   后面指定了安装包的绝对路径，可以手动输入，也可以把安装包拖拽进终端里自动输入路径
    ```
 
-#### 启用输入法
+#### ace容器内启用输入法
 
 - ibus
 
@@ -1405,61 +1490,6 @@ ibus-mozc是日语输入法
 ```
 yay -Rns amber-ce-trixie
 ```
-
-### 快照
-
-**快照相当于存档，每次做自己不了解的事情之前都存个档**
-
-timeshift操作简单，但是速度很慢且容易出bug，建议用snapper
-
-#### 方法一：snapper
-
-```
-sudo pacman -S snapper snap-pac btrfs-assistant
-```
-
-```
-snapper 是创建快照的主要程序
-snap-pac 是利用钩子在进行一些pacman命令的时候自动创建快照
-btrfs-assistant 是图形化管理btrfs和快照的软件
-```
-
-- 自动生成快照启动项
-
-```
-sudo pacman -S grub-btrfs inotify-tools
-```
-
-```
-reboot
-```
-
-```
-sudo systemctl enable --now grub-btrfsd
-```
-
-##### 具体使用方法
-
-打开btrfs assistant，切换到snapper settings页面。我们创建子卷的时候至少创建了一个@子卷和一个@home子卷，所以需要两个config（配置）。创建一个root配置，再创建一个home配置。然后到snapper页面下的New/Delete页面就可以新建和管理快照了，Browse/Restore页面选中快照后点restore可以恢复到那个快照的状态。如果你要同时快照root和home的话就分别创建一个root快照和home快照，恢复的时候各自恢复就行了。
-
-#### 方法二：[timeshift](#timeshift)
-
-我已弃用，有需要的可以看附录。
-
-### 关于滚挂和良好的系统使用习惯
-
-- 滚挂
-
-  archlinux是滚动发行版。滚动是英文直译，原词是rolling，指一种推送更新的方式，只要有新版本就会推送，由用户管理更新。对应的另一种更新方式是定期更新一个大版本，例如fedora是六个月一更新，由发行方管理更新。 滚挂，指的是滚动更新的发行版因为更新导致系统异常。这通常是用户操作不当、忽略官方公告等原因导致的。只要学习一下正确的更新方式和快照的使用方法就不用担心滚挂问题。 
-
-  通常软件更新不用担心。**出现密钥（keyring）、内核、驱动、固件、引导程序之类的更新要留个心眼，先不第一时间更新，等一手社区或者官方消息。** 另一个重点是滚动更新的发行版的软件通常会适配最新的依赖，如果长期不更新可能会无法使用软件。
-
-- 良好的使用习惯
-
-  btrfs文件系统已经足够稳定，“不作死就不会死”。使用时遵循以下几点：
-
-  1. **别第一时间更新，别长时间不更新，密钥单独更新，重要程序更新前创建快照**
-2. **非必要不修改，明白自己的行为会造成怎样的后果，做不了解的事情前创建快照**
 
 ### open in any terminal
 
@@ -1604,7 +1634,7 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 
 - tiling shell 
 
-  窗口平铺，tilingshell是用布局平铺,另一个叫forge是hyprland那种自动平铺但是很卡。推荐用tilingshell，记得自定义快捷键，我快捷键是super+w/a/s/d对应上下左右移动窗口，Super+Alt+w/a/s/d对应上下左右扩展窗口，super+Z取消平铺，super+C把窗口移动到屏幕中心
+  窗口平铺，tilingshell是用布局平铺，记得自定义快捷键，我快捷键是super+w/a/s/d对应上下左右移动窗口，Super+Alt+w/a/s/d对应上下左右扩展窗口，super+Z取消平铺，super+C把窗口移动到屏幕中心
 
 - tiling assistant
 
@@ -1612,7 +1642,7 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 
 - 可选：forge
 
-  如果你更喜欢窗口管理器那样无预设布局的自动平铺功能，可以安装forge。装了这个就不要装tiling shell和tilling assitant了。我没有深入用过这个扩展，所以设置的部分就自己探索吧。
+  如果你更喜欢sway/hyprland那样的自动平铺功能，可以安装forge。我没有深入用过这个扩展，说不定会和tiling shell和tilling assitant冲突，所以自己探索吧。
 
 - color picker 
 
@@ -1750,7 +1780,7 @@ power profile indicator  配合powerProfilesDaemon使用，面板显示当前模
 
 - hide top bar 
 
-  隐藏面板（panel，顶部的那个面板，win叫任务栏）。设置里激活sensitivity的第一个。intellihide取消激活第二项。
+  隐藏面板（panel，顶部的那个面板，win叫任务栏），和app icons taskbar/ dash to panel之类的扩展冲突。设置里激活sensitivity的第一个。intellihide取消激活第二项。
 
 - user themes 
 
@@ -1786,8 +1816,6 @@ power profile indicator  配合powerProfilesDaemon使用，面板显示当前模
      gio set ~/Desktop/*.desktop "metadata::trusted" true
      ```
 
-     
-
    - 可选：arcmenu
 
      这是功能强大的开始菜单扩展。需要pacman安装gnome-menus。
@@ -1816,7 +1844,7 @@ power profile indicator  配合powerProfilesDaemon使用，面板显示当前模
 
      panel里激活intllihide（智能隐藏），设置里把only focused window （仅选中的窗口）改成all windows（所有窗口）
 
-      panel location（面板位置）选bottom（底部）
+     panel location（面板位置）选bottom（底部）
 
      panel height（面板高度）调整到合适的数值。
 
@@ -1989,39 +2017,6 @@ xdg-user-dirs-update
 - 系统设置 > regin&language > 添加简体中文，移动到english上方
 - 登出
 
-### 安装声音固件和声音服务
-
-- 安装声音固件
-
-```
-sudo pacman -S --needed sof-firmware alsa-firmware alsa-ucm-conf
-```
-
-- 安装声音服务
-
-```
-sudo pacman -S --needed pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
-```
-
-* 启用服务
-
-```
-systemctl --user enable --now pipewire pipewire-pulse wireplumber
-```
-
-### 启用蓝牙 
-
-```
-sudo systemctl enable --now bluetooth
-```
-
-### 性能模式切换
-
-```
-sudo pacman -S power-profiles-daemon
-sudo systemctl enable --now power-profiles-daemon
-```
-
 ### 安装yay
 
 ##### 方法一 ：archlinuxCN
@@ -2060,6 +2055,122 @@ sudo pacman -S yay
 
 ```
 sudo pacman -S git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
+
+### 快照（⚠️重点）
+
+**快照相当于存档，养成习惯，每次做自己不了解的事情之前都存个档**，如果出了问题或者后悔了可以恢复到快照时的状态。
+
+timeshift操作简单，但是速度很慢且容易出bug，建议用snapper
+
+#### 方法一：snapper
+
+```
+sudo pacman -S snapper snap-pac btrfs-assistant
+```
+
+```
+snapper 是创建快照的主要程序
+snap-pac 是利用钩子在进行一些pacman命令的时候自动创建快照
+btrfs-assistant 是图形化管理btrfs和快照的软件
+```
+
+- 自动生成快照启动项
+
+```
+sudo pacman -S grub-btrfs inotify-tools
+```
+
+```
+reboot
+```
+
+```
+sudo systemctl enable --now grub-btrfsd
+```
+
+##### 具体使用方法
+
+1. 创建配置
+
+   打开btrfs assistant，切换到snapper settings页面。我们创建子卷的时候至少创建了一个@子卷和一个@home子卷，所以需要两个config（配置）。
+
+   - root 根目录快照
+
+     点击new config新建配置，config name写root，backup path选择 / ，然后点击save保存。
+
+     接着进行一些设置。systemd unit settings里面有三个服务。 timeline是按照时间计划自动创建快照；cleanup是快照数量达到number设定的数量上限之后自动清理快照；boot是每次开机自动创建快照。按需设置，设置完记得点apply。
+
+   - home目录快照
+
+     按照同样的方法创建一个home目录的配置。
+
+2. 创建快照
+
+   到snapper页面，select config选择配置，要创建root子卷的快照就选择刚刚创建的名为root的配置。点击new创建快照，description是快照的自定义文字描述（注释）。
+
+3. 使用快照进行恢复
+
+   snapper页面--> Browse/restore页面
+
+   select target选择想恢复的子卷，再选择想使用的快照，点击restore，此时会自动帮你创建一个额外的子卷用来备份当前的数据然后弹出一个确认窗口让你填写这个子卷的名字（可以空着不填写）
+
+4. 使用快照进行全盘恢复
+
+   因为root子卷和home子卷在创建的时候是平级的，所以虽然root目录包含了home目录，但是创建root子卷的快照时不会包含home子卷里的内容。这样的子卷布局叫作“扁平布局”。因此，需要分别创建root和home的快照，然后分别恢复root子卷和home子卷。
+
+#### 方法二：[timeshift](#timeshift)
+
+速度慢且有bug，我已弃用，有需要的可以看附录。
+
+### 关于滚挂和良好的系统使用习惯
+
+- 滚挂
+
+  archlinux是滚动发行版。滚动是英文直译，原词是rolling，指一种推送更新的方式，只要有新版本就会推送，由用户管理更新。对应的另一种更新方式是定期更新一个大版本，例如fedora是六个月一更新，由发行方管理更新。 滚挂，指的是滚动更新的发行版因为更新导致系统异常。这通常是用户操作不当、忽略官方公告等原因导致的。只要学习一下正确的更新方式和快照的使用方法就不用担心滚挂问题。 
+
+  通常软件更新不用担心。**出现密钥（keyring）、内核、驱动、固件、引导程序之类的更新要留个心眼，先不第一时间更新，等一手社区或者官方消息。** 另一个重点是滚动更新的发行版的软件通常会适配最新的依赖，如果长期不更新可能会无法使用软件。
+
+- 良好的使用习惯
+
+  btrfs文件系统已经足够稳定，“不作死就不会死”。使用时遵循以下几点：
+
+  1. **别第一时间更新，别长时间不更新，密钥单独更新，重要程序更新前创建快照**
+  2. **非必要不修改，弄坏系统的通常是用户自己的不当操作，明白自己的行为会造成怎样的后果，做不了解的事情前创建快照**
+
+#### ⚠️现在你学会了快照的使用方法，接下来的每一步请自行判断要不要创建快照⚠️
+
+### 安装声音固件和声音服务
+
+- 安装声音固件
+
+```
+sudo pacman -S --needed sof-firmware alsa-firmware alsa-ucm-conf
+```
+
+- 安装声音服务
+
+```
+sudo pacman -S --needed pipewire pipewire-pulse pipewire-alsa pipewire-jack wireplumber
+```
+
+* 启用服务
+
+```
+systemctl --user enable --now pipewire pipewire-pulse wireplumber
+```
+
+### 启用蓝牙 
+
+```
+sudo systemctl enable --now bluetooth
+```
+
+### 性能模式切换
+
+```
+sudo pacman -S power-profiles-daemon
+sudo systemctl enable --now power-profiles-daemon
 ```
 
 ### 输入法
@@ -2620,9 +2731,7 @@ yay -S plasma6-applets-wallpaper-effects
 
 ## 显卡切换
 
-linux由于没有厂家专门做显卡切换工具，只能用通用工具，所以功能通常不完整，尤其在wayland下可能只能做到从混合模式切换到核显模式。
-
-以下是几个常用的工具，可以自己试试看能不能用。建议安装时处在混合模式。从混合切到独显直连要动bios，所以大概率会失败，谨慎操作。
+linux目前在wayland没有完善的显卡切换，可能只能做到从混合模式切换到核显模式。以下是几个常用的工具，可以自己试试看能不能用。建议安装时处在混合模式。从混合切到独显直连大概率会失败，谨慎操作。
 
 ### supergfxctl
 
@@ -2645,8 +2754,6 @@ kde从aur安装这个```plasma6-applets-supergfxctl```
 ```
 yay -S plasma6-applets-supergfxctl
 ```
-
-
 
 ### envycontrol
 
