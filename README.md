@@ -4437,7 +4437,7 @@ yay -S appimagelauncher
 - 卸载appimage软件
 右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
 
-### 其他有用的扩展
+## 其他有用的扩展
 
 - desktop widgets （desktop clock）
 
@@ -4470,6 +4470,10 @@ yay -S appimagelauncher
 - battery time
 
   显示电量剩余可用时间
+  
+- custom reboot
+
+  可以快捷重启到biede系统。设置里选择使用grub，然后在快捷设置菜单里reload和enbale。
 
 ## 用archinstall安装gnome后的一些清理
 
@@ -4821,4 +4825,4 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 
 ## 许可证
 
-本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。
+本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。f
