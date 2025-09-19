@@ -2064,8 +2064,6 @@ sudo pacman -S git base-devel && git clone https://aur.archlinux.org/yay.git && 
 
 ### 输入法
 
-（用fcitx，别在kde使用ibus输入法）
-
 ### fcitx5-rime 雾凇拼音
 
 [Using Fcitx 5 on Wayland - Fcitx](https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland#KDE_Plasma)
@@ -2250,38 +2248,12 @@ sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
 
 4. 打开ace（蓝色图标）
 
-   如果打不开的话
-
-   ```
-   kate $(which trixie-run)
-   ```
-
-   找到
-
-   ```
-   non_root_user=$(who  | awk '{print $1}' | head -n 1)
-   uid=$(id -u $non_root_user)
-   ```
-
-   上面这两行内容替换为
-
-   ```
-   uid=$(id -u)
-   ```
-
-   然后在BIND_DIRS=()里面添加这两行：
-
-   ```
-       "--ro-bind /etc/passwd /etc/passwd"     
-       "--ro-bind /etc/group /etc/group"
-   ```
-
-5. 安装星火应用商店
+4. 安装星火应用商店
 
    ```
    sudo apt install /home/shorin/Downloads/spark-store_4.8.0_amd64.
    ```
-
+   
    ```
    apt是debian的包管理器
    install代表安装
@@ -2537,6 +2509,8 @@ yay -S whitesur-kde-theme
 
 按需调整
 
+
+
 ### konsole美化和配置
 
 菜单>设置>显示工具栏>去掉两个勾选
@@ -2646,7 +2620,9 @@ yay -S plasma6-applets-wallpaper-effects
 
 ## 显卡切换
 
-linux由于没有厂家专门做显卡切换工具，只能用通用工具，所以功能通常不完整，尤其在wayland下可能只能做到从混合模式切换到核显模式。以下是几个常用的工具，可以自己试试看能不能用。建议安装时处在混合模式。从混合切到独显直连要动bios，所以大概率会失败，谨慎操作。
+linux由于没有厂家专门做显卡切换工具，只能用通用工具，所以功能通常不完整，尤其在wayland下可能只能做到从混合模式切换到核显模式。
+
+以下是几个常用的工具，可以自己试试看能不能用。建议安装时处在混合模式。从混合切到独显直连要动bios，所以大概率会失败，谨慎操作。
 
 ### supergfxctl
 
@@ -2716,7 +2692,7 @@ sudo systemctl enable --now switcheroo-control
 
 
 
-  
+ 
 
 # 虚拟机
 
