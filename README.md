@@ -388,7 +388,16 @@ vim /etc/locale.conf
 写入 LANG=en_US.UTF-8
 ```
 
+### 设置主机名
+
+```
+vim /etc/hostname
+```
+
+随意取一个自己喜欢的主机名
+
 ### 设置root密码
+
 ```
 passwd 
 ```
@@ -614,7 +623,7 @@ archinstall
 
 ### Hostname主机名
 
-不用改
+ 设置一个自己想要的主机名
 
 ### Authentication身份认证
 
