@@ -669,7 +669,7 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
 
 必须安装：vim（任意文本编辑器）、os-prober（双系统需要）
 
-可选安装中文字体：wqy-zenhei（文泉驿字体）、noto-fonts（谷歌开源字体）、noto-fonts-emoji（表情）
+可选安装字体：wqy-zenhei（文泉驿正黑）、noto-fonts（谷歌开源字体）、noto-fonts-emoji（表情）
 
 ### Timezone（时区）
 
@@ -807,14 +807,14 @@ sudo pacman -S wqy-zenhei noto-fonts noto-fonts-emoji
 ```
 
 ```
-wqy-zenhei是文泉驿的中文字体
+wqy-zenhei是文泉驿正黑
 noto-fonts是谷歌字体，包含多个国家的语言
 noto-fonts-emoji是emoji
 ```
 
 ## 显卡驱动和硬件编解码
 
-以4060和780m为例
+以4060和780m为例。顺便一提，由于我没有intel的硬件，所以本文所有CPU/GPU相关内容都不一定适用于intel，尤其是后面虚拟机xml编辑的部分。
 
 参考链接：[NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)、[AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 
@@ -843,9 +843,12 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   ```
   sudo pacman -S --needed vulkan-radeon vulkan-mesa-layers
   ```
-
+  
+  vulkan-mesa-layers是为了解决混合模式下gnome-shell仍运行在独立显卡上导致显卡占用异常这个问题。
 
 ### 硬件编解码
+
+[archwiki_硬件视频加速](https://wiki.archlinux.org/title/Hardware_video_acceleration)
 
  - nvidia
 
@@ -857,10 +860,28 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 
   自带
 
+* intel
+
+  通常是intel-media-driver或者libva-intel-driver
+
+  
+
 * 重启激活显卡驱动和字体
 
   ```
   reboot 
+  ```
+
+- 可选：验证硬件编解码
+
+  ```
+  pacman -S libva-utils
+  ```
+
+  使用libva-utils提供的vainfo进行验证。
+
+  ```
+  vainfo
   ```
 
 ## 桌面环境 
@@ -1016,7 +1037,7 @@ reboot
 sudo systemctl enable --now grub-btrfsd
 ```
 
-##### 具体使用方法
+具体使用方法
 
 1. 创建配置
 
@@ -2089,7 +2110,7 @@ reboot
 sudo systemctl enable --now grub-btrfsd
 ```
 
-##### 具体使用方法
+具体使用方法
 
 1. 创建配置
 
