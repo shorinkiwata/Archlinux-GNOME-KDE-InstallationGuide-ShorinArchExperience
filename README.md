@@ -3998,6 +3998,16 @@ yay -S preload
 sudo systemctl enable --now preload
 ```
 
+## ananicy cpu资源调用优化
+
+```
+yay -S ananicy-cpp cachyos-ananicy-rules-git
+```
+
+```
+sudo systemctl enable --now ananicy-cpp.service
+```
+
 ## 交换空间和zram
 
 参考资料：
@@ -4421,15 +4431,6 @@ sudo pacman -Rns $(pacman -Qdt)
 sudo pacman -Rdd
 ```
 
-## ananicy cpu资源调用优化
-（会导致steam下载速度异常，故弃用。）
-```
-yay -S ananicy-cpp cachyos-ananicy-rules-git
-```
-```
-sudo systemctl enable --now ananicy-cpp.service
-```
-
 ## TLP相关
 
 （power-profiles-daemon已经足够了，故弃用）
@@ -4576,6 +4577,10 @@ yay -S appimagelauncher
 - custom reboot
 
   可以快捷重启到biede系统。设置里选择使用grub，然后在快捷设置菜单里reload和enbale。
+  
+- search light
+
+  可以在桌面直接调出搜索，不用进overview才能搜索了。
 
 ## 用archinstall安装gnome后的一些清理
 
@@ -4588,53 +4593,6 @@ sudo pacman -R gnome-contacts gnome-maps gnome-music totem gnome-characters gnom
 noisetorch
 
 easyeffect
-
-## timeshift
-
-#### ！！！⚠️警告！！！删除timeshift创建的快照要一个个删，否则大概率崩盘
-
-```
-sudo pacman -S timeshift 
-```
-
-```
-sudo systemctl enable --now cronie.service 
-```
-
-自动生成快照启动项
-
-```
-sudo pacman -S grub-btrfs inotify-tools
-```
-
-```
-sudo systemctl enable --now grub-btrfsd.service 
-```
-
-修改服务配置
-
-```
-sudo systemctl edit grub-btrfsd.service 
-```
-
-```
-[Service]
-ExecStart=
-ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto
-```
-
-重启服务
-
-```
-sudo systemctl daemon-reload
-sudo systemctl restart grub-btrfsd.service
-```
-
-避免id变更导致挂载失败
-
-```
-sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
-```
 
 ## zsh
 
@@ -4709,27 +4667,39 @@ setopt EXTENDED_HISTORY
 source ~/.zshrc
 ```
 
-## zen浏览器
+## ulauncher
+
+ulauchner是一个比albert更好用的启动器，支持模糊搜索，用gtk编写，支持python脚本
 
 ```
-sudo pacman -S zen-browser zen-browser-i18n-zh-cn
+yay -S ulauncher
 ```
 
-## albert launcher
+然后设置一个自定义快捷键，命令写ulauncher-toggle，如果使用gnome的rounded corner扩展记得添加ulauncher进黑名单。
 
-```
-yay -S albert
-```
+ulauncher最好用的是它的扩展功能，安装非常方便。打开设置进extensions页面，点击左侧的discover extensions就可以找到。
 
-打开pinapps，编辑albert的.desktop文件，激活autostart，Exec那里改成albert  %u
+### ulauncher扩展
 
-终端打开albert settings，取消勾选show tray icon。Window页面取消quit on close的勾选，勾选clear input line on hide；plugins里勾选albert、applications、calculator、clipboard、date and time、web search、files，其他的自己按需设置。web search里面选择add，url填写```https://search.bilibili.com/all?keyword=%s```可以把b站也加进搜索候选里面。
+我安装的扩展：
 
-打开系统设置>键盘>自定义快捷键，添加一个ablert的快捷键，命令填```ablert toggle```，快捷键super+R（这是我的，你随意）
+[flathub manager](https://github.com/damian-ds7/ulauncher-flathub-manager) 可以从ulauncher管理flatpak软件
 
-后面安装了rouned corner扩展之后在设置里面把albert加到黑名单，先激活黑名单选择窗口的功能，然后用快捷键打开albert就能选中了。
+[emoji](https://github.com/Ulauncher/ulauncher-emoji) 可以快捷复制emoji
 
+[process murderer](https://github.com/isacikgoz/ukill)可以快捷杀死进程
 
+[youtube search](https://github.com/NastuzziSamy/ulauncher-youtube-search)快捷从youtube搜索内容
+
+[github search](github.com/Glovecc/ulauncher-github-search)快捷从github搜索内容
+
+[appimage launcher](https://github.com/atorresg/appimagelauncher)快捷打开指定目录里的appimage文件（记得在设置里指定存放appimage的路径，需要使用从/开始的绝对路径）
+
+### ulauncher主题
+
+浏览器搜索 ulauncher theme，存放路径在~/.config/ulauncher/user-themes
+
+[这个主题应该是最适合gnome默认主题的](https://github.com/aceydot/ulauncher-theme-gnome)
 
 ## distrobox
 
@@ -4948,3 +4918,78 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 # 许可证
 
 本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。
+
+
+
+
+
+# 废弃内容
+
+## albert launcher
+
+这是一个启动器，c++编写，不支持模糊搜索，安装扩展
+
+```
+yay -S albert
+```
+
+打开pinapps，编辑albert的.desktop文件，激活autostart，Exec那里改成albert  %u
+
+终端打开albert settings，取消勾选show tray icon。Window页面取消quit on close的勾选，勾选clear input line on hide；plugins里勾选albert、applications、calculator、clipboard、date and time、web search、files，其他的自己按需设置。web search里面选择add，url填写```https://search.bilibili.com/all?keyword=%s```可以把b站也加进搜索候选里面。
+
+打开系统设置>键盘>自定义快捷键，添加一个ablert的快捷键，命令填```ablert toggle```，快捷键super+R（这是我的，你随意）
+
+后面安装了rouned corner扩展之后在设置里面把albert加到黑名单，先激活黑名单选择窗口的功能，然后用快捷键打开albert就能选中了。
+
+## timeshift
+
+#### ！！！⚠️警告！！！删除timeshift创建的快照要一个个删，否则大概率崩盘
+
+```
+sudo pacman -S timeshift 
+```
+
+```
+sudo systemctl enable --now cronie.service 
+```
+
+自动生成快照启动项
+
+```
+sudo pacman -S grub-btrfs inotify-tools
+```
+
+```
+sudo systemctl enable --now grub-btrfsd.service 
+```
+
+修改服务配置
+
+```
+sudo systemctl edit grub-btrfsd.service 
+```
+
+```
+[Service]
+ExecStart=
+ExecStart=/usr/bin/grub-btrfsd --syslog --timeshift-auto
+```
+
+重启服务
+
+```
+sudo systemctl daemon-reload
+sudo systemctl restart grub-btrfsd.service
+```
+
+避免id变更导致挂载失败
+
+```
+sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
+```
+
+## zen浏览器
+
+```
+sudo pacman -S zen-browser zen-browser-i18n-zh-cn
+```
