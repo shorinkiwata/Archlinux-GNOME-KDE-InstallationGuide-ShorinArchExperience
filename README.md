@@ -4256,7 +4256,7 @@ shotcut
 
 以及各类线上剪辑网站，比如flixier
 
-
+## 别的暂时不了解……
 
 # issues
 
