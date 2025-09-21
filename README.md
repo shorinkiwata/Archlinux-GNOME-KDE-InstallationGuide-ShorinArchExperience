@@ -1492,6 +1492,8 @@ chmod +x ~/path/to/files.appimage
 
 3. 或者使用装了appimage扩展的[ulauncher](#ulauncher)
 
+[appimagehub](https://www.appimagehub.com/browse?ord=latest)这个网址有很多有趣的appimage应用，有兴趣的可以搜索玩玩看
+
 ### amber-ce和星火应用商店（国产商店）
 
 [Amber CE: 琥珀兼容环境：一款Bubblewrap容器，极轻量系统容器](https://gitee.com/amber-ce)
@@ -2439,6 +2441,8 @@ chmod +x ~/path/to/files.appimage
      右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
 
 3. 或者使用[ulauncher](#ulauncher)
+
+[appimagehub](https://www.appimagehub.com/browse?ord=latest)这个网址有很多有趣的appimage应用，有兴趣的可以搜索玩玩看
 
 ### amber-ce和星火应用商店（国产商店）
 
