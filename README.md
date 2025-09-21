@@ -4229,6 +4229,8 @@ ps：谨慎更换cachyos的内核```linux-cachyos```，内核恐慌（kernel pan
   ```
   time firefox
   ```
+  
+- 默认右键是没有新建文件选项的，要在~/Templates目录里面创建自己想要的模板之后才能右击新建文件。
 
 ---
 
