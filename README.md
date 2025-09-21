@@ -1442,6 +1442,44 @@ ibus-mozc是日语输入法
 
   商店搜索extension，安装扩展管理器。然后安装apphider扩展。就可以右键概览里的快捷方式隐藏了。
 
+### 关于appimage
+
+appimage是一种打包方式，右键属性设置可执行权限之后即可运行，或者使用命令：
+
+```
+chmod +x ~/path/to/files.appimage
+```
+
+感兴趣的可以使用这条命令把appimage解压出来看看里面都有什么：
+
+```
+/path/to/files.appimgae --appimage-extract
+```
+
+会出现一个squashfs-root文件夹，里面就是解压出来的文件。
+
+#### 把appimage集成到系统
+
+1. gear lever
+
+   flathub下载
+
+   ```
+   flatpak install flathub it.mijorus.gearlever
+   ```
+
+   或者aur下载
+
+   ```
+   yay -S gearlever
+   ```
+
+   由于涉及到解压和打包，所以用gearlever打开appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
+
+2. 或者使用[appiamgelauncher](#appimagelauncher)
+
+3. 或者使用[ulauncher](#ulauncher)
+
 ### amber-ce和星火应用商店（国产商店）
 
 [Amber CE: 琥珀兼容环境：一款Bubblewrap容器，极轻量系统容器](https://gitee.com/amber-ce)
@@ -2342,6 +2380,44 @@ sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
   ```
 
   选择想隐藏的图标激活invisible，然后保存即可
+
+### 关于appimage
+
+appimage是一种打包方式，右键属性设置可执行权限之后即可运行，或者使用命令：
+
+```
+chmod +x ~/path/to/files.appimage
+```
+
+感兴趣的可以使用这条命令把appimage解压出来看看里面都有什么：
+
+```
+/path/to/files.appimgae --appimage-extract
+```
+
+会出现一个squashfs-root文件夹，里面就是解压出来的文件。
+
+#### 把appimage集成到系统
+
+1. gear lever
+
+   flathub下载
+
+   ```
+   flatpak install flathub it.mijorus.gearlever
+   ```
+
+   或者aur下载
+
+   ```
+   yay -S gearlever
+   ```
+
+   由于涉及到解压和打包，所以用gearlever打开appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
+
+2. 或者使用[appiamgelauncher](#appimagelauncher)
+
+3. 或者使用[ulauncher](#ulauncher)
 
 ### amber-ce和星火应用商店（国产商店）
 
@@ -4527,21 +4603,6 @@ font_size 14
 #重启终端
 ```
 
-## appimagelauncher
-
-（appimgae文件已经足够方便了，这个意义不大且容易出bug，故弃用）
-
-appimage是一个下载即用、无需安装的文件。需要确认安装了fuse才能运行appimage。
-
-
-安装appimagelauncher管理appimage软件
-```
-yay -S appimagelauncher
-```
-安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，默认是home目录下的Applications目录。然后让你选择运行一次还是集成到系统。不过有时候会安装失败或者安装之后无法运行。
-- 卸载appimage软件
-右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
-
 ## 其他有用的扩展
 
 - desktop widgets （desktop clock）
@@ -4671,7 +4732,7 @@ source ~/.zshrc
 
 ## ulauncher
 
-ulauchner是一个比albert更好用的启动器，支持模糊搜索，用gtk编写，支持python脚本
+ulauchner是一个启动器，支持模糊搜索，用gtk编写，支持python脚本
 
 ```
 yay -S ulauncher
@@ -4995,3 +5056,19 @@ sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
 ```
 sudo pacman -S zen-browser zen-browser-i18n-zh-cn
 ```
+
+## appimagelauncher
+
+（容易出bug，故弃用）
+
+
+安装appimagelauncher管理appimage软件
+
+```
+yay -S appimagelauncher
+```
+
+安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统。不过有时候会安装失败或者安装之后无法运行。
+
+- 卸载appimage软件
+  右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
