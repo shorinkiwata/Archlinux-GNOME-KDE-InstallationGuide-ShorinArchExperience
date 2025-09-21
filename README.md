@@ -1,3 +1,5 @@
+
+
 【github】https://github.com/shorinkiwata/archlinuxinstall/tree/main 
 
 【度盘】https://pan.baidu.com/s/1QUzz10hxc7HIlRzhB0jVKg?pwd=arch
@@ -7,6 +9,8 @@
 本文档创建时制作的视频，虽然已经过时，但是依旧值得一看：
 
 [「Archlinux究极指南」从手动安装到显卡直通，最后删除Linux_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1L2gxzVEgs/?spm_id_from=333.1387.homepage.video_card.click&vd_source=65a8f230813d56660e48ae1afdfa4182)
+
+本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。
 
 ```
 更新日志：
@@ -51,10 +55,9 @@
 16. [小技巧](#小技巧)
 17. [专业软件平替](#专业软件平替)
 18. [issues](#issues)
-15. [附录](#附录)
-15. [许可证信息](#许可证)
+19. [附录](#附录)
 
-## vim基础操作
+## vim文本编辑器基础操作
 i 键进入编辑模式
 
 esc 退出编辑模式
@@ -1476,9 +1479,18 @@ chmod +x ~/path/to/files.appimage
 
    由于涉及到解压和打包，所以用gearlever打开appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
 
-2. 或者使用[appiamgelauncher](#appimagelauncher)
+2. appimagelauncher
 
-3. 或者使用[ulauncher](#ulauncher)
+   ```
+   yay -S appimagelauncher
+   ```
+
+   安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统（有时候会安装失败或者安装之后无法运行）。
+
+   - 卸载appimage软件
+     右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
+
+3. 或者使用装了appimage扩展的[ulauncher](#ulauncher)
 
 ### amber-ce和星火应用商店（国产商店）
 
@@ -2415,7 +2427,16 @@ chmod +x ~/path/to/files.appimage
 
    由于涉及到解压和打包，所以用gearlever打开appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
 
-2. 或者使用[appiamgelauncher](#appimagelauncher)
+2. appimagelauncher
+
+   ```
+   yay -S appimagelauncher
+   ```
+
+   安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统。不过有时候会安装失败或者安装之后无法运行。
+
+   - 卸载appimage软件
+     右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
 
 3. 或者使用[ulauncher](#ulauncher)
 
@@ -4874,8 +4895,6 @@ yay -S boxbuddy
 flatpak install flathub io.github.dvlv.boxbuddyrs
 ```
 
-
-
 ## 更高效地使用终端
 
 我也是初学者，如果有什么建议欢迎提出。
@@ -4972,17 +4991,7 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 
 使用方法：[Quick Start](https://yazi-rs.github.io/docs/quick-start)
 
-
-
 ---
-
-
-
-# 许可证
-
-本文档的所有内容均采用 [知识共享 署名-相同方式共享 4.0 国际 许可协议](http://creativecommons.org/licenses/by-sa/4.0/) 进行许可。
-
-
 
 
 
@@ -5056,19 +5065,3 @@ sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
 ```
 sudo pacman -S zen-browser zen-browser-i18n-zh-cn
 ```
-
-## appimagelauncher
-
-（容易出bug，故弃用）
-
-
-安装appimagelauncher管理appimage软件
-
-```
-yay -S appimagelauncher
-```
-
-安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统。不过有时候会安装失败或者安装之后无法运行。
-
-- 卸载appimage软件
-  右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
