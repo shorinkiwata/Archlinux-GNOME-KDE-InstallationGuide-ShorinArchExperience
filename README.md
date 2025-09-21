@@ -121,7 +121,7 @@ PS：handheld是掌机版，类似steamdeck上的steamos，不过也可以当桌
 
 [官网下载](https://archlinux.org/download/)
 
-[阿里云镜像站下载](https://mirrors.aliyun.com/archlinux/iso/)
+官网的下载页面往下翻可以看到中国的镜像站，下载速度应该会快一些。
 
 ## 制作系统u盘
 
