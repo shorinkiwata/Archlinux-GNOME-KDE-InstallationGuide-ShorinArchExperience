@@ -1684,6 +1684,7 @@ super+shift+Q/E #移动到左/右工作区
 ps：gnome默认super+滚轮上下可以左右切换工作区
 alt+tab #切换应用程序
 alt+` #在应用程序的窗口之间切换窗口
+super+M隐藏所有窗口
 ```
 
 * 截图
@@ -1761,7 +1762,7 @@ flatpak install flathub com.mattjakeman.ExtensionManager
 
 - tiling assistant
 
-  这个扩展提供最基础的四角平铺和上下左右半屏平铺功能。设置里gaps和tiling shell调成一样的，禁用keybinds里general一项的第1/2/4项，仅保留resote window size。
+  这个扩展提供最基础的四角平铺和上下左右半屏平铺功能。设置里取消激活popup，gaps和tiling shell调成一样的，禁用keybinds里general一项的第1/2/4项，仅保留resote window size。
 
 - 可选：forge
 
@@ -1816,7 +1817,7 @@ yay -S ddcutil-service
 ```
 
 ```
-sudo gpasswd -d $USER i2c
+sudo gpasswd -a $USER i2c
 ```
 
 安装扩展display ajustment
