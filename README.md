@@ -4457,7 +4457,24 @@ shotcut
    chsh -s /usr/bin/fish
    ```
 
-   
+
+## efibootmgr里面有超级多启动项
+
+这是之前其他系统和网络设备的残留的nvram。用efibootmgr清理。
+
+用这条命令列出所有的启动项
+
+```
+sudo efibootmgr -v
+```
+
+找到无用的项目对应的编号删除
+
+```
+sudo efibootmgr -b 0001 -B
+```
+
+此处的0001是编号
 
 ## kde开机会卡住，必须重启sddm才好
 
