@@ -2999,12 +2999,6 @@ sudo systemctl enable --now vmware-usbarbitrator.service
 
 4. 重启电脑
 
-2025.9.14记 这个包会因为下载vmware-tools失败而安装失败。解决办法是先yay -S vmware-workstation下载其他需要的文件，然后修改PKGBUILD跳过vmware-tools相关的内容，然后进行本地安装。修改后的PKGBUILD文件我分享在文件里了，下载后替换到```~/.cache/yay/vmware-workstation```目录里，然后在该目录打开终端运行命令本地安装：
-
-```
-makepkg -si --skipinteg
-```
-
 ## winboat
 
 [winboat](https://github.com/TibixDev/winboat)
