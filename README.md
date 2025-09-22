@@ -1,5 +1,3 @@
-
-
 【github】https://github.com/shorinkiwata/archlinuxinstall/tree/main 
 
 【度盘】https://pan.baidu.com/s/1QUzz10hxc7HIlRzhB0jVKg?pwd=arch
@@ -34,6 +32,7 @@
 2025.9.6  原timeshift移至附录，换用snapper+btrfs assitent
 2025.9.10 新增KDE桌面安装和美化教程；原zsh内容移至附录，换用fish
 2025.9.11 更新archinstall相关内容
+2025.9.22 附录新增ESP相关内容，新增更好的分区布局
 ```
 
 
@@ -67,6 +66,8 @@ esc 退出编辑模式
 :w 冒号小写w，写入
 
 :wq 冒号小写wq保存并退出
+
+! 命令后加上感叹号代表强制执行
 
 # 安装前的准备
 
@@ -141,6 +142,8 @@ PS：handheld是掌机版，类似steamdeck上的steamos，不过也可以当桌
 
 ventoy制作的系统盘可以存放多个系统镜像，推荐。
 
+不知道怎么下载的话下载[图吧工具箱](https://www.tbtool.cn/)，在“其他工具”页面里有ventoy
+
 ---
 
 
@@ -175,7 +178,10 @@ exit
 timedatectl set-ntp true 
 ```
 
+这条命令让arch连接到互联网上的公共时间服务器
+
 ### 硬盘分区
+
 ```
 lsblk -pf  #查看当前分区情况
 fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细分区信息
@@ -183,7 +189,9 @@ fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细�
 ```
 cfdisk /dev/nvme0n1 #选择自己要使用的硬盘进行分区
 ```
-创建1g的分区，类型（type）选择efi system
+如果是新硬盘的话这样会弹出选项，选GPT
+
+创建1G的分区，类型（type）选择efi system
 
 其余全部分到一个分区里，类型linux filesystem 
 
@@ -205,18 +213,25 @@ mkfs.btrfs /dev/nvme0n1p2（根分区名）
 #加上-f参数可以强制格式化
 ```
 
-#### btrfs子卷
+#### 创建btrfs子卷
+
+子卷是btrfs的一个特性，跟快照（可以理解为存档）有关。通常至少要创建爱你root子卷（系统文件）和home子卷（用户文件），也就是@和@home。虽然/home是/下的一个子目录，但是@和@home是平级的子卷，所以创建@快照时不会包含@home。这样就可以只恢复系统文件，不影响用户数据。知道原理之后就可以按照自己的需求创建额外的子卷啦。
 
 - 挂载
 ```
 mount -t btrfs -o compress=zstd /dev/nvme0n1p2（根分区名） /mnt
 ```
 
+/，左斜杠在linux代表根目录，/mnt是根目录下的子目录，用于手动临时挂载外部设备。我们之前从u盘加载的其实也是一个的archlinux系统，所以这里的/mnt就是u盘系统（live环境）的/mnt目录。这条命令把/dev/nvme0n1p2分区挂载（可以理解为对应）到了/mnt目录，而/dev/nvme0n1p2是我们将要安装的系统的根分区，这意味着/mnt成为了我们将要安装的系统的根目录。
+
+compress是btrfs的另一个特性，透明压缩。可以通过算法在数据写入磁盘前先对数据进行压缩，用以节省磁盘空间，延长磁盘寿命，代价是一点点cpu占用，但极小，对现代硬件来说几乎可以忽略不计。zstd是最平衡的压缩算法，可以像这样zstd:3指定压缩等级，最高15，通常3就可以了。
+
 - 创建子卷
+
 ```
 btrfs subvolume create /mnt/@
 btrfs subvolume create /mnt/@home
-btrfs subvolume create /mnt/@swap
+btrfs subvolume create /mnt/@swap #不需要睡眠功能的话跳过这个
 ```
 
 - 可选：确认
@@ -229,23 +244,65 @@ btrfs subvolume list -p /mnt
 umount /mnt
 ```
 
-### 挂载
+此时取消了/dev/nvme0n1p2和/mnt目录的对应关系。
+
+### 正式挂载
+
+挂载的意思是把分区对应到系统的某个目录。
+
+1. 挂载root子卷
+
+   ```
+   mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
+   ```
+
+   和刚刚的挂载是一样的操作，不过这次是把/dev/nvme0n1p2上的btrfs文件系统里的@子卷挂载到了/mnt。
+
+2. 挂载home子卷
+
+   ```
+   mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
+   ```
+
+   由于/mnt下没有/mnt/home这个目录，所以要加上--mkdir命令创建/mnt/home用来挂载。把@home子卷挂载到了/mnt/home。
+
+3. 可选：挂载swap子卷（不需要睡眠功能的话跳过这一步）
+
+   ```
+   mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
+   ```
+
+4. 挂载启动分区
+
+   ```
+   mount --mkdir /dev/nvme0n1p1 /mnt/boot
+   ```
+
+   记得把/dev/nvme0n1p1替换为自己对应的efi分区设备名。
+
+5. 挂载windows的启动分区（为双系统做准备）
+
+   ```
+   mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
+   ```
+
+   记得/dev/nvme1n1p1替换为自己windows efi分区对应的设备名。
+
+6. 复查挂载情况
+
+   ```
+   df -h
+   ```
+
+这时候可以尝试运行ls命令看看/mnt目录下的东西。会发现原本空的/mnt目录下多出来了home、boot、winboot这些文件夹
 
 ```
-mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt #根目录
-mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home #/home目录
-mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap #/swap目录
-mount --mkdir /dev/nvme0n1p1 /mnt/boot #/boot目录，/dev/nvme0n1p1替换为自己对应的efi分区名
-mount --mkdir /dev/nvme1n1p1 /mnt/winboot #windows的启动分区，为双系统引导做准备。/dev/nvme1n1p1替换为自己win启动分区对应的设备名
-```
-```
-df -h 复查挂载情况
+ls /mnt
 ```
 
-### 安装系统
-- 设置镜像源
+上述是archwiki给出的示例分区和挂载，但是实际使用时这样做会导致使用btrfs快照回滚后内核版本不一致而无法开机，具体看[拓展内容：关于esp挂载到/boot会产生的问题以及相应的解决方案](#关于ESP)（只是个拓展内容，不一定要照做）。
 
-  方法一：reflector自动设置
+### reflector自动设置镜像源
 
 ```
 reflector -a 24 -c cn -f 10 --sort score --save /etc/pacman.d/mirrorlist --v
@@ -257,15 +314,8 @@ reflector -a 24 -c cn -f 10 --sort score --save /etc/pacman.d/mirrorlist --v
 --save /etc/pacman.d/mirrorlist 将结果保存到/etc/pacman.d/mirrorlist
 --v（verbose） 过程可视化
 ```
-​		方法二：手动设置
+### 更新密钥
 
-```
-vim /etc/pacman.d/mirrorlist
-
-拿出手机，浏览器搜索 archlinux中国镜像源，找合适的镜像添加
-```
-
-- 更新密钥
 ```
 pacman -Sy archlinux-keyring
 
@@ -274,7 +324,8 @@ pacman是包管理器，管理软件的安装、卸载之类的
 -Sy代表同步数据库然后安装
 ```
 
-- 安装系统
+### 安装系统
+
 ```
 pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
 
@@ -285,7 +336,12 @@ linux-firmware是固件
 btrfs-progs是btrfs文件系统的管理工具
 ```
 
-- 安装必要的功能性软件
+pacman是在当前根目录下安装软件，而pacstrap命令是把软件安装到指定的根目录下。
+
+如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
+
+### 安装必要的功能性软件
+
 ```
 pacstrap /mnt networkmanager vim sudo amd-ucode
 
@@ -345,7 +401,7 @@ swapon /mnt/swap/swapfile
 
 ### 生成fstab文件
 
-这可以让系统自动完成挂载
+这可以让系统启动时自动完成挂载
 
 ```
 genfstab -U /mnt > /mnt/etc/fstab
@@ -391,6 +447,8 @@ vim /etc/locale.conf
 写入 LANG=en_US.UTF-8
 ```
 
+/etc/locale.conf这个文件关系到系统的语言。如果一个桌面环境没有给你调节系统语言的设置，那就可以通过编辑这个文件重启后修改系统语言。这里先设置系统语言为英文，否则后面会乱码。
+
 ### 设置主机名
 
 ```
@@ -417,24 +475,37 @@ os-prober 用来搜索win11
 grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH 
 
 --target指定架构
---efi-directory指定目录
+--efi-directory指定目录（如果你前面启动分区挂载点是/boot的话这里要安装到/boot）
 --bootloader-id任意取一个启动项在bios里显示的名字
 ```
 
+这里grub-install安装的是前面讲解ESP时提到的.efi文件。如果你有兴趣想看看这是个啥的话可以安装一个终端文档管理器查看它。
+
+```
+pacman -S yazi
+```
+
+输入yazi命令就可以打开这个终端文档管理器了。.efi文件就存放在```/boot/EFI/你取的启动项名字/```这个目录里面。/boot里还有之前提到的内核文件和initramfs。其他的东西你感兴趣的话也可以自己看一看。
+
+按q键退出yazi。clear命令或者按ctrl+L可以清屏。
+
 - 编辑grub的源文件
+
 ```
 vim /etc/default/grub
 ```
 
-  1. GRUB_DEFAULT=0改成saved，再取消GRUB_SAVEDEFAULT=true的注释。这一步是记住开机的选择。
+这是生成grub的配置文件时需要用到的东西。
+
+  1. GRUB_DEFAULT=0改成saved，再取消GRUB_SAVEDEFAULT=true的注释。这一步是记住开机的选择。（如果你的启动分区挂载点是/boot/efi的话跳过这一步）
 
   2. GRUB_CMDLINE_LINUX_DEFAULT里面去掉quiet以显示开机日志，loglevel设置日志等级为5。再添加nowatchdog modprobe.blacklist=sp5100_tco，禁用watchdog。intelcpu用户把sp5100_tco换成iTCO_wdt。
 
      loglevel共7级，5级是一个信息量的平衡点。watchdog的目的简单来说是在系统死机的时候自动重启系统。这在服务器或者嵌入式上有用，但是对个人用户来说没有意义，禁用以节省系统资源、提高开机和关机速度
 
-3. 手动写入或者取消最后一行GRUB_DISABLE_OS_PROBER=false的注释。这一步让grub使用os-prober生成其他系统的启动项
+3. 取消最后一行GRUB_DISABLE_OS_PROBER=false的注释。这一步让grub使用os-prober生成其他系统的启动项
 
-- 生成配置文件
+- 生成grub的配置文件
 ```
 grub-mkconfig -o /boot/grub/grub.cfg
 ```
@@ -462,19 +533,13 @@ enbale代表开机自启
 
 #### 连接wifi
 
-- 方法一：nmtui
+- 启动nmtui
 
 ```
 nmtui开启工具
 选择activate a connection
 选择自己的wifi，回车，，输入密码，回车，esc退出软件
 clear清屏，或者ctrl+L清屏
-```
-
-- 方法二：nmcli
-
-```
-nmcli dev wifi connect <wifiname> password <password>
 ```
 
 - 确认网络连接
@@ -559,14 +624,14 @@ archinstall
 
 选择partitioning进入磁盘分区
 
-- 情况一：整块空闲硬盘安装arch
+- 情况一：整块空闲硬盘安装arch，想省事
 
   1. 选择第一项进行自动分区 > 要使用的硬盘 > btrfs（这是文件系统） > yes（这里是问你是否使用推荐子卷布局） > ues compression（透明压缩）
   2. 选择btrfs snapshots（这是快照软件） >  Snapper 
 
   选择back返回
 
-- 情况二：和其他系统共享同一块硬盘
+- 情况二：和其他系统共享同一块硬盘，想最优分区
 
   选择第二项手动分区 > 要使用的硬盘 
 
@@ -574,12 +639,14 @@ archinstall
 
       选中要使用的空闲空间 > Size（分区大小）1024MB > Filesystem（文件系统）FAT32 > Mountpoint（挂载点）/boot
 
+      这是archwiki示例种的分区和挂载，但是实际使用时这样做会导致使用btrfs快照回滚后内核版本不一致而无法开机，具体看[拓展内容：关于esp挂载到/boot会产生的问题以及相应的解决方案](#关于ESP)（只是个拓展内容，不一定要照做）。
+
   2. 创建swap分区
 
      **如果你不需要睡眠功能的话跳过这一步**。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。
 
      swap交换空间与虚拟内存和睡眠有关。建议设置zram作为日常swap，**仅在需要睡眠的时候设置硬盘swap**。有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换分区的方式。
-
+  
      ```
      SWAP大小参考
             内存  			  不需要睡眠    		 需要睡眠   不建议超过
@@ -613,8 +680,10 @@ archinstall
      选中刚刚创建的btrfs，回车。选择Mark/Unmark as compressed设置透明压缩；再选择Set subvolumes（创建子卷）> Add subvolume 
 
      至少需要创建root子卷和home子卷，Subvolume name设置成 @，对应Subvolume mountpoint是 / ； @home 对应 /home
-
-     confirm and exit > confirm and exit > back 退出出硬盘分区
+  
+     confirm and exit > confirm and exit > back 退出硬盘分区
+     
+     关于子卷是什么，可以看[创建btrfs子卷](#创建btrfs子卷)
 
 ### Swap（zram交换空间）
 
@@ -673,6 +742,8 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
 必须安装：vim（任意文本编辑器）、os-prober（双系统需要）
 
 可选安装字体：wqy-zenhei（文泉驿正黑）、noto-fonts（谷歌开源字体）、noto-fonts-emoji（表情）
+
+如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
 
 ### Timezone（时区）
 
@@ -760,8 +831,6 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
 
 没有普通用户无法登入桌面环境，有些软件会拒绝在root权限下运行，所以普通用户是必须的。
 
-(archinstall安装的可以跳过)
-
 ```
 useradd -m -g wheel <username> 
 ```
@@ -784,6 +853,8 @@ vim /etc/sudoers
 ```
 %wheel ALL=（ALL：ALL） ALL
 ```
+：wq！冒号小写wq感叹号保存并退出
+
 ## 开启32位源
 
 32位源建议开启，因为steam需要，wine运行exe也需要
@@ -806,7 +877,7 @@ pacman -Sy
 ## 字体
 
 ```
-sudo pacman -S wqy-zenhei noto-fonts noto-fonts-emoji
+pacman -S wqy-zenhei noto-fonts noto-fonts-emoji
 ```
 
 ```
@@ -817,14 +888,14 @@ noto-fonts-emoji是emoji
 
 ## 显卡驱动和硬件编解码
 
-以4060和780m为例。顺便一提，由于我没有intel的硬件，所以本文所有CPU/GPU相关内容都不一定适用于intel，尤其是后面虚拟机xml编辑的部分。
+以4060和780m为例。顺便一提，由于我没有intel的硬件，所以本文所有CPU/GPU相关内容都不一定适用于intel，尤其是后面虚拟机xml的部分。
 
 参考链接：[NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)、[AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 
 ### 检查头文件
 
 ```
-sudo pacman -S linux-headers
+pacman -S linux-headers
 ```
 
 linux替换为自己的内核，比如zen内核是linux-zen-headers
@@ -834,7 +905,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 - Nvidia
 
   ```
-  sudo pacman -S nvidia-open nvidia-utils lib32-nvidia-utils
+  pacman -S nvidia-open nvidia-utils lib32-nvidia-utils
   ```
 
   显卡驱动的选择在[CodeNames · freedesktop.org](https://nouveau.freedesktop.org/CodeNames.html)这个页面搜索自己的显卡，看看对应的family是什么。然后在[NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)这个页面查找对应的显卡驱动。nv160family往后的显卡用nvidia-open，nv110到190如果nvidia-open表现不佳的话可以使用nvidia。nvidia-open是内核模块开源的驱动，不是完全的开源驱动。非stable内核要安装的驱动不一样，具体看wiki，例如zen内核装nvidia-open-dkms。
@@ -844,7 +915,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   A卡不需要自己安装驱动，检查一下vulkan驱动就行
 
   ```
-  sudo pacman -S --needed vulkan-radeon vulkan-mesa-layers
+  pacman -S --needed vulkan-radeon vulkan-mesa-layers
   ```
   
   vulkan-mesa-layers是为了解决混合模式下gnome-shell仍运行在独立显卡上导致显卡占用异常这个问题。
@@ -856,7 +927,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
  - nvidia
 
    ```
-   sudo pacman -S libva-nvidia-driver
+   pacman -S libva-nvidia-driver
    ```
 
 * amd
@@ -866,8 +937,6 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 * intel
 
   通常是intel-media-driver或者libva-intel-driver
-
-  
 
 * 重启激活显卡驱动和字体
 
@@ -1000,14 +1069,6 @@ yay是aur助手，可以从aur安装软件（paru也是一个aur助手，但是�
 
   这条命令有四步，每步之间用&&隔开。第一步用pacman安装git和base-devel，这是git管理工具和编译软件需要的包。第二步git clone把连接里的文件下载到本地。第三步cd命令进入yay目录。第四步makepkg编译包。
 
-- 方法三：从cachyos源安装（不推荐）
-
-  见[更换CachyOS源](#更换CachyOS源)
-
-  ```
-  sudo pacman -S yay
-  ```
-
 ### 快照（⚠️重点）
 
 **快照相当于存档，养成习惯，每次做自己不了解的事情之前都存个档**，如果出了问题或者后悔了可以恢复到快照时的状态。
@@ -1033,11 +1094,11 @@ sudo pacman -S grub-btrfs inotify-tools
 ```
 
 ```
-reboot
+sudo systemctl enable --now grub-btrfsd
 ```
 
 ```
-sudo systemctl enable --now grub-btrfsd
+reboot
 ```
 
 具体使用方法
@@ -2144,11 +2205,11 @@ sudo pacman -S grub-btrfs inotify-tools
 ```
 
 ```
-reboot
+sudo systemctl enable --now grub-btrfsd
 ```
 
 ```
-sudo systemctl enable --now grub-btrfsd
+reboot
 ```
 
 具体使用方法
@@ -4664,7 +4725,7 @@ font_size 14
   
 - custom reboot
 
-  可以快捷重启到biede系统。设置里选择使用grub，然后在快捷设置菜单里reload和enbale。
+  可以快捷重启到别的系统。设置里选择使用grub，然后在快捷设置菜单里reload和enbale。（grub放在btrfs的话没法使用这个）
   
 - search light
 
@@ -4898,6 +4959,66 @@ yay -S boxbuddy
 ```
 flatpak install flathub io.github.dvlv.boxbuddyrs
 ```
+
+## 关于ESP
+
+（有错误欢迎指出）
+
+ESP（Efi System Partition），又叫efi系统分区，分区文件系统为FAT，用来存放.efi文件，这个文件是启动系统的“第一把钥匙”。archwiki给的示例里把ESP挂载到了/boot，这会导致使用btrfs快照回滚后内核版本不一致而无法开机。
+
+想象一下，你的内核版本是6.16.7，系统推送了内核的更新，你保险起见在更新前创建了快照，这个快照记录了/usr/lib/modules/6.16.7-1-1目录里的内核模块，但是由于/boot是无法被这个btrfs快照包含的FAT文件系统，你没能记录下/boot里的内核文件和initramfs。系统更新把/boot目录下的内核文件和initramfs都更新到了6.16.8，/usr/lib/modules/目录下的内核模块也从6.16.7更新到了6.16.8。重启电脑之后你发现电脑出现异常想要用快照恢复，你把内核模块从6.16.8恢复到了6.16.7，但是/boot的内核文件和initramfs没被恢复，依旧是6.16.8。内核版本不一致，于是你进不去系统了，不得不进live环境修复问题。
+
+要避免上述问题，/boot必须是btrfs文件系统，所以我们要把esp挂载到别的地方，比如/boot/efi。这样/boot里面的内核文件就可以被快照记录了。但是这时又会出现新的问题：grub无法在btrfs文件系统写入grubenv文件（这涉及到grub的功能，比如记住选择的启动项之类的）。这里需要做出取舍，是选择舍弃grub的便利功能让btrfs的快照记录grub从而稳定回滚系统？还是把grub移动到btrfs文件系统之外换来完整的grub体验？我会选择后者，把本来放在/boot/grub目录下grub配置文件移动到esp（在上述例子里这个目录是/boot/efi）里，然后可以在原本的/boot/grub位置留下一个指向/boot/efi/grub的软链接（相当于快捷方式），这是最优雅的做法。接下来谈谈这么做的问题。
+
+想象一下，你安装的是linux内核，然后你尝试安装linux-zen内核，保险起见创建了一个快照，这个快照记录了/boot下的linux内核文件。然后你安装了linux-zen内核，更新了grub的配置文件，重启后grub同时出现了linux内核和linux-zen内核的启动选项。使用一段时间后你后悔了，用快照回滚，系统恢复到了没有安装linux-zen内核的状态，/boot下的linux-zen内核文件消失了，/usr/lib/modules/x.xx.xx-zen1-1的内核模块文件也消失了。但是你的grub配置文件里关于linux-zen内核的部分却没有消失。此时你就多了一个无用的“幽灵启动项”，需要手动更新一次grub的配置文件才能解决这个问题。你觉得这个代价可以接受吗？我觉得没什么大不了的，所以我选择这么做。
+
+综上所述，下面是新的挂载方法（顺便一提这样挂载的话esp只存放了grub的配置文件和.efi文件，不需要很大空间，100MB可能都够了，如果硬盘充足的话可以分512MB，优雅）：
+
+### 手动安装情况下
+
+挂载efi分区那一步开始有区别
+
+1. 挂载root子卷
+
+   ……
+
+   ……
+
+4. 挂载efi分区
+
+   ```
+   mount --mkdir /dev/nvme0n1p1 /mnt/boot/efi
+   ```
+
+   这里把efi分区挂载到了/mnt/boot/efi目录。
+
+安装grub的时候记得要改一下指定efi的位置，从```--efi-directory=/boot```改到```--efi-directory=/boot/efi``` 然后用```--boot-directory=/boot/efi```把grub安装到esp里面
+
+```
+grub-install --target=x86_64-efi --efi-directory=/boot/efi --boot-directory=/boot/efi --bootloader-id=ARCH 
+```
+
+然后用ln命令创建一个软链接
+
+```
+ln -sf /boot/efi/grub /boot/grub
+```
+
+之后就可以照常生成配置文件了
+
+```
+grub-mkconfig -o /boot/grub/grub.cfg
+```
+
+### 脚本安装情况下
+
+disk configuration的efi分区挂载点要设置成/boot/efi，然后再次选中设置bootable和esp。这样设置完成后脚本会自动把grub安装到/boot/efi里面。只需要手动生成一个软链接方便后续使用即可。
+
+```
+ln -sf /boot/efi/grub /boot/grub
+```
+
+ 
 
 ## 更高效地使用终端
 
