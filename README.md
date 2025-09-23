@@ -1750,11 +1750,21 @@ ctrl+alt+S gnome-control-center
 
 #### ⚠️ 警告：扩展在gnome桌面环境大版本更新的时候大概率会大面积失效，如果出现gnome桌面环境的大版本更新，一定要先关闭所有扩展，谨慎行事
 
+（9月23日gnome更新了49版本，部分扩展尚未更新）
+
 - 从商店安装蓝色的扩展管理器
 
 ```
 flatpak install flathub com.mattjakeman.ExtensionManager
 ```
+
+或者可以安装浏览器集成扩展[firefox-gnome-shell-extension-integration](https://addons.mozilla.org/en-US/firefox/addon/gnome-shell-integration/)，然后安装```chrome-gnome-shell```
+
+```
+yay -S chrome-gnome-shell
+```
+
+这样就可以直接在https://extensions.gnome.org/这个网站通过开关安装扩展了。
 
 - AppIndicator and KStatusNotifierItem Support 
 
@@ -1805,7 +1815,7 @@ flatpak install flathub com.mattjakeman.ExtensionManager
   让右上角的快速设置面板变得更合理。包括把通知从时间面板移动到快速设置面板，缩小时间面板的占地面积，免打扰模式开关按钮移动到快速设置面板，允许调整单个应用的声音大小等等。
 
   扩展设置的menu页面的两项可以激活，第一项让声音调整菜单以悬浮的方式显示出来，第二项给这个功能增加动画，很酷。
-  
+
 - clipboard indicator 
 
   剪贴板历史。设置里设置super+v切换菜单
