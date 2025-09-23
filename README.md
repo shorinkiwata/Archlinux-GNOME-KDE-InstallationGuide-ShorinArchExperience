@@ -1857,6 +1857,39 @@ sudo gpasswd -a $USER i2c
 reboot
 ```
 
+### 修改gnome默认终端
+
+- 方法一：dconf-editor
+
+  ```
+  sudo pacman -S dconf-editor
+  ```
+
+  org.gnome.desktop.applications.terminal里的exec取消“使用默认值”，自定义值填ghostty，exec-arg同理，自定义值改成-e。这么写是因为别的程序调用ghostty运行命令时需要通过-e参数把命令传给ghostty。
+
+- 方法二：gsettings命令
+
+  ```
+  gsettings set org.gnome.desktop.default-applications.terminal exec 'ghostty'
+  gsettings set org.gnome.desktop.default-applications.terminal exec-arg '-e'
+  ```
+
+两个方法效果是一样的，可以运行这段命令查看是否修改成功：
+
+```
+gsettings get org.gnome.desktop.default-applications.terminal exec
+gsettings get org.gnome.desktop.default-applications.terminal exec-arg
+```
+
+输出应该为
+
+```
+‘ghostty’
+’-e‘
+```
+
+
+
 ### 睡眠到硬盘
 
 硬盘上必须有交换空间才能睡眠到硬盘
@@ -4131,7 +4164,7 @@ sudo pacman -S lutris
 sudo pacman -Rns lutris
 ```
 ```
-sudo rm -rfv ~/.config/lutris ~/.cache/lutris ~/.local/share/lutris ~/.local/share/applications/net.lutris.Lutris.desktop ~/.local/share/applications/lutris-game-*.desktop
+sudo rm -rfv ~/.config/lutris  ~/.local/share/lutris
 ```
 steam下载proton之后可以在lutris里面设置wine版本为proton
 
