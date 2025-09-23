@@ -956,7 +956,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   vainfo
   ```
 
-## 桌面环境 
+# 桌面环境 
 
 ### [KDE Plasma](#KDE)和[GNOME](#GNOME) 选择一个安装。
 
@@ -1382,11 +1382,12 @@ ibus-mozc是日语输入法
 - pacman
 
   ```
-  sudo pacman -S --needed mission-center gnome-text-editor gnome-disk-utility dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs gnome-font-viewer gnome-clocks gnome-weather gnome-calculator loupe snapshot baobab celluloid fragments file-roller foliate firefox gst-plugin-pipewire gst-plugins-good pacman-contrib decibels papers
+  sudo pacman -S --needed mission-center gnome-logs gnome-text-editor gnome-disk-utility dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs gnome-font-viewer gnome-clocks gnome-weather gnome-calculator loupe snapshot baobab celluloid fragments file-roller foliate firefox gst-plugin-pipewire gst-plugins-good pacman-contrib papers
   ```
 
   ```
   mission-center 类似win11的任务管理器，强烈推荐
+  gnome-logs 方便查看系统日志
   gnome-text-editor gnome标配记事本
   gnome-disk-utility 磁盘管理工具，可以调节分区大小和格式化分区等等
   dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs补全gnome-disk-utility的功能
@@ -1402,10 +1403,9 @@ ibus-mozc是日语输入法
   file-roller 压缩解压缩
   foliate 电子书阅读器
   firefox linux上性能表现最佳的浏览器，需要别的可以商店自行搜索安装
-  gst-plugin-pipewire gst-plugins-good 是gnome截图工具自带的录屏，需登出一次
+  gst-plugin-pipewire gst-plugins-good 是gnome截图工具自带的录屏
   pacman-contrib 提供pacman的一些额外功能，比如checkupdates用来检查更新
-  decibels 是可以显示波形的音频播放器，这只是个音频播放器，不是音乐播放器
-  papers 精简的pdf阅读器
+  papers pdf阅读器
   ```
   
 - 从aur安装常用软件
@@ -1422,7 +1422,6 @@ ibus-mozc是日语输入法
   wps-office-cn 是wps
   wps-office-mui-zh-cn 是wps的中文语言包
   typora-free 是markdown编辑器
-  albert 是一个启动器，类似plasma的kruner。在桌面弹出一个置顶的搜索框，有一系列功能
   ```
   
   - 关于字体
@@ -1469,6 +1468,8 @@ ibus-mozc是日语输入法
   sudo flatpak remote-modify flathub --url=https://mirror.sjtu.edu.cn/flathub
   ```
 
+#### 其他gnome上好用的软件看[gnome软件推荐](#gnome软件推荐)
+
 ### 视频播放器开启硬件编解码
 
 - 方法一：配置文件
@@ -1498,7 +1499,7 @@ ibus-mozc是日语输入法
   hwdec=yes
   ```
 
-### 删除或隐藏不必要的快捷方式
+### 隐藏不必要的快捷方式
 
 - 方法一：pinapp
 
@@ -1524,7 +1525,7 @@ ibus-mozc是日语输入法
 
 - 方法三：gnome扩展
 
-  商店搜索extension，安装扩展管理器。然后安装apphider扩展。就可以右键概览里的快捷方式隐藏了。
+  商店搜索extension，安装扩展管理器。然后安装apphider扩展，可以右键隐藏概览里的快捷方式。
 
 ### 关于appimage
 
@@ -1544,34 +1545,34 @@ chmod +x ~/path/to/files.appimage
 
 #### 把appimage集成到系统
 
-1. gear lever
+- 方法一：gear lever
 
-   flathub下载
+  flathub下载
 
-   ```
-   flatpak install flathub it.mijorus.gearlever
-   ```
+  ```
+  flatpak install flathub it.mijorus.gearlever
+  ```
 
-   或者aur下载
+  或者aur下载
 
-   ```
-   yay -S gearlever
-   ```
+  ```
+  yay -S gearlever
+  ```
 
-   由于涉及到解压和打包，所以用gearlever打开appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
+  由于涉及到解压和打包，所以用gearlever打开较大的appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
 
-2. appimagelauncher
+- 方法二：appimagelauncher
 
-   ```
-   yay -S appimagelauncher
-   ```
+  ```
+  yay -S appimagelauncher
+  ```
 
-   安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统（有时候会安装失败或者安装之后无法运行）。
+  安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统（有时候会安装失败或者安装之后无法运行）。
 
-   - 卸载appimage软件
-     右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
+  - 卸载appimage软件
+    右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
 
-3. 或者使用装了appimage扩展的[ulauncher](#ulauncher)
+- 方法三：使用装了appimage扩展的[ulauncher](#ulauncher)
 
 [appimagehub](https://www.appimagehub.com/browse?ord=latest)这个网址有很多有趣的appimage应用，有兴趣的可以搜索玩玩看
 
@@ -1678,6 +1679,40 @@ nautilus -q
 ```
 flatpak install flathub page.tesk.Refine
 ```
+
+### ulauncher
+
+ulauchner是一个启动器，支持模糊搜索，用gtk编写，支持python脚本
+
+```
+yay -S ulauncher
+```
+
+然后设置一个自定义快捷键，命令写ulauncher-toggle，如果使用gnome的rounded corner扩展记得添加ulauncher进黑名单。
+
+ulauncher最好用的是它的扩展功能，安装非常方便。打开设置进extensions页面，点击左侧的discover extensions就可以找到。
+
+#### ulauncher扩展
+
+我安装的扩展：
+
+[flathub manager](https://github.com/damian-ds7/ulauncher-flathub-manager) 可以从ulauncher管理flatpak软件
+
+[emoji](https://github.com/Ulauncher/ulauncher-emoji) 可以快捷复制emoji
+
+[process murderer](https://github.com/isacikgoz/ukill)可以快捷杀死进程
+
+[youtube search](https://github.com/NastuzziSamy/ulauncher-youtube-search)快捷从youtube搜索内容
+
+[github search](github.com/Glovecc/ulauncher-github-search)快捷从github搜索内容
+
+[appimage launcher](https://github.com/atorresg/appimagelauncher)快捷打开指定目录里的appimage文件（记得在设置里指定存放appimage的路径，需要使用从/开始的绝对路径）
+
+#### ulauncher主题美化
+
+浏览器搜索 ulauncher theme，存放路径在~/.config/ulauncher/user-themes
+
+[这个主题应该是最适合gnome默认主题的](https://github.com/aceydot/ulauncher-theme-gnome)
 
 ### 配置系统快捷键
 
@@ -1953,6 +1988,8 @@ power profile indicator  配合powerProfilesDaemon使用，面板显示当前模
 ```
 右键桌面选择更换背景
 ```
+
+动态壁纸可以用Hidamari，在后台播放一个视频作为壁纸。
 
 #### 扩展美化
 
@@ -4819,6 +4856,32 @@ noisetorch
 
 easyeffect
 
+## gnome软件推荐
+
+gnome-calendar 日历
+
+gnome-music 本地音乐播放器
+
+decibels 显示波形的音频播放器
+
+curtail 压缩图片大小
+
+switcheroo 变更图片格式
+
+komikku 看漫画
+
+secrets 本地加密保存账号密码
+
+wordbook 英英词典
+
+shortware 收听电台
+
+localesend 局域网传输文件
+
+handbrake 视频转码
+
+[跳回自定义安装软件的部分](#视频播放器开启硬件编解码)
+
 ## zsh
 
 ```
@@ -4892,39 +4955,7 @@ setopt EXTENDED_HISTORY
 source ~/.zshrc
 ```
 
-## ulauncher
 
-ulauchner是一个启动器，支持模糊搜索，用gtk编写，支持python脚本
-
-```
-yay -S ulauncher
-```
-
-然后设置一个自定义快捷键，命令写ulauncher-toggle，如果使用gnome的rounded corner扩展记得添加ulauncher进黑名单。
-
-ulauncher最好用的是它的扩展功能，安装非常方便。打开设置进extensions页面，点击左侧的discover extensions就可以找到。
-
-### ulauncher扩展
-
-我安装的扩展：
-
-[flathub manager](https://github.com/damian-ds7/ulauncher-flathub-manager) 可以从ulauncher管理flatpak软件
-
-[emoji](https://github.com/Ulauncher/ulauncher-emoji) 可以快捷复制emoji
-
-[process murderer](https://github.com/isacikgoz/ukill)可以快捷杀死进程
-
-[youtube search](https://github.com/NastuzziSamy/ulauncher-youtube-search)快捷从youtube搜索内容
-
-[github search](github.com/Glovecc/ulauncher-github-search)快捷从github搜索内容
-
-[appimage launcher](https://github.com/atorresg/appimagelauncher)快捷打开指定目录里的appimage文件（记得在设置里指定存放appimage的路径，需要使用从/开始的绝对路径）
-
-### ulauncher主题
-
-浏览器搜索 ulauncher theme，存放路径在~/.config/ulauncher/user-themes
-
-[这个主题应该是最适合gnome默认主题的](https://github.com/aceydot/ulauncher-theme-gnome)
 
 ## distrobox
 
