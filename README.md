@@ -1702,9 +1702,10 @@ super+shift+数字键 #将窗口移到工作区
 super+shift+A/D #将窗口左右移动工作区
 super+shift+Q/E #移动到左/右工作区
 ps：gnome默认super+滚轮上下可以左右切换工作区
-alt+tab #切换应用程序
+alt+tap #切换窗口
+super+tab #切换应用程序
 alt+` #在应用程序的窗口之间切换窗口
-super+M隐藏所有窗口
+super+M #隐藏所有窗口
 ```
 
 * 截图
