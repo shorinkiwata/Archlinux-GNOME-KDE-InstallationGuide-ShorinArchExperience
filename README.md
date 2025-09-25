@@ -212,17 +212,17 @@ Linux的目录是由 / 左斜杠开头的树状结构，/是一切的开始，�
 
 [efi system partition](https://wiki.archlinux.org/title/EFI_system_partition)
 
-ESP必须格式化为FAT文件系统，用于存放.efi文件，这是启动系统的“第一把钥匙”。
+用于存放.efi文件，这是启动系统的“第一把钥匙”。esp的文件系统必须是FAT。
 
 #### ESP挂载点
 
-/boot是最典型的挂载点，同时也是archlinux存放内核文件的位置。如果esp的挂载点是/boot，则需要较大空间存放内核文件（如果使用systemd-boot，必须把esp挂载到/boot）。如果使用grub或者rEFind，则可以挂载到任意位置，但通常是/boot/efi或者/efi。由于/boot/efi会复杂化挂载过程，所以推荐挂载点为/efi。
+/boot是最典型的挂载点。由于/boot内需要存放内核文件，所以作esp挂载点的话需要分配较大空间。使用systemd-boot必须把esp挂载到/boot，如果使用grub或者rEFind，则可以挂载到任意位置，但通常是/boot/efi或者/efi。因为/boot/efi会复杂化挂载过程，所以推荐挂载点为/efi。
 
-影响esp挂载点选择的另一大因素是btrfs的快照功能。esp的文件系统必须是FAT，如果/boot是esp的挂载点，那就没法创建/boot的快照。/boot内存放了内核文件、initramfs（系统初始化相关的文件）和ucode（修复和优化cpu相关的文件），假设你在内核版本6.16的时候创建了快照，然后把内核更新到了6.17，然后用快照进行回档。此时你的系统文件被恢复到6.16，但是/boot里的内核文件却仍然是6.17，版本不一致导致系统无法正常启动。所以如果要使用btrfs快照，则/boot必须是btrfs文件系统。这种情况下esp的推荐挂载点为/efi。
+影响esp挂载点选择的另一大因素是btrfs的快照功能。esp的文件系统必须是FAT，如果/boot是esp的挂载点，那就无法创建/boot的快照。假设创建快照时的内核版本是6.16，然后把内核更新到了6.17，然后用快照进行回档。此时你的系统文件会被恢复到6.16，但是/boot里的内核文件却仍然是6.17，版本不一致导致系统无法正常启动。所以如果要使用btrfs快照，/boot必须是btrfs文件系统。这种情况下esp的推荐挂载点为/efi。
 
-另外，因为systemd-boot要求挂载点必须是/boot，所以这种情况下无法使用systemd-boot。使用grub的话也会产生问题，grub无法在btrfs写入grubenv（记忆启动项等功能相关）。最简单的解决办法是把grub也装进esp。此时要注意，由于grub在esp内无法被btrfs快照，所以在特殊情况下会出现无效的“幽灵启动项”，手动更新一次grub的配置文件即可解决。或者也可以选择放弃grub的便利功能，把grub安装到btrfs进行快照。本文采用grub装进esp的方案。
+另外，因为systemd-boot要求挂载点必须是/boot，所以这种情况下无法使用systemd-boot。使用grub的话也会产生问题，grub无法在btrfs写入grubenv（记忆启动项等功能相关）。最简单的解决办法是把grub也装进esp。此时要注意，grub在esp内无法被btrfs快照，假设你创建快照时的内核只有linux，然后你安装了linux-zen并更新了grub的配置文件，此时快照回滚不会修改grub配置文件，grub中的linux-zen因此成为了“幽灵启动项”。手动更新一次grub的配置文件即可解决这个问题。或者也可以选择放弃grub的便利功能，把grub安装到btrfs进行快照。本文采用grub装进esp的方案。
 
-顺便一提，因为这种情况下esp只存放.efi文件和grub的文件，这些文件加起来只有17MB左右，所以esp需要的硬盘空间非常小。但是我依旧选择给esp分512MB，奢侈！
+顺便一提，因为这种情况下esp只存放.efi文件和grub的文件，这些文件加起来只有17MB左右，所以esp需要的硬盘空间非常小，但是我依旧选择给esp分512MB，奢侈！
 
 ### 硬盘分区
 
@@ -5227,6 +5227,26 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 
 使用方法：[Quick Start](https://yazi-rs.github.io/docs/quick-start)
 
+## rEFind
+
+[refind](https://wiki.archlinuxcn.org/wiki/REFInd#%E6%9B%B4%E6%96%B0_rEFInd)是只支持UEFI的引导程序，比grub更简单。
+
+```
+pacman -S refind
+```
+
+```
+refind-install
+```
+
+安装脚本会自动扫描到esp然后把核心文件安装到esp里，配置文件则在/boot里。
+
+grub常用的只有双系统、多内核引导、传递内核参数、btrfs快照启动项这几个功能。refind都可以实现。
+
+1. 双系统
+
+   无须配置，自动检测。
+
 ---
 
 
@@ -5298,6 +5318,6 @@ sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
 
 ## zen浏览器
 
-```
+```d
 sudo pacman -S zen-browser zen-browser-i18n-zh-cn
 ```
