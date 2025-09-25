@@ -1950,7 +1950,7 @@ yay -S ddcutil-service
 sudo gpasswd -a $USER i2c
 ```
 
-安装扩展display ajustment
+安装扩展[Control monitor brightness and volume with ddcutil](https://extensions.gnome.org/extension/6325/control-monitor-brightness-and-volume-with-ddcutil/)
 
 ```
 reboot
