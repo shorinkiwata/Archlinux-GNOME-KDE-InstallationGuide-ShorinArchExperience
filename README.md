@@ -180,6 +180,50 @@ timedatectl set-ntp true
 
 这条命令让arch连接到互联网上的公共时间服务器
 
+### 重要概念讲解
+
+接下来要进行硬盘分区，但是在分区之前需要讲解几个重要概念。
+
+#### Linux目录结构
+
+Linux的目录是由 / 左斜杠开头的树状结构，/是一切的开始，所以被称为根目录（root目录）。例如/home就是根目录下的home目录，/etc就是根目录下的etc目录。
+
+#### 挂载
+
+意思是把分区对应到某个目录。
+
+##### 挂载点
+
+假设把分区1挂载到/home目录，那就称分区1的挂载点（mount point）为/home。
+
+#### 文件系统
+
+[archwiki file system](https://wiki.archlinux.org/title/File_systems)
+
+文件系统决定了文件的存放和检索方式，根分区文件系统常用的有btrfs、ext4、xfs，不同的文件系统有不同的功能和特性。本文使用btrfs文件系统，最大的特点是快照（相当于存档和回档）
+
+#### Bootloader引导程序
+
+[archwiki_arch_boot_process](https://wiki.archlinux.org/title/Arch_boot_process#Boot_loader)
+
+引导程序，用来引导系统启动。grub最为常用。arch用户也有很多使用systemd-boot。
+
+#### EFI系统分区（ESP） 
+
+[efi system partition](https://wiki.archlinux.org/title/EFI_system_partition)
+
+ESP必须格式化为FAT文件系统，用于存放.efi文件，这是启动系统的“第一把钥匙”。
+
+#### ESP挂载点
+
+/boot是最典型的挂载点，同时也是archlinux存放内核文件的位置。如果esp的挂载点是/boot，则需要较大空间存放内核文件（如果使用systemd-boot，必须把esp挂载到/boot）。如果使用grub或者rEFind，则可以挂载到任意位置，但通常是/boot/efi或者/efi。由于/boot/efi会复杂化挂载过程，所以推荐挂载点为/efi。
+
+影响esp挂载点选择的另一大因素是btrfs的快照功能。esp的文件系统必须是FAT，如果/boot是esp的挂载点，那就没法创建/boot的快照。/boot内存放了内核文件、initramfs（系统初始化相关的文件）和ucode（修复和优化cpu相关的文件），假设你在内核版本6.16的时候创建了快照，然后把内核更新到了6.17，然后用快照进行回档。此时你的系统文件被恢复到6.16，但是/boot里的内核文件却仍然是6.17，版本不一致导致系统无法正常启动。所以如果要使用btrfs快照，则/boot必须是btrfs文件系统。这种情况下esp的推荐挂载点为/efi。
+
+另外，因为systemd-boot要求挂载点必须是/boot，所以这种情况下无法使用systemd-boot。使用grub的话也会产生问题，grub无法在btrfs写入grubenv（记忆启动项等功能相关）。最简单的解决办法是把grub也装进esp。此时要注意，由于grub在esp内无法被btrfs快照，所以在特殊情况下会出现无效的“幽灵启动项”，手动更新一次grub的配置文件即可解决。或者也可以选择放弃grub的便利功能，把grub安装到btrfs进行快照。本文采用grub装进esp的方案。
+
+顺便一提，因为这种情况下esp只存放.efi文件和grub的文件，这些文件加起来只有17MB左右，所以esp需要的硬盘空间非常小。但是我依旧选择给esp分512MB，奢侈！
+
 ### 硬盘分区
 
 ```
@@ -189,11 +233,11 @@ fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细�
 ```
 cfdisk /dev/nvme0n1 #选择自己要使用的硬盘进行分区
 ```
-如果是新硬盘的话这样会弹出选项，选GPT
+如果是新硬盘的话会弹出选项，选GPT。
 
-创建1G的分区，类型（type）选择efi system
+创建100MB的分区，类型（type）选择efi system。
 
-其余全部分到一个分区里，类型linux filesystem 
+其余全部分到一个分区里，类型linux filesystem。
 
 
 #### 格式化分区
@@ -215,14 +259,21 @@ mkfs.btrfs /dev/nvme0n1p2（根分区名）
 
 #### 创建btrfs子卷
 
-子卷是btrfs的一个特性，跟快照（可以理解为存档）有关。通常至少要创建爱你root子卷（系统文件）和home子卷（用户文件），也就是@和@home。虽然/home是/下的一个子目录，但是@和@home是平级的子卷，所以创建@快照时不会包含@home。这样就可以只恢复系统文件，不影响用户数据。知道原理之后就可以按照自己的需求创建额外的子卷啦。
+子卷是btrfs的一个特性，跟快照（相当于存档和回档）有关。通常至少要创建root子卷（存放系统文件）和home子卷（存放用户文件），也就是@和@home。由于这两者是平级关系，所以创建@快照时不会包含@home。这样就可以只恢复系统文件，不影响用户数据。知道原理之后就可以按照自己的需求创建额外的子卷啦。
 
 - 挂载
 ```
 mount -t btrfs -o compress=zstd /dev/nvme0n1p2（根分区名） /mnt
 ```
 
-/，左斜杠在linux代表根目录，/mnt是根目录下的子目录，用于手动临时挂载外部设备。我们之前从u盘加载的其实也是一个的archlinux系统，所以这里的/mnt就是u盘系统（live环境）的/mnt目录。这条命令把/dev/nvme0n1p2分区挂载（可以理解为对应）到了/mnt目录，而/dev/nvme0n1p2是我们将要安装的系统的根分区，这意味着/mnt成为了我们将要安装的系统的根目录。
+```
+mount 挂载命令
+-t 指定文件系统
+-o 指定额外的挂载参数
+conpress=zstd 指定透明压缩，zstd是压缩算法
+```
+
+/mnt是根目录下的子目录，用于手动临时挂载外部设备。我们之前从u盘加载的其实也是一个的archlinux系统，称为live环境。这里的/mnt就是u盘系统（live环境）的/mnt目录。这条命令把/dev/nvme0n1p2分区挂载到了/mnt目录，而/dev/nvme0n1p2是我们将要安装的系统的根分区，这意味着/mnt成为了我们将要安装的系统的根目录。
 
 compress是btrfs的另一个特性，透明压缩。可以通过算法在数据写入磁盘前先对数据进行压缩，用以节省磁盘空间，延长磁盘寿命，代价是一点点cpu占用，但极小，对现代硬件来说几乎可以忽略不计。zstd是最平衡的压缩算法，可以像这样zstd:3指定压缩等级，最高15，通常3就可以了。
 
@@ -248,8 +299,6 @@ umount /mnt
 
 ### 正式挂载
 
-挂载的意思是把分区对应到系统的某个目录。
-
 1. 挂载root子卷
 
    ```
@@ -264,7 +313,7 @@ umount /mnt
    mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
    ```
 
-   由于/mnt下没有/mnt/home这个目录，所以要加上--mkdir命令创建/mnt/home用来挂载。把@home子卷挂载到了/mnt/home。
+   由于/mnt下没有/mnt/home这个目录，所以要加上`--mkdir`命令创建/mnt/home用来挂载。把@home子卷挂载到了/mnt/home。
 
 3. 可选：挂载swap子卷（不需要睡眠功能的话跳过这一步）
 
@@ -272,21 +321,13 @@ umount /mnt
    mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
    ```
 
-4. 挂载启动分区
+4. 挂载efi分区（esp）
 
    ```
-   mount --mkdir /dev/nvme0n1p1 /mnt/boot
+   mount --mkdir /dev/nvme0n1p1 /mnt/efi
    ```
 
    记得把/dev/nvme0n1p1替换为自己对应的efi分区设备名。
-
-5. 挂载windows的启动分区（为双系统做准备）
-
-   ```
-   mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
-   ```
-
-   记得/dev/nvme1n1p1替换为自己windows efi分区对应的设备名。
 
 6. 复查挂载情况
 
@@ -299,8 +340,6 @@ umount /mnt
 ```
 ls /mnt
 ```
-
-上述是archwiki给出的示例分区和挂载，但是实际使用时这样做会导致使用btrfs快照回滚后内核版本不一致而无法开机，具体看[拓展内容：关于esp挂载到/boot会产生的问题以及相应的解决方案](#关于ESP)（只是个拓展内容，不一定要照做）。
 
 ### reflector自动设置镜像源
 
@@ -324,6 +363,24 @@ pacman是包管理器，管理软件的安装、卸载之类的
 -Sy代表同步数据库然后安装
 ```
 
+### 有趣的事
+
+如果你有好奇心，可以安装终端文档管理器查看当前live环境的文件
+
+```
+pacman -S yazi
+```
+
+pacman是arch的包管理器，调用pacman在当前根目录下安装软件，-S代表安装，[yazi](https://yazi-rs.github.io/)是好用的终端文档管理器，另外比较常用的还有[ranger](https://github.com/ranger/ranger)。运开启yazi：
+
+```
+yazi
+```
+
+左中右三块区域，左边是上级目录，中间是当前目录，右边是下级目录。上下左右键切换（或者使用vim key，jkhl对应上下左右）。可以看看/mnt目录，里面是空的，但是一会安装完系统就不是了。
+
+q键退出yazi。
+
 ### 安装系统
 
 ```
@@ -336,7 +393,7 @@ linux-firmware是固件
 btrfs-progs是btrfs文件系统的管理工具
 ```
 
-pacman是在当前根目录下安装软件，而pacstrap命令是把软件安装到指定的根目录下。
+pacstrap命令是把软件安装到指定的根目录下。
 
 如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
 
@@ -351,6 +408,8 @@ sudo 和权限管理有关
 amd-ucode 是微码，用来修复和优化cpu，intel用户安装intel-ucode
 ```
 
+可以再次运行yazi看到刚才在/mnt下安装的东西。
+
 ### swap交换空间
 
 参考链接：
@@ -359,9 +418,9 @@ amd-ucode 是微码，用来修复和优化cpu，intel用户安装intel-ucode
 
 [Swap - Manjaro](https://wiki.manjaro.org/index.php/Swap)
 
-如果你不需要睡眠功能的话跳过这一步。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。
+swap与虚拟内存和睡眠有关。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。如果你不需要睡眠功能的话跳过这一步。
 
-swap与虚拟内存和睡眠有关。建议设置zram作为日常swap，**仅在需要睡眠的时候设置硬盘swap**。有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换文件的方式。
+有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换文件的方式。
 
 ```
 SWAP大小参考
@@ -411,6 +470,16 @@ genfstab（生成文件系统表）
  > 大于号代表输出结果覆盖写入到有右边的文件里，>>两个大于号代表追加写入
 ```
 
+### 为双系统做准备
+
+需要挂载windows的efi分区。在genfstab之后才挂载是因为没有必要自动挂载win的wfi分区。
+
+```
+mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
+```
+
+记得/dev/nvme1n1p1替换为自己windows efi分区对应的设备名。
+
 ### change root
 
 进入刚刚安装的系统
@@ -419,15 +488,15 @@ genfstab（生成文件系统表）
 arch-chroot /mnt
 ```
 
-此时根目录从U盘的live环境变成了/mnt
+此时根目录从live环境变成了/mnt
 
 ### 设置时间和时区
 
 ```
 ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-
-#ln 是link的缩写，-s代表跨文件系统的软链接，-f代表强制执行，所以这条命令的意思是在/etc/目录下创建/usr/.../Shanghai这个文件的链接，取名为localtime。zoneinfo里面包含了所有可用时区的文件，localtime是系统确认时间的依据。
 ```
+ln 是link的缩写，-s代表跨文件系统的软链接，-f代表强制执行，所以这条命令的意思是在/etc/目录下创建/usr/.../Shanghai这个文件的链接，取名为localtime。zoneinfo里面包含了所有可用时区的文件，localtime是系统确认时间的依据。
+
 ```
 hwclock --systohc #系统时钟写入主板硬件时钟
 ```
@@ -464,6 +533,9 @@ passwd
 ```
 
 ### 安装引导程序
+
+这里根据esp挂载点的不同，grub的安装也会有所不同，本文演示的是/efi为esp，grub装进esp的方案。
+
 ```
 pacman -S grub efibootmgr os-prober
 
@@ -472,20 +544,21 @@ efibootmgr 管理uefi启动项
 os-prober 用来搜索win11
 ```
 ```
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=ARCH 
+grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=ARCH 
 
---target指定架构
---efi-directory指定目录（如果你前面启动分区挂载点是/boot的话这里要安装到/boot）
---bootloader-id任意取一个启动项在bios里显示的名字
+--target 指定架构
+--efi-directory 指定efi文件的目录（esp）
+--boot-directory 指定grub文件的目录（默认是/boot/grub，本文把grub装进esp）
+--bootloader-id 任意取一个启动项名字
 ```
 
-这里grub-install安装的是前面讲解ESP时提到的.efi文件。如果你有兴趣想看看这是个啥的话可以安装一个终端文档管理器查看它。
+如果你有兴趣看看这是个啥的话可以安装yazi，刚刚是在live环境装的，chroot之后是另外的系统，所以要重新装。
 
 ```
 pacman -S yazi
 ```
 
-输入yazi命令就可以打开这个终端文档管理器了。.efi文件就存放在```/boot/EFI/你取的启动项名字/```这个目录里面。/boot里还有之前提到的内核文件和initramfs。其他的东西你感兴趣的话也可以自己看一看。
+输入`yazi`命令就可以打开终端文档管理器了。.efi文件就存放在```/efi/EFI/你取的启动项名字/```这个目录里面，grub也在/efi里，/boot里有内核文件和initramfs。其他的东西你感兴趣的话也可以自己看一看。
 
 按q键退出yazi。clear命令或者按ctrl+L可以清屏。
 
@@ -497,9 +570,9 @@ vim /etc/default/grub
 
 这是生成grub的配置文件时需要用到的东西。
 
-  1. GRUB_DEFAULT=0改成saved，再取消GRUB_SAVEDEFAULT=true的注释。这一步是记住开机的选择。（如果你的启动分区挂载点是/boot/efi的话跳过这一步）
+  1. GRUB_DEFAULT=0改成saved，再取消GRUB_SAVEDEFAULT=true的注释。这一步是记住开机的选择。
 
-  2. GRUB_CMDLINE_LINUX_DEFAULT里面去掉quiet以显示开机日志，loglevel设置日志等级为5。再添加nowatchdog modprobe.blacklist=sp5100_tco，禁用watchdog。intelcpu用户把sp5100_tco换成iTCO_wdt。
+  2. GRUB_CMDLINE_LINUX_DEFAULT里面去掉quiet以显示开机日志，loglevel设置日志等级为5。再添加`nowatchdog modprobe.blacklist=sp5100_tco`，禁用watchdog。intelcpu用户把sp5100_tco换成iTCO_wdt。
 
      loglevel共7级，5级是一个信息量的平衡点。watchdog的目的简单来说是在系统死机的时候自动重启系统。这在服务器或者嵌入式上有用，但是对个人用户来说没有意义，禁用以节省系统资源、提高开机和关机速度
 
@@ -507,7 +580,7 @@ vim /etc/default/grub
 
 - 生成grub的配置文件
 ```
-grub-mkconfig -o /boot/grub/grub.cfg
+grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
 ### 完成安装
@@ -518,9 +591,11 @@ reboot 重启，会自动取消所有的挂载
 ```
 如果u盘没拔掉的话记得拔掉
 
-### 启动网络
+### 重启后进入系统登录root账号
 
-登录root账号
+可能需要选择一下启动项
+
+### 启动网络
 
 - 开启networkmanager服务，注意大小写
 
@@ -624,66 +699,59 @@ archinstall
 
 选择partitioning进入磁盘分区
 
-- 情况一：整块空闲硬盘安装arch，想省事
+第一项是自动分区，但是默认会把esp挂载到/boot，我要把esp挂载到/efi，所以我要手动分区，具体原因可以看[重要概念讲解](#重要概念讲解)
 
-  1. 选择第一项进行自动分区 > 要使用的硬盘 > btrfs（这是文件系统） > yes（这里是问你是否使用推荐子卷布局） > ues compression（透明压缩）
-  2. 选择btrfs snapshots（这是快照软件） >  Snapper 
+选择第二项手动分区 > 要使用的硬盘 
 
-  选择back返回
+1. 创建启动分区
 
-- 情况二：和其他系统共享同一块硬盘，想最优分区
+    选中要使用的空闲空间 > Size（分区大小）512MB > Filesystem（文件系统）FAT32 > Mountpoint（挂载点）/efi
 
-  选择第二项手动分区 > 要使用的硬盘 
+    选中刚刚创建的分区，回车设置bootable和esp。
 
-  1. 创建启动分区
+2. 创建swap分区
 
-      选中要使用的空闲空间 > Size（分区大小）1024MB > Filesystem（文件系统）FAT32 > Mountpoint（挂载点）/boot
+   **如果你不需要睡眠功能的话跳过这一步**。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。
 
-      这是archwiki示例种的分区和挂载，但是实际使用时这样做会导致使用btrfs快照回滚后内核版本不一致而无法开机，具体看[拓展内容：关于esp挂载到/boot会产生的问题以及相应的解决方案](#关于ESP)（只是个拓展内容，不一定要照做）。
+   swap交换空间与虚拟内存和睡眠有关。有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换分区的方式。
 
-  2. 创建swap分区
+   ```
+   SWAP大小参考
+          内存  			  不需要睡眠    		 需要睡眠   不建议超过
+          1GB              1GB                 2GB        2GB
+          2GB              2GB                 3GB        4GB
+          3GB              3GB                 5GB        6GB
+          4GB              4GB                 6GB        8GB
+          5GB              2GB                 7GB       10GB
+          6GB              2GB                 8GB       12GB
+          8GB              3GB                 11GB       16GB
+         12GB              3GB                 15GB        24GB
+         16GB              4GB                 20GB       32GB
+         24GB              5GB                 29GB       48GB
+         32GB              6GB                 38GB       64GB
+         64GB              8GB                 72GB       128GB
+        128GB             11GB                 139GB       256GB
+        256GB             16GB                 272GB       512GB
+        512GB             23GB                 535GB       1TB
+          1TB             32GB                1056GB       2TB
+          2TB             46GB                2094GB       4TB
+          4TB             64GB                4160GB       8TB
+          8TB             91GB                8283GB       16TB
+   ```
 
-     **如果你不需要睡眠功能的话跳过这一步**。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。
+   Size参考上面的表 > linux-swap
 
-     swap交换空间与虚拟内存和睡眠有关。建议设置zram作为日常swap，**仅在需要睡眠的时候设置硬盘swap**。有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换分区的方式。
-  
-     ```
-     SWAP大小参考
-            内存  			  不需要睡眠    		 需要睡眠   不建议超过
-            1GB              1GB                 2GB        2GB
-            2GB              2GB                 3GB        4GB
-            3GB              3GB                 5GB        6GB
-            4GB              4GB                 6GB        8GB
-            5GB              2GB                 7GB       10GB
-            6GB              2GB                 8GB       12GB
-            8GB              3GB                 11GB       16GB
-           12GB              3GB                 15GB        24GB
-           16GB              4GB                 20GB       32GB
-           24GB              5GB                 29GB       48GB
-           32GB              6GB                 38GB       64GB
-           64GB              8GB                 72GB       128GB
-          128GB             11GB                 139GB       256GB
-          256GB             16GB                 272GB       512GB
-          512GB             23GB                 535GB       1TB
-            1TB             32GB                1056GB       2TB
-            2TB             46GB                2094GB       4TB
-            4TB             64GB                4160GB       8TB
-            8TB             91GB                8283GB       16TB
-     ```
+3. 创建root分区
 
-     Size参考上面的表 > linux-swap
+   Size部分直接回车分配全部空间 > btrfs 
 
-  3. 创建root分区
+   选中刚刚创建的btrfs，回车。选择Mark/Unmark as compressed设置透明压缩；再选择Set subvolumes（创建子卷）> Add subvolume 
 
-     Size部分直接回车分配全部空间 > btrfs >
+   至少需要创建root子卷和home子卷。Subvolume name设置成 @，对应Subvolume mountpoint是 / ； @home 对应 /home
 
-     选中刚刚创建的btrfs，回车。选择Mark/Unmark as compressed设置透明压缩；再选择Set subvolumes（创建子卷）> Add subvolume 
-
-     至少需要创建root子卷和home子卷，Subvolume name设置成 @，对应Subvolume mountpoint是 / ； @home 对应 /home
-  
-     confirm and exit > confirm and exit > back 退出硬盘分区
-     
-     关于子卷是什么，可以看[创建btrfs子卷](#创建btrfs子卷)
+   confirm and exit > confirm and exit > back 退出硬盘分区
+   
+   关于子卷是什么，可以看[创建btrfs子卷](#创建btrfs子卷)
 
 ### Swap（zram交换空间）
 
@@ -691,7 +759,7 @@ archinstall
 
 ### Bootloader引导系统
 
-最常用的是Grub，选Grub就行。有其他需求可以自己网上查找。
+最常用的是Grub，选Grub就行。有其他需求可以看[archwiki_boot_process](https://wiki.archlinux.org/title/Arch_boot_process)。
 
 ### Hostname主机名
 
@@ -769,7 +837,7 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
    lsblk -pf 列出当前分区情况
    ```
 
-   找到ntfs上面的fat分区，通常是nvme1n1p1或者0n1p1。可以用fdisk -l （小写字母l）查看更详细的分区信息。找到后挂载到/mnt下的任意一个目录，比如/mnt/winboot。
+   找到ntfs上面的fat分区，通常是nvme1n1p1或者0n1p1。可以用`fdisk -l` （小写字母l）查看更详细的分区信息。找到后挂载到/mnt下的任意一个目录，比如/mnt/winboot。
 
    ```
    mount /dev/nvme1n1p1 /mnt/winboot 
@@ -785,16 +853,12 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
 
    ```
    vim /etc/default/grub 
+   ```
    
    i键进入编辑模式
    
    取消最后一行GRUB_DISABLE_OS_PROBER=false的注释
    
-   esc退出编辑模式
-   
-   :wq 冒号小写wq保存并退出
-   ```
-
 5. 禁用watchdog
 
    在GRUB_CMDLNE_LINUX_DEFAULT=""里面添加参数
@@ -810,7 +874,7 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
 5. 生成grub的配置文件
 
    ```
-   grub-mkconfig -o /boot/grub/grub.cfg
+   grub-mkconfig -o /efi/grub/grub.cfg
    ```
 
 6. exit 退出chroot
@@ -4339,7 +4403,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="... zswap.enabled=0 ... "
 4. 重新生成grub的配置文件
 
 ```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /efi/grub/grub.cfg
 ```
 5. reboot
 
@@ -4372,7 +4436,7 @@ sudo pacman -S nvidia-dkms
 3. 重新生成grub
 
 ```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /efi/grub/grub.cfg
 ```
 4. 重启
 
@@ -4387,7 +4451,7 @@ sudo pacman -R linux linux-headers
 7. 重新生成grub
 
 ```
-sudo grub-mkconfig -o /boot/grub/grub.cfg
+sudo grub-mkconfig -o /efi/grub/grub.cfg
 ```
 
 ## 更换CachyOS源
@@ -5066,66 +5130,6 @@ yay -S boxbuddy
 ```
 flatpak install flathub io.github.dvlv.boxbuddyrs
 ```
-
-## 关于ESP
-
-（有错误欢迎指出）
-
-ESP（Efi System Partition），又叫efi系统分区，分区文件系统为FAT，用来存放.efi文件，这个文件是启动系统的“第一把钥匙”。archwiki给的示例里把ESP挂载到了/boot，这会导致使用btrfs快照回滚后内核版本不一致而无法开机。
-
-想象一下，你的内核版本是6.16.7，系统推送了内核的更新，你保险起见在更新前创建了快照，这个快照记录了/usr/lib/modules/6.16.7-1-1目录里的内核模块，但是由于/boot是无法被这个btrfs快照包含的FAT文件系统，你没能记录下/boot里的内核文件和initramfs。系统更新把/boot目录下的内核文件和initramfs都更新到了6.16.8，/usr/lib/modules/目录下的内核模块也从6.16.7更新到了6.16.8。重启电脑之后你发现电脑出现异常想要用快照恢复，你把内核模块从6.16.8恢复到了6.16.7，但是/boot的内核文件和initramfs没被恢复，依旧是6.16.8。内核版本不一致，于是你进不去系统了，不得不进live环境修复问题。
-
-要避免上述问题，/boot必须是btrfs文件系统，所以我们要把esp挂载到别的地方，比如/boot/efi。这样/boot里面的内核文件就可以被快照记录了。但是这时又会出现新的问题：grub无法在btrfs文件系统写入grubenv文件（这涉及到grub的功能，比如记住选择的启动项之类的）。这里需要做出取舍，是选择舍弃grub的便利功能让btrfs的快照记录grub从而稳定回滚系统？还是把grub移动到btrfs文件系统之外换来完整的grub体验？我会选择后者，把本来放在/boot/grub目录下grub配置文件移动到esp（在上述例子里这个目录是/boot/efi）里，然后可以在原本的/boot/grub位置留下一个指向/boot/efi/grub的软链接（相当于快捷方式），这是最优雅的做法。接下来谈谈这么做的问题。
-
-想象一下，你安装的是linux内核，然后你尝试安装linux-zen内核，保险起见创建了一个快照，这个快照记录了/boot下的linux内核文件。然后你安装了linux-zen内核，更新了grub的配置文件，重启后grub同时出现了linux内核和linux-zen内核的启动选项。使用一段时间后你后悔了，用快照回滚，系统恢复到了没有安装linux-zen内核的状态，/boot下的linux-zen内核文件消失了，/usr/lib/modules/x.xx.xx-zen1-1的内核模块文件也消失了。但是你的grub配置文件里关于linux-zen内核的部分却没有消失。此时你就多了一个无用的“幽灵启动项”，需要手动更新一次grub的配置文件才能解决这个问题。你觉得这个代价可以接受吗？我觉得没什么大不了的，所以我选择这么做。
-
-综上所述，下面是新的挂载方法（顺便一提这样挂载的话esp只存放了grub的配置文件和.efi文件，不需要很大空间，100MB可能都够了，如果硬盘充足的话可以分512MB，优雅）：
-
-### 手动安装情况下
-
-挂载efi分区那一步开始有区别
-
-1. 挂载root子卷
-
-   ……
-
-   ……
-
-4. 挂载efi分区
-
-   ```
-   mount --mkdir /dev/nvme0n1p1 /mnt/boot/efi
-   ```
-
-   这里把efi分区挂载到了/mnt/boot/efi目录。
-
-安装grub的时候记得要改一下指定efi的位置，从```--efi-directory=/boot```改到```--efi-directory=/boot/efi``` 然后用```--boot-directory=/boot/efi```把grub安装到esp里面
-
-```
-grub-install --target=x86_64-efi --efi-directory=/boot/efi --boot-directory=/boot/efi --bootloader-id=ARCH 
-```
-
-然后用ln命令创建一个软链接
-
-```
-ln -sf /boot/efi/grub /boot/grub
-```
-
-之后就可以照常生成配置文件了
-
-```
-grub-mkconfig -o /boot/grub/grub.cfg
-```
-
-### 脚本安装情况下
-
-disk configuration的efi分区挂载点要设置成/boot/efi，然后再次选中设置bootable和esp。这样设置完成后脚本会自动把grub安装到/boot/efi里面。只需要手动生成一个软链接方便后续使用即可。
-
-```
-ln -sf /boot/efi/grub /boot/grub
-```
-
- 
 
 ## 更高效地使用终端
 
