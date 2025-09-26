@@ -1075,64 +1075,6 @@ xdg-user-dirs-update
 
 右键桌面选择setting，选择system，选择region&language
 
-如果是archinstall安装，这里只有英文选项，解决办法：
-
-* 本地化设置
-
-```
-sudo vim /etc/locale.gen 
-```
-
-```
-左斜杠键搜索，取消zh_CN.UTF-8的注释
-```
-
-```
-sudo locale-gen
-```
-
-### 安装yay
-
-yay是aur助手，可以从aur安装软件（paru也是一个aur助手，但是会出现有些软件无法安装的情况，所以建议还是用yay）
-
-- 方法一：直接从archlinuxcn源安装（推荐）
-
-  ```
-  sudo vim /etc/pacman.conf
-  ```
-
-  文件底部写入（ctrl+shift+V粘贴）：
-
-  ```
-  [archlinuxcn]
-  Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
-  Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
-  Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch 
-  Server = https://repo.huaweicloud.com/archlinuxcn/$arch 
-  ```
-
-  同步数据库并安装archlinuxcn密钥
-
-  ```
-  sudo pacman -Sy archlinuxcn-keyring 
-  ```
-
-  安装yay
-
-  ```
-  sudo pacman -S yay 
-  ```
-
-- 方法二：从github安装
-
-  [GitHub - Jguer/yay: Yet another Yogurt - An AUR Helper written in Go](https://github.com/Jguer/yay)
-
-  ```
-  sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-  ```
-
-  这条命令有四步，每步之间用&&隔开。第一步用pacman安装git和base-devel，这是git管理工具和编译软件需要的包。第二步git clone把连接里的文件下载到本地。第三步cd命令进入yay目录。第四步makepkg编译包。
-
 ### 快照（⚠️重点）
 
 **快照相当于存档，养成习惯，每次做自己不了解的事情之前都存个档**，如果出了问题或者后悔了可以恢复到快照时的状态。
@@ -1235,6 +1177,48 @@ sudo downgrade ghostty
 ```
 
 #### ⚠️现在你学会了快照的使用方法，接下来的每一步请自行判断要不要创建快照⚠️
+
+### 安装yay
+
+yay是aur助手，可以从aur安装软件（paru也是一个aur助手，但是会出现有些软件无法安装的情况，所以建议还是用yay）
+
+- 方法一：直接从archlinuxcn源安装（推荐）
+
+  ```
+  sudo vim /etc/pacman.conf
+  ```
+
+  文件底部写入（ctrl+shift+V粘贴）：
+
+  ```
+  [archlinuxcn]
+  Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
+  Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
+  Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch 
+  Server = https://repo.huaweicloud.com/archlinuxcn/$arch 
+  ```
+
+  同步数据库并安装archlinuxcn密钥
+
+  ```
+  sudo pacman -Sy archlinuxcn-keyring 
+  ```
+
+  安装yay
+
+  ```
+  sudo pacman -S yay 
+  ```
+
+- 方法二：从github安装
+
+  [GitHub - Jguer/yay: Yet another Yogurt - An AUR Helper written in Go](https://github.com/Jguer/yay)
+
+  ```
+  sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+  ```
+
+  这条命令有四步，每步之间用&&隔开。第一步用pacman安装git和base-devel，这是git管理工具和编译软件需要的包。第二步git clone把连接里的文件下载到本地。第三步cd命令进入yay目录。第四步makepkg编译包。
 
 ### 安装声音固件和声音服务
 
@@ -2287,14 +2271,6 @@ systemctl start sddm
 sudo systemctl enable sddm 
 ```
 
-- 可选：卸载用不上的软件
-
-```
-sudo pacman -Rdd plasma-welcome plasma-systemmonitor 
-```
-
--Rdd代表无视依赖关系强制删除
-
 ### 生成home下目录（如果没有的话）
 
 ```
@@ -2304,47 +2280,22 @@ xdg-user-dirs-update
 ### 设置系统语言
 
 - 系统设置 > regin&language > 添加简体中文，移动到english上方
+
+- 如果是archinstall安装，需要进行如下操作：
+
+```
+sudo vim /etc/locale.gen 
+```
+
+```
+左斜杠键搜索，取消zh_CN.UTF-8的注释
+```
+
+```
+sudo locale-gen
+```
+
 - 登出
-
-### 安装yay
-
-##### 方法一 ：archlinuxCN
-
-- 编辑pacman配置文件
-
-```
-sudo vim /etc/pacman.conf
-```
-
-- 在文件底部写入以下内容
-
-```
-[archlinuxcn]
-Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
-Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
-Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch 
-Server = https://repo.huaweicloud.com/archlinuxcn/$arch 
-```
-
-- 安装密钥
-
-```
-sudo pacman -Sy archlinuxcn-keyring 
-```
-
-- 安装yay
-
-```
-sudo pacman -S yay 
-```
-
-##### 方法二：从github安装
-
-[GitHub - Jguer/yay: Yet another Yogurt - An AUR Helper written in Go](https://github.com/Jguer/yay)
-
-```
-sudo pacman -S git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-```
 
 ### 快照（⚠️重点）
 
@@ -2427,7 +2378,67 @@ reboot
   1. **别第一时间更新，别长时间不更新，密钥单独更新，重要程序更新前创建快照**
   2. **非必要不修改，弄坏系统的通常是用户自己的不当操作，明白自己的行为会造成怎样的后果，做不了解的事情前创建快照**
 
+### 扩展内容：downgrade
+
+有时候更新完之后可能反而不好用，这时就要使用downgrade退回之前的版本。
+
+```
+yay -S downgrade
+```
+
+使用方法：
+
+```
+sudo downgrade 要回退的软件包
+```
+
+比如如果我要回退ghostty的话就是：
+
+```
+sudo downgrade ghostty
+```
+
 #### ⚠️现在你学会了快照的使用方法，接下来的每一步请自行判断要不要创建快照⚠️
+
+### 安装yay
+
+##### 方法一 ：archlinuxCN
+
+- 编辑pacman配置文件
+
+```
+sudo vim /etc/pacman.conf
+```
+
+- 在文件底部写入以下内容
+
+```
+[archlinuxcn]
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch 
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch 
+Server = https://mirrors.hit.edu.cn/archlinuxcn/$arch 
+Server = https://repo.huaweicloud.com/archlinuxcn/$arch 
+```
+
+- 安装密钥
+
+```
+sudo pacman -Sy archlinuxcn-keyring 
+```
+
+- 安装yay
+
+```
+sudo pacman -S yay 
+```
+
+##### 方法二：从github安装
+
+[GitHub - Jguer/yay: Yet another Yogurt - An AUR Helper written in Go](https://github.com/Jguer/yay)
+
+```
+sudo pacman -S git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
+```
 
 ### 安装声音固件和声音服务
 
@@ -2505,27 +2516,25 @@ sudo vim /etc/environment
 XMODIFIERS=@im=fcitx
 ```
 
-- 如果输入法在某个软件出现吞字之类异常，在开始菜单右键该软件>编辑应用程序>修改命令行参数
+默认输入法切换是ctrl+空格。切换到rime之后右键桌面右下角的输入法组件，重新部署一下rime，稍等一会就会变成雾凇拼音。
 
-  先试试仅添加这一段，添加位置为程序名后面，%U之类的字符前面，比如typora 【此处】%U
+#### 输入法异常
 
-  ```
-  --enable-wayland-ime
-  ```
+如果输入法在某个软件出现吞字之类异常，在开始菜单右键该软件>编辑应用程序>修改命令行参数
 
-  如果不行的话改成这一段：
+试试添加这一段，添加位置为程序名后面，%U之类的字符前面，比如typora 【此处】%U
 
-  ```
-  --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
-  ```
+```
+--enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
+```
 
-  还不行的话改成在环境变量里添加这一段：
+还不行的话去掉上面那些东西，在环境变量里添加这一段：
 
-  ```
-  GTK_IM_MODULE=fcitx
-  QT_IM_MODULE=fcitx
-  XMODIFIERS=@im=fcitx
-  ```
+```
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+```
 
 - 更换切换输入法快捷键
 
@@ -2640,34 +2649,34 @@ chmod +x ~/path/to/files.appimage
 
 #### 把appimage集成到系统
 
-1. gear lever
+- 方法一：gear lever
 
-   flathub下载
+  flathub下载
 
-   ```
-   flatpak install flathub it.mijorus.gearlever
-   ```
+  ```
+  flatpak install flathub it.mijorus.gearlever
+  ```
 
-   或者aur下载
+  或者aur下载
 
-   ```
-   yay -S gearlever
-   ```
+  ```
+  yay -S gearlever
+  ```
 
-   由于涉及到解压和打包，所以用gearlever打开appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
+  由于涉及到解压和打包，所以用gearlever打开较大的appimage会有一点慢，稍等一会就会出现启动或者集成到系统的选项了。
 
-2. appimagelauncher
+- 方法二：appimagelauncher
 
-   ```
-   yay -S appimagelauncher
-   ```
+  ```
+  yay -S appimagelauncher
+  ```
 
-   安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统。不过有时候会安装失败或者安装之后无法运行。
+  安装后启动appimage时会弹出appimagelauncher的窗口，第一次启动会让你设置安装路径，然后让你选择运行一次还是集成到系统（有时候会安装失败或者安装之后无法运行）。
 
-   - 卸载appimage软件
-     右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
+  - 卸载appimage软件
+    右键快捷方式，点击remove appimage from system，或者手动删除~/.local/share/Applications下的destop文件和安装目录下的appimage文件。
 
-3. 或者使用[ulauncher](#ulauncher)
+- 方法三：使用装了appimage扩展的[ulauncher](#ulauncher)
 
 [appimagehub](https://www.appimagehub.com/browse?ord=latest)这个网址有很多有趣的appimage应用，有兴趣的可以搜索玩玩看
 
@@ -2679,7 +2688,7 @@ chmod +x ~/path/to/files.appimage
 
 [Spark Store](https://www.spark-app.store/)
 
-由于特殊国情，星火应用商店里的应用可能比aur上的都好用，建议安装。
+由于特殊国情，星火应用商店里的应用可能比aur上的都好用，建议安装（KDE貌似无法正常运行这个，创建快照之后再尝试）。
 
 1. 安装ace容器
 
@@ -2723,64 +2732,6 @@ sudo apt install fcitx5-frontend-gtk2 fcitx5-frontend-gtk3 fcitx5-frontend-gtk4 
 yay -Rns amber-ce-trixie
 ```
 
-
-
-### 快照
-
-**快照相当于恢复点，每次试验什么之前最好都创建一下快照**
-
-#### 方法一：snapper
-
-```
-sudo pacman -S snapper snap-pac btrfs-assistant 
-```
-
-```
-snapper 是创建快照的主要程序
-snap-pac 是利用钩子在进行一些pacman命令的时候自动创建快照
-btrfs-assistant 是图形化管理btrfs和快照的软件
-```
-
-- 自动生成快照启动项
-
-```
-sudo pacman -S grub-btrfs inotify-tools
-```
-
-```
-reboot
-```
-
-```
-sudo systemctl enable --now grub-btrfsd
-```
-
-##### 具体使用方法
-
-打开btrfs assistant，切换到snapper settings页面。我们创建子卷的时候创建了一个@（root）子卷和一个@home（home）子卷，所以需要两个config（配置）。创建一个root配置，再创建一个home配置。然后到snapper页面下的New/Delete页面就可以新建和管理快照了，Browse/Restore页面选中快照后点restore可以恢复到那个快照的状态。如果你要同时快照root和home的话就分别创建一个root快照和home快照，恢复的时候各自恢复就行了。
-
-#### 方法二：[附录 timeshift](#timeshift)
-
-虽然简单易用，但是比snapper慢且容易出bug，有需要的看附录
-
-### 关于滚挂和良好的系统使用习惯
-
-- 滚挂
-
-  archlinux是滚动发行版。滚动是英文直译，原词是rolling，指一种推送更新的方式，只要有新版本就会推送，由用户管理更新。对应的另一种更新方式是定期更新一个大版本，例如fedora是六个月一更新，由发行方管理更新。 滚挂，指的是滚动更新的发行版因为更新导致系统异常。这通常是用户操作不当、忽略官方公告等原因导致的。只要学习一下正确的更新方式和快照的使用方法就不用担心滚挂问题。 
-
-  通常软件更新不用担心。**出现密钥（keyring）、内核、驱动、固件、引导程序之类的更新要留个心眼，先不第一时间更新，等一手社区或者官方消息。** 另一个重点是滚动更新的发行版的软件通常会适配最新的依赖，如果长期不更新可能会无法使用软件。
-
-- 良好的使用习惯
-
-  btrfs文件系统已经足够稳定，“不作死就不会死”。使用时遵循以下几点：
-
-  1. **别第一时间更新，别长时间不更新，密钥单独更新，重要程序更新前创建快照**
-
-  2. **明白自己的行为会造成怎样的后果，做不了解的事情前创建快照**
-
-
-
 ### KDE系统设置和美化
 
 以下都是我的设置，你可以按照自己的来。
@@ -2795,9 +2746,9 @@ sudo systemctl enable --now grub-btrfsd
 
   浏览器： meta+B
 
-  系统设置：Ctrl+alt+S
+  系统设置：启动：Ctrl+alt+S
 
-  任务中心（missioncenter）： meta+esc
+  新增：任务中心（missioncenter）： meta+esc
 
   konsole终端：Meta+T
 
@@ -2808,7 +2759,7 @@ sudo systemctl enable --now grub-btrfsd
 
   窗口左移一个桌面：meta+shift+A
 
-  磁铁编辑开关：任意一个别的
+  磁贴编辑开关：任意一个别的
 
   关闭窗口：meta+Q
 
@@ -2824,11 +2775,13 @@ sudo systemctl enable --now grub-btrfsd
 
   显示隐藏桌面总览：meta
 
-  移动窗口到屏幕中央：meta+C
+  移动窗口到中央：meta+C
 
   暂时显示桌面：meta+M
 
-  自定义快速铺放窗口到上下左右：meta+WASD；然后打开磁铁编辑器编辑一个自己喜欢的布局
+  自定义快速铺放窗口到上下左右：meta+WASD
+
+  然后打开磁铁编辑器编辑一个自己喜欢的布局
 
   最大化窗口：meta+F
 
@@ -2842,7 +2795,7 @@ sudo systemctl enable --now grub-btrfsd
 
 #### 无障碍辅助
 
-“抖动后放大光标”调到最大 
+“抖动后放大光标”调到最大（不是）
 
 #### 窗口管理
 
@@ -2862,7 +2815,7 @@ sudo systemctl enable --now grub-btrfsd
 
 - geometry change
 
-  点击获取新效果，下载geometry change，或者从aur安装。这可以给窗口的快捷键平铺添加动画。动画速度设置为500ms
+  点击获取新效果，这个要加载很久很久。下载geometry change，或者从aur安装。这可以给窗口的快捷键平铺添加动画。动画速度设置为500ms
 
   ```
   yay -S kwin-effects-geometry-change
@@ -2892,9 +2845,11 @@ sudo systemctl enable --now grub-btrfsd
 
   - 轮廓
 
-    取消主轮廓的激活
+    主轮廓的活动窗口轮廓粗细改成2，激活使用装饰色：高亮；非活动窗口的粗细改成0；
 
-    secondary outline的活动窗口轮廓粗细改成3，激活使用装饰色；非活动窗口的粗细改成0；取消激活平铺时禁用轮廓。
+    次轮廓的活动窗口轮廓粗细改成1，激活使用装饰色：高亮；非活动窗口的粗细改成0；
+    
+    取消激活平铺时禁用轮廓。
 
 #### 虚拟桌面
 
@@ -2956,7 +2911,7 @@ yay -S whitesur-kde-theme
 
 #### 文字和字体
 
-按需调整
+我喜欢用adwaita字体，大小11pt
 
 
 
@@ -2972,9 +2927,9 @@ yay -S whitesur-kde-theme
 yay -S catppuccin-konsole-colorscheme-frappe-git
 ```
 
-点击编辑可以设置透明度和背景图片；设置字体；光标页面里激活闪烁；杂项里取消激活调整大小后显示终端大小提示。
+选择喜欢的配色方案后点击编辑设置20%透明度；设置字体为adwaitaoMono，大小15pt；光标页面里激活闪烁；其他里取消激活调整大小后显示终端大小提示。
 
-滚动里隐藏滚动条，取消激活高亮显示刚刚进入视图的行。
+滚动里隐藏滚动条，取消激活高亮显示刚刚进入视图的行。确认。
 
 设置为默认
 
@@ -5318,6 +5273,7 @@ sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
 
 ## zen浏览器
 
-```d
+```
 sudo pacman -S zen-browser zen-browser-i18n-zh-cn
 ```
+
