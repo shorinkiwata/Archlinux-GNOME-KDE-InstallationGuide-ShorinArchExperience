@@ -4277,9 +4277,6 @@ sudo systemctl enable --now preload
 
 ```
 yay -S ananicy-cpp cachyos-ananicy-rules-git
-```
-
-```
 sudo systemctl enable --now ananicy-cpp.service
 ```
 
@@ -4326,7 +4323,7 @@ sudo vim /etc/fstab
 ```
 注释掉swap相关的内容
 
-#### zram内存压缩
+### zram内存压缩
 
 1. 安装zram-generator
 
@@ -4406,35 +4403,6 @@ sudo pacman -R linux linux-headers
 ```
 sudo grub-mkconfig -o /efi/grub/grub.cfg
 ```
-
-## 更换CachyOS源
-
-[Optimized Repositories | CachyOS](https://wiki.cachyos.org/features/optimized_repos/)
-
-如果你渴望极致的性能优化，可以使用CachyOS的源。
-
-ps：谨慎更换cachyos的内核```linux-cachyos```，内核恐慌（kernel panic）的概率会很大。
-
-- 安装
-
-  ```
-  curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
-  tar xvf cachyos-repo.tar.xz && cd cachyos-repo
-  sudo ./cachyos-repo.sh
-  ```
-
-- 重启电脑
-
-- 移除
-
-  ```
-  curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
-  tar xvf cachyos-repo.tar.xz
-  cd cachyos-repo
-  sudo ./cachyos-repo.sh --remove
-  ```
-
-- 重启电脑
 
 ---
 
@@ -5251,3 +5219,33 @@ sudo sed -i -E 's/(subvolid=[0-9]+,)|(,subvolid=[0-9]+)//g' /etc/fstab
 sudo pacman -S zen-browser zen-browser-i18n-zh-cn
 ```
 
+## 更换CachyOS源
+
+[Optimized Repositories | CachyOS](https://wiki.cachyos.org/features/optimized_repos/)
+
+（因严重软件安装异常问题弃用）
+
+如果你渴望极致的性能优化，可以使用CachyOS的源。
+
+ps：谨慎更换cachyos的内核```linux-cachyos```，内核恐慌（kernel panic）的概率会很大。
+
+- 安装
+
+  ```
+  curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
+  tar xvf cachyos-repo.tar.xz && cd cachyos-repo
+  sudo ./cachyos-repo.sh
+  ```
+
+- 重启电脑
+
+- 移除
+
+  ```
+  curl https://mirror.cachyos.org/cachyos-repo.tar.xz -o cachyos-repo.tar.xz
+  tar xvf cachyos-repo.tar.xz
+  cd cachyos-repo
+  sudo ./cachyos-repo.sh --remove
+  ```
+
+- 重启电脑
