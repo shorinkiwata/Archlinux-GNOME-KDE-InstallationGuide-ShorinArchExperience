@@ -2913,8 +2913,6 @@ yay -S whitesur-kde-theme
 
 我喜欢用adwaita字体，大小11pt
 
-
-
 ### konsole美化和配置
 
 菜单>设置>显示工具栏>去掉两个勾选
@@ -5181,30 +5179,6 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 ```
 
 使用方法：[Quick Start](https://yazi-rs.github.io/docs/quick-start)
-
-## rEFind
-
-[refind](https://wiki.archlinuxcn.org/wiki/REFInd#%E6%9B%B4%E6%96%B0_rEFInd)是只支持UEFI的引导程序，比grub更简单。
-
-```
-pacman -S refind
-```
-
-```
-refind-install
-```
-
-安装脚本会自动扫描到esp然后把核心文件安装到esp里，配置文件则在/boot里。
-
-grub常用的只有双系统、多内核引导、传递内核参数、btrfs快照启动项这几个功能。refind都可以实现。
-
-1. 双系统
-
-   无须配置，自动检测。
-
----
-
-
 
 # 废弃内容
 
