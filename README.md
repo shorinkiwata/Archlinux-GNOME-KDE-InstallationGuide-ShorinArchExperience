@@ -184,7 +184,7 @@ timedatectl set-ntp true
 
 #### Linux目录结构
 
-Linux的目录是由 / 左斜杠开头的树状结构，/是一切的开始，所以被称为根目录（root目录）。例如/home就是根目录下的home目录，/etc就是根目录下的etc目录。
+Linux的目录是由 / 左斜杠开头的树状结构，/是一切的开始，所以被称为根目录（root目录）。例如/home就是根目录下的home目录，/home/shorin就是根目录下的home目录里面的shorin目录。
 
 #### 挂载
 
