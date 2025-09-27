@@ -337,7 +337,7 @@ umount /mnt
    df -h
    ```
 
-这时候可以尝试运行ls命令看看/mnt目录下的东西。会发现原本空的/mnt目录下多出来了home、boot、winboot这些文件夹
+这时候可以尝试运行ls命令看看/mnt目录下的东西。会发现原本空的/mnt目录下多出来了home、boot这些文件夹
 
 ```
 ls /mnt
