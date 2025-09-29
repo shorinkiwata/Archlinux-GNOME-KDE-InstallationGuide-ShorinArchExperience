@@ -2717,6 +2717,45 @@ sudo apt install fcitx5-frontend-gtk2 fcitx5-frontend-gtk3 fcitx5-frontend-gtk4 
 yay -Rns amber-ce-trixie
 ```
 
+
+
+### 桌面鼠标功能
+
+右键桌面>桌面和壁纸>鼠标操作>添加操作
+
+1. 中键 程序启动器
+2. 垂直滚动滚轮 切换桌面
+
+### 桌面组件
+
+##### wallpaper effects
+
+这个组件可以在聚焦窗口时模糊桌面
+
+右键进入编辑模式>左上角添加组件>获取新挂件>下载plasma挂件>搜索安装wallpaper effects，或者从aur安装
+
+```
+yay -S plasma6-applets-wallpaper-effects
+```
+
+添加到桌面后进行配置：blur radius 改成 30；pixelate effect的enbale改成never；grain改成never；color effects改成never；激活rounded corners，radius改成15
+
+#### kdeconnect
+
+```
+sudo pacman -S kdeconnect
+```
+
+可以和手机传输文件，共享剪贴板。手机也需要下载kde connect。
+
+### 桌面面板（任务栏）
+
+右键任务栏（kde里叫面板），显示面板配置。设置为半透明；悬浮改成仅小程序；显示隐藏改成避开窗口；删除工作区相关组件；添加两个间隔，把开始菜单和软件移动到中心。
+
+#### 右下角组件
+
+点击时间左边的上箭头，在弹出来的窗口的右上角开启系统托盘设置，项目里面按需设置。我会设置电量和电池总是显示，蓝牙总是隐藏。
+
 ### KDE系统设置和美化
 
 以下都是我的设置，你可以按照自己的来。
@@ -2978,35 +3017,6 @@ https://starship.rs/presets/
 挑一个自己喜欢的预设主题，下载后改名为starship.toml，移动到~/.config/目录下，重启终端即可
 
 
-
-### 桌面鼠标功能
-
-右键桌面>桌面和壁纸>鼠标操作>添加操作
-
-1. 中键 程序启动器
-2. 垂直滚动滚轮 切换桌面
-
-### 桌面组件
-
-##### wallpaper effects
-
-这个组件可以在聚焦窗口时模糊桌面
-
-右键进入编辑模式>左上角添加组件>获取新挂件>下载plasma挂件>搜索安装wallpaper effects，或者从aur安装
-
-```
-yay -S plasma6-applets-wallpaper-effects
-```
-
-添加到桌面后进行配置：blur radius 改成 30；pixelate effect的enbale改成never；grain改成never；color effects改成never；激活rounded corners，radius改成15
-
-### 桌面面板（任务栏）
-
-右键任务栏（kde里叫面板），显示面板配置。设置为半透明；悬浮改成仅小程序；显示隐藏改成避开窗口；删除工作区相关组件；添加两个间隔，把开始菜单和软件移动到中心。
-
-#### 右下角组件
-
-点击时间左边的上箭头，在弹出来的窗口的右上角开启系统托盘设置，项目里面按需设置。我会设置电量和电池总是显示，蓝牙总是隐藏。
 
 ---
 
@@ -3987,97 +3997,9 @@ sudo pacman -R steam
 sudo rm -rfv ~/.steam ~/.local/share/Steam
 ```
 
-#### 可选：为steam创建专门的btrfs子卷
+#### 可选：[为steam创建专门的btrfs子卷](#steam子卷)
 
-我不想快照复制steam游戏，因为这会占用大量的硬盘空间，可以创建一个和@home平级的@steamgames字卷让创建@home快照的时候排除steam的游戏。
-
-1. 挂载根分区硬盘到/mnt下任意位置
-
-   ```
-   sudo mount --mkdir -o subvolid=5 /dev/nvme1n1p2 /mnt/btrfs_root #记得替换为自己对于的硬盘名称
-   ```
-
-2. 创建@steamgames子卷
-
-   ```
-   sudo btrfs subvolume create /mnt/btrfs_root/@steamgames
-   ```
-
-3. 禁用子卷的写时复制
-
-   ```
-   sudo chattr +C /mnt/btrfs_root/@steamgames
-   ```
-
-4. 取消挂载
-
-   ```
-   sudo umount /mnt/btrfs_root
-   ```
-
-5. 移动并备份现有steamapps文件夹
-
-   ```
-   mv ~/.local/share/Steam/steamapps ~/.local/share/Steam/steamapps.bak
-   ```
-
-6. 创建新的steamapps文件夹作为挂载点
-
-   ```
-   mkdir -p ~/.local/share/Steam/steamapps
-   ```
-
-7. 配置fstab文件
-
-   ```
-   sudo vim /etc/fstab
-   ```
-
-8. 复制粘贴fstab里面根分区的那一行
-
-   ```
-   # /dev/nvme1n1p2
-   UUID=92a83c41-105d-4983-9536-2492d024bb52       /               btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@  0 0
-   ```
-
-   粘贴到底部，把 / 修改为steamapps的路径```/home/shorin/.local/share/Steam/steamapps```，把subvol=/@改成subvol=/@steamgames。修改后是这样的：
-
-   ```
-   # steamgames subvolume
-   UUID=92a83c41-105d-4983-9536-2492d024bb52       /home/shorin/.local/share/Steam/steamapps     btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@steamgames  0 0
-   ```
-
-9. 刷新systemd缓存
-
-   ```
-   sudo systemctl daemon-reload
-   ```
-
-10. 手动挂载fstab新条目
-
-    ```
-    sudo mount -a
-    ```
-
-11. 修改权限（记得替换成自己的用户名）
-
-    ```
-    sudo chown shorin ~/.local/share/Steam/steamapps/
-    ```
-
-11. 把刚刚备份的文件移回原位
-
-    ```
-    mv ~/.local/share/Steam/steamapps.bak/* ~/.local/share/Steam/steamapps/
-    ```
-
-12. 清理残留
-
-    ```
-    rm -r ~/.local/share/Steam/steamapps.bak
-    ```
-
-现在创建home目录的快照就不会记录steam的游戏库了。对lutris也可以进行同样的操作。如果被识别成外部设备出现在文档管理器的挂载列表里面，就在fstab的那一连串逗号隔开的参数里添加```x-gvfs-hide```
+（意义不大，已废弃。不太会用到home子卷的快照功能，所以记不记录steam都无所谓，禁用cow就好了。）
 
 ## 玩minecraft
 
@@ -5164,6 +5086,100 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 
 使用方法：[Quick Start](https://yazi-rs.github.io/docs/quick-start)
 
+## steam子卷
+
+我不想快照复制steam游戏，因为这会占用大量的硬盘空间，可以创建一个和@home平级的@steamgames字卷让创建@home快照的时候排除steam的游戏。
+
+1. 挂载根分区硬盘到/mnt下任意位置
+
+   ```
+   sudo mount --mkdir -o subvolid=5 /dev/nvme1n1p2 /mnt/btrfs_root #记得替换为自己对于的硬盘名称
+   ```
+
+2. 创建@steamgames子卷
+
+   ```
+   sudo btrfs subvolume create /mnt/btrfs_root/@steamgames
+   ```
+
+3. 禁用子卷的写时复制
+
+   ```
+   sudo chattr +C /mnt/btrfs_root/@steamgames
+   ```
+
+4. 取消挂载
+
+   ```
+   sudo umount /mnt/btrfs_root
+   ```
+
+5. 移动并备份现有steamapps文件夹
+
+   ```
+   mv ~/.local/share/Steam/steamapps ~/.local/share/Steam/steamapps.bak
+   ```
+
+6. 创建新的steamapps文件夹作为挂载点
+
+   ```
+   mkdir -p ~/.local/share/Steam/steamapps
+   ```
+
+7. 配置fstab文件
+
+   ```
+   sudo vim /etc/fstab
+   ```
+
+8. 复制粘贴fstab里面根分区的那一行
+
+   ```
+   # /dev/nvme1n1p2
+   UUID=92a83c41-105d-4983-9536-2492d024bb52       /               btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@  0 0
+   ```
+
+   粘贴到底部，把 / 修改为steamapps的路径```/home/shorin/.local/share/Steam/steamapps```，把subvol=/@改成subvol=/@steamgames。修改后是这样的：
+
+   ```
+   # steamgames subvolume
+   UUID=92a83c41-105d-4983-9536-2492d024bb52       /home/shorin/.local/share/Steam/steamapps     btrfs           rw,relatime,compress=zstd:3,ssd,discard=async,space_cache=v2,subvol=/@steamgames  0 0
+   ```
+
+9. 刷新systemd缓存
+
+   ```
+   sudo systemctl daemon-reload
+   ```
+
+10. 手动挂载fstab新条目
+
+    ```
+    sudo mount -a
+    ```
+
+11. 修改权限（记得替换成自己的用户名）
+
+    ```
+    sudo chown shorin ~/.local/share/Steam/steamapps/
+    ```
+
+12. 把刚刚备份的文件移回原位
+
+    ```
+    mv ~/.local/share/Steam/steamapps.bak/* ~/.local/share/Steam/steamapps/
+    ```
+
+13. 清理残留
+
+    ```
+    rm -r ~/.local/share/Steam/steamapps.bak
+    ```
+
+现在创建home目录的快照就不会记录steam的游戏库了。对lutris也可以进行同样的操作。如果被识别成外部设备出现在文档管理器的挂载列表里面，就在fstab的那一连串逗号隔开的参数里添加```x-gvfs-hide```
+
+[跳转玩steam游戏的部分](#玩steam游戏)
+
 # 废弃内容
 
 ## albert launcher
@@ -5266,7 +5282,7 @@ ps：谨慎更换cachyos的内核```linux-cachyos```，内核恐慌（kernel pan
 
 - 重启电脑
 
-#### ibus
+## ibus
 
 参考：[Rime - Arch Linux 中文维基](https://wiki.archlinuxcn.org/zh-hant/Rime) | [可选配置（基础篇） | archlinux 简明指南](https://arch.icekylin.online/guide/advanced/optional-cfg-1#%F0%9F%8D%80%EF%B8%8F-%E8%BE%93%E5%85%A5%E6%B3%95) | [RIME · GitHub](https://github.com/rime)
 
@@ -5343,3 +5359,4 @@ ibus-mozc是日语输入法
 4. 登出
 
 [跳转回gnome输入法部分](#ibus-rime)
+
