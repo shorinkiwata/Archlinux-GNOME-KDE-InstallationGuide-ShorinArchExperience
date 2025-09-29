@@ -1095,7 +1095,7 @@ xdg-user-dirs-update
 
 **快照相当于存档，养成习惯，每次做自己不了解的事情之前都存个档**，如果出了问题或者后悔了可以恢复到快照时的状态。
 
-timeshift操作简单，但是速度很慢且容易出bug，建议用snapper
+timeshift操作简单，但是速度很慢且容易出bug，建议用snapper。
 
 #### 方法一：snapper
 
@@ -1110,6 +1110,12 @@ btrfs-assistant 是图形化管理btrfs和快照的软件
 ```
 
 - 自动生成快照启动项
+
+由于默认grub路径是/boot，而我们之前的grub安装在/efi，所以需要一个软链接。
+
+```
+ln -sf /efi/grub /boot/grub
+```
 
 ```
 sudo pacman -S grub-btrfs inotify-tools
