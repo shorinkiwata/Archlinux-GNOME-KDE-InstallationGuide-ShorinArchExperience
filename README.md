@@ -3079,6 +3079,8 @@ sudo systemctl enable --now switcheroo-control
 
 # 虚拟机
 
+
+
 ## VMware
 
 1. 安装缺少的依赖
@@ -3101,6 +3103,16 @@ sudo systemctl enable --now vmware-usbarbitrator.service
 ```
 
 4. 重启电脑
+
+### 卸载vmware
+
+```
+sudo systemctl disable --now vmware-networks.service
+sudo systemctl disable --now vmware-usbarbitrator.service
+yay -Rns vmware-workstation vmware-keymaps
+```
+
+
 
 ## winboat
 
@@ -3164,10 +3176,10 @@ reboot
    sudo systemctl disable --now docker.service
    ```
 
-4. 删除docker（如果从aur安装的winboat直接yay -Rns winboat）
+4. 删除winboat
 
    ```
-   yay -Rns freerdp winboat
+   yay -Rns winboat
    ```
    
 5. 清理残留文件
@@ -3185,11 +3197,7 @@ reboot
 合起来：
 
 ```
-sudo docker system prune -a --volumes
-sudo systemctl disable --now docker.service
-yay -Rns freerdp winboat
-sudo rm -rfv /var/lib/docker /etc/docker ~/.docker /var/run/docker ~/.winboat
-reboot
+sudo docker system prune -a --volumes && sudo systemctl disable --now docker.service && yay -Rns winboat && sudo rm -rfv /var/lib/docker /etc/docker ~/.docker /var/run/docker ~/.winboat && reboot
 ```
 
 ## virtualbox
@@ -3197,10 +3205,17 @@ reboot
 https://wiki.archlinux.org/title/VirtualBox
 
 ```
-sudo pacman -S virtualbox virtualbox-host-modules-arch
+sudo pacman -S virtualbox virtualbox-host-dkms
 ```
 
-不同内核需要安装的包不一样，zen内核是virtualbox-host-dkms，其他的看wiki。
+不同内核需要安装的包不一样，linux内核是virtualbox-host-modules-arch，其他的看wiki。
+
+### 卸载virtualbox
+
+```
+sudo pacman -Rns virtualbox virtualbox-host-dkms
+rm -rfv ~/.config/VirtualBox/ ~/VirtualBox\ VMs/
+```
 
 ## Linux上的Linux子系统：distrobox
 
