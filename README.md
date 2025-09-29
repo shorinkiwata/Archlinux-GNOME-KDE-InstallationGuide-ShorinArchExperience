@@ -373,7 +373,9 @@ pacman是包管理器，管理软件的安装、卸载之类的
 pacman -S yazi
 ```
 
-pacman是arch的包管理器，调用pacman在当前根目录下安装软件，-S代表安装，[yazi](https://yazi-rs.github.io/)是好用的终端文档管理器，另外比较常用的还有[ranger](https://github.com/ranger/ranger)。运开启yazi：
+pacman是arch的包管理器，调用pacman在当前根目录下安装软件，-S代表安装，[yazi](https://yazi-rs.github.io/)是好用的终端文档管理器，另外比较常用的还有[ranger](https://github.com/ranger/ranger)。
+
+开启yazi：
 
 ```
 yazi
@@ -474,7 +476,7 @@ genfstab（生成文件系统表）
 
 ### 为双系统做准备
 
-需要挂载windows的efi分区。在genfstab之后才挂载是因为没有必要自动挂载win的wfi分区。
+需要挂载windows的efi分区。在genfstab之后才进行是因为没有必要自动挂载win的efi分区。
 
 ```
 mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
@@ -1026,13 +1028,25 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 
 ### [KDE Plasma](#KDE)和[GNOME](#GNOME) 选择一个安装。
 
-kde和gnome的区别可以自行网上搜索，简单来说：
+值得一提的是，Debian、Ubuntu、Fedora这样的主流发行版都默认使用Gnome，kde和gnome的具体区别可以自行网上搜索，我只简单地说一说：
 
-KDE更符合windows用户的直觉，系统占用更低，个性化起来更方便，多显示器和缩放支持更好。
+两句话说完优缺点：KDE功能众多，但是初见会觉得杂乱无章。GNOME好看且精简，但是精简过头变得太过简陋。
 
-Gnome的中文输入法体验更好，更符合mac用户的直觉，外观更好看，动画更流畅，设计更简洁，运行更稳定。
+1. 自定义
 
-值得一提的是，Debian、Ubuntu、Fedora这样的主流发行版都默认使用Gnome。
+   通常认为GNOME的默认设置更符合MAC的直觉，KDE的默认设置更符合Win的直觉，但是GNOME和KDE都高度可自定义，因此无论KDE还是GNOME都可以通过一些额外的设置做到win或者mac的操作逻辑。区别在于KDE的设置里已经集成了大量自定义选项，而GNOME需要额外安装扩展。
+
+2. 外观
+
+   KDE使用Qt，而GNOME使用GTK，所以外观上会有区别，看个人喜好吧。通常认为GTK的外观更加现代。
+
+3. 自带功能
+
+   KDE plasama桌面环境自带的无级缩放、外屏亮度调节、概览中键关闭窗口、高级网络配置、四角平铺等等功能都相当好用。虽然GNOME可以通过额外安装扩展和软件达成类似的效果，但稳定性不如KDE自带，也不如KDE自带优雅。所以在功能性上，KDE强于GNOME。
+
+4. 中文输入法体验
+
+   KDE的中文输入法配置起来比GNOME繁琐。GNOME只需要配置全局变量就好了，但是KDE很多应用要单独设置。
 
 #### 注意：本文后面所有的自定义配置都是我个人喜好，你可以按照你的喜好来。
 
@@ -1349,79 +1363,7 @@ XDG_CURRENT_DESKTOP=GNOME #解决某些软件里面输入法吞字的问题
 
 #### ibus-rime
 
-参考：[Rime - Arch Linux 中文维基](https://wiki.archlinuxcn.org/zh-hant/Rime) | [可选配置（基础篇） | archlinux 简明指南](https://arch.icekylin.online/guide/advanced/optional-cfg-1#%F0%9F%8D%80%EF%B8%8F-%E8%BE%93%E5%85%A5%E6%B3%95) | [RIME · GitHub](https://github.com/rime)
-
-已知问题：amber-ce（后面星火应用商店的部分会用到）里安装的qt应用无法使用ibus输入法
-
-1. 安装ibus-rime
-
-```
-sudo pacman -S ibus ibus-rime rime-ice-pinyin-git 
-yay -S ibus-mozc
-```
-
-```
-ibus是ibus输入法的基本包
-ibus-rime是中州韵
-rime-ice是雾凇拼音输入法方案，实测比万象拼音方案好用
-ibus-mozc是日语输入法
-```
-
-2. 在gnome的设置中心 > 键盘 > 添加输入源 > 汉语，里面找到rime添加，如果没有的话登出一次
-
-3. 编辑配置文件设置rime的输入法方案为ice雾凇拼音
-
-   ```
-   vim ~/.config/ibus/rime/default.custom.yaml
-   ```
-
-   如果没有文件夹的话自己创建。``` mkdir ~/.config/ibus/rime/```创建文件夹，```touch default.custom.yaml```创建文件。写入以下内容：
-
-   ```
-   patch:
-     # 这里的 rime_ice_suggestion 为雾凇方案的默认预设
-     __include: rime_ice_suggestion:/
-   ```
-
-   默认使用super+空格切换输入法，可以在设置里修改。第一次切换至rime输入法需要等待部署完成。
-
-4. 安装扩展自定义ibus
-
-   商店搜索extension安装蓝色的扩展管理器，或者用命令安装
-
-   ```
-   flatpak install flathub com.mattjakeman.ExtensionManager
-   ```
-
-   安装两个扩展：
-
-   - ibus tweaker
-
-     设置里激活“隐藏页按钮”
-
-   - Customize IBus
-
-     需要登出一次
-
-     设置里，常规页面取消“候选框调页按钮”。主题页面可导入css自定义主题，[GitHub - openSUSE/IBus-Theme-Hub: This is the hub for IBus theme that can be used by Customize IBus GNOME Shell Extension.(可被自定义IBus GNOME Shell 扩展使用的IBus主题集合)](https://github.com/openSUSE/IBus-Theme-Hub)，这个网站有一些预设主题。背景页面可以自定义背景（这个无敌了，什么美化都比不过一张合适的自定义背景）。其他的选项就自己探索吧。
-
-- 删除ibus输入法
-
-1. 系统设置>键盘 移除输入源
-
-2. 删除包
-
-   ```
-   yay -Rns ibus-mozc ibus ibus-rime rime-ice-pinyin-git
-   ```
-
-3. 删除残留
-
-   ```
-   sudo rm -rfv ~/.config/ibus /usr/share/rime-data
-   ```
-
-4. 登出
+（我已弃用，有需要看[废弃内容：ibus-rime](#ibus)）
 
 ### 自定义安装软件
 
@@ -2520,35 +2462,60 @@ XMODIFIERS=@im=fcitx
 
 默认输入法切换是ctrl+空格。切换到rime之后右键桌面右下角的输入法组件，重新部署一下rime，稍等一会就会变成雾凇拼音。
 
-#### 输入法异常
-
-如果输入法在某个软件出现吞字之类异常，在开始菜单右键该软件>编辑应用程序>修改命令行参数
-
-试试添加这一段，添加位置为程序名后面，%U之类的字符前面，比如typora 【此处】%U
-
-```
---enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
-```
-
-还不行的话去掉上面那些东西，在环境变量里添加这一段：
-
-```
-GTK_IM_MODULE=fcitx
-QT_IM_MODULE=fcitx
-XMODIFIERS=@im=fcitx
-```
-
 - 更换切换输入法快捷键
 
 ```
 系统设置 > 输入法 > 配置全局选项
 ```
 
-#### 美化
+- 美化
 
 1. 浏览器搜索fcitx5 themes，下载自己喜欢的，存放路径为：~/.local/share/fcitx5/themes
 
 2. 打开fcitx配置，选择附加组件，设置经典用户界面，设置主题。这里有一大堆自定义的选项，自己研究吧。
+
+#### 输入法异常
+
+- 如果输入法在某个软件出现吞字等问题
+
+  在开始菜单右键该软件>编辑应用程序>修改环境变量
+
+  ```
+  GTK_IM_MODULE=fcitx
+  QT_IM_MODULE=fcitx
+  ```
+
+- 对于chromium和electron应用
+
+  添加这一段参数，添加位置为程序名后面，%U之类的字符前面，比如linuxqq 【此处】%U：
+  
+  ```
+  --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
+  ```
+
+
+
+但是这样只对从快捷方式（.desktop）打开生效。如果从终端用命令打开的话需要设置alias。
+
+假设我要设置typora的环境变量。这是个gtk应用，zsh和bash打开对应的配置文件，.zshrc或.bashrc，末尾写入``alias typora='GTK_IM_MODULE=fcitx typora'``，如果是chromium或者electron应用的话写``alias typora='typora --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime'``
+
+fish的话设置abbr，```abbr typora 'GTK_IM_MODULE=fcitx typora'```，chromium或者electron应用的话写``abbr typora 'typora --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime'``。或者设置function：
+
+```
+function typora
+	env GTK_IM_MODULE=fcitx typora $argv
+end
+```
+
+chromium或者electron应用的话写（可以加上``--description ''``以提高可读性）：
+
+```
+function typora --description ‘启动typora’
+	exec typora --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime $argv
+end
+```
+
+function是函数，typora是要运行的命令，``--description '' ``是描述，中间是这个命令的具体内容，``$argv``传递``typora``命令后的选项和参数，end结尾。
 
 ### 自定义安装软件
 
@@ -5251,3 +5218,81 @@ ps：谨慎更换cachyos的内核```linux-cachyos```，内核恐慌（kernel pan
   ```
 
 - 重启电脑
+
+#### ibus
+
+参考：[Rime - Arch Linux 中文维基](https://wiki.archlinuxcn.org/zh-hant/Rime) | [可选配置（基础篇） | archlinux 简明指南](https://arch.icekylin.online/guide/advanced/optional-cfg-1#%F0%9F%8D%80%EF%B8%8F-%E8%BE%93%E5%85%A5%E6%B3%95) | [RIME · GitHub](https://github.com/rime)
+
+已知问题：amber-ce（后面星火应用商店的部分会用到）里安装的qt应用无法使用ibus输入法
+
+1. 安装ibus-rime
+
+```
+sudo pacman -S ibus ibus-rime rime-ice-pinyin-git 
+yay -S ibus-mozc
+```
+
+```
+ibus是ibus输入法的基本包
+ibus-rime是中州韵
+rime-ice是雾凇拼音输入法方案，实测比万象拼音方案好用
+ibus-mozc是日语输入法
+```
+
+2. 在gnome的设置中心 > 键盘 > 添加输入源 > 汉语，里面找到rime添加，如果没有的话登出一次
+
+3. 编辑配置文件设置rime的输入法方案为ice雾凇拼音
+
+   ```
+   vim ~/.config/ibus/rime/default.custom.yaml
+   ```
+
+   如果没有文件夹的话自己创建。``` mkdir ~/.config/ibus/rime/```创建文件夹，```touch default.custom.yaml```创建文件。写入以下内容：
+
+   ```
+   patch:
+     # 这里的 rime_ice_suggestion 为雾凇方案的默认预设
+     __include: rime_ice_suggestion:/
+   ```
+
+   默认使用super+空格切换输入法，可以在设置里修改。第一次切换至rime输入法需要等待部署完成。
+
+4. 安装扩展自定义ibus
+
+   商店搜索extension安装蓝色的扩展管理器，或者用命令安装
+
+   ```
+   flatpak install flathub com.mattjakeman.ExtensionManager
+   ```
+
+   安装两个扩展：
+
+   - ibus tweaker
+
+     设置里激活“隐藏页按钮”
+
+   - Customize IBus
+
+     需要登出一次
+
+     设置里，常规页面取消“候选框调页按钮”。主题页面可导入css自定义主题，[GitHub - openSUSE/IBus-Theme-Hub: This is the hub for IBus theme that can be used by Customize IBus GNOME Shell Extension.(可被自定义IBus GNOME Shell 扩展使用的IBus主题集合)](https://github.com/openSUSE/IBus-Theme-Hub)，这个网站有一些预设主题。背景页面可以自定义背景（这个无敌了，什么美化都比不过一张合适的自定义背景）。其他的选项就自己探索吧。
+
+- 删除ibus输入法
+
+1. 系统设置>键盘 移除输入源
+
+2. 删除包
+
+   ```
+   yay -Rns ibus-mozc ibus ibus-rime rime-ice-pinyin-git
+   ```
+
+3. 删除残留
+
+   ```
+   sudo rm -rfv ~/.config/ibus /usr/share/rime-data
+   ```
+
+4. 登出
+
+[跳转回gnome输入法部分](#ibus-rime)
