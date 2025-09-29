@@ -3237,7 +3237,7 @@ sudo virsh net-autostart default
 ```
 sudo usermod -a -G libvirt $(whoami)
 ```
-5. 编辑配置文件提高权限
+5. 可选：如果运行出现异常的话编辑配置文件提高权限
 
 ```
 sudo vim /etc/libvirt/qemu.conf
@@ -3247,12 +3247,13 @@ sudo vim /etc/libvirt/qemu.conf
 #把group = "libvirt-qemu"改为group = "libvirt"
 #取消这两行的注释
 ```
-6. 重启服务
-
 ```
 sudo systemctl restart libvirtd
 ```
+有一个注意点，virtmanager默认的连接是系统范围的，如果需要用户范围的话需要左上角新增一个用户会话连接。
+
 ### 嵌套虚拟化
+
 intel的话用 kvm_intel
 
 - 临时生效
