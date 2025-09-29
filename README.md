@@ -4653,7 +4653,15 @@ export GTK_IM_MODULE=fcitx
 
 这里是一些有用但是被我弃用的内容，以及一些额外的补充内容。
 
-## pacman常用指令
+## pacman
+
+可以安装pacman的GUI。
+
+```
+sudo pacman -S pamac
+```
+
+常用命令：
 
 - 下载包但不安装
 
