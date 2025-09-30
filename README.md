@@ -1,4 +1,4 @@
-本文是我使用Archlinux的经历，以我个人用着舒服为标准，可以当作教程来看。使用btrfs文件系统，不涉及加密和安全启动。具体内容包括：系统的手动和脚本安装、win+linux双系统、N卡驱动、GNOME和KDE Plasma桌面环境、中文输入法、常用虚拟机程序（vmware、virtualbox、winapps、qemu/kvm）、虚拟机安装windows、qemu/kvm虚拟机显卡直通、虚拟机调优和伪装、Linux玩游戏、系统性能调优等等，最后一步干净删除Linux系统。
+本文是我使用Archlinux的经历，可以当作教程来看，以我个人用着舒服为标准。使用btrfs文件系统，不涉及加密和安全启动。具体内容包括：系统的手动和脚本安装、win+linux双系统、N卡驱动、GNOME和KDE Plasma桌面环境、中文输入法、常用虚拟机程序（vmware、virtualbox、winapps、qemu/kvm）、虚拟机安装windows、qemu/kvm虚拟机显卡直通、虚拟机调优和伪装、Linux玩游戏、系统性能调优等等，最后一步干净删除Linux系统。
 
 本文档创建时制作的视频，已经过时，有兴趣的可以看看：
 
@@ -117,9 +117,7 @@ ventoy制作的系统盘可以存放多个系统镜像，推荐。
 
 不知道怎么下载的话下载[图吧工具箱](https://www.tbtool.cn/)，在“其他工具”页面里有ventoy
 
----
-
-
+### 如果你的电脑开启了安全启动，要在bios关闭安全启动才能进入系统盘的live环境。
 
 # 安装
 
