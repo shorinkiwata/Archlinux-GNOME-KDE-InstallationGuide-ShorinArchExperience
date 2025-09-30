@@ -210,7 +210,7 @@ cfdisk /dev/nvme0n1 #选择自己要使用的硬盘进行分区
 ```
 如果是新硬盘的话会弹出选项，选GPT。
 
-创建100MB的分区，类型（type）选择efi system。
+创建512MB的分区，类型（type）选择efi system。
 
 其余全部分到一个分区里，类型linux filesystem。
 
