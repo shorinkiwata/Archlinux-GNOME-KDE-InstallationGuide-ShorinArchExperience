@@ -1,4 +1,4 @@
-本文是我使用Archlinux的经历，以我个人用着舒服为标准，可以当作教程来看。使用btrfs文件系统，不涉及加密和安全启动。具体内容包括：系统的手动和脚本安装、win+linux双系统、N卡驱动、GNOME和KDE Plasma桌面环境、中文输入法、常用虚拟机程序（vmware、virtualbox、winapps、distrobox、qemu/kvm）、qemu/kvm虚拟机显卡直通、虚拟机调优和伪装、Linux玩游戏、系统性能调优等等，最后一步删除系统。
+本文是我使用Archlinux的经历，以我个人用着舒服为标准，可以当作教程来看。使用btrfs文件系统，不涉及加密和安全启动。具体内容包括：系统的手动和脚本安装、win+linux双系统、N卡驱动、GNOME和KDE Plasma桌面环境、中文输入法、常用虚拟机程序（vmware、virtualbox、winapps、qemu/kvm）、虚拟机安装windows、qemu/kvm虚拟机显卡直通、虚拟机调优和伪装、Linux玩游戏、系统性能调优等等，最后一步干净删除Linux系统。
 
 本文档创建时制作的视频，已经过时，有兴趣的可以看看：
 
@@ -2265,7 +2265,6 @@ timeshift操作简单，但是速度很慢且容易出bug，建议用snapper
   ln -sf /efi/grub /boot/grub
   ```
 
-  
 
 #### 方法一：snapper
 
@@ -2537,8 +2536,6 @@ XMODIFIERS=@im=fcitx
   --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime
   ```
 
-
-
 但是这样只对从快捷方式（.desktop）打开生效。如果从终端用命令打开的话需要设置alias。
 
 假设我要设置typora的环境变量。这是个gtk应用，zsh和bash打开对应的配置文件，.zshrc或.bashrc，末尾写入``alias typora='GTK_IM_MODULE=fcitx typora'``，如果是chromium或者electron应用的话写``alias typora='typora --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-wayland-ime'``
@@ -2568,7 +2565,7 @@ function是函数，typora是要运行的命令，``--description '' ``是描述
 - 安装后没显示图标的话登出一次
 
 ```
-sudo pacman -S --needed mission-center firefox ark gwenview kcalc kate pacman-contrib gnome-disk-utility dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs baobab haruna 
+sudo pacman -S --needed mission-center firefox ark gwenview kcalc kate pacman-contrib gnome-disk-utility dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs baobab haruna ksystemlog
 ```
 
 ```
@@ -2582,6 +2579,7 @@ gnome-disk-utility磁盘管理器
 dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs是对gnome-disk-utility功能的补全
 baobab磁盘使用情况分析工具
 haruna是基于mpv的视频播放器
+ksystemlog用来查看系统日志
 ```
 
 - aur
