@@ -898,15 +898,13 @@ passwd <username>
 * 编辑权限
 
 ```
-vim /etc/sudoers
+EDITOR=vim visudo
 ```
 
 * 搜索 wheel，取消注释
 ```
 %wheel ALL=（ALL：ALL） ALL
 ```
-：wq！冒号小写wq感叹号保存并退出
-
 ## 开启32位源
 
 32位源建议开启，因为steam需要，wine运行exe也需要
