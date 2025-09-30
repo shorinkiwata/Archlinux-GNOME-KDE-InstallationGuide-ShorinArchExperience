@@ -1,10 +1,6 @@
-【github】https://github.com/shorinkiwata/archlinuxinstall/tree/main 
+本文是我使用Archlinux的经历，以我个人用着舒服为标准，可以当作教程来看。使用btrfs文件系统，不涉及加密和安全启动。具体内容包括：系统的手动和脚本安装、win+linux双系统、N卡驱动、GNOME和KDE Plasma桌面环境、中文输入法、常用虚拟机程序（vmware、virtualbox、winapps、distrobox、qemu/kvm）、qemu/kvm虚拟机显卡直通、虚拟机调优和伪装、Linux玩游戏、系统性能调优等等，最后一步删除系统。
 
-【度盘】https://pan.baidu.com/s/1QUzz10hxc7HIlRzhB0jVKg?pwd=arch
-
-网盘的文档更新会比github慢，传不到git上的文件会在网盘里。
-
-本文档创建时制作的视频，虽然已经过时，但是依旧值得一看：
+本文档创建时制作的视频，已经过时，有兴趣的可以看看：
 
 [「Archlinux究极指南」从手动安装到显卡直通，最后删除Linux_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1L2gxzVEgs/?spm_id_from=333.1387.homepage.video_card.click&vd_source=65a8f230813d56660e48ae1afdfa4182)
 
