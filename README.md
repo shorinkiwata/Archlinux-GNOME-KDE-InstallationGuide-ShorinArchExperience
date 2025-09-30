@@ -4897,7 +4897,97 @@ setopt EXTENDED_HISTORY
 source ~/.zshrc
 ```
 
+## rEFInd
 
+```
+sudo pacman -S refind
+```
+
+```
+refind-install
+```
+
+- 启动项记忆
+
+  编辑esp里的refind.conf文件
+
+  ```
+  sudo vim /efi/EFI/refind/refind.conf
+  ```
+
+  写入```default_selection +```，意思是记住启动项选择。也可以``"+,vmlinuz"``设置优先级。
+
+- 手动启动项
+
+  设置```menuentry{}```
+
+  ```
+  menuentry "Arch Linux" {
+  	icon /EFI/refind/icons/os_arch.png
+  	volume ****************
+  	loader /@/boot/vmlinuz-linux-zen
+  	initrd /@/boot/initramfs-linux-zen.img
+  	options "root=UUID=54f285eb-8140-48df-81f8-2b03cb976fc0 rw rootflags=subvol=@ zswap.enabled=0 rootfstype=btrfs loglevel=5"
+  	enabled
+  }
+  ```
+
+  ``icon``设置图标路径，路径从esp的根目录开始而不是从linux的根目录开始。
+
+  ``volume``设置分区，不能用UUID，要用PARTUUID，使用```sudo blkid```获取。
+
+  ```loader```指定内核路径
+
+  ``initrd``指定initramfs和ucode的路径
+
+  ``options ""``指定启动项参数
+
+  ``enabled``表示启用这个entry，``disabled``是禁用。
+
+- 美化
+
+  在/efi/EFI/refind/目录下新建一个themes文件夹
+
+  ```
+  sudo mkdir -p /efi/EFI/refind/themes
+  ```
+
+  然后浏览器搜索自己喜欢的``git clone``下来放到到刚刚创建的文件夹里
+
+  然后编辑配置文件
+
+  ```
+  sudo vim /efi/EFI/refind/refind.conf
+  ```
+
+  ```
+  include themes/**********/theme.conf
+  ```
+
+- 隐藏启动项
+
+  可以在refind的引导界面按delete键盘隐藏启动项。
+
+  或者编辑配置文件用```dont_scan_dirs=```指定要排除的目录。
+
+  ```
+  dont_scan_dirs=/@/boot,EFI/****
+  ```
+
+
+## grub主题
+
+下载grub主题放到```/usr/share/grub/themes/```或者```/boot/grub/themes```或者```/efi/grub/themes```，然后编辑``/etc/default/grub``设置```GRUB_THEME="/path/to/theme.txt"```，修改```GRUB_GFXMODE=2560X1440,1920x1080,auto```设置分辨率，最后重新```grub-mkconfig```生成grub.cfg。
+
+我喜欢的主题：
+
+[CyberGRUB-2077](https://github.com/adnksharp/CyberGRUB-2077)
+
+[Crossgrub](https://github.com/krypciak/crossgrub)
+
+这个repo有一些别人收集的主题：
+
+https://github.com/Jacksaur/Gorgeous-GRUB
 
 ## distrobox
 
