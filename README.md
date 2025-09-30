@@ -1125,9 +1125,33 @@ sudo pacman -S grub-btrfs inotify-tools
 sudo systemctl enable --now grub-btrfsd
 ```
 
-```
-reboot
-```
+- 设置覆盖文件系统（overlayfs）
+
+  因为snapper快照是只读的，所以需要设置一个overlayfs在内存中创建一个临时可写的类似live-cd的环境，否则可能无法正常从快照启动项进入系统。
+
+  编辑``/etc/mkinitcpio.conf``
+
+  ```
+  sudo vim /etc/mkinitcpio.conf
+  ```
+
+  在HOOKS里添加```grub-btrfs-overlayfs```
+
+  ```
+  HOOKS= ( ...... grub-btrfs-overlayfs )
+  ```
+
+  重新生成initramfs
+
+  ```
+  sudo mkinitcpio -P
+  ```
+
+  重启电脑
+
+  ```
+  reboot
+  ```
 
 具体使用方法
 
@@ -1139,7 +1163,7 @@ reboot
 
      点击new config新建配置，config name写root，backup path选择 / ，然后点击save保存。
 
-     接着进行一些设置。systemd unit settings里面有三个服务。 timeline是按照时间计划自动创建快照；cleanup是快照数量达到number设定的数量上限之后自动清理快照；boot是每次开机自动创建快照。按需设置，设置完记得点apply。
+     接着进行一些按照时间自动生成快照的设置。systemd unit settings里面有三个服务。 timeline是按照时间计划自动创建快照；cleanup是快照数量达到number设定的数量上限之后自动清理快照；boot是每次开机自动创建快照。按需设置，设置完记得点apply。
 
    - home目录快照
 
@@ -2275,8 +2299,6 @@ btrfs-assistant 是图形化管理btrfs和快照的软件
 
 - 自动生成快照启动项
 
-
-
 ```
 sudo pacman -S grub-btrfs inotify-tools
 ```
@@ -2285,9 +2307,33 @@ sudo pacman -S grub-btrfs inotify-tools
 sudo systemctl enable --now grub-btrfsd
 ```
 
-```
-reboot
-```
+- 设置覆盖文件系统（overlayfs）
+
+  因为snapper快照是只读的，所以需要设置一个overlayfs在内存中创建一个临时可写的类似live-cd的环境，否则可能无法正常从快照启动项进入系统。
+
+  编辑``/etc/mkinitcpio.conf``
+
+  ```
+  sudo vim /etc/mkinitcpio.conf
+  ```
+
+  在HOOKS里添加```grub-btrfs-overlayfs```
+
+  ```
+  HOOKS= ( ...... grub-btrfs-overlayfs )
+  ```
+
+  重新生成initramfs
+
+  ```
+  sudo mkinitcpio -P
+  ```
+
+  重启电脑
+
+  ```
+  reboot
+  ```
 
 具体使用方法
 
@@ -2299,7 +2345,7 @@ reboot
 
      点击new config新建配置，config name写root，backup path选择 / ，然后点击save保存。
 
-     接着进行一些设置。systemd unit settings里面有三个服务。 timeline是按照时间计划自动创建快照；cleanup是快照数量达到number设定的数量上限之后自动清理快照；boot是每次开机自动创建快照。按需设置，设置完记得点apply。
+     接着进行一些按照时间自动生成快照启动项的设置。systemd unit settings里面有三个服务。 timeline是按照时间计划自动创建快照；cleanup是快照数量达到number设定的数量上限之后自动清理快照；boot是每次开机自动创建快照。按需设置，设置完记得点apply。
 
    - home目录快照
 
@@ -4203,13 +4249,6 @@ yay -S preload
 sudo systemctl enable --now preload
 ```
 
-## ananicy cpu资源调用优化
-
-```
-yay -S ananicy-cpp cachyos-ananicy-rules-git
-sudo systemctl enable --now ananicy-cpp.service
-```
-
 ## 交换空间和zram
 
 参考资料：
@@ -5360,3 +5399,13 @@ ibus-mozc是日语输入法
 
 [跳转回gnome输入法部分](#ibus-rime)
 
+## ananicy cpu资源调用优化
+
+影响steam下载速度，弃用
+
+```
+yay -S ananicy-cpp cachyos-ananicy-rules-git
+sudo systemctl enable --now ananicy-cpp.service
+```
+
+## 
