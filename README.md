@@ -879,7 +879,7 @@ EDITOR=vim
 
 ## 创建普通用户
 
-没有普通用户无法登入桌面环境，有些软件会拒绝在root权限下运行，所以普通用户是必须的。
+有些软件会拒绝在root权限下运行，所以普通用户是必须的。
 
 ```
 useradd -m -g wheel <username> 
@@ -936,7 +936,7 @@ noto-fonts-emoji是emoji
 
 ## 显卡驱动和硬件编解码
 
-以4060和780m为例。顺便一提，由于我没有intel的硬件，所以本文所有CPU/GPU相关内容都不一定适用于intel，尤其是后面虚拟机xml的部分。
+以4060和780m为例。顺便一提，由于我没有intel的硬件，所以本文所有CPU/GPU相关内容可能不适用于intel，尤其是后面虚拟机xml的部分。
 
 参考链接：[NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)、[AMDGPU](https://wiki.archlinux.org/title/AMDGPU)
 
@@ -1008,9 +1008,9 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 
 ### [KDE Plasma](#KDE)和[GNOME](#GNOME) 选择一个安装。
 
-值得一提的是，Debian、Ubuntu、Fedora这样的主流发行版都默认使用Gnome，kde和gnome的具体区别可以自行网上搜索，我只简单地说一说：
+值得一提的是，Debian、Ubuntu、Fedora这样的主流发行版默认使用Gnome。kde和gnome的具体区别可以自行网上搜索，我只简单地说一说：
 
-两句话说完优缺点：KDE功能众多，但是初见会觉得杂乱无章。GNOME好看且精简，但是精简过头变得太过简陋。
+两句总结优缺点：KDE功能众多，但是初见会觉得杂乱无章。GNOME好看且精简，但是精简过头变得太过简陋。
 
 1. 自定义
 
@@ -1173,7 +1173,7 @@ sudo systemctl enable --now grub-btrfsd
 
   archlinux是滚动发行版。滚动是英文直译，原词是rolling，指一种推送更新的方式，只要有新版本就会推送，由用户管理更新。对应的另一种更新方式是定期更新一个大版本，例如fedora是六个月一更新，由发行方管理更新。 滚挂，指的是滚动更新的发行版因为更新导致系统异常。这通常是用户操作不当、忽略官方公告等原因导致的。只要学习一下正确的更新方式和快照的使用方法就不用担心滚挂问题。 
 
-  通常软件更新不用担心。**出现密钥（keyring）、内核、驱动、固件、引导程序之类的更新要留个心眼，先不第一时间更新，等一手社区或者官方消息。** 另一个重点是滚动更新的发行版的软件通常会适配最新的依赖，如果长期不更新可能会无法使用软件。
+  通常软件更新不用担心。**出现密钥（keyring）、内核、驱动、固件、引导程序之类的更新要留个心眼，先不第一时间更新，等一手社区或者官方消息。** 另一个重点是滚动更新的发行版的软件通常会适配最新的依赖，如果部分更新可能会无法使用软件。
 
 - 良好的使用习惯
 
@@ -1308,6 +1308,10 @@ rime-ice-pinyin-git是雾凇拼音输入法
 - 打开fcitx 5 configuration添加rime和mozc输入法，没有的话登出一次
 
 - 编辑rime的配置文件设置输入法方案为雾凇拼音，如果没有文件夹和文件的话自己创建文件夹，然后编辑配置文件
+
+```
+mkdir -p ~/.local/share/fcitx5/rime
+```
 
 ```
 vim ~/.local/share/fcitx5/rime/default.custom.yaml 
@@ -2482,6 +2486,10 @@ fcitx5-mozc是开源谷歌日语输入法
 - 编辑rime的配置文件设置输入法方案为雾凇拼音，如果没有文件夹和文件的话自己创建文件夹，然后运行如下命令编辑配置文件
 
 ```
+mkdir -p ~/.local/share/fcitx5/rime
+```
+
+```
 vim ~/.local/share/fcitx5/rime/default.custom.yaml 
 ```
 
@@ -2558,9 +2566,9 @@ function是函数，typora是要运行的命令，``--description '' ``是描述
 
 ### 自定义安装软件
 
-这是我会安装的，你可以按需求选择
+这是我会安装的，你可以按需求选择，安装后没显示图标的话登出一次
 
-- 安装后没显示图标的话登出一次
+- pacman
 
 ```
 sudo pacman -S --needed mission-center firefox ark gwenview kcalc kate pacman-contrib gnome-disk-utility dosfstools ntfs-3g exfatprogs f2fs-tools udftools xfsprogs baobab haruna ksystemlog
