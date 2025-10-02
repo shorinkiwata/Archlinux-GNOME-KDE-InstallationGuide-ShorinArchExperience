@@ -2168,6 +2168,8 @@ https://starship.rs/presets/
 
 #### ghostty美化
 
+1.2版本的ghostty的o中文字体有点问题，可以downgrade到旧版本，或者凑活用，等更新。
+
 - 下载[catppuccin](https://github.com/catppuccin/ghostty?tab=readme-ov-file)颜色配置，或者找一个你喜欢的，粘贴到~/.config/ghostty/themes/
 
 - 修改~/.config/ghostty/conf 配置文件，例如下载的是frappe的话：
