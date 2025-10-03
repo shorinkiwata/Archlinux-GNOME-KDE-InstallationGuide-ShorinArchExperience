@@ -2593,12 +2593,12 @@ ksystemlog用来查看系统日志
 - aur
 
 ```
-yay -S linuxqq-appimage wechat-appimage wps-office-cn wps-office-mui-zh-cn typora-free gpu-screen-recorder
+yay -S linuxqq wechat wps-office-cn wps-office-mui-zh-cn typora-free gpu-screen-recorder
 ```
 
 ```
-linuxqq-appimage是appimgae版qq
-wechat-appimage是appimage版微信
+qq
+微信
 wps-office-cn是wps
 wps-office-mui-zh-cn是wps的中文语言包
 typora-free是markdown编辑器
