@@ -1419,12 +1419,12 @@ XDG_CURRENT_DESKTOP=GNOME #解决某些软件里面输入法吞字的问题
   [WPS Office - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/WPS_Office)
 
   ```
-  yay -S linuxqq-appimage wechat-appimage wps-office-cn wps-office-mui-zh-cn typora-free
+  yay -S linuxqq wechat wps-office-cn wps-office-mui-zh-cn typora-free
   ```
 
   ```
-  linuxqq-appimage 是appimgae版qq
-  wechat-appimage 是appimage版微信
+  qq
+  微信
   wps-office-cn 是wps
   wps-office-mui-zh-cn 是wps的中文语言包
   typora-free 是markdown编辑器
