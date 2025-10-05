@@ -2536,6 +2536,12 @@ XMODIFIERS=@im=fcitx
   QT_IM_MODULE=fcitx
   ```
 
+  如果无效的话试试添加：
+
+  ```
+  --ozone-platform=wayland
+  ```
+
 - 对于chromium和electron应用
 
   添加这一段参数，添加位置为程序名后面，%U之类的字符前面，比如linuxqq 【此处】%U：
@@ -2564,7 +2570,7 @@ function typora --description ‘启动typora’
 end
 ```
 
-function是函数，typora是要运行的命令，``--description '' ``是描述，中间是这个命令的具体内容，``$argv``传递``typora``命令后的选项和参数，end结尾。
+function是函数，typora是要运行的命令，``--description '' ``是描述，中间是这个命令的具体内容`exec`是运行后退出终端，如果要保持终端开启的话把`exec`换成`command`，``$argv``传递``typora``命令后的选项和参数，end结尾。
 
 ### 自定义安装软件
 
@@ -4699,8 +4705,43 @@ MEM SLEEP
 BAT deep
 ```
 - 开启服务
-```
+```shell
 sudo systemctl enable --now tlp
+```
+## ddcutil使用方法
+
+获取显示器信息
+
+```
+ddcutil detect
+```
+示例输出：
+```shell
+Display 1
+   I2C bus:  /dev/i2c-14
+   DRM_connector:           card1-DP-2
+   EDID synopsis:
+      Mfg id:               SKG - UNK
+      Model:                H27T22C
+      Product code:         10099  (0x2773)
+      Serial number:
+      Binary serial number: 1 (0x00000001)
+      Manufacture year:     2024,  Week: 46
+   VCP version:         2.1
+```
+注意第一行的Display 1
+
+获取当前亮度
+
+```shell
+ddcutil --display 1 getvcp 10
+```
+
+加减亮度
+
+```shell
+ddcutil --display 1 setvcp 10 + 5
+ddcutil --display 1 setvcp 10 -- 5
 ```
 
 ## ranger预览图片
