@@ -1218,7 +1218,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   vainfo
   ```
 
-# 桌面环境 
+# 安装桌面环境 
 
 ### [KDE Plasma](#KDE)和[GNOME](#GNOME) 选择一个安装。
 
@@ -1564,7 +1564,6 @@ XDG_CURRENT_DESKTOP=GNOME #解决某些软件里面输入法吞字的问题
 
 3. 打开fcitx配置 选择附组件，点击“经典用户界面”右边的扳手螺丝刀图标，设置主题。这里有一大堆自定义的选项，自己研究吧。
 
-   
 
 
 - 卸载fcitx5
