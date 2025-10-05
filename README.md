@@ -49,13 +49,15 @@ esc 退出编辑模式
 参考链接：
 [双系统时间同步-CSDN博客](https://blog.csdn.net/zhouchen1998/article/details/108893660)
 
-windows下管理员身份打开powershell 运行
-```
+Linux会把硬件时间改成标准UTC时间，然后根据系统设置的时区对UTC时间进行加减后显示出来。Windows默认读取主板硬件时间作为本地时间，所以此时你Windows显示的时间就变成了标准UTC时间而不是中国 UTC+8。表面上看就像是windows时间错乱。
+
+Windows下管理员身份打开powershell 运行
+
+```powershell
 Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1
 ```
-windows默认读取主板硬件时间作为本地时间，如果你在中国就是UTC+8。而当你使用linux时，硬件时间会被改成标准UTC时间，linux读取到硬件时间之后根据系统内部设置的时区对UTC时间进行加减。当你这时重启到windows，windows读取到的硬件时间就是标准UTC时间，而windows默认硬件时间就是本地时间，所以会直接把这个标准UTC时间显示出来。
 
-上面这条命令修改注册表，让windows采用和Linux相同的策略，默认硬件时间为UTC，根据系统设置的时区进行相应的加减后再显示。
+上面这条命令修改注册表，让Windows采用和Linux相同的策略，默认硬件时间为UTC，根据系统设置的时区进行相应的加减后再显示。
 
 ## 开箱即用的基于arch的发行版
 
@@ -91,23 +93,19 @@ PS：handheld是掌机版，类似steamdeck上的steamos，不过也可以当桌
 
 ### 如果你想要自己掌控archlinux的安装，继续往下看
 
-## 下载archlinux iso文件
+## 下载ISO文件
 
-[官网下载](https://archlinux.org/download/)
+去想要安装的Linux系统的官网下载ISO文件。官网下载慢的话可以找一找镜像站，主流Linux发行版通常会在下载页面提供镜像站链接。
 
-官网的下载页面往下翻可以看到中国的镜像站，下载速度应该会快一些。
+- [Archlinux](https://archlinux.org/download/)
 
 ## 制作系统盘
 
 ### 方法一 ：压缩卷（没有u盘使用这个方法）
 
 1. windows系统内win+x键，选择磁盘管理。找到想安装archlinux的位置，右键选择压缩卷，空出磁盘空间。
-
 2. 右击空出的空间选择新增简单卷，大小设置为4096MB（足够装下iso里面的文件就行），盘符随意，格式化选择FAT32。
-
 3. 双击打开iso，把里面的内容粘贴进刚刚新建的盘符里。
-
-4. 重启选择bios启动项
 
 ### 方法二：ventoy
 
@@ -117,748 +115,957 @@ ventoy制作的系统盘可以存放多个系统镜像，推荐。
 
 不知道怎么下载的话下载[图吧工具箱](https://www.tbtool.cn/)，在“其他工具”页面里有ventoy
 
-### 如果你的电脑开启了安全启动，要在bios关闭安全启动才能进入系统盘的live环境。
+## 进BIOS关闭安全启动
+
+进入BIOS关闭安全启动（security boot）。不同的机器进bios方法不同，现代电脑通常是esc、f2、delete，如果不行的查找一下自己主板进bios的方法。
+
+## 选择启动项
+
+启动项选择刚刚制作的系统盘。
+
+### BIOS和UEFI
+
+本文[安装Archlinux](安装ArchLinux.md)一节只包含UEFI+GPT环境下的安装，不涉及BIOS+MBR下安装。如果你的设备不支持UEFI，在安装引导程序的部分会有不同。
 
 # 安装
 
-## 手动安装
-参考链接：
+1. 重要概念讲解
 
-[archlinux 简明指南](https://arch.icekylin.online/)
+   ### Linux目录结构
 
-[安装指南 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97)
+   Linux的目录是由 / 左斜杠开头的树状结构，/是一切的开始，所以被称为根目录（root目录）。例如/home就是根目录下的home目录，/home/shorin就是根目录下的home目录里面的shorin目录。
 
-### 确认网络
-```
-ip a #查看网络连接信息
-ping bilibili.com #确认网络正常
-```
-#### iwctl工具连接wifi
-```
-iwctl
-```
-```
-station wlan0 connect <wifiname> 
-```
-```
-exit
-```
+   ### 挂载
 
-### 同步时间
-```
-timedatectl set-ntp true 
-```
+   意思是把分区对应到某个目录。
 
-这条命令让arch连接到互联网上的公共时间服务器
+   #### 挂载点（mount point）
 
-### 重要概念讲解
+   假设把/dev/nvme0n1这个设备挂载到/home目录，那就称/dev/nvme0n1的挂载点为/home。
 
-接下来要进行硬盘分区，但是在分区之前需要讲解几个重要概念。
+   ### 文件系统
 
-#### Linux目录结构
+   [archwiki file system](https://wiki.archlinux.org/title/File_systems)
 
-Linux的目录是由 / 左斜杠开头的树状结构，/是一切的开始，所以被称为根目录（root目录）。例如/home就是根目录下的home目录，/home/shorin就是根目录下的home目录里面的shorin目录。
+   文件系统决定了文件的存放和检索方式，根分区文件系统常用的有btrfs、ext4、xfs，不同的文件系统有不同的功能和特性。本文使用btrfs文件系统，最大的特点是快照（相当于存档和回档）
 
-#### 挂载
+   ### Bootloader引导程序
 
-意思是把分区对应到某个目录。
+   [archwiki_arch_boot_process](https://wiki.archlinux.org/title/Arch_boot_process#Boot_loader)
 
-##### 挂载点
+   引导程序，用来引导系统启动。grub最为常用。arch用户也有很多使用systemd-boot，这个引导程序非常精简。其他也有很多，有兴趣的可以看archwiki的介绍。
 
-假设把分区1挂载到/home目录，那就称分区1的挂载点（mount point）为/home。
+   ### EFI系统分区（ESP） 
 
-#### 文件系统
+   [efi system partition](https://wiki.archlinux.org/title/EFI_system_partition)
 
-[archwiki file system](https://wiki.archlinux.org/title/File_systems)
+   用于存放.efi文件，这是启动系统的“第一把钥匙”。esp的文件系统必须是FAT。
 
-文件系统决定了文件的存放和检索方式，根分区文件系统常用的有btrfs、ext4、xfs，不同的文件系统有不同的功能和特性。本文使用btrfs文件系统，最大的特点是快照（相当于存档和回档）
+   ### ESP挂载点
 
-#### Bootloader引导程序
+    常用挂载点为/boot、/boot/efi和/efi。
 
-[archwiki_arch_boot_process](https://wiki.archlinux.org/title/Arch_boot_process#Boot_loader)
+   /boot是最典型的挂载点，很多bootloader程序只有esp挂载点为/boot时才能正常工作。由于/boot还存放着内核文件，所以/boot做挂载点需要分配较大空间。
 
-引导程序，用来引导系统启动。grub最为常用。arch用户也有很多使用systemd-boot。
+   使用Grub和rEFind时，esp挂载点可以是任意位置，但通常是/boot/efi或者/efi。因为/boot/efi会复杂化挂载过程，所以此时的推荐挂载点为/efi。
 
-#### EFI系统分区（ESP） 
+   影响esp挂载点选择的另一大因素是btrfs的快照功能。esp必须使用FAT文件系统，挂载点为/boot，则无法使用btrfs快照记录和恢复/boot。假设创建快照时的内核版本是6.16，然后更新到了6.17，然后用快照进行回档。此时你的系统文件会被恢复到6.16，但是/boot里的内核文件仍然是6.17，版本不一致导致系统无法正常启动。所以如果要使用btrfs快照，/boot必须是btrfs文件系统。虽然也有完全备份/boot的用法，但是都很繁琐，不如直接把/boot包含进btrfs。
 
-[efi system partition](https://wiki.archlinux.org/title/EFI_system_partition)
+   另外，这种情况下无法使用systemd-boot，使用grub也会产生问题。grub无法在btrfs写入grubenv（记忆启动项等功能相关）。解决办法是把grub装进esp。此时要注意，grub在esp内意味着无法被快照，假设你创建快照时的内核只有linux，然后你安装了linux-zen并更新了grub的配置文件使grub多出了linux-zen的启动项。快照回滚后不会修改grub配置文件，grub中的linux-zen因此成为了“幽灵启动项”。手动更新一次grub的配置文件即可解决这个问题。如果不在意记忆启动项之类的功能，可以保持默认安装位置（`/boot/grub`）享受快照的便利。本文采用grub装进esp的方案。
 
-用于存放.efi文件，这是启动系统的“第一把钥匙”。esp的文件系统必须是FAT。
+   顺便一提，esp挂载点为/efi，grub装进esp，这个方案的esp内只存放.efi文件和grub的文件，文件大小加起来只有17MB左右，所以分配给esp的空间可以非常小，但是我依旧选择给esp分512MB，奢侈！
 
-#### ESP挂载点
-
- 常用挂载点为/boot、/boot/efi和/efi。
-
-/boot是最典型的挂载点，但要注意，/boot还存放着内核文件，所以作esp挂载点的话需要分配较大空间。使用systemd-boot必须把esp挂载到/boot。
-
-如果使用grub或者rEFind，则可以挂载到任意位置，但通常是/boot/efi或者/efi，因为/boot/efi会复杂化挂载过程，所以推荐挂载点为/efi。
-
-影响esp挂载点选择的另一大因素是btrfs的快照功能。esp的文件系统必须是FAT，如果/boot是esp的挂载点，那就无法创建/boot的快照。假设创建快照时的内核版本是6.16，然后把内核更新到了6.17，然后用快照进行回档。此时你的系统文件会被恢复到6.16，但是/boot里的内核文件却仍然是6.17，版本不一致导致系统无法正常启动。所以如果要使用btrfs快照，/boot必须是btrfs文件系统。这种情况下esp的推荐挂载点为/efi。
-
-另外，因为systemd-boot要求挂载点必须是/boot，所以这种情况下无法使用systemd-boot。使用grub的话也会产生问题，grub无法在btrfs写入grubenv（记忆启动项等功能相关）。最简单的解决办法是把grub也装进esp。此时要注意，grub在esp内无法被btrfs快照，假设你创建快照时的内核只有linux，然后你安装了linux-zen并更新了grub的配置文件，此时快照回滚不会修改grub配置文件，grub中的linux-zen因此成为了“幽灵启动项”。手动更新一次grub的配置文件即可解决这个问题。或者也可以选择放弃grub的便利功能，把grub安装到btrfs进行快照。本文采用grub装进esp的方案。
-
-顺便一提，因为这种情况下esp只存放.efi文件和grub的文件，这些文件加起来只有17MB左右，所以esp需要的硬盘空间非常小，但是我依旧选择给esp分512MB，奢侈！
-
-### 硬盘分区
-
-```
-lsblk -pf  #查看当前分区情况
-fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细分区信息
-```
-```
-cfdisk /dev/nvme0n1 #选择自己要使用的硬盘进行分区
-```
-如果是新硬盘的话会弹出选项，选GPT。
-
-创建512MB的分区，类型（type）选择efi system。
-
-其余全部分到一个分区里，类型linux filesystem。
-
-
-#### 格式化分区
-```
-lsblk -pf #查看分区情况
-fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细分区信息
-```
-
-- 格式化efi启动分区
-```
-mkfs.fat -F 32 /dev/nvme0n1p1（EFI分区名）
-```
-- 格式化btrfs根分区
-```
-mkfs.btrfs /dev/nvme0n1p2（根分区名）
-
-#加上-f参数可以强制格式化
-```
-
-#### 创建btrfs子卷
-
-子卷是btrfs的一个特性，跟快照（相当于存档和回档）有关。通常至少要创建root子卷（存放系统文件）和home子卷（存放用户文件），也就是@和@home。由于这两者是平级关系，所以创建@快照时不会包含@home。这样就可以只恢复系统文件，不影响用户数据。知道原理之后就可以按照自己的需求创建额外的子卷啦。
-
-- 挂载
-```
-mount -t btrfs -o compress=zstd /dev/nvme0n1p2（根分区名） /mnt
-```
-
-```
-mount 挂载命令
--t 指定文件系统
--o 指定额外的挂载参数
-conpress=zstd 指定透明压缩，zstd是压缩算法
-```
-
-/mnt是根目录下的子目录，用于手动临时挂载外部设备。我们之前从u盘加载的其实也是一个的archlinux系统，称为live环境。这里的/mnt就是u盘系统（live环境）的/mnt目录。这条命令把/dev/nvme0n1p2分区挂载到了/mnt目录，而/dev/nvme0n1p2是我们将要安装的系统的根分区，这意味着/mnt成为了我们将要安装的系统的根目录。
-
-compress是btrfs的另一个特性，透明压缩。可以通过算法在数据写入磁盘前先对数据进行压缩，用以节省磁盘空间，延长磁盘寿命，代价是一点点cpu占用，但极小，对现代硬件来说几乎可以忽略不计。zstd是最平衡的压缩算法，可以像这样zstd:3指定压缩等级，最高15，通常3就可以了。
-
-- 创建子卷
-
-```
-btrfs subvolume create /mnt/@
-btrfs subvolume create /mnt/@home
-btrfs subvolume create /mnt/@swap #不需要睡眠功能的话跳过这个
-```
-
-- 可选：确认
-```
-btrfs subvolume list -p /mnt
-```
-
-- 取消挂载
-```
-umount /mnt
-```
-
-此时取消了/dev/nvme0n1p2和/mnt目录的对应关系。
-
-### 正式挂载
-
-1. 挂载root子卷
-
-   ```
-   mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
-   ```
-
-   和刚刚的挂载是一样的操作，不过这次是把/dev/nvme0n1p2上的btrfs文件系统里的@子卷挂载到了/mnt。
-
-2. 挂载home子卷
-
-   ```
-   mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
-   ```
-
-   由于/mnt下没有/mnt/home这个目录，所以要加上`--mkdir`命令创建/mnt/home用来挂载。把@home子卷挂载到了/mnt/home。
-
-3. 可选：挂载swap子卷（不需要睡眠功能的话跳过这一步）
-
-   ```
-   mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
-   ```
-
-4. 挂载efi分区（esp）
-
-   ```
-   mount --mkdir /dev/nvme0n1p1 /mnt/efi
-   ```
-
-   记得把/dev/nvme0n1p1替换为自己对应的efi分区设备名。
-
-6. 复查挂载情况
-
-   ```
-   df -h
-   ```
-
-这时候可以尝试运行ls命令看看/mnt目录下的东西。会发现原本空的/mnt目录下多出来了home、boot这些文件夹
-
-```
-ls /mnt
-```
-
-### reflector自动设置镜像源
-
-```
-reflector -a 24 -c cn -f 10 --sort score --save /etc/pacman.d/mirrorlist --v
-
--a（age） 24 指定最近24小时更新过的源
--c（country） cn 指定国家为中国（可以增加邻国）
--f（fastest） 10 筛选出下载速度最快的10个
---sort score 按照下载速度和同步时间综合评分并排序，比单纯按照下载速度排序更可靠
---save /etc/pacman.d/mirrorlist 将结果保存到/etc/pacman.d/mirrorlist
---v（verbose） 过程可视化
-```
-### 更新密钥
-
-```
-pacman -Sy archlinux-keyring
-
-pacman是包管理器，管理软件的安装、卸载之类的
--S代表安装
--Sy代表同步数据库然后安装
-```
-
-### 有趣的事
-
-如果你有好奇心，可以安装终端文档管理器查看当前live环境的文件
-
-```
-pacman -S yazi
-```
-
-pacman是arch的包管理器，调用pacman在当前根目录下安装软件，-S代表安装，[yazi](https://yazi-rs.github.io/)是好用的终端文档管理器，另外比较常用的还有[ranger](https://github.com/ranger/ranger)。
-
-开启yazi：
-
-```
-yazi
-```
-
-左中右三块区域，左边是上级目录，中间是当前目录，右边是下级目录。上下左右键切换（或者使用vim key，jkhl对应上下左右）。可以看看/mnt目录，里面是空的，但是一会安装完系统就不是了。
-
-q键退出yazi。
-
-### 安装系统
-
-```
-pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
-
--K 复制密钥
-base-devel是编译其他软件的时候用的
-linux是内核，可以更换
-linux-firmware是固件
-btrfs-progs是btrfs文件系统的管理工具
-```
-
-pacstrap命令是把软件安装到指定的根目录下。
-
-如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
-
-### 安装必要的功能性软件
-
-```
-pacstrap /mnt networkmanager vim sudo amd-ucode
-
-networkmanager 是联网用的，和kde和gnome深度集成，也可以换成别的
-vim 是文本编辑器，也可以换成别的，比如nano
-sudo 和权限管理有关
-amd-ucode 是微码，用来修复和优化cpu，intel用户安装intel-ucode
-```
-
-可以再次运行yazi看到刚才在/mnt下安装的东西。
-
-### swap交换空间
-
-参考链接：
-
-[Swap - ArchWiki](https://wiki.archlinux.org/title/Swap)
-
-[Swap - Manjaro](https://wiki.manjaro.org/index.php/Swap)
-
-swap与虚拟内存和睡眠有关。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。如果你不需要睡眠功能的话跳过这一步。
-
-有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换文件的方式。
-
-```
-SWAP大小参考
-       内存  		      不需要睡眠          需要睡眠   不建议超过
-       1GB              1GB                 2GB        2GB
-       2GB              2GB                 3GB        4GB
-       3GB              3GB                 5GB        6GB
-       4GB              4GB                 6GB        8GB
-       5GB              2GB                 7GB       10GB
-       6GB              2GB                 8GB       12GB
-       8GB              3GB                 11GB       16GB
-      12GB              3GB                 15GB        24GB
-      16GB              4GB                 20GB       32GB
-      24GB              5GB                 29GB       48GB
-      32GB              6GB                 38GB       64GB
-      64GB              8GB                 72GB       128GB
-     128GB             11GB                 139GB       256GB
-     256GB             16GB                 272GB       512GB
-     512GB             23GB                 535GB       1TB
-       1TB             32GB                1056GB       2TB
-       2TB             46GB                2094GB       4TB
-       4TB             64GB                4160GB       8TB
-       8TB             91GB                8283GB       16TB
-```
-
-1. 创建swap文件
-
-```
-btrfs filesystem mkswapfile --size 64g --uuid clear /mnt/swap/swapfile
-```
-
-2. 启动swap
-
-```
-swapon /mnt/swap/swapfile
-```
-
-### 生成fstab文件
-
-这可以让系统启动时自动完成挂载
-
-```
-genfstab -U /mnt > /mnt/etc/fstab
-
-genfstab（生成文件系统表）
--U 用uuid指定分区
- > 大于号代表输出结果覆盖写入到有右边的文件里，>>两个大于号代表追加写入
-```
-
-### 为双系统做准备
-
-需要挂载windows的efi分区。在genfstab之后才进行是因为没有必要自动挂载win的efi分区。
-
-```
-mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
-```
-
-记得/dev/nvme1n1p1替换为自己windows efi分区对应的设备名。
-
-### change root
-
-进入刚刚安装的系统
-
-```
-arch-chroot /mnt
-```
-
-此时根目录从live环境变成了/mnt
-
-### 设置时间和时区
-
-```
-ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
-```
-ln 是link的缩写，-s代表跨文件系统的软链接，-f代表强制执行，所以这条命令的意思是在/etc/目录下创建/usr/.../Shanghai这个文件的链接，取名为localtime。zoneinfo里面包含了所有可用时区的文件，localtime是系统确认时间的依据。
-
-```
-hwclock --systohc #系统时钟写入主板硬件时钟
-```
-
-### 本地化设置
-```
-vim /etc/locale.gen
-
-左斜杠键进行搜索，取消en_US.UTF-8 UTF-8和zh_CN.UTF-8的注释
-```
-```
-locale-gen
-```
-```
-vim /etc/locale.conf
-
-写入 LANG=en_US.UTF-8
-```
-
-/etc/locale.conf这个文件关系到系统的语言。如果一个桌面环境没有给你调节系统语言的设置，那就可以通过编辑这个文件重启后修改系统语言。这里先设置系统语言为英文，否则后面会乱码。
-
-### 设置主机名
-
-```
-vim /etc/hostname
-```
-
-随意取一个自己喜欢的主机名
-
-### 设置root密码
-
-```
-passwd 
-```
-
-### 安装引导程序
-
-这里根据esp挂载点的不同，grub的安装也会有所不同，本文演示的是/efi为esp，grub装进esp的方案。
-
-```
-pacman -S grub efibootmgr os-prober
-
-grub是最常用的工具，其他还有systemd-boot，有需要自行查找
-efibootmgr 管理uefi启动项
-os-prober 用来搜索win11
-```
-```
-grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=ARCH 
-
---target 指定架构
---efi-directory 指定efi文件的目录（esp）
---boot-directory 指定grub文件的目录（默认是/boot/grub，本文把grub装进esp）
---bootloader-id 任意取一个启动项名字
-```
-
-如果你有兴趣看看这是个啥的话可以安装yazi，刚刚是在live环境装的，chroot之后是另外的系统，所以要重新装。
-
-```
-pacman -S yazi
-```
-
-输入`yazi`命令就可以打开终端文档管理器了。.efi文件就存放在```/efi/EFI/你取的启动项名字/```这个目录里面，grub也在/efi里，/boot里有内核文件和initramfs。其他的东西你感兴趣的话也可以自己看一看。
-
-按q键退出yazi。clear命令或者按ctrl+L可以清屏。
-
-- 编辑grub的源文件
-
-```
-vim /etc/default/grub
-```
-
-这是生成grub的配置文件时需要用到的东西。
-
-  1. GRUB_DEFAULT=0改成saved，再取消GRUB_SAVEDEFAULT=true的注释。这一步是记住开机的选择。
-
-  2. GRUB_CMDLINE_LINUX_DEFAULT里面去掉quiet以显示开机日志，loglevel设置日志等级为5。再添加`nowatchdog modprobe.blacklist=sp5100_tco`，禁用watchdog。intelcpu用户把sp5100_tco换成iTCO_wdt。
-
-     loglevel共7级，5级是一个信息量的平衡点。watchdog的目的简单来说是在系统死机的时候自动重启系统。这在服务器或者嵌入式上有用，但是对个人用户来说没有意义，禁用以节省系统资源、提高开机和关机速度
-
-3. 取消最后一行GRUB_DISABLE_OS_PROBER=false的注释。这一步让grub使用os-prober生成其他系统的启动项
-
-- 生成grub的配置文件
-```
-grub-mkconfig -o /efi/grub/grub.cfg
-```
-
-### 完成安装
-
-```
-exit 退出changeroot
-reboot 重启，会自动取消所有的挂载
-```
-如果u盘没拔掉的话记得拔掉
-
-### 重启后进入系统登录root账号
-
-可能需要选择一下启动项
-
-### 启动网络
-
-- 开启networkmanager服务，注意大小写
-
-```
-systemctl enable --now NetworkManager 
-
-enbale代表开机自启
---now代表现在启动
-```
-
-#### 连接wifi
-
-- 启动nmtui
-
-```
-nmtui开启工具
-选择activate a connection
-选择自己的wifi，回车，，输入密码，回车，esc退出软件
-clear清屏，或者ctrl+L清屏
-```
-
-- 确认网络连接
-
-```
-ip a
-ping bilibili.com
-```
-
-### 放松一下吧
-
-```
-pacman -S fastfetch lolcat cmatrix
-```
-
-使用示例： fastfetch | lolcat，竖线代表把左边程序的输出结果输入到右边的程序里。
-
-cmatrix是代码雨，输入cmatrix回车运行。
-
-接下来看[安装桌面环境前的准备](#安装桌面环境前的准备)
-
----
-
-
-
-## 脚本安装
-### 确认网络连接
-```
-ip a #确认网络连接
-ping bilibili.com #ping一个网址确认网络正常
-```
-
-* iwctl工具连接wifi
-```
-iwctl
-```
-```
-station wlan0 connect 【wifi名】 #回车后会跳出passwd提示你输入密码
-```
-
-```
-exit #退出iwctl
-```
-
-### 可选：更新archinstall
-1. 更新数据库
-
-   ```
-   pacman -Sy
    
-   #pacman是包管理器，管理软件的安装、卸载之类的
-   #-S代表安装
-   #-Sy代表同步数据库
-   ```
 
-2. 更新密钥
+   ## 手动安装
 
-   ```
-   pacman -S archlinux-keyring
-   ```
+   参考链接：
 
-3. 更新archinstall脚本
+   [archlinux 简明指南](https://arch.icekylin.online/)
 
-   ```
-   pacman -S archinstall
-   ```
+   [安装指南 - Arch Linux 中文维基](https://wiki.archlinuxcn.org/wiki/%E5%AE%89%E8%A3%85%E6%8C%87%E5%8D%97)
 
-### 开启archinstall
+   ### 连接网络
 
-```
-archinstall
-```
-
-第一项是脚本语言，第二项是系统本地化，保持英文就行，改了会乱码，直接看第三项。
-
-### Mirrors and repositories 设置镜像源
-
-1. 选择第一项Select regions设置自己的所在地。加载会比较慢，耐心等一等。
-2. 选择第三项optional repositories回车激活multilib。这是32位程序的源。
-
-### Disk configuration 磁盘分区 
-
-选择partitioning进入磁盘分区
-
-第一项是自动分区，但是默认会把esp挂载到/boot，我要把esp挂载到/efi，所以我要手动分区，具体原因可以看[重要概念讲解](#重要概念讲解)
-
-选择第二项手动分区 > 要使用的硬盘 
-
-1. 创建启动分区
-
-    选中要使用的空闲空间 > Size（分区大小）512MB > Filesystem（文件系统）FAT32 > Mountpoint（挂载点）/efi
-
-    选中刚刚创建的分区，回车设置bootable和esp。
-
-2. 创建swap分区
-
-   **如果你不需要睡眠功能的话跳过这一步**。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。
-
-   swap交换空间与虚拟内存和睡眠有关。有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换分区的方式。
+   有线网自动连接，wifi要自己用命令行工具连接。使用如下命令确认网络连接：
 
    ```
-   SWAP大小参考
-          内存  			  不需要睡眠    		 需要睡眠   不建议超过
-          1GB              1GB                 2GB        2GB
-          2GB              2GB                 3GB        4GB
-          3GB              3GB                 5GB        6GB
-          4GB              4GB                 6GB        8GB
-          5GB              2GB                 7GB       10GB
-          6GB              2GB                 8GB       12GB
-          8GB              3GB                 11GB       16GB
-         12GB              3GB                 15GB        24GB
-         16GB              4GB                 20GB       32GB
-         24GB              5GB                 29GB       48GB
-         32GB              6GB                 38GB       64GB
-         64GB              8GB                 72GB       128GB
-        128GB             11GB                 139GB       256GB
-        256GB             16GB                 272GB       512GB
-        512GB             23GB                 535GB       1TB
-          1TB             32GB                1056GB       2TB
-          2TB             46GB                2094GB       4TB
-          4TB             64GB                4160GB       8TB
-          8TB             91GB                8283GB       16TB
+   ip a #查看网络连接信息
+   ping bilibili.com #确认网络正常
    ```
 
-   Size参考上面的表 > linux-swap
+   Ctrl+C可以中止正在运行的命令。
 
-3. 创建root分区
+   - 使用iwctl命令行工具连接wifi（此工具由`iwd`提供）
 
-   Size部分直接回车分配全部空间 > btrfs 
+     1. 启动
 
-   选中刚刚创建的btrfs，回车。选择Mark/Unmark as compressed设置透明压缩；再选择Set subvolumes（创建子卷）> Add subvolume 
+        ```
+        iwctl
+        ```
 
-   至少需要创建root子卷和home子卷。Subvolume name设置成 @，对应Subvolume mountpoint是 / ； @home 对应 /home
+        此时会进入iwctl，提示符会产生变化。
 
-   confirm and exit > confirm and exit > back 退出硬盘分区
+     2. 连接
+
+        ```
+        station wlan0 connect 【此处是你的wifi名字（不能是中文）】
+        ```
+
+     3. 退出iwctl
+
+        ```
+        exit
+        ```
+
+     4. 其他命令
+
+        ```
+        device list #列出设备
+        station wlan0 scan #扫描网络
+        station wlan0 get-networks #列出所有扫描的的wifi
+        station wlan0 show #查看连接状态
+        station wlan0 disconnect #断开连接
+        ```
+
+   ### 同步时间
+
+   ```shell
+   timedatectl set-ntp true 
+   ```
+
+   这条命令让arch连接到互联网上的公共时间服务器
+
+   ### reflector自动设置镜像源
+
+   ```
+   reflector -a 24 -c cn -f 10 --sort score --save /etc/pacman.d/mirrorlist --v
    
-   关于子卷是什么，可以看[创建btrfs子卷](#创建btrfs子卷)
-
-### Swap（zram交换空间）
-
-这一步是自动帮你配置zram交换空间，yes开启即可。
-
-### Bootloader引导系统
-
-最常用的是Grub，选Grub就行。有其他需求可以看[archwiki_boot_process](https://wiki.archlinux.org/title/Arch_boot_process)。
-
-### Hostname主机名
-
- 设置一个自己想要的主机名
-
-### Authentication身份认证
-
-- Root password设置管理员密码
-
-- User account > Add a user 创建普通用户
-
-  Should "" be a superuser(sudo)是问你要不要给这个用户管理员权限，选yes就行。
-
-- U2F login setup这个是物理密钥，有需要的自行设置
-
-### Profile
-
-这里可以选择自动安装桌面、最小化安装等等。都选择用archinstall自动安装系统那，那就顺便自动安装一下桌面吧。如果不知道自己想安装哪个就从Gnome和KDE Plasma里随便选一个。KDE更符合windows用户的直觉，系统占用更低，个性化起来更方便，多显示器支持更好。Gnome的中文输入法体验更好，更符合mac用户的直觉，外观更好看，更流畅，更简洁，更稳定。
-
-- Type > Desktop > 想安装的桌面环境或者窗口管理器
-
-- Graphics driver（自动安装显卡驱动）
-
-  amd选AMD/ATi (opensource)
-
-  nvidia去[CodeNames · freedesktop.org](https://nouveau.freedesktop.org/CodeNames.html)这个页面搜索你的显卡型号，确认对应的NV family；NV160以后的显卡选Nvidia (open kernel module ...)；NV110~NV160的选Nvidia (proprietary)，再往前的选Nvidia (open-source nouveau ...)
-
-### Applications（蓝牙和音视频）
-
-- Bluetooth > Yes 自动安装蓝牙
-
-- Audio > pipewire 自动安装音视频服务
-
-  pipewire是新技术，兼容旧的pulseautio等服务，选pipewire就行了。
-
-### Kernel（系统内核）
-
-tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣可以自己查询。
-
-### Network configuration （网络配置）
-
-选第三项 NetworkManager，因为跟Gnome和KDE Plasma深度集成。有别的需求自行查找。
-
-### Additional packages（自定义安装其他软件包）
-
-/左斜杠键进行搜索，tab键选择。
-
-必须安装：vim（任意文本编辑器）、os-prober（双系统需要）
-
-可选安装字体：wqy-zenhei（文泉驿正黑）、noto-fonts（谷歌开源字体）、noto-fonts-emoji（表情）
-
-如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
-
-### Timezone（时区）
-
-左斜杠键搜索Shanghai
-
-### Automatic time sync (NTP) （自动启用网络时间同步）
-
-默认开启，不用修改
-
-### Install
-
-选择install安装
-
-### 双系统
-
-安装完成后配置windows和linux的双系统。
-
-1.  选择exit archinstall，退出archinstall
-
-2. 挂载windwos的启动分区
-
-   ```
-   lsblk -pf 列出当前分区情况
+   -a（age） 24 指定最近24小时更新过的源
+   -c（country） cn 指定国家为中国（可以增加邻国）
+   -f（fastest） 10 筛选出下载速度最快的10个
+   --sort score 按照下载速度和同步时间综合评分并排序，比单纯按照下载速度排序更可靠
+   --save /etc/pacman.d/mirrorlist 将结果保存到/etc/pacman.d/mirrorlist
+   --v（verbose） 过程可视化
    ```
 
-   找到ntfs上面的fat分区，通常是nvme1n1p1或者0n1p1。可以用`fdisk -l` （小写字母l）查看更详细的分区信息。找到后挂载到/mnt下的任意一个目录，比如/mnt/winboot。
+   ### 更新密钥
 
    ```
-   mount /dev/nvme1n1p1 /mnt/winboot 
-   ```
-
-3. arch-chroot 
-
-   ```
-   arch-chroot /mnt 进入刚刚安装的系统
-   ```
-
-4. 编辑grub源文件启用os-prober
-
-   ```
-   vim /etc/default/grub 
-   ```
+   pacman -Sy archlinux-keyring
    
-   i键进入编辑模式
+   pacman是包管理器，管理软件的安装、卸载之类的
+   -S代表安装
+   -Sy代表同步数据库然后安装
+   ```
+
+   ### 可选：探索Linux文件
+
+   如果你有兴趣，可以安装一个终端管理器查看当前Live环境的目录。
+
+   ```
+   pacman -S yazi
+   ```
+
+   pacman命令调用pacman包管理器在当前根目录下进行软件包相关操作，-S代表安装，[yazi](https://yazi-rs.github.io/)是好用的终端文档管理器，另外比较常用的还有[ranger](https://github.com/ranger/ranger)。
+
+   用`yazi`命令开启鸭子
+
+   ```
+   yazi
+   ```
+
+   此时应该会处在一个空的/root目录，按左键切换到上级目录。
+
+   左中右三块区域，左边是上级目录，中间是当前目录，右边是下级目录。上下左右键切换（或者使用vim key，jkhl对应上下左右）。想看什么自己决定吧。
+
+   q键退出yazi。
+
+   ### 硬盘分区
+
+   ```shell
+   lsblk -pf  #查看当前分区情况
+   fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细分区信息
+   ```
+
+   ```shell
+   cfdisk /dev/nvme0n1 #选择自己要使用的硬盘进行分区
+   ```
+
+   1. 如果是新硬盘的话会弹出选项，选GPT。
+
+   2. efi分区
+
+      创建512MB的分区，类型（type）选择efi system。
+
+      PS：也可以不创建efi分区，直接使用windows的efi。如果使用win的efi分区的话跳过格式化efi分区的步骤。（windows更新会搞坏linux的引导，建议给linux单独创建efi分区）
+
+   3. 根分区
+
+      其余全部分到一个分区里，类型linux filesystem。
+
+   #### 格式化分区
+
+   1. 再次查看分区情况
+
+      ```shell
+      lsblk -pf #查看分区情况
+      fdisk -l /dev/想要查询详细情况的硬盘  #小写字母l，查看详细分区信息
+      ```
+
+   2. 格式化efi分区
+
+      ```shell
+      mkfs.fat -F 32 /dev/nvme0n1p1（EFI分区名）
+      ```
+
+   3. 格式化btrfs根分区
+
+      ```shell
+      mkfs.btrfs /dev/nvme0n1p2（根分区名）
+      
+      #加上-f参数可以强制格式化
+      ```
+
+   #### 创建btrfs子卷
+
+   子卷是btrfs的一个特性，跟快照（相当于存档和回档）有关。通常至少要创建root子卷（存放系统文件）和home子卷（存放用户文件），也就是@和@home。由于这两者是平级关系，所以创建@快照时不会包含@home。这样就可以只恢复系统文件，不影响用户数据。
+
+   - 挂载
+
+     ```shell
+     mount -t btrfs -o compress=zstd /dev/nvme0n1p2（根分区名） /mnt
+     ```
+
+     ```
+     mount 挂载命令
+     -t 指定文件系统
+     -o 指定额外的挂载参数
+     conpress=zstd 指定透明压缩，zstd是压缩算法
+     ```
+
+     /mnt是根目录下的子目录，用于手动临时挂载外部设备。我们之前从u盘加载的其实也是一个的archlinux系统，称为live环境。这里的/mnt就是u盘系统（live环境）的/mnt目录。这条命令把/dev/nvme0n1p2分区挂载到了/mnt目录，而/dev/nvme0n1p2是我们将要安装的系统的根分区，这意味着/mnt成为了我们将要安装的系统的根目录。
+
+     compress是btrfs的另一个特性，透明压缩。可以通过算法在数据写入磁盘前先对数据进行压缩，用以节省磁盘空间，延长磁盘寿命，代价是一点点cpu占用，但极小，对现代硬件来说几乎可以忽略不计。zstd是最平衡的压缩算法，可以像这样zstd:3指定压缩等级，最高15，通常3就可以了。
+
+   - 创建子卷
+
+     ```shell
+     btrfs subvolume create /mnt/@
+     btrfs subvolume create /mnt/@home
+     btrfs subvolume create /mnt/@swap #不需要睡眠功能的话跳过这个
+     ```
+
+   - 可选：确认
+
+     ```shell
+     btrfs subvolume list -p /mnt
+     ```
+
+   - 取消挂载
+
+     ```shell
+     umount /mnt
+     ```
+
+   ### 正式挂载
+
+   1. 挂载root子卷
+
+      ```
+      mount -t btrfs -o subvol=/@,compress=zstd /dev/nvme0n1p2 /mnt
+      ```
+
+      和刚刚的挂载是一样的操作，不过这次是把/dev/nvme0n1p2上的@子卷挂载到了/mnt，而不是把/dev/nvme0n1p2挂载到/mnt。
+
+   2. 挂载home子卷
+
+      ```
+      mount --mkdir -t btrfs -o subvol=/@home,compress=zstd /dev/nvme0n1p2 /mnt/home
+      ```
+
+      由于/mnt下没有/mnt/home这个目录，所以要加上`--mkdir`命令创建/mnt/home用来挂载。把@home子卷挂载到了/mnt/home。
+
+   3. 可选：挂载swap子卷（不需要睡眠功能的话跳过这一步）
+
+      ```
+      mount --mkdir -t btrfs -o subvol=/@swap,compress=zstd /dev/nvme0n1p2 /mnt/swap
+      ```
+
+   4. 挂载efi分区（esp）
+
+      ```
+      mount --mkdir /dev/nvme0n1p1 /mnt/efi
+      ```
+
+      记得把/dev/nvme0n1p1替换为自己对应的efi分区设备名。
+
+   5. 复查挂载情况
+
+      ```
+      df -h
+      ```
+
+   ### 安装系统
+
+   ```
+   pacstrap -K /mnt base base-devel linux linux-firmware btrfs-progs
    
-   取消最后一行GRUB_DISABLE_OS_PROBER=false的注释
+   -K 复制密钥
+   base-devel是编译其他软件的时候用的
+   linux是内核，可以更换
+   linux-firmware是固件
+   btrfs-progs是btrfs文件系统的管理工具
+   ```
+
+   pacstrap命令是把软件安装到指定的根目录下。
+
+   注意：如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
+
+   ### 安装必要的功能性软件
+
+   ```
+   pacstrap /mnt networkmanager vim sudo amd-ucode
    
-5. 禁用watchdog
-
-   在GRUB_CMDLNE_LINUX_DEFAULT=""里面添加参数
-
-   ```
-   nowatchdog modprobe.blacklist=sp5100_tco
+   networkmanager 是联网用的，和kde和gnome深度集成，也可以换成别的
+   vim 是文本编辑器，也可以换成别的，比如nano
+   sudo 和权限管理有关
+   amd-ucode 是微码，用来修复和优化cpu，intel用户安装intel-ucode
    ```
 
-    intelcpu用户把sp5100_tco换成iTCO_wdt
+   可以再次运行yazi看到刚才在/mnt下安装的东西。
 
-5. GRUB_DEFAULT=0改成saved，再取消GRUB_SAVEDEFAULT=true的注释。这一步是记住开机的选择。
+   #### vim文本编辑器基础操作
 
-5. 生成grub的配置文件
+   vim是以键盘操作为核心理念的文本编辑器
+
+   `/`左斜杠进如搜索模式，回车跳转到搜索到的第一个，`n`n键跳转到搜索到的下一个，`Shift+n`跳转到搜索到的上一个；
+
+   `i `键进入编辑模式；
+
+   `esc` 退出编辑模式；
+
+   `:w` 冒号小写w写入；
+
+   `:q` 冒号小写q退出；
+
+   `:wq `冒号小写wq保存并退出；
+
+   `! `命令后加上感叹号代表强制执行。
+
+   知道这些就可以开始使用了。不习惯的话可以安装nano。nano的基础操作只需要记住Ctrl+S保存和Ctrl+X退出即可。
+
+   #### ⚠️没有联网软件的话一会安装完系统连不了网⚠️
+
+   ### 可选：swap交换空间
+
+   参考链接：
+
+   [Swap - ArchWiki](https://wiki.archlinux.org/title/Swap)
+
+   [Swap - Manjaro](https://wiki.manjaro.org/index.php/Swap)
+
+   swap与虚拟内存有关。如果设置了硬盘swap的话还可以使用睡眠功能能。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。硬盘swap有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换文件的方式。
+
+   如果你不需要睡眠功能的话别设置硬盘swap，后续会有将内存用作swap的设置。
+
+   swap大小参考：
+
+   | 内存(GB) | 不需要睡眠(GB) | 需要睡眠（GB） | 不建议超过（GB） |
+   | -------- | -------------- | -------------- | ---------------- |
+   | 1        | 1              | 2              | 2                |
+   | 2        | 2              | 3              | 4                |
+   | 3        | 3              | 5              | 6                |
+   | 4        | 4              | 6              | 8                |
+   | 5        | 2              | 7              | 10               |
+   | 6        | 2              | 8              | 12               |
+   | 8        | 3              | 11             | 16               |
+   | 12       | 3              | 15             | 24               |
+   | 16       | 4              | 20             | 32               |
+   | 24       | 5              | 29             | 48               |
+   | 32       | 6              | 38             | 64               |
+   | 64       | 8              | 72             | 128              |
+   | 128      | 11             | 139            | 256              |
+   | 256      | 16             | 272            | 512              |
+
+   1. 创建swap文件
+
+      ```
+      btrfs filesystem mkswapfile --size 64g --uuid clear /mnt/swap/swapfile
+      ```
+
+   2. 启动swap
+
+      ```
+      swapon /mnt/swap/swapfile
+      ```
+
+   ### 生成fstab文件
+
+   系统会根据fstab中的内容自动进行挂载。
+
+   ```shell
+   genfstab -U /mnt > /mnt/etc/fstab
+   ```
 
    ```
-   grub-mkconfig -o /efi/grub/grub.cfg
+   genfstab（生成文件系统表）
+   -U 用uuid指定分区
+    > 大于号代表输出结果覆盖写入到有右边的文件里
+    如果是>>两个大于号则代表追加写入
    ```
 
-6. exit 退出chroot
+   ### 为双系统做准备
 
-7. reboot 重启
+   win和linux分别处在不同的efi分区里，所以为了检测到windows，需要挂载windows的efi分区。在genfstab之后才进行是因为没有必要自动挂载win的efi分区。
 
-8. 更改bios启动项
+   ```shell
+   lsblk -pf 
+   ```
+
+   找到有ntfs字样的那块盘，win的efi分区通常是那块盘的p1。如果想谨慎一点可以用`fdisk -l`查看详细信息。
+
+   ```shell
+   fdisk -l /dev/nvme1n1
+   ```
+
+   找到后挂载到/mnt下的任意目录即可，为了可读性我挂载到/mn/winboot
+
+   ```shell
+   mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
+   ```
+
+   记得/dev/nvme1n1p1替换为自己windows efi分区对应的设备名。
+
+   ### 更换根目录（change root）
+
+   进入刚刚安装的系统
+
+   ```shell
+   arch-chroot /mnt
+   ```
+
+   此时根目录从live环境变成了/mnt，可以注意到提示符的变化。
+
+   ### 设置时间和时区
+
+   ```shell
+   ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+   ```
+
+   ln 是link的缩写，-s代表跨文件系统的软链接，-f代表强制执行，所以这条命令的意思是在/etc/目录下创建/usr/.../Shanghai这个文件的链接，取名为localtime。zoneinfo里面包含了所有可用时区的文件，localtime是系统确认时间的依据。
+
+   ```
+   hwclock --systohc #系统时钟写入主板硬件时钟
+   ```
+
+   ### 本地化设置
+
+   1. 编辑配置文件
+
+      ```
+      vim /etc/locale.gen
+      ```
+
+      左斜杠键进行搜索；`i`键进入编辑模式；取消en_US.UTF-8 UTF-8和zh_CN.UTF-8的注释；`esc`退出编辑模式；`:wq`保存并退出。
+
+   2. 生成本地化配置
+
+      ```
+      locale-gen
+      ```
+
+   3. 设置系统语言
+
+      ```
+      vim /etc/locale.conf
+      ```
+
+      `i`键进入编辑模式；写入`LANG=en_US.UTF-8`设置系统语言为英文；
+
+      ```
+      LANG=en_US.UTF-8
+      ```
+
+      `esc`退出编辑模式；`:wq`保存并退出。
+
+      `/etc/locale.conf`这个文件关系到系统的语言。如果一个桌面环境没有给你调节系统语言的设置，那就可以通过编辑这个文件重启后修改系统语言。`zh_CN.UTF-8`是中文，但是会导致tty的文件变成豆腐块，所以暂时先不设置为中文，后续安装完桌面环境后再更改。
+
+   ### 设置主机名
+
+   ```
+   vim /etc/hostname
+   ```
+
+   `i`键进入编辑模式；取一个自己喜欢的主机名；`esc`退出编辑模式；`:wq`保存并退出。
+
+   PS：此时你应该以及相当熟悉vim编辑器最基本的操作了，所以后面我会省略vim的操作讲解。
+
+   ### 设置root密码
+
+   ```
+   passwd 
+   ```
+
+   输入过程不显示，直接输入回车即可。
+
+   ### 安装引导程序
+
+   就像前面[重要概念讲解](#重要概念讲解)部分说的那样，根据esp挂载点和个人需求的不同，bootloader的选择也会不同。这里安装最常用的gru，采用的是esp挂载点为`/boot`，grub装进esp的方案。
+
+   1. 安装必要的软件包
+
+      ```shell
+      pacman -S grub efibootmgr os-prober
+      ```
+
+      `efibootmgr` 管理uefi启动项；`os-prober` 用来搜索win11。
+
+   2. 安装grub
+
+      ```
+      grub-install --target=x86_64-efi --efi-directory=/efi --boot-directory=/efi --bootloader-id=ARCH 
+      ```
+
+      `grub-install`安装grub；
+
+      `--target` 指定架构；
+
+      `--efi-directory` 指定efi文件的目录（esp）；
+
+      `--boot-directory` 指定grub文件的目录；
+
+      `--bootloader-id` 任意取一个启动项名字；
+
+      另外如果你有兴趣看看这是个啥的话可以安装yazi查看。刚刚是在live环境装的，`chroot`之后是另外的系统，所以要重新装。
+
+      ```
+      pacman -S yazi
+      ```
+
+      输入`yazi`命令打开终端文档管理器。`.efi`文件就存放在`/efi/EFI/你取的启动项名字/`这个目录里面，grub也在`/efi`里，`/boot`里有内核文件和initramfs。其他的东西你感兴趣的话也可以自己看一看。
+
+      按q键退出yazi；clear命令或者按ctrl+L可以清屏。
+
+   3. 编辑grub的源文件
+
+      ```
+      vim /etc/default/grub
+      ```
+
+      这是生成grub的配置文件时需要用到的东西。
+
+      - 启动项记忆功能
+
+        `GRUB_DEFAULT=0`改成`=saved`，再取消`GRUB_SAVEDEFAULT=true`的注释。
+
+      - 显示开机日志
+
+        `GRUB_CMDLINE_LINUX_DEFAULT`里面去掉`quiet`以显示开机日志。有些发行版还会出现`slash`之类的字样，代表的是开机动画。再设置`loglevel=5`把日志等级为5。`loglevel`共7级，5级是一个信息量的平衡点。
+
+      - 禁用watchdog
+
+        `GRUB_CMDLINE_LINUX_DEFAULT`里添加`nowatchdog `以及`modprobe.blacklist=sp5100_tco`。intelcpu用户把`sp5100_tco`换成`iTCO_wdt`
+
+        watchdog的目的简单来说是在系统死机的时候自动重启系统。对个人用户来说没有意义，禁用以节省系统资源、提高开机和关机速度。
+
+      - 允许使用os-prober搜索其他系统
+
+        取消最后一行`GRUB_DISABLE_OS_PROBER=false`的注释。
+
+   4. 生成grub的配置文件
+
+      ```
+      grub-mkconfig -o /efi/grub/grub.cfg
+      ```
+
+   5. 在grub的默认安装位置创建链接
+
+      ```
+      ln -sf /efi/grub /boot/grub
+      ```
+
+      大多数程序会默认检测`/boot/grub`作为grub的安装位置，所以创建一个链接方便使用。
+
+   ### 退出chroot
+
+   ```
+   exit
+   ```
+
+   此时就回到了live环境，可以注意到提示符的变化。
+
+   ### 重启电脑
+
+   ```
+   reboot
+   ```
+
+   此时会自动取消所有的挂载。
+
+   ### 拔掉系统u盘
+
+   如果u盘没拔掉的话记得拔掉
+
+   ### 选择BIOS启动项
+
+   通常默认就是刚刚安装的arch，如果不是的话选择一下启动项。
+
+   ### 登录root账户
+
+   用户名为root，密码刚刚设置过了。
+
+   ### 连接网络
+
+   1. 开启networkmanager服务，注意大小写
+
+      ```
+      systemctl enable --now NetworkManager 
+      ```
+
+      `systemctl`调用systemd进行操作
+
+      `enbale`代表开机自启
+      `--now`代表现在启动
+
+   2. 连接wifi
+
+      ```
+      nmtui
+      ```
+
+      nmtui是networkmanager提供的TUI（终端用户交互程序）
+
+      - 选择activate a connection
+      - 选择自己的wifi进行连接
+      - esc退出
+      - Ctrl+L或者`clear`清屏
+
+   3. 验证是否有网
+
+      ```
+      ip a
+      ping bilibili.com
+      ```
+
+   ### 放松一下吧
+
+   恭喜你成功手动安装了archlinux，现在小小地奖励一下自己吧。
+
+   ```
+   pacman -S fastfetch lolcat cmatrix
+   ```
+
+   不做讲解，自己运行命令试试吧。
+
+   ```
+   fastfetch
+   ```
+
+   ```
+   fastfetch | lolcat 
+   ```
+
+   ```
+   cmatrix
+   ```
+
+   ```
+   cmatrix | lolcat
+   ```
+
+   `|`竖线叫作pipe管道符，作用是把左边程序的输出结果输入到右边的程序里。
+
+   ---
+
+   
+
+   ## 脚本安装
+
+   ### 连接网络
+
+   有线网自动连接，wifi要自己用命令行工具连接。使用如下命令确认网络连接：
+
+   ```
+   ip a #查看网络连接信息
+   ping bilibili.com #确认网络正常
+   ```
+
+   Ctrl+C可以中止正在运行的命令。
+
+   - 使用iwctl命令行工具连接wifi（此工具由`iwd`提供）
+
+     1. 启动
+
+        ```
+        iwctl
+        ```
+
+        此时会进入iwctl，提示符会产生变化。
+
+     2. 连接
+
+        ```
+        station wlan0 connect 【此处是你的wifi名字（不能是中文）】
+        ```
+
+     3. 退出iwctl
+
+        ```
+        exit
+        ```
+
+     4. 其他命令
+
+        ```
+        device list #列出设备
+        station wlan0 scan #扫描网络
+        station wlan0 get-networks #列出所有扫描的的wifi
+        station wlan0 show #查看连接状态
+        station wlan0 disconnect #断开连接
+        ```
+
+   ### 可选：更新archinstall
+
+   1. 更新数据库
+
+      ```
+      pacman -Sy
+      
+      #pacman是包管理器，管理软件的安装、卸载之类的
+      #-S代表安装
+      #-Sy代表同步数据库
+      ```
+
+   2. 更新密钥
+
+      ```
+      pacman -S archlinux-keyring
+      ```
+
+   3. 更新archinstall脚本
+
+      ```
+      pacman -S archinstall
+      ```
+
+   ### 开启archinstall
+
+   ```
+   archinstall
+   ```
+
+   第一项是脚本语言，第二项是系统本地化，保持英文就行，改了会乱码，直接看第三项。
+
+   ### Mirrors and repositories 设置镜像源
+
+   1. 选择第一项Select regions设置自己的所在地。加载会比较慢，耐心等一等。
+   2. 选择第三项optional repositories回车激活multilib。这是32位程序的源。
+
+   ### Disk configuration 磁盘分区 
+
+   选择partitioning进入磁盘分区
+
+   第一项是自动分区，默认格式化整块硬盘，esp挂载到/boot。我要把esp挂载到/efi，所以只使用手动分区，具体原因[重要概念讲解](#重要概念讲解)部分已经说过了。
+
+   选择第二项手动分区 > 要使用的硬盘 
+
+   1. 创建启动分区
+
+      选中要使用的空闲空间 > Size（分区大小）512MB > Filesystem（文件系统）FAT32 > Mountpoint（挂载点）/efi
+
+      选中刚刚创建的分区，回车设置bootable和esp。
+
+   2. 创建swap分区
+
+      **如果你不需要睡眠功能的话跳过这一步**。睡眠指的是把系统当前状态写入硬盘，然后电脑完全断电，下一次开机恢复到睡眠前的状态。
+
+      swap交换空间与虚拟内存和睡眠有关。有swap分区或者swap文件两种方式，前者配置更简单，后者配置稍复杂，但是更加灵活。这里采用交换分区的方式。
+
+      | 内存(GB) | 不需要睡眠(GB) | 需要睡眠（GB） | 不建议超过（GB） |
+      | -------- | -------------- | -------------- | ---------------- |
+      | 1        | 1              | 2              | 2                |
+      | 2        | 2              | 3              | 4                |
+      | 3        | 3              | 5              | 6                |
+      | 4        | 4              | 6              | 8                |
+      | 5        | 2              | 7              | 10               |
+      | 6        | 2              | 8              | 12               |
+      | 8        | 3              | 11             | 16               |
+      | 12       | 3              | 15             | 24               |
+      | 16       | 4              | 20             | 32               |
+      | 24       | 5              | 29             | 48               |
+      | 32       | 6              | 38             | 64               |
+      | 64       | 8              | 72             | 128              |
+      | 128      | 11             | 139            | 256              |
+      | 256      | 16             | 272            | 512              |
+
+      Size参考上面的表 > linux-swap
+
+   3. 创建root分区
+
+      Size部分直接回车分配全部空间 > btrfs 
+
+      选中刚刚创建的btrfs，回车。选择Mark/Unmark as compressed设置透明压缩；再选择Set subvolumes（创建子卷）> Add subvolume 
+
+      至少需要创建root子卷和home子卷。Subvolume name设置成 @，对应Subvolume mountpoint是 / ； @home 对应 /home
+
+      confirm and exit > confirm and exit > back 退出硬盘分区
+
+      关于子卷是什么，可以看[创建btrfs子卷](#创建btrfs子卷)
+
+   ### Swap（zram交换空间）
+
+   这一步是自动帮你配置zram交换空间，yes开启即可。
+
+   ### Bootloader引导系统
+
+   最常用的是Grub，选Grub就行。有其他需求可以看[archwiki_boot_process](https://wiki.archlinux.org/title/Arch_boot_process)。
+
+   ### Hostname主机名
+
+    设置一个自己想要的主机名
+
+   ### Authentication身份认证
+
+   - Root password设置管理员密码
+
+   - User account > Add a user 创建普通用户
+
+     Should "" be a superuser(sudo)是问你要不要给这个用户管理员权限，选yes就行。
+
+   - U2F login setup这个是物理密钥，有需要的自行设置
+
+   ### Profile
+
+   这里可以选择自动安装桌面、最小化安装等等。都选择用archinstall自动安装系统了，那就顺便自动安装一下桌面吧。如果不知道自己想安装哪个就从Gnome和KDE Plasma里随便选一个。KDE默认设置更符合windows用户的直觉，自带功能好用，个性化起来更方便，多显示器支持更，但是初见会觉得杂乱。Gnome的中文输入法体验更好，默认设置更符合mac用户的直觉，外观更好看，更简洁，但是简洁过头有些简陋了。
+
+   - Type > Desktop > 想安装的桌面环境或者窗口管理器
+
+   - Graphics driver（自动安装显卡驱动）
+
+     amd选AMD/ATi (opensource)
+
+     nvidia去[CodeNames · freedesktop.org](https://nouveau.freedesktop.org/CodeNames.html)这个页面搜索你的显卡型号，确认对应的NV family；NV160以后的显卡选Nvidia (open kernel module ...)；NV110~NV160的选Nvidia (proprietary)，再往前的选Nvidia (open-source nouveau ...)
+
+   ### Applications（蓝牙和音视频）
+
+   - Bluetooth > Yes 自动安装蓝牙
+
+   - Audio > pipewire 自动安装音视频服务
+
+     pipewire是新技术，兼容旧的pulseautio等服务，选pipewire就行了。
+
+   ### Kernel（系统内核）
+
+   tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣可以自己查询。
+
+   ### Network configuration （网络配置）
+
+   选第三项 NetworkManager，因为跟Gnome和KDE Plasma深度集成。有别的需求自行查找。
+
+   ### Additional packages（自定义安装其他软件包）
+
+   /左斜杠键进行搜索，tab键选择。
+
+   必须安装：vim（任意文本编辑器）、os-prober（双系统需要）
+
+   可选安装字体：wqy-zenhei（文泉驿正黑）、noto-fonts（谷歌开源字体）、noto-fonts-emoji（表情）
+
+   如果你使用的是marvell的无线网卡，这里要额外安装linux-firmware-marvell，否则进系统找不到网卡。
+
+   ### Timezone（时区）
+
+   左斜杠键搜索Shanghai
+
+   ### Automatic time sync (NTP) （自动启用网络时间同步）
+
+   默认开启，不用修改
+
+   ### Install
+
+   选择install安装
+
+   ### 双系统
+
+   安装完成后配置windows和linux的双系统。
+
+   1. 选择exit archinstall，退出archinstall
+
+   2. 挂载windwos的启动分区
+
+      ```
+      lsblk -pf 列出当前分区情况
+      ```
+
+      找到有ntfs字样的那块盘，win的efi分区通常是那块盘的p1。如果想谨慎一点可以用`fdisk -l`查看详细信息。
+
+      ```shell
+      fdisk -l 
+      ```
+
+      找到后挂载到/mnt下的任意目录即可，为了可读性我挂载到/mn/winboot
+
+      ```shell
+      mount --mkdir /dev/nvme1n1p1 /mnt/winboot 
+      ```
+
+   3. arch-chroot 
+
+      ```
+      arch-chroot /mnt 进入刚刚安装的系统
+      ```
+
+   4. 编辑grub的源文件
+
+      ```
+      vim /etc/default/grub
+      ```
+
+      方向键移动光标；`i`键进入编辑模式；取消最后一行`GRUB_DISABLE_OS_PROBER=false`的注释；`esc`退出编辑模式；`:wq`保存并退出。
+
+      还有一些其他的设置：
+
+      - 启动项记忆功能
+
+        `GRUB_DEFAULT=0`改成`=saved`，再取消`GRUB_SAVEDEFAULT=true`的注释。
+
+      - 显示开机日志
+
+        `GRUB_CMDLINE_LINUX_DEFAULT`里面去掉`quiet`以显示开机日志。有些发行版还会出现`slash`之类的字样，代表的是开机动画。再设置`loglevel=5`把日志等级为5。`loglevel`共7级，5级是一个信息量的平衡点。
+
+      - 禁用watchdog
+
+        `GRUB_CMDLINE_LINUX_DEFAULT`里添加`nowatchdog `以及`modprobe.blacklist=sp5100_tco`。intelcpu用户把`sp5100_tco`换成`iTCO_wdt`
+
+        watchdog的目的简单来说是在系统死机的时候自动重启系统。对个人用户来说没有意义，禁用以节省系统资源、提高开机和关机速度。
+
+   4. 生成grub的配置文件
+
+      ```
+      grub-mkconfig -o /efi/grub/grub.cfg
+      ```
+
+   5. 在grub的默认安装位置创建链接
+
+      ```
+      ln -sf /efi/grub /boot/grub
+      ```
+
+      我们的grub在`/efi/grub`，大多数程序会默认检测`/boot/grub`作为grub的安装位置，所以创建一个链接方便使用。
+
+   6. 退出
+
+      ```
+      exit
+      ```
+
+   7. 重启
+
+      ```
+      reboot
+      ```
+
+   8. 选择bios启动项
 
 ---
 
@@ -867,6 +1074,8 @@ tab键选择。要续航选linux，要性能选linux-zen，其他选项有兴趣
 # 安装桌面环境前的准备
 
 ## 设置全局默认文本编辑器
+
+如果不设置默认编辑器的话有些程序会默认使用vi编辑器
 
 ```
 sudo vim /etc/environment
@@ -890,9 +1099,11 @@ username替换为自己的用户名（不需要输入<>符号）
 -m代表创建用户的时候创建home目录，-g代表设置组
 
 * 设置密码
+
 ```
 passwd <username>
 ```
+
 * 编辑权限
 
 ```
@@ -900,18 +1111,21 @@ EDITOR=vim visudo
 ```
 
 * 搜索 wheel，取消注释
+
 ```
 %wheel ALL=（ALL：ALL） ALL
 ```
+
 ## 开启32位源
 
-32位源建议开启，因为steam需要，wine运行exe也需要
+32位源建议开启，steam需要，wine运行exe也需要
 
 编辑pacman配置文件
 
    ```
 vim /etc/pacman.conf
    ```
+
 去掉[multilib]两行的注释
 
 可选：把ParallelDownloads的数值调大，这是多线程下载，默认是5 
@@ -965,7 +1179,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   ```
   pacman -S --needed vulkan-radeon vulkan-mesa-layers
   ```
-  
+
   vulkan-mesa-layers是为了解决混合模式下gnome-shell仍运行在独立显卡上导致显卡占用异常这个问题。
 
 ### 硬件编解码
