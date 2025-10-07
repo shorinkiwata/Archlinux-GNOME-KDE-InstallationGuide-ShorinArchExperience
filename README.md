@@ -784,7 +784,9 @@ ventoy制作的系统盘可以存放多个系统镜像，推荐。
 
 ## 脚本安装
 
-  这部分的主要内容是arch自带的archinstall脚本。除此之外还有大佬编写了更适合中文用户的脚本，除了基础的固件、驱动、软件外，还会自动配置中文输入法，有兴趣的可以试试，点击此处跳转：[Arch Installer For Chinese](https://github.com/SZ-XY/AIFC)。
+ 这部分是arch自带的archinstall脚本使用教程。
+ 
+有大佬编写了更适合中文用户的脚本，除了固件、驱动、蓝牙、常用软件等步骤外，还会自动配置中文输入法，有兴趣的可以试试：[Arch Installer For Chinese](https://github.com/SZ-XY/AIFC)。
 
    ### 连接网络
 
