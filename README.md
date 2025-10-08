@@ -343,7 +343,7 @@ ventoy制作的系统盘可以存放多个系统镜像，推荐。
      mount 挂载命令
      -t 指定文件系统
      -o 指定额外的挂载参数
-     conpress=zstd 指定透明压缩，zstd是压缩算法
+     compress=zstd 指定透明压缩，zstd是压缩算法
      ```
 
      /mnt是根目录下的子目录，用于手动临时挂载外部设备。我们之前从u盘加载的其实也是一个的archlinux系统，称为live环境。这里的/mnt就是u盘系统（live环境）的/mnt目录。这条命令把/dev/nvme0n1p2分区挂载到了/mnt目录，而/dev/nvme0n1p2是我们将要安装的系统的根分区，这意味着/mnt成为了我们将要安装的系统的根目录。
