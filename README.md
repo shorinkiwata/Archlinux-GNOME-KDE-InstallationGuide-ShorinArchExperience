@@ -3274,8 +3274,6 @@ https://starship.rs/presets/
 
 
 
----
-
 
 
 ## 显卡切换
@@ -4211,7 +4209,7 @@ lsfg一旦生效，就可以修改profile，实时更改补帧倍率。
 
 flatpak程序使用补帧看这里[Using lsfg‐vk in Flatpak · PancakeTAS/lsfg-vk Wiki](https://github.com/PancakeTAS/lsfg-vk/wiki/Using-lsfg%E2%80%90vk-in-Flatpak)
 
-## 玩steam游戏
+## steam
 
 [Proton (软件) - 维基百科，自由的百科全书](https://zh.wikipedia.org/wiki/Proton_(%E8%BB%9F%E9%AB%94))
 
@@ -5061,7 +5059,7 @@ sudo pacman -R gnome-contacts gnome-maps gnome-music totem gnome-characters gnom
 
 noisetorch
 
-easyeffect
+easyeffects
 
 ## gnome软件推荐
 
