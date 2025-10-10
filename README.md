@@ -1297,7 +1297,7 @@ timeshift操作简单，但是速度很慢且容易出bug，建议用snapper。
 - 由于默认grub路径是/boot，而我们之前的grub安装在/efi，所以需要一个软链接。
 
   ```
-  ln -sf /efi/grub /boot/grub
+  sudo ln -sf /efi/grub /boot/grub
   ```
 
 #### 方法一：snapper
@@ -2482,7 +2482,7 @@ timeshift操作简单，但是速度很慢且容易出bug，建议用snapper
 - 由于默认grub路径是/boot，而我们之前的grub安装在/efi，为了方便使用需要一个软链接。
 
   ```
-  ln -sf /efi/grub /boot/grub
+  sudo ln -sf /efi/grub /boot/grub
   ```
 
 
