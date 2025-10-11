@@ -12,9 +12,11 @@
 
 ## 视频
 
-本文档创建时制作的视频，虽然已经过时，专业知识浅薄，制作也十分粗糙，但是依旧能学到东西，有兴趣的可以看看：  
+这里有一些我制作的视频，可以当作电子榨菜。除去第一期archlinux教程视频，其他视频都以故事为明线，教学作为暗线，图一乐的同时学习Linux的使用方法。更多视频制作中🏗……
 
-[「Archlinux究极指南」从手动安装到显卡直通，最后删除Linux_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1L2gxzVEgs/?spm_id_from=333.1387.homepage.video_card.click&vd_source=65a8f230813d56660e48ae1afdfa4182)
+### Archlinux究极指南2025
+
+本文档创建时制作的视频，虽然已经过时，专业知识浅薄，制作也十分粗糙，但是依旧能学到东西，有兴趣的可以看看： [「Archlinux究极指南」从手动安装到显卡直通，最后删除Linux_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1L2gxzVEgs/?spm_id_from=333.1387.homepage.video_card.click&vd_source=65a8f230813d56660e48ae1afdfa4182)
 
 ### 挑战Linux玩游戏
 
