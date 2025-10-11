@@ -3358,7 +3358,7 @@ yay -Rns vmware-workstation vmware-keymaps
 1. 安装
 
    ```
-   yay -S --needed freerdp winboat
+   yay -S --needed freerdp winboat-bin
    ```
 
 2. 开启docker服务
@@ -3388,7 +3388,7 @@ yay -Rns vmware-workstation vmware-keymaps
 合起来：
 
 `````````````````````````````````````
-yay -S --needed freerdp winboat
+yay -S --needed freerdp winboat-bin
 sudo systemctl enable --now docker.service
 sudo usermod -aG docker $USER
 echo -e "ip_tables\niptable_nat" | sudo tee /etc/modules-load.d/iptables.conf
@@ -3432,7 +3432,7 @@ reboot
 合起来：
 
 ```
-sudo docker system prune -a --volumes && sudo systemctl disable --now docker.service && yay -Rns winboat && sudo rm -rfv /var/lib/docker /etc/docker ~/.docker /var/run/docker ~/.winboat && reboot
+sudo docker system prune -a --volumes && sudo systemctl disable --now docker.service && yay -Rns winboat-bin && sudo rm -rfv /var/lib/docker /etc/docker ~/.docker /var/run/docker ~/.winboat && reboot
 ```
 
 
