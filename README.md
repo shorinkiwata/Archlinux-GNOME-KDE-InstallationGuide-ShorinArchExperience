@@ -25,3 +25,19 @@
 ### 纯小白在禁止使用终端的情况下体验Linux
 
 [「女友体验Linux」 全程禁用命令行，颠覆刻板印象，纯小白也能轻松上手！](https://www.bilibili.com/video/BV1YvenzUEFf/?share_source=copy_web)
+
+
+
+## 一些截图
+
+### 我的KDE桌面
+
+![我的KDE桌面](pictures/KDE-preview.png)
+
+### Linux玩游戏
+
+![](pictures/Linux玩游戏.png)
+
+### 小黄鸭补帧 VMware虚拟机网游单机版 wine兼容层运行旧游戏
+
+![](pictures/小黄鸭补帧、wine运行老游戏、vmware网游单机版.png)
