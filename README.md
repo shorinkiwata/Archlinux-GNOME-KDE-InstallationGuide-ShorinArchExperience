@@ -4,7 +4,7 @@
 
 由于我学到的东西越来越多，文档越写越长。原先所有内容都写入README.md的方式可读性越来越差，所以开始用github wiki功能。排版更好，内容更有条理。现已完工，推荐阅读。
 
-## [All-in-One.md](All-in-One#目录)
+## [All-in-One.md](All-in-One.md#目录)
 
 你可能想基于我的文档创建属于你的文档，我为此准备了All-in-One文档方便fork。
 
