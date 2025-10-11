@@ -1628,7 +1628,11 @@ sudo systemctl edit sddm.service
 
 ```
 [Service]
-ExecStartPre=/bin/sleep 1
+ExecStartPre=/bin/sleep 2
+```
+
+```
+sudo systemctl daemon-reload
 ```
 
 ### 接下来你自己根据需求决定安装什么软件，进行什么配置。当然，你也可以选择参考我的。
