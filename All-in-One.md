@@ -2034,7 +2034,7 @@ KDE下设置GTK和QT的IM_MODULE全局变量会导致输入法闪烁和位置错
 
    appimage和flatpak类似，也是所有发行版通用的打包方式，可以理解为免安装便携版。
 
-建议优先级：pacman > flatpak = aur > 官网下载
+建议优先级：pacman >> flatpak > aur > 官网下载
 
 aur很方便，但要注意辨识它是否安全。
 
