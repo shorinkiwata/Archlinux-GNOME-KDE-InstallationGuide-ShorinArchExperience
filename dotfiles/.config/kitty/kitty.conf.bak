@@ -1,0 +1,9 @@
+include theme/matugen.conf
+# vim:ft=kitty
+window_padding_width 5
+hide_window_decorations yes
+background_opacity 0.8
+font_family Adwaita Mono
+font_size 15
+remenber_window_size no
+confirm_os_window_close 0

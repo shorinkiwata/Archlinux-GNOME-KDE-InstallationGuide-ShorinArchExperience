@@ -1,0 +1,347 @@
+{
+    //电池电量
+    "battery": {
+        "interval": 2,
+        "states": {
+            "critical": 20,
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}% ",
+        "format-icons": [
+            "󰂎",
+            "󰁺",
+            "󰁻",
+            "󰁼",
+            "󰁽",
+            "󰁾",
+            "󰁿",
+            "󰂀",
+            "󰂂",
+            "󰁹"
+        ],
+        "tooltip-format": "󰂍 {power} | {timeTo}"
+    },
+    //时钟
+    "clock": {
+        "interval": 60,
+        "format": "󰥔 {:%H:%M}",
+        "tooltip-format": "{:%Y/%m/%d %A}",
+        "max-length": 25,
+        "on-click": "gnome-clocks",
+        "on-click-right": "gnome-calendar"
+    },
+    "clock#date": {
+        // "interval":
+        "format": "󰸗 {:%m-%d}",
+        // "timezone":
+        // "timezones":
+        // "locale":
+        // "rotate":
+        // "on-click":
+        // "on-click-middle":
+        // "on-click-right":
+        // "on-scroll-up":
+        // "on-scroll-down":
+        // "smooth-scrolling-threshold":
+        // "tooltip":
+        "on-click": "gnome-calendar",
+        "tooltip-format": "{:%Y/%m/%d %A}",
+    },
+    //正在运行的软件
+    "tray": {
+        "icon-size": 22,
+        "spacing": 7,
+        // 自定义图标
+        // "icons": {
+        //     "blueman": "/home/shorin/.config/waybar/logo/bluetooth.png",
+        // }
+    },
+    //工作区和窗口名字
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "󰜋",
+            "default": ""
+        }
+    },
+    "niri/window": {
+        "format": "{}",
+        "rewrite": {
+            "(.*) - Mozilla Firefox": "🌎 $1",
+            "(.*) - zsh": "> [$1]"
+        }
+    },
+    //网络和蓝牙
+    "group/network-bluetooth": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "network",
+            "bluetooth",
+        ],
+    },
+    "network": {
+        "format-disconnected": "{icon}",
+        "format-wifi": "{icon}",
+        "format-ethernet": "{icon}",
+        "format-icons": {
+            "disconnected": "󰤮",
+            "wifi": [
+                "󰤯",
+                "󰤟",
+                "󰤢",
+                "󰤥",
+                "󰤨"
+            ],
+            "ethernet": "󰈀",
+        },
+        //鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}",
+        "tooltip-format-ethernet": "{ifname} : {ipaddr}",
+        "tooltip-format-disconnected": "Disconnected",
+        "on-click": "ghostty -e 'sleep 0.3 && nmtui'",
+        "on-click-right": "nm-connection-editor",
+    },
+    "bluetooth": {
+        //蓝牙关闭状态下的图标和鼠标悬浮时的提示
+        "format-disabled": "󰂲",
+        "format": "󰂯",
+        "tooltip-format-on": " 󰂯 {status} | Click to open GUI",
+        //连接状态下的图标和提示
+        "format-connected": "󰂱",
+        "tooltip-format-connected": "󰂱 {device_alias}\nClick to Open GUI",
+        //点击功能
+        "on-click": "~/.config/waybar/scripts/toggle-bluetooth.sh",
+        "on-click-right": "blueberry",
+    },
+    //左键循环切换性能模式
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Performance mode:{profile}",
+        "tooltip": true,
+        "format-icons": {
+            "performance": "󱐋",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    //声音模块
+    "group/audio": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "pulseaudio",
+            "pulseaudio/slider",
+        ],
+    },
+    "pulseaudio": {
+        "icon-size": 22,
+        "format": "{icon} {format_source}",
+        "format-source": "",
+        "format-source-muted": "",
+        "format-muted": "  {format_source}",
+        "format-icons": {
+            "headphone": "",
+            // "speaker":"󰓃"
+            "speaker": [
+                "",
+                "",
+                ""
+            ],
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle",
+        "on-click-right": "pavucontrol --tab=3",
+        "on-scroll-up": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%+",
+        "on-scroll-down": "wpctl set-volume @DEFAULT_AUDIO_SOURCE@ 5%-",
+    },
+    "pulseaudio/slider": {
+        "min": 0,
+        "max": 100,
+        "orientation": "horizontal"
+    },
+    //多媒体
+    "mpris": {
+        "format": "{player_icon}",
+        "format-paused": "{status_icon}",
+        "player-icons": {
+            "default": "▶"
+        },
+        "status-icons": {
+            "paused": "⏸"
+        },
+        "toooltip": "{dynamic}",
+        "enable-tooltip-len-limits": true,
+    },
+    //麦克风
+    //logo+程序启动器
+    "custom/applauncher": {
+        "tooltip": false,
+        "format": "󰣇",
+        "on-click": "~/.config/waybar/scripts/fuzzel.sh",
+    },
+    //电源菜单
+    "group/powermenu": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-left-to-right": false
+        },
+        "modules": [
+            "custom/wlogout",
+            "custom/reboot",
+            "custom/logout",
+            "custom/lockscreen",
+        ],
+    },
+    "custom/wlogout": {
+        "tooltip": false,
+        "format": "󰐥",
+        "on-click": "wlogout"
+    },
+    "custom/lockscreen": {
+        "tooltip": false,
+        "format": "",
+        "on-click": "swaylock"
+    },
+    "custom/reboot": {
+        "tooltip": false,
+        "format": "",
+        "on-click": "systemctl reboot"
+    },
+    "custom/logout": {
+        "format": "󰈆",
+        "on-click": "niri msg action quit",
+        "tooltip": false,
+    },
+    //内屏亮度
+    "backlight/slider": {
+        "min": 5,
+        "max": 100,
+        "orientation": "horizontal",
+    },
+    "backlight": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": [
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            ""
+        ],
+    },
+    //调节外接屏幕亮度
+    "group/ddcutil": {
+        "orientation": "inherit",
+        "drawer": {
+            "transition-left-to-right": false,
+        },
+        "modules": [
+            "custom/ddcutil-day",
+            "backlight/slider",
+            "backlight",
+            "custom/separator#1",
+            "custom/ddcutil-sleep",
+            "custom/ddcutil-night",
+        ],
+    },
+    "custom/ddcutil-day": {
+        "tooltip-format": "Ex.Monitor 100% brightness",
+        "format": "󰃠",
+        "on-click": "ddcutil --display 1 setvcp 10 100 "
+    },
+    "custom/ddcutil-night": {
+        "tooltip-format": "Ex.Monitor 65% brightness",
+        "format": "󰃟",
+        "on-click": "ddcutil --display 1 setvcp 10 65 "
+    },
+    "custom/ddcutil-sleep": {
+        "tooltip-format": "Ex.Monitor 5% brightness",
+        "format": "󰃞",
+        "on-click": "ddcutil --display 1 setvcp 10 5 "
+    },
+    //swaync通知模块
+    "custom/notification": {
+        "tooltip": false,
+        "format": "{icon}",
+        "format-icons": {
+            "notification": "<span foreground='red'><sup></sup></span>",
+            "none": "",
+            "dnd-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-none": "",
+            "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "inhibited-none": "",
+            "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+            "dnd-inhibited-none": ""
+        },
+        "return-type": "json",
+        "exec-if": "which swaync-client",
+        "exec": "swaync-client -swb",
+        "on-click": "swaync-client -t -sw",
+        "on-click-right": "swaync-client -d -sw",
+        "escape": true
+    },
+    //gnome-control-center  
+    "custom/settings": {
+        "format": "",
+        "on-click": "env XDG_CURRENT_DESKTOP=GNOME gnome-control-center",
+        "tooltip-format": "Open control center"
+    },
+    //获取屏幕颜色oloerpicker
+    "custom/colorpicker": {
+        "tooltip": false,
+        "format": "󱏜",
+        "on-click": "hyprpicker | wl-copy"
+    },
+    "custom/cava": {
+        "tooltip": false,
+        "format": "{}",
+        "exec": "~/.config/waybar/scripts/cava.sh"
+    },
+    //禁止熄屏
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip-format-activated": "idle Enabled",
+        "tooltip-format-deactivated": "idle Disabled"
+    },
+    //分隔符󰇝 󱋱
+    "custom/separator#1": {
+        "format": "󱋱"
+    },
+    //archupdater
+    "custom/updates": {
+        "format": "{}{icon}",
+        "return-type": "json",
+        "format-icons": {
+            "has-updates": "󰅢",
+            "updated": "󰅢"
+        },
+        "exec-if": "which waybar-module-pacman-updates",
+        "exec": "waybar-module-pacman-updates --no-zero-output",
+        "on-click": "kitty -e yay"
+    },
+    //隐私
+    "privacy": {
+        "icon-spacing": 10,
+        "icon-size": 18,
+        "transition-duration": 250,
+        "modules": [
+            {
+                "type": "screenshare",
+                "tooltip": true,
+                "tooltip-icon-size": 24
+            }
+        ]
+    },
+}

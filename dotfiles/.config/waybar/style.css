@@ -1,0 +1,425 @@
+@import "colors.css";
+/* @import "/home/shorin/.cache/wal/colors-waybar.css"; */
+
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrainsMono Nerd Font Propo";
+    font-size:20px;
+    opacity:1;
+}
+
+window#waybar {
+    background: transparent;
+    color: @on_surface;
+}
+
+/*中间第一级*/
+#custom-applauncher {
+    font-size: 30px;
+    padding: 0px 10px;
+    background-color: @primary;
+    color: @on_primary;
+
+}
+
+#custom-left_div.1,
+#custom-right_div.1 {
+    padding: 0;
+    margin: 0;
+    background-color: @surface_container;
+    color: @primary;
+    font-size: 30px;
+}
+
+#custom-left_inv.1{
+      padding: 0px;
+    margin: 0px;
+    font-size: 30px;
+    background-color: @surface_container;
+    color: @tertiary;
+}
+#custom-right_inv.1 {
+    padding: 0px;
+    margin: 0px;
+    font-size: 30px;
+    background-color: @surface_container;
+    color: @secondary;
+}
+
+/* 中间左边第二级 */
+#power-profiles-daemon,
+#custom-colorpicker,
+#idle_inhibitor {
+    padding: 0 7;
+}
+
+
+#power-profiles-daemon {
+    background-color: @tertiary;
+    color: @on_secondary;
+}
+
+#power-profiles-daemon.performance {
+    color: @on_error;
+    font-size: 28;
+}
+
+#power-profiles-daemon.balanced {
+    color: @on_tertiary;
+}
+
+#power-profiles-daemon.power-saver {
+    color: #1aa052;
+
+}
+
+#custom-colorpicker {
+    background-color: @tertiary;
+    color: @on_tertiary;
+
+}
+
+#idle_inhibitor {
+    background-color: @tertiary;
+    color: @on_tertiary;
+
+}
+#custom-left_div.2{
+        background-color: @secondary_container;
+    color: @tertiary;
+    padding: 0 0;
+    font-size:30;
+}
+
+/*中间右边第二级*/
+
+#clock {
+    padding: 0 7;
+}
+#clock{
+    background-color: @secondary;
+    color: @on_secondary;
+}
+
+#custom-right_div.2 {
+    background-color: @secondary_container;
+    color: @secondary;
+    padding: 0 0;
+    font-size:30;
+}
+
+
+/* 中间右边第三级 */
+
+#clock.date {
+    padding: 0 7;
+}
+#custom-datelogo,
+#clock.date{
+   background-color: @secondary_container;
+    color: @on_secondary_container;
+}
+
+#custom-right_div.3 {
+    background-color: @on_secondary;
+    color: @secondary_container;
+    padding: 0;
+    font-size: 30;
+}
+
+/* 中间右侧第四级 */
+#battery {
+    background-color: @on_secondary;
+    color: @on_surface;
+    padding: 0 7;
+}
+
+#battery.critical:not(.charging) {
+    background-color: @error;
+    color: @on_error;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: steps(12);
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    padding: 0 7;
+}
+
+#custom-right_div.4 {
+    /* background-color: @surface_container_high; */
+    color: @on_secondary;
+    padding: 0;
+    font-size: 30;
+}
+
+/* 中间左侧第三级别 */
+
+#bluetooth {
+    padding: 0px 7px;
+    font-size: 21;
+}
+#network {
+    padding: 0px 7px;
+    font-size: 22;
+
+}
+
+#custom-settings {
+    padding: 0 7px;
+    font-size: 19;
+}
+#bluetooth,
+#network,
+#custom-settings {
+background-color: @secondary_container;
+    color: @on_secondary_container;
+}
+
+#custom-left_div.3 {
+    background-color: @on_secondary;
+    color: @secondary_container;
+    padding: 0;
+    font-size: 30;
+}
+
+
+/* 中间左边第四级 */
+#custom-updates {
+    padding: 0 7;
+    font-size:22;
+    background-color:@on_secondary;
+    color:@error;
+}
+#tray {
+    padding: 0 0 0 7;
+    font-size: 20;
+}
+#tray{
+    background-color: @on_secondary;
+    color: @on_surface_container;
+}
+#custom-left_div.4 {
+    /* background-color: @surface_container_high; */
+    color: @on_secondary;
+    padding: 0;
+    font-size:30;
+}
+
+/* 最右边powermenu */
+#custom-wlogout {
+    padding: 0 15 0 10;
+    font-size:25;
+    background-color:@surface;
+}
+#custom-wlogout,
+#custom-reboot,
+#custom-lockscreen,
+#custom-logout {
+    background-color: @surface;
+    color: @error;
+    padding: 0 10;
+}
+
+#custom-left_div.5 {
+    background-color: @surface_container_high;
+    color: @surface;
+    padding: 0;
+    font-size: 30;
+}
+
+/* 最右边第二级 */
+
+#custom-notification {
+    background-color: @surface_container_high;
+    color: @on_surface_container;
+    padding: 0 15;
+}
+
+#custom-left_div.6 {
+    background-color: @surface;
+    color: @surface_container_high;
+    padding: 0;
+    font-size: 30;
+}
+
+/* 最右边第三级 */
+#custom-cava {
+    background-color: @surface;
+    color: @primary;
+    padding: 0 10;
+}
+
+#mpris {
+    background-color: @surface;
+    color: @primary;
+
+    padding: 0 10 0 0;
+}
+
+#custom-left_div.8 {
+    background-color: @surface_container_high;
+    color: @surface;
+    font-size: 30;
+    padding: 0;
+}
+
+
+
+#pulseaudio {
+    padding: 0 5 0 5;
+}
+
+#pulseaudio-slider {
+    padding: 0 0 0 10;
+    margin: 0;
+
+}
+#privacy {
+    padding:0 7;
+}
+#pulseaudio-slider,
+#pulseaudio{
+        background-color: @surface_container_high;
+    color: @secondary;
+}
+
+#privacy{
+    background-color: @surface_container_high;
+    color: @tertiary;
+}
+
+#pulseaudio-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+
+#pulseaudio-slider trough {
+    min-height: 10px;
+    min-width: 100px;
+    border-radius: 5px;
+    background-color: @background;
+}
+#pulseaudio-slider highlight {
+    min-width: 0px;
+    border-radius: 5px;
+    background-color: @inverse_primary;
+}
+
+#custom-ddcutil-day,
+#custom-ddcutil-night,
+#custom-ddcutil-sleep,
+#custom-separator.1{
+        background-color: @surface_container_high;
+    color: @secondary;
+    padding: 0 5;
+}
+#backlight{
+    background-color: @surface_container_high;
+    color: @secondary;
+    padding: 0 5 0 0;
+}
+#backlight-slider{
+    background-color: @surface_container_high;
+    padding:0 5 0 0;
+}
+#backlight-slider slider {
+    min-height: 0px;
+    min-width: 0px;
+    opacity: 0;
+    background-image: none;
+    border: none;
+    box-shadow: none;
+}
+#backlight-slider trough {
+    min-height: 10px;
+    min-width: 80px;
+    border-radius: 5px;
+    opacity:0;
+    background-color: @background;
+}
+#backlight-slider highlight {
+    min-width: 10px;
+    border-radius: 5px;
+    background-color: @inverse_primary;
+}
+#custom-left_div.7 {
+    /* background-color: @surface_container_high; */
+    color: @surface_container_high;
+    font-size: 30;
+    padding: 0;
+}
+
+
+
+
+/* 工作区 */
+#workspaces button {
+    padding: 0 10px;
+    background: @surface_container;
+    color: @tertiary;
+
+}
+
+/* #workspaces label {
+    font-size: 22;
+} */
+
+#workspaces button:hover {
+    background: @on_tertiary;
+}
+
+#workspaces button.focused:hover {
+    background: @surface_bright;
+}
+
+#workspaces button.focused {
+    background: @surface_container;
+    color: @tertiary;
+
+}
+
+#custom-right_div.5 {
+    background: @surface_bright;
+    color: @surface_container;
+    font-size: 30;
+    padding: 0;
+}
+
+/* 窗口名 */
+#window {
+    padding: 0 10;
+    background-color: @surface_bright;
+    color: @on_surface;
+}
+
+#window label {
+    font-size: 16;
+}
+
+window#waybar.empty #window {
+    background-color: @surface_bright;
+}
+
+#custom-right_div.6 {
+    color: @surface_bright;
+    font-size: 30;
+    padding: 0;
+}
+
+/* 鼠标悬浮信息提示 */
+tooltip {
+    background: @secondary_container;
+    border: 3px solid @outline;
+    opacity:0.8;
+}
+
+tooltip label {
+    color: white;
+    font-size: 16;
+}
+

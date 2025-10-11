@@ -1,0 +1,60 @@
+{
+    "include": [
+        "modules.jsonc",
+        "modules-dividers.jsonc"
+    ],
+    "output": "DP-2",
+    "position": "top",
+    "fixed-center": true,
+    "height": 30,
+    "reload_style_on_change": true,
+    "modules-left": [
+        "niri/workspaces",
+        "custom/right_div#5",
+        "niri/window",
+        "custom/right_div#6"
+    ],
+    "modules-center": [
+        "custom/left_div#4",
+        
+        "tray",
+        "custom/updates",
+        "custom/left_div#3",
+        "bluetooth",
+        "network",
+        "custom/settings",
+        "custom/left_div#2",
+        "idle_inhibitor",
+        "custom/colorpicker",
+        "power-profiles-daemon",
+        "custom/left_inv#1",
+        "custom/left_div#1",
+        "custom/applauncher",
+        "custom/right_div#1",
+        "custom/right_inv#1",
+
+        "clock",
+        "custom/right_div#2",
+        "clock#date",
+        "custom/right_div#3",
+        "battery",
+        "custom/right_div#4"
+        
+    ],
+    "modules-right": [
+        // "group/backlight",
+           "custom/left_div#7",
+        "group/ddcutil",
+     
+        "privacy",
+        "group/audio",
+        "custom/left_div#8",
+        "custom/cava",
+        "mpris",
+         
+        "custom/left_div#6",
+        "custom/notification",
+        "custom/left_div#5",
+        "group/powermenu",
+    ],
+}

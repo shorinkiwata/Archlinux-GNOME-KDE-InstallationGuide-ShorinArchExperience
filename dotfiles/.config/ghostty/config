@@ -1,0 +1,20 @@
+# 设置主题
+#theme = catppuccin-macchiato.conf
+#theme = catppuccin-frappe.conf
+#theme = colors.conf
+theme = ghostty.conf 
+
+#设置隐藏顶栏 title bar
+window-decoration = none
+#设置透明度
+background-opacity=0.8
+#设置字体
+font-family= "Adwaita Mono" 
+font-size = 15
+
+#取消关闭时的确认
+confirm-close-surface = false
+#设置左右边距
+window-padding-x=10
+#设置上下边距
+window-padding-y=10
