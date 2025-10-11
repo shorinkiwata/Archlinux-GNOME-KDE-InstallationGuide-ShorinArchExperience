@@ -1819,8 +1819,6 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 
 # 中文输入法
 
-
-
 常用的有fcitx5和ibus，fcitx5更现代，功能更多，建议使用。
 
 GNOME和KDE桌面的配置方法会略有不同，注意区分。
@@ -1837,7 +1835,7 @@ GNOME和KDE桌面的配置方法会略有不同，注意区分。
 
    `fcitx5-rime`是输入法引擎
 
-   `rime-ice-pinyin-git`是雾凇拼音输入法，实测比万象拼音好用。
+   `rime-ice-pinyin-git`是雾凇拼音输入法，实测比万象拼音好用。这个包在archlinuxcn里，如果你没添加cn源的话可以用yay从aur安装。
 
    可选：`fcitx5-mozc`日语输入法
 
