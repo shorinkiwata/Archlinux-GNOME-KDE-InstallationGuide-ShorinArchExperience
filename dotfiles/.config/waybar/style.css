@@ -25,8 +25,8 @@ window#waybar {
 
 #custom-left_div.1,
 #custom-right_div.1 {
-    padding: 0;
-    margin: 0;
+    padding: 0px;
+    margin: 0px;
     background-color: @surface_container;
     color: @primary;
     font-size: 30px;
@@ -51,7 +51,7 @@ window#waybar {
 #power-profiles-daemon,
 #custom-colorpicker,
 #idle_inhibitor {
-    padding: 0 7;
+    padding: 0px 7px;
 }
 
 
@@ -62,7 +62,7 @@ window#waybar {
 
 #power-profiles-daemon.performance {
     color: @on_error;
-    font-size: 28;
+    font-size: 28px;
 }
 
 #power-profiles-daemon.balanced {
@@ -88,14 +88,14 @@ window#waybar {
 #custom-left_div.2{
         background-color: @secondary_container;
     color: @tertiary;
-    padding: 0 0;
-    font-size:30;
+    padding: 0px 0px;
+    font-size:30px;
 }
 
 /*中间右边第二级*/
 
 #clock {
-    padding: 0 7;
+    padding: 0px 7px;
 }
 #clock{
     background-color: @secondary;
@@ -105,15 +105,15 @@ window#waybar {
 #custom-right_div.2 {
     background-color: @secondary_container;
     color: @secondary;
-    padding: 0 0;
-    font-size:30;
+    padding: 0px 0px;
+    font-size:30px;
 }
 
 
 /* 中间右边第三级 */
 
 #clock.date {
-    padding: 0 7;
+    padding: 0px 7px;
 }
 #custom-datelogo,
 #clock.date{
@@ -124,15 +124,15 @@ window#waybar {
 #custom-right_div.3 {
     background-color: @on_secondary;
     color: @secondary_container;
-    padding: 0;
-    font-size: 30;
+    padding: 0px;
+    font-size: 30px;
 }
 
 /* 中间右侧第四级 */
 #battery {
     background-color: @on_secondary;
     color: @on_surface;
-    padding: 0 7;
+    padding: 0px 7px;
 }
 
 #battery.critical:not(.charging) {
@@ -143,31 +143,31 @@ window#waybar {
     animation-timing-function: steps(12);
     animation-iteration-count: infinite;
     animation-direction: alternate;
-    padding: 0 7;
+    padding: 0px 7px;
 }
 
 #custom-right_div.4 {
     /* background-color: @surface_container_high; */
     color: @on_secondary;
-    padding: 0;
-    font-size: 30;
+    padding: 0px;
+    font-size: 30px;
 }
 
 /* 中间左侧第三级别 */
 
 #bluetooth {
     padding: 0px 7px;
-    font-size: 21;
+    font-size: 21px;
 }
 #network {
     padding: 0px 7px;
-    font-size: 22;
+    font-size: 22px;
 
 }
 
 #custom-settings {
-    padding: 0 7px;
-    font-size: 19;
+    padding: 0px 7px;
+    font-size: 19px;
 }
 #bluetooth,
 #network,
@@ -179,21 +179,21 @@ background-color: @secondary_container;
 #custom-left_div.3 {
     background-color: @on_secondary;
     color: @secondary_container;
-    padding: 0;
-    font-size: 30;
+    padding: 0px;
+    font-size: 30px;
 }
 
 
 /* 中间左边第四级 */
 #custom-updates {
-    padding: 0 7;
-    font-size:22;
+    padding: 0px 7px;
+    font-size:22px;
     background-color:@on_secondary;
     color:@error;
 }
 #tray {
-    padding: 0 7 0 7;
-    font-size: 20;
+    padding: 0px 7px 0px 7px;
+    font-size: 20px;
 }
 #tray{
     background-color: @on_secondary;
@@ -202,14 +202,14 @@ background-color: @secondary_container;
 #custom-left_div.4 {
     /* background-color: @surface_container_high; */
     color: @on_secondary;
-    padding: 0;
-    font-size:30;
+    padding: 0px;
+    font-size:30px;
 }
 
 /* 最右边powermenu */
 #custom-wlogout {
-    padding: 0 15 0 10;
-    font-size:25;
+    padding: 0px 15px 0px 10px;
+    font-size:25px;
     background-color:@surface;
 }
 #custom-wlogout,
@@ -218,14 +218,14 @@ background-color: @secondary_container;
 #custom-logout {
     background-color: @surface;
     color: @error;
-    padding: 0 10;
+    padding: 0px 10px;
 }
 
 #custom-left_div.5 {
     background-color: @surface_container_high;
     color: @surface;
-    padding: 0;
-    font-size: 30;
+    padding: 0px;
+    font-size: 30px;
 }
 
 /* 最右边第二级 */
@@ -233,50 +233,50 @@ background-color: @secondary_container;
 #custom-notification {
     background-color: @surface_container_high;
     color: @on_surface_container;
-    padding: 0 15;
+    padding: 0px 15px;
 }
 
 #custom-left_div.6 {
     background-color: @surface;
     color: @surface_container_high;
-    padding: 0;
-    font-size: 30;
+    padding: 0px;
+    font-size: 30px;
 }
 
 /* 最右边第三级 */
 #custom-cava {
     background-color: @surface;
     color: @primary;
-    padding: 0 10;
+    padding: 0px 10px;
 }
 
 #mpris {
     background-color: @surface;
     color: @primary;
 
-    padding: 0 10 0 0;
+    padding: 0px 10px 0px 0px;
 }
 
 #custom-left_div.8 {
     background-color: @surface_container_high;
     color: @surface;
-    font-size: 30;
-    padding: 0;
+    font-size: 30px;
+    padding: 0px;
 }
 
 
 
 #pulseaudio {
-    padding: 0 5 0 5;
+    padding: 0px 5px 0px 5px;
 }
 
 #pulseaudio-slider {
-    padding: 0 0 0 10;
-    margin: 0;
+    padding: 0px 0px 0px 10px;
+    margin: 0px;
 
 }
 #privacy {
-    padding:0 7;
+    padding:0px 7px;
 }
 #pulseaudio-slider,
 #pulseaudio{
@@ -316,16 +316,16 @@ background-color: @secondary_container;
 #custom-separator.1{
         background-color: @surface_container_high;
     color: @secondary;
-    padding: 0 5;
+    padding: 0px 5px;
 }
 #backlight{
     background-color: @surface_container_high;
     color: @secondary;
-    padding: 0 5 0 0;
+    padding: 0px 5px 0px 0px;
 }
 #backlight-slider{
     background-color: @surface_container_high;
-    padding:0 5 0 0;
+    padding:0px 5px 0px 0px;
 }
 #backlight-slider slider {
     min-height: 0px;
@@ -350,8 +350,8 @@ background-color: @secondary_container;
 #custom-left_div.7 {
     /* background-color: @surface_container_high; */
     color: @surface_container_high;
-    font-size: 30;
-    padding: 0;
+    font-size: 30px;
+    padding: 0px;
 }
 
 
@@ -359,7 +359,7 @@ background-color: @secondary_container;
 
 /* 工作区 */
 #workspaces button {
-    padding: 0 10px;
+    padding: 0px 10px;
     background: @surface_container;
     color: @tertiary;
 
@@ -386,19 +386,19 @@ background-color: @secondary_container;
 #custom-right_div.5 {
     background: @surface_bright;
     color: @surface_container;
-    font-size: 30;
-    padding: 0;
+    font-size: 30px;
+    padding: 0px;
 }
 
 /* 窗口名 */
 #window {
-    padding: 0 10;
+    padding: 0px 10px;
     background-color: @surface_bright;
     color: @on_surface;
 }
 
 #window label {
-    font-size: 16;
+    font-size: 16px;
 }
 
 window#waybar.empty #window {
@@ -407,8 +407,8 @@ window#waybar.empty #window {
 
 #custom-right_div.6 {
     color: @surface_bright;
-    font-size: 30;
-    padding: 0;
+    font-size: 30px;
+    padding: 0px;
 }
 
 /* 鼠标悬浮信息提示 */
@@ -420,6 +420,6 @@ tooltip {
 
 tooltip label {
     color: white;
-    font-size: 16;
+    font-size: 16px;
 }
 
