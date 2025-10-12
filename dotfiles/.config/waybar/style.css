@@ -273,7 +273,6 @@ background-color: @secondary_container;
 #pulseaudio-slider {
     padding: 0px 0px 0px 10px;
     margin: 0px;
-
 }
 #privacy {
     padding:0px 7px;
@@ -283,21 +282,14 @@ background-color: @secondary_container;
         background-color: @surface_container_high;
     color: @secondary;
 }
-
-#privacy{
-    background-color: @surface_container_high;
-    color: @tertiary;
-}
-
 #pulseaudio-slider slider {
     min-height: 0px;
     min-width: 0px;
     opacity: 0;
     background-image: none;
-    border: none;
     box-shadow: none;
+    background-color: @primary_;
 }
-
 #pulseaudio-slider trough {
     min-height: 10px;
     min-width: 100px;
@@ -308,6 +300,10 @@ background-color: @secondary_container;
     min-width: 0px;
     border-radius: 5px;
     background-color: @inverse_primary;
+}
+#privacy{
+    background-color: @surface_container_high;
+    color: @tertiary;
 }
 
 #custom-ddcutil-day,
@@ -334,6 +330,7 @@ background-color: @secondary_container;
     background-image: none;
     border: none;
     box-shadow: none;
+    background-color: @primary;
 }
 #backlight-slider trough {
     min-height: 10px;
