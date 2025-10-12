@@ -52,7 +52,7 @@ output_path = '~/.config/gtk-3.0/gtk.css'
 [templates.swaync]
 input_path = '~/.config/matugen/templates/swaync-colors.css'
 output_path = '~/.config/swaync/colors.css'
-post_hook = 'systemctl --user restart swaync'
+post_hook = 'swaync-client -rs'
 
 
 [templates.ghostty]
@@ -67,3 +67,8 @@ output_path = '~/.config/qt5ct/colors/matugen.conf'
 [templates.qt6ct]
 input_path = '~/.config/matugen/templates/qtct-colors.conf'
 output_path = '~/.config/qt6ct/colors/matugen.conf'
+
+[templates.hyprland]
+input_path = '~/.config/matugen/templates/hyprland-colors.conf'
+output_path = '~/.config/hypr/colors.conf'
+post_hook = 'hyprctl reload'
