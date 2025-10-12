@@ -49,10 +49,10 @@ input_path = '~/.config/matugen/templates/gtk.css'
 output_path = '~/.config/gtk-3.0/gtk.css'
 #post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; 
 
-[templates.swaync]
-input_path = '~/.config/matugen/templates/swaync-colors.css'
-output_path = '~/.config/swaync/colors.css'
-post_hook = 'swaync-client -rs'
+#[templates.swaync]
+#input_path = '~/.config/matugen/templates/swaync-colors.css'
+#output_path = '~/.config/swaync/colors.css'
+#post_hook = 'swaync-client -rs'
 
 
 [templates.ghostty]
@@ -72,3 +72,14 @@ output_path = '~/.config/qt6ct/colors/matugen.conf'
 input_path = '~/.config/matugen/templates/hyprland-colors.conf'
 output_path = '~/.config/hypr/colors.conf'
 post_hook = 'hyprctl reload'
+
+[templates.fcitx5]
+input_path = '~/.config/matugen/templates/fcitx5-theme.conf'
+output_path = '~/.local/share/fcitx5/themes/default/theme.conf'
+post_hook= 'pkill fcitx5 && fcitx5 & disown'
+
+
+[templates.mako]
+input_path = '~/.config/matugen/templates/mako-colors.conf'
+output_path = '~/.config/mako/colors.conf'
+post_hook='makoctl reload'

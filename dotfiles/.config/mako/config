@@ -1,0 +1,13 @@
+include=/home/shorin/.config/mako/colors.conf
+border-size=2
+border-radius=8
+icon-border-radius=8
+icons=1
+anchor=top-right
+default-timeout=8000
+margin=10
+padding=10,0
+font=adwaita sans regular 11
+history=1
+max-visible=20
+max-history=100

@@ -9,14 +9,13 @@
     "height": 30,
     "reload_style_on_change": true,
     "modules-left": [
-        "niri/workspaces",
+        "hyprland/workspaces",
         "custom/right_div#5",
-        "niri/window",
+        "hyprland/window",
         "custom/right_div#6"
     ],
     "modules-center": [
         "custom/left_div#4",
-        
         "tray",
         "custom/updates",
         "custom/left_div#3",
