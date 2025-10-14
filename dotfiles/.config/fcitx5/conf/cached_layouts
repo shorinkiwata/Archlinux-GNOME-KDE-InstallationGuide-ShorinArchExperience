@@ -1,0 +1,3740 @@
+[keyboard-bqn]
+Description="键盘 - BQN"
+Language=en
+Label=bqn
+
+[keyboard-apl]
+Description="键盘 - APL"
+Language=en
+Label=apl
+
+[keyboard-apl-dyalog]
+Description="键盘 - APL - APL 符号（Dyalog APL）"
+Language=en
+Label="dlg (dyalog)"
+
+[keyboard-apl-sax]
+Description="键盘 - APL - APL 符号（SAX，Sharp APL for Unix）"
+Language=en
+Label=sax
+
+[keyboard-apl-unified]
+Description="键盘 - APL - APL 符号（统一）"
+Language=en
+Label="ufd (unified)"
+
+[keyboard-apl-apl2]
+Description="键盘 - APL - APL 符号（IBM APL2）"
+Language=en
+Label=apl2
+
+[keyboard-apl-aplplusII]
+Description="键盘 - APL - APL 符号（Manugistics APL*PLUS II）"
+Language=en
+Label="aplII (aplplusII)"
+
+[keyboard-apl-aplx]
+Description="键盘 - APL - APL 符号（APLX 统一）"
+Language=en
+Label=aplx
+
+[keyboard-ua]
+Description="键盘 - 乌克兰语"
+Language=uk
+Label=uk
+
+[keyboard-ua-phonetic]
+Description="键盘 - 乌克兰语 - 乌克兰语（语音助记）"
+Language=uk
+Label="ua (phonetic)"
+
+[keyboard-ua-typewriter]
+Description="键盘 - 乌克兰语 - 乌克兰语（打字机）"
+Language=uk
+Label="ua (typewriter)"
+
+[keyboard-ua-winkeys]
+Description="键盘 - 乌克兰语 - 乌克兰语（Windows）"
+Language=uk
+Label="ua (winkeys)"
+
+[keyboard-ua-winkeysenhanced]
+Description="键盘 - 乌克兰语 - 乌克兰语（Windows 增强）"
+Language=uk
+Label="ua (winkeysenhanced)"
+
+[keyboard-ua-macOS]
+Description="键盘 - 乌克兰语 - 乌克兰语（macOS）"
+Language=uk
+Label="ua (macOS)"
+
+[keyboard-ua-legacy]
+Description="键盘 - 乌克兰语 - 乌克兰语（传统）"
+Language=uk
+Label="ua (legacy)"
+
+[keyboard-ua-homophonic]
+Description="键盘 - 乌克兰语 - 乌克兰语（同音）"
+Language=uk
+Label="ua (homophonic)"
+
+[keyboard-ua-crh]
+Description="键盘 - 乌克兰语 - 克里米亚鞑靼语（土耳其 Q）"
+Language=crh
+Label=crh
+
+[keyboard-ua-crh_f]
+Description="键盘 - 乌克兰语 - 克里米亚鞑靼语（土耳其 F）"
+Language=crh
+Label="crh (crh_f)"
+
+[keyboard-ua-crh_alt]
+Description="键盘 - 乌克兰语 - 克里米亚鞑靼语（土耳其 Alt-Q）"
+Language=crh
+Label="crh (crh_alt)"
+
+[keyboard-ua-sun_type6]
+Description="键盘 - 乌克兰语 - 乌克兰语（Sun Type 6/7）"
+Language=uk
+Label="ua (sun_type6)"
+
+[keyboard-th]
+Description="键盘 - 泰语"
+Language=th
+Label=th
+
+[keyboard-th-tis]
+Description="键盘 - 泰语 - 泰语（TIS-820.2538）"
+Language=th
+Label="th (tis)"
+
+[keyboard-th-pat]
+Description="键盘 - 泰语 - 泰语（Pattachote）"
+Language=th
+Label="th (pat)"
+
+[keyboard-th-mnc]
+Description="键盘 - 泰语 - 泰语（Manoonchai）"
+Language=th
+Label="th (mnc)"
+
+[keyboard-tz]
+Description="键盘 - 斯瓦希里语（坦桑尼亚）"
+Language=sw
+Label=sw
+
+[keyboard-latam]
+Description="键盘 - 西班牙语（拉丁美洲）"
+Language=es
+Label=es
+
+[keyboard-latam-nodeadkeys]
+Description="键盘 - 西班牙语（拉丁美洲） - 西班牙语（拉丁美洲，无死键）"
+Language=es
+Label="latam (nodeadkeys)"
+
+[keyboard-latam-deadtilde]
+Description="键盘 - 西班牙语（拉丁美洲） - 西班牙语（拉丁美洲，波浪号为死键）"
+Language=es
+Label="latam (deadtilde)"
+
+[keyboard-latam-dvorak]
+Description="键盘 - 西班牙语（拉丁美洲） - 西班牙语（拉丁美洲，Dvorak）"
+Language=es
+Label="latam (dvorak)"
+
+[keyboard-latam-colemak]
+Description="键盘 - 西班牙语（拉丁美洲） - 西班牙语（拉丁美洲，Colemak）"
+Language=es
+Label="latam (colemak)"
+
+[keyboard-sk]
+Description="键盘 - 斯洛伐克语"
+Language=sk
+Label=sk
+
+[keyboard-sk-bksl]
+Description="键盘 - 斯洛伐克语 - 斯洛伐克语（额外的反斜杠）"
+Language=sk
+Label="sk (bksl)"
+
+[keyboard-sk-qwerty]
+Description="键盘 - 斯洛伐克语 - 斯洛伐克语（QWERTY）"
+Language=sk
+Label="sk (qwerty)"
+
+[keyboard-sk-qwerty_bksl]
+Description="键盘 - 斯洛伐克语 - 斯洛伐克语（QWERTY，额外的反斜杠）"
+Language=sk
+Label="sk (qwerty_bksl)"
+
+[keyboard-sk-acc]
+Description="键盘 - 斯洛伐克语 - 斯洛伐克语（ACC 布局，只有重音字母）"
+Language=sk
+Label="sk (acc)"
+
+[keyboard-sk-sun_type6]
+Description="键盘 - 斯洛伐克语 - 斯洛伐克语（Sun Type 6/7）"
+Language=sk
+Label="sk (sun_type6)"
+
+[keyboard-ru]
+Description="键盘 - 俄语"
+Language=ru
+Label=ru
+
+[keyboard-ru-phonetic]
+Description="键盘 - 俄语 - 俄语（语音助记）"
+Language=ru
+Label="ru (phonetic)"
+
+[keyboard-ru-phonetic_winkeys]
+Description="键盘 - 俄语 - 俄语（语音助记，Windows）"
+Language=ru
+Label="ru (phonetic_winkeys)"
+
+[keyboard-ru-phonetic_YAZHERTY]
+Description="键盘 - 俄语 - 俄语（语音助记，YAZHERTY）"
+Language=ru
+Label="ru (phonetic_YAZHERTY)"
+
+[keyboard-ru-phonetic_azerty]
+Description="键盘 - 俄语 - 俄语（语音助记，AZERTY）"
+Language=ru
+Label="ru (phonetic_azerty)"
+
+[keyboard-ru-phonetic_dvorak]
+Description="键盘 - 俄语 - 俄语（语音助记，Dvorak）"
+Language=ru
+Label="ru (phonetic_dvorak)"
+
+[keyboard-ru-typewriter]
+Description="键盘 - 俄语 - 俄语（打字机）"
+Language=ru
+Label="ru (typewriter)"
+
+[keyboard-ru-ruchey_ru]
+Description="键盘 - 俄语 - 俄语（工程，RU）"
+Language=ru
+Label="ru (ruchey_ru)"
+
+[keyboard-ru-ruchey_en]
+Description="键盘 - 俄语 - 俄语（工程，EN）"
+Language=ru
+Label="en (ruchey_en)"
+
+[keyboard-ru-legacy]
+Description="键盘 - 俄语 - 俄语（传统）"
+Language=ru
+Label="ru (legacy)"
+
+[keyboard-ru-typewriter-legacy]
+Description="键盘 - 俄语 - 俄语（打字机，传统）"
+Language=ru
+Label="ru (typewriter-legacy)"
+
+[keyboard-ru-dos]
+Description="键盘 - 俄语 - 俄语（DOS）"
+Language=ru
+Label="ru (dos)"
+
+[keyboard-ru-mac]
+Description="键盘 - 俄语 - 俄语（Macintosh）"
+Language=ru
+Label="ru (mac)"
+
+[keyboard-ru-ab]
+Description="键盘 - 俄语 - 阿布哈兹语（俄罗斯）"
+Language=ab
+Label="ru (ab)"
+
+[keyboard-ru-bak]
+Description="键盘 - 俄语 - 巴什基尔语"
+Language=ba
+Label="ru (bak)"
+
+[keyboard-ru-cv]
+Description="键盘 - 俄语 - 楚瓦什语"
+Language=cv
+Label="ru (cv)"
+
+[keyboard-ru-cv_latin]
+Description="键盘 - 俄语 - 楚瓦什语（拉丁）"
+Language=cv
+Label="ru (cv_latin)"
+
+[keyboard-ru-xal]
+Description="键盘 - 俄语 - 卡尔梅克卫拉特语"
+Language=xal
+Label="ru (xal)"
+
+[keyboard-ru-kom]
+Description="键盘 - 俄语 - 科米语"
+Language=kv
+Label="ru (kom)"
+
+[keyboard-ru-chm]
+Description="键盘 - 俄语 - Mari"
+Language=chm
+Label="ru (chm)"
+
+[keyboard-ru-os_legacy]
+Description="键盘 - 俄语 - 奥塞梯语（传统）"
+Language=os
+Label="ru (os_legacy)"
+
+[keyboard-ru-os_winkeys]
+Description="键盘 - 俄语 - 奥塞梯语（Windows）"
+Language=os
+Label="ru (os_winkeys)"
+
+[keyboard-ru-srp]
+Description="键盘 - 俄语 - 塞尔维亚语（俄罗斯）"
+Language=ru
+Label="ru (srp)"
+
+[keyboard-ru-tt]
+Description="键盘 - 俄语 - 鞑靼语"
+Language=tt
+Label="ru (tt)"
+
+[keyboard-ru-udm]
+Description="键盘 - 俄语 - 乌德穆尔特语"
+Language=udm
+Label="ru (udm)"
+
+[keyboard-ru-sah]
+Description="键盘 - 俄语 - 雅库特语"
+Language=sah
+Label="ru (sah)"
+
+[keyboard-ru-chu]
+Description="键盘 - 俄语 - 教会斯拉夫语"
+Language=cu
+Label="ru (chu)"
+
+[keyboard-ru-ruu]
+Description="键盘 - 俄语 - 俄语（带乌克兰语和白俄罗斯语字母）"
+Language=ru
+Label="ru (ruu)"
+
+[keyboard-ru-rulemak]
+Description="键盘 - 俄语 - 俄语（Rulemak，语音助记 Colemak）"
+Language=ru
+Label="ru (rulemak)"
+
+[keyboard-ru-phonetic_mac]
+Description="键盘 - 俄语 - 俄语（语音助记，Macintosh）"
+Language=ru
+Label="ru (phonetic_mac)"
+
+[keyboard-ru-sun_type6]
+Description="键盘 - 俄语 - 俄语（Sun Type 6/7）"
+Language=ru
+Label="ru (sun_type6)"
+
+[keyboard-ru-unipunct]
+Description="键盘 - 俄语 - 俄语（带美式标点）"
+Language=ru
+Label="ru (unipunct)"
+
+[keyboard-ru-gost-6431-75-48]
+Description="键盘 - 俄语 - 俄语（GOST 6431-75）"
+Language=ru
+Label="ru (gost-6431-75-48)"
+
+[keyboard-ru-gost-14289-88]
+Description="键盘 - 俄语 - 俄语（GOST 14289-88）"
+Language=ru
+Label="ru (gost-14289-88)"
+
+[keyboard-ru-prxn]
+Description="键盘 - 俄语 - 俄语（Polyglot and Reactionary）"
+Language=ru
+Label="ru (prxn)"
+
+[keyboard-ru-winkeys-p]
+Description="键盘 - 俄语 - 俄语（适合程序员的）"
+Language=ru
+Label=winkeys-p
+
+[keyboard-ru-typo]
+Description="键盘 - 俄语 - 俄语（带印刷符号）"
+Language=ru
+Label="ru (typo)"
+
+[keyboard-ru-rtu]
+Description="键盘 - 俄语 - 俄语（带鞑靼字母）"
+Language=ru
+Label="ru (rtu)"
+
+[keyboard-ru-diktor]
+Description="键盘 - 俄语 - 俄语（Diktor）"
+Language=ru
+Label=diktor
+
+[keyboard-ru-ruintl_ru]
+Description="键盘 - 俄语 - 俄语（国际，RU）"
+Language=ru
+Label="ru (ruintl_ru)"
+
+[keyboard-ru-ruintl_en]
+Description="键盘 - 俄语 - 俄语（国际，EN）"
+Language=en
+Label="en (ruintl_en)"
+
+[keyboard-br]
+Description="键盘 - 葡萄牙语（巴西）"
+Language=pt
+Label=pt
+
+[keyboard-br-nodeadkeys]
+Description="键盘 - 葡萄牙语（巴西） - 葡萄牙语（巴西，无死键）"
+Language=pt
+Label="br (nodeadkeys)"
+
+[keyboard-br-dvorak]
+Description="键盘 - 葡萄牙语（巴西） - 葡萄牙语（巴西，Dvorak）"
+Language=pt
+Label="br (dvorak)"
+
+[keyboard-br-nativo]
+Description="键盘 - 葡萄牙语（巴西） - 葡萄牙语（巴西，Nativo）"
+Language=pt
+Label="br (nativo)"
+
+[keyboard-br-nativo-us]
+Description="键盘 - 葡萄牙语（巴西） - 葡萄牙语（巴西，用于美式键盘的 Nativo）"
+Language=pt
+Label="br (nativo-us)"
+
+[keyboard-br-thinkpad]
+Description="键盘 - 葡萄牙语（巴西） - 葡萄牙语（巴西，IBM/联想 ThinkPad）"
+Language=pt
+Label="br (thinkpad)"
+
+[keyboard-br-nativo-epo]
+Description="键盘 - 葡萄牙语（巴西） - 世界语（巴西，Nativo）"
+Language=eo
+Label="br (nativo-epo)"
+
+[keyboard-br-rus]
+Description="键盘 - 葡萄牙语（巴西） - 俄语（巴西，语音助记）"
+Language=ru
+Label="ru (rus)"
+
+[keyboard-br-sun_type6]
+Description="键盘 - 葡萄牙语（巴西） - 葡萄牙语（巴西，Sun Type 6/7）"
+Language=pt
+Label="br (sun_type6)"
+
+[keyboard-ro]
+Description="键盘 - 罗马尼亚语"
+Language=ro
+Label=ro
+
+[keyboard-ro-std]
+Description="键盘 - 罗马尼亚语 - 罗马尼亚语（标准）"
+Language=ro
+Label="ro (std)"
+
+[keyboard-ro-winkeys]
+Description="键盘 - 罗马尼亚语 - 罗马尼亚语（Windows）"
+Language=ro
+Label="ro (winkeys)"
+
+[keyboard-ro-crh_dobruja]
+Description="键盘 - 罗马尼亚语 - 克里米亚鞑靼语（Dobruja Q）"
+Language=crh
+Label="crh (crh_dobruja)"
+
+[keyboard-ro-ergonomic]
+Description="键盘 - 罗马尼亚语 - 罗马尼亚语（人体工学盲打）"
+Language=ro
+Label="ro (ergonomic)"
+
+[keyboard-ro-sun_type6]
+Description="键盘 - 罗马尼亚语 - 罗马尼亚语（Sun Type 6/7）"
+Language=ro
+Label="ro (sun_type6)"
+
+[keyboard-pl]
+Description="键盘 - 波兰语"
+Language=pl
+Label=pl
+
+[keyboard-pl-legacy]
+Description="键盘 - 波兰语 - 瑞士语（传统）"
+Language=pl
+Label="pl (legacy)"
+
+[keyboard-pl-qwertz]
+Description="键盘 - 波兰语 - 波兰语（QWERTZ）"
+Language=pl
+Label="pl (qwertz)"
+
+[keyboard-pl-dvorak]
+Description="键盘 - 波兰语 - 波兰语（Dvorak）"
+Language=pl
+Label="pl (dvorak)"
+
+[keyboard-pl-dvorak_quotes]
+Description="键盘 - 波兰语 - 波兰语（Dvorak，波兰语引号在引号键上）"
+Language=pl
+Label="pl (dvorak_quotes)"
+
+[keyboard-pl-dvorak_altquotes]
+Description="键盘 - 波兰语 - 波兰语（Dvorak，波兰语引号在 1 键上）"
+Language=pl
+Label="pl (dvorak_altquotes)"
+
+[keyboard-pl-dvp]
+Description="键盘 - 波兰语 - 波兰语（适合程序员的 Dvorak）"
+Language=pl
+Label="pl (dvp)"
+
+[keyboard-pl-csb]
+Description="键盘 - 波兰语 - 卡舒比语"
+Language=csb
+Label="pl (csb)"
+
+[keyboard-pl-szl]
+Description="键盘 - 波兰语 - 西里西亚语"
+Language=szl
+Label="pl (szl)"
+
+[keyboard-pl-ru_phonetic_dvorak]
+Description="键盘 - 波兰语 - 俄语（波兰，语音助记 Dvorak）"
+Language=ru
+Label="ru (ru_phonetic_dvorak)"
+
+[keyboard-pl-intl]
+Description="键盘 - 波兰语 - 波兰语（国际，带死键）"
+Language=pl
+Label="pl (intl)"
+
+[keyboard-pl-colemak]
+Description="键盘 - 波兰语 - 波兰语（Colemak）"
+Language=pl
+Label="pl (colemak)"
+
+[keyboard-pl-colemak_dh_ansi]
+Description="键盘 - 波兰语 - 波兰语（Colemak-DH）"
+Language=pl
+Label="pl (colemak_dh_ansi)"
+
+[keyboard-pl-colemak_dh]
+Description="键盘 - 波兰语 - 波兰语（Colemak-DH ISO）"
+Language=pl
+Label="pl (colemak_dh)"
+
+[keyboard-pl-sun_type6]
+Description="键盘 - 波兰语 - 波兰语（Sun Type 6/7）"
+Language=pl
+Label="pl (sun_type6)"
+
+[keyboard-pl-glagolica]
+Description="键盘 - 波兰语 - 波兰语（Glagolica）"
+Language=pl
+Label="pl (glagolica)"
+
+[keyboard-pl-lefty]
+Description="键盘 - 波兰语 - 波兰语（Lefty）"
+Language=pl
+Label="pl (lefty)"
+
+[keyboard-trans]
+Description="键盘 - 国际音标"
+Language=
+Label=ipa
+
+[keyboard-trans-qwerty]
+Description="键盘 - 国际音标 - 国际音标（QWERTY）"
+Language=
+Label="trans (qwerty)"
+
+[keyboard-ir]
+Description="键盘 - 波斯语"
+Language=fa
+Label=fa
+
+[keyboard-ir-pes_keypad]
+Description="键盘 - 波斯语 - 波斯语（带波斯语小键盘）"
+Language=fa
+Label="ir (pes_keypad)"
+
+[keyboard-ir-winkeys]
+Description="键盘 - 波斯语 - 波斯语（Windows）"
+Language=fa
+Label="ir (winkeys)"
+
+[keyboard-ir-azb]
+Description="键盘 - 波斯语 - 阿塞拜疆语（伊朗）"
+Language=azb
+Label=azb
+
+[keyboard-ir-ku]
+Description="键盘 - 波斯语 - 库尔德语（伊朗，拉丁 Q）"
+Language=ku
+Label=ku
+
+[keyboard-ir-ku_alt]
+Description="键盘 - 波斯语 - 库尔德语（伊朗，拉丁 Alt-Q）"
+Language=ku
+Label="ku (ku_alt)"
+
+[keyboard-ir-ku_f]
+Description="键盘 - 波斯语 - 库尔德语（伊朗，F）"
+Language=ku
+Label="ku (ku_f)"
+
+[keyboard-ir-ku_ara]
+Description="键盘 - 波斯语 - 库尔德语（伊朗，阿拉伯-拉丁）"
+Language=ku
+Label="ku (ku_ara)"
+
+[keyboard-custom]
+Description="键盘 - 用户自定义布局"
+Language=und
+Label=custom
+
+[keyboard-no]
+Description="键盘 - 挪威语"
+Language=no
+Label=no
+
+[keyboard-no-nodeadkeys]
+Description="键盘 - 挪威语 - 挪威语（无死键）"
+Language=no
+Label="no (nodeadkeys)"
+
+[keyboard-no-winkeys]
+Description="键盘 - 挪威语 - 挪威语（Windows）"
+Language=no
+Label="no (winkeys)"
+
+[keyboard-no-mac]
+Description="键盘 - 挪威语 - 挪威语（Macintosh）"
+Language=no
+Label="no (mac)"
+
+[keyboard-no-mac_nodeadkeys]
+Description="键盘 - 挪威语 - 挪威语（Macintosh，无死键）"
+Language=no
+Label="no (mac_nodeadkeys)"
+
+[keyboard-no-colemak]
+Description="键盘 - 挪威语 - 挪威语（Colemak）"
+Language=no
+Label="no (colemak)"
+
+[keyboard-no-colemak_dh]
+Description="键盘 - 挪威语 - 挪威语（Colemak-DH）"
+Language=no
+Label="no (colemak_dh)"
+
+[keyboard-no-colemak_dh_wide]
+Description="键盘 - 挪威语 - 挪威语（Colemak-DH 宽版）"
+Language=no
+Label="no (colemak_dh_wide)"
+
+[keyboard-no-dvorak]
+Description="键盘 - 挪威语 - 挪威语（Dvorak）"
+Language=no
+Label="no (dvorak)"
+
+[keyboard-no-smi]
+Description="键盘 - 挪威语 - 北萨米语（挪威）"
+Language=se
+Label="no (smi)"
+
+[keyboard-no-smi_nodeadkeys]
+Description="键盘 - 挪威语 - 北萨米语（挪威，无死键）"
+Language=se
+Label="no (smi_nodeadkeys)"
+
+[keyboard-no-sun_type6]
+Description="键盘 - 挪威语 - 挪威语（Sun Type 6/7）"
+Language=no
+Label="no (sun_type6)"
+
+[keyboard-gn]
+Description="键盘 - 西非书面字母（AZERTY）"
+Language=nqo
+Label=nqo
+
+[keyboard-tm]
+Description="键盘 - 土库曼语"
+Language=tk
+Label=tk
+
+[keyboard-tm-alt]
+Description="键盘 - 土库曼语 - 土库曼语（Alt-Q）"
+Language=tk
+Label="tm (alt)"
+
+[keyboard-np]
+Description="键盘 - 尼泊尔语"
+Language=ne
+Label=ne
+
+[keyboard-ancient]
+Description="键盘 - 古代语言"
+Language=got
+Label=xx
+
+[keyboard-ancient-got]
+Description="键盘 - 古代语言 - 哥特语"
+Language=got
+Label="ancient (got)"
+
+[keyboard-ancient-uga]
+Description="键盘 - 古代语言 - 乌加里特语"
+Language=uga
+Label="ancient (uga)"
+
+[keyboard-ancient-ave]
+Description="键盘 - 古代语言 - 阿维斯陀语"
+Language=ae
+Label="ancient (ave)"
+
+[keyboard-ancient-got-alt]
+Description="键盘 - 古代语言 - 哥特语（替代）"
+Language=got
+Label="ancient (got-alt)"
+
+[keyboard-mt]
+Description="键盘 - 马耳他语"
+Language=mt
+Label=mt
+
+[keyboard-mt-us]
+Description="键盘 - 马耳他语 - 马耳他语（美国）"
+Language=mt
+Label="mt (us)"
+
+[keyboard-mt-alt-us]
+Description="键盘 - 马耳他语 - 马耳他语（美国，带 AltGr 覆盖）"
+Language=mt
+Label="mt (alt-us)"
+
+[keyboard-mt-alt-gb]
+Description="键盘 - 马耳他语 - 马耳他语（英国，带 AltGr 覆盖）"
+Language=mt
+Label="mt (alt-gb)"
+
+[keyboard-pt]
+Description="键盘 - 葡萄牙语"
+Language=pt
+Label=pt
+
+[keyboard-pt-nodeadkeys]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（无死键）"
+Language=pt
+Label="pt (nodeadkeys)"
+
+[keyboard-pt-mac]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（Macintosh）"
+Language=pt
+Label="pt (mac)"
+
+[keyboard-pt-mac_nodeadkeys]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（Macintosh，无死键）"
+Language=pt
+Label="pt (mac_nodeadkeys)"
+
+[keyboard-pt-nativo]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（Nativo）"
+Language=pt
+Label="pt (nativo)"
+
+[keyboard-pt-nativo-us]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（用于美式键盘的 Nativo）"
+Language=pt
+Label="pt (nativo-us)"
+
+[keyboard-pt-nativo-epo]
+Description="键盘 - 葡萄牙语 - 世界语（葡萄牙，Nativo）"
+Language=eo
+Label="pt (nativo-epo)"
+
+[keyboard-pt-sun_type6]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（Sun Type 6/7）"
+Language=pt
+Label="pt (sun_type6)"
+
+[keyboard-pt-colemak]
+Description="键盘 - 葡萄牙语 - 葡萄牙语（Colemak）"
+Language=pt
+Label="pt (colemak)"
+
+[keyboard-my]
+Description="键盘 - 马来语（爪夷，阿拉伯键盘）"
+Language=id
+Label=ms
+
+[keyboard-my-phonetic]
+Description="键盘 - 马来语（爪夷，阿拉伯键盘） - 马来语（爪夷，语音助记）"
+Language=id
+Label="my (phonetic)"
+
+[keyboard-mk]
+Description="键盘 - 马其顿语"
+Language=mk
+Label=mk
+
+[keyboard-mk-nodeadkeys]
+Description="键盘 - 马其顿语 - 马其顿语（无死键）"
+Language=mk
+Label="mk (nodeadkeys)"
+
+[keyboard-kg]
+Description="键盘 - 柯尔克孜语（吉尔吉斯语）"
+Language=ky
+Label=ki
+
+[keyboard-kg-phonetic]
+Description="键盘 - 柯尔克孜语（吉尔吉斯语） - 柯尔克孜语（吉尔吉斯语，语音助记）"
+Language=ky
+Label="kg (phonetic)"
+
+[keyboard-tj]
+Description="键盘 - 塔吉克语"
+Language=tg
+Label=tg
+
+[keyboard-tj-legacy]
+Description="键盘 - 塔吉克语 - 塔吉克语（传统）"
+Language=tg
+Label="tj (legacy)"
+
+[keyboard-mv]
+Description="键盘 - 迪维希语"
+Language=dv
+Label=dv
+
+[keyboard-lk]
+Description="键盘 - 僧伽罗语（语音助记）"
+Language=si
+Label=si
+
+[keyboard-lk-us]
+Description="键盘 - 僧伽罗语（语音助记） - 僧伽罗语（美国）"
+Language=si
+Label="si (us)"
+
+[keyboard-lk-tam_unicode]
+Description="键盘 - 僧伽罗语（语音助记） - 泰米尔语（斯里兰卡，TamilNet '99）"
+Language=ta
+Label="ta (tam_unicode)"
+
+[keyboard-lk-tam_TAB]
+Description="键盘 - 僧伽罗语（语音助记） - 泰米尔语（斯里兰卡，TamilNet '99，TAB 编码）"
+Language=ta
+Label="lk (tam_TAB)"
+
+[keyboard-al]
+Description="键盘 - 阿尔巴尼亚语"
+Language=sq
+Label=sq
+
+[keyboard-al-plisi]
+Description="键盘 - 阿尔巴尼亚语 - 阿尔巴尼亚语（Plisi）"
+Language=sq
+Label="al (plisi)"
+
+[keyboard-al-veqilharxhi]
+Description="键盘 - 阿尔巴尼亚语 - 阿尔巴尼亚语（Veqilharxhi）"
+Language=sq
+Label="al (veqilharxhi)"
+
+[keyboard-cz]
+Description="键盘 - 捷克语"
+Language=cs
+Label=cs
+
+[keyboard-cz-bksl]
+Description="键盘 - 捷克语 - 捷克语（额外的反斜杠）"
+Language=cs
+Label="cz (bksl)"
+
+[keyboard-cz-qwerty]
+Description="键盘 - 捷克语 - 捷克语（QWERTY）"
+Language=cs
+Label="cz (qwerty)"
+
+[keyboard-cz-qwerty_bksl]
+Description="键盘 - 捷克语 - 捷克语（QWERTY，额外的反斜杠）"
+Language=cs
+Label="cz (qwerty_bksl)"
+
+[keyboard-cz-winkeys]
+Description="键盘 - 捷克语 - 捷克语（QWERTZ，Windows）"
+Language=cs
+Label="cz (winkeys)"
+
+[keyboard-cz-winkeys-qwerty]
+Description="键盘 - 捷克语 - 捷克语（QWERTY，Windows）"
+Language=cs
+Label="cz (winkeys-qwerty)"
+
+[keyboard-cz-qwerty-mac]
+Description="键盘 - 捷克语 - 捷克语（QWERTY，Macintosh）"
+Language=cs
+Label="cz (qwerty-mac)"
+
+[keyboard-cz-ucw]
+Description="键盘 - 捷克语 - 捷克语（UCW，只有重音字母）"
+Language=cs
+Label="cz (ucw)"
+
+[keyboard-cz-dvorak-ucw]
+Description="键盘 - 捷克语 - 捷克语（美国，Dvorak，支持 UCW）"
+Language=cs
+Label="cz (dvorak-ucw)"
+
+[keyboard-cz-rus]
+Description="键盘 - 捷克语 - 俄语（捷克语，语音助记）"
+Language=ru
+Label="ru (rus)"
+
+[keyboard-cz-sun_type6]
+Description="键盘 - 捷克语 - 捷克语（Sun Type 6/7）"
+Language=cs
+Label="cz (sun_type6)"
+
+[keyboard-cz-prog]
+Description="键盘 - 捷克语 - 捷克语（programming）"
+Language=cs
+Label="cz (prog)"
+
+[keyboard-cz-prog_typo]
+Description="键盘 - 捷克语 - 捷克语（programming，typographic）"
+Language=cs
+Label="cz (prog_typo)"
+
+[keyboard-cz-coder]
+Description="键盘 - 捷克语 - 捷克语（coder）"
+Language=cs
+Label="cz (coder)"
+
+[keyboard-cz-colemak-ucw]
+Description="键盘 - 捷克语 - 捷克语（美国，Colemak，支持 UCW）"
+Language=cs
+Label="cz (colemak-ucw)"
+
+[keyboard-brai]
+Description="键盘 - 盲文"
+Language=
+Label=brl
+
+[keyboard-brai-left_hand]
+Description="键盘 - 盲文 - 盲文（单手，左手）"
+Language=
+Label="brai (left_hand)"
+
+[keyboard-brai-left_hand_invert]
+Description="键盘 - 盲文 - 盲文（单手，左手，大拇指反转）"
+Language=
+Label="brai (left_hand_invert)"
+
+[keyboard-brai-right_hand]
+Description="键盘 - 盲文 - 盲文（单手，右手）"
+Language=
+Label="brai (right_hand)"
+
+[keyboard-brai-right_hand_invert]
+Description="键盘 - 盲文 - 盲文（单手，右手，大拇指反转）"
+Language=
+Label="brai (right_hand_invert)"
+
+[keyboard-se]
+Description="键盘 - 瑞典语"
+Language=sv
+Label=sv
+
+[keyboard-se-nodeadkeys]
+Description="键盘 - 瑞典语 - 瑞典语（无死键）"
+Language=sv
+Label="se (nodeadkeys)"
+
+[keyboard-se-dvorak]
+Description="键盘 - 瑞典语 - 瑞典语（Dvorak）"
+Language=sv
+Label="se (dvorak)"
+
+[keyboard-se-us_dvorak]
+Description="键盘 - 瑞典语 - 瑞典语（Dvorak，国际）"
+Language=sv
+Label="se (us_dvorak)"
+
+[keyboard-se-svdvorak]
+Description="键盘 - 瑞典语 - 瑞典语（Svdvorak）"
+Language=sv
+Label="se (svdvorak)"
+
+[keyboard-se-colemak]
+Description="键盘 - 瑞典语 - 瑞典语（Colemak）"
+Language=sv
+Label="se (colemak)"
+
+[keyboard-se-mac]
+Description="键盘 - 瑞典语 - 瑞典语（Macintosh）"
+Language=sv
+Label="se (mac)"
+
+[keyboard-se-us]
+Description="键盘 - 瑞典语 - 瑞典语（美国）"
+Language=sv
+Label="se (us)"
+
+[keyboard-se-swl]
+Description="键盘 - 瑞典语 - 瑞典手语"
+Language=swl
+Label="se (swl)"
+
+[keyboard-se-smi]
+Description="键盘 - 瑞典语 - 北萨米语（瑞典）"
+Language=se
+Label="se (smi)"
+
+[keyboard-se-rus]
+Description="键盘 - 瑞典语 - 俄语（瑞典，语音助记）"
+Language=ru
+Label="ru (rus)"
+
+[keyboard-se-dvorak_a5]
+Description="键盘 - 瑞典语 - 瑞典语（Dvorak A5）"
+Language=sv
+Label="se (dvorak_a5)"
+
+[keyboard-se-sun_type6]
+Description="键盘 - 瑞典语 - 瑞典语（Sun Type 6/7）"
+Language=sv
+Label="se (sun_type6)"
+
+[keyboard-se-ovd]
+Description="键盘 - 瑞典语 - Elfdalian 语（瑞典，带组合 ogonek）"
+Language=ovd
+Label="se (ovd)"
+
+[keyboard-bg]
+Description="键盘 - 保加利亚语"
+Language=bg
+Label=bg
+
+[keyboard-bg-phonetic]
+Description="键盘 - 保加利亚语 - 保加利亚语（语音助记，传统）"
+Language=bg
+Label="bg (phonetic)"
+
+[keyboard-bg-bas_phonetic]
+Description="键盘 - 保加利亚语 - 保加利亚语（语音助记，新）"
+Language=bg
+Label="bg (bas_phonetic)"
+
+[keyboard-bg-bekl]
+Description="键盘 - 保加利亚语 - 保加利亚语（改进）"
+Language=bg
+Label="bg (bekl)"
+
+[keyboard-pk]
+Description="键盘 - 乌尔都语（巴基斯坦）"
+Language=ur
+Label=ur
+
+[keyboard-pk-urd-crulp]
+Description="键盘 - 乌尔都语（巴基斯坦） - 乌尔都语（巴基斯坦，CRULP）"
+Language=ur
+Label="pk (urd-crulp)"
+
+[keyboard-pk-urd-nla]
+Description="键盘 - 乌尔都语（巴基斯坦） - 乌尔都语（巴基斯坦，NLA）"
+Language=ur
+Label="pk (urd-nla)"
+
+[keyboard-pk-pak_urdu_phonetic]
+Description="键盘 - 乌尔都语（巴基斯坦） - 乌尔都语（Pak Urdu 语音助记）"
+Language=ur
+Label="pk (pak_urdu_phonetic)"
+
+[keyboard-pk-ara]
+Description="键盘 - 乌尔都语（巴基斯坦） - 阿拉伯语（巴基斯坦）"
+Language=ar
+Label="ar (ara)"
+
+[keyboard-pk-snd]
+Description="键盘 - 乌尔都语（巴基斯坦） - 信德语"
+Language=sd
+Label="sd (snd)"
+
+[keyboard-pk-urd-navees]
+Description="键盘 - 乌尔都语（巴基斯坦） - 乌尔都语（巴基斯坦，Navees）"
+Language=ur
+Label="pk (urd-navees)"
+
+[keyboard-au]
+Description="键盘 - 英语（澳大利亚）"
+Language=en
+Label=en
+
+[keyboard-mn]
+Description="键盘 - 蒙古语"
+Language=mn
+Label=mn
+
+[keyboard-dz]
+Description="键盘 - 柏柏尔语（阿尔及利亚，拉丁）"
+Language=tzm
+Label=kab
+
+[keyboard-dz-ber]
+Description="键盘 - 柏柏尔语（阿尔及利亚，拉丁） - 柏柏尔语（阿尔及利亚，提非纳）"
+Language=kab
+Label="kab (ber)"
+
+[keyboard-dz-azerty-deadkeys]
+Description="键盘 - 柏柏尔语（阿尔及利亚，拉丁） - 卡拜尔语（AZERTY，带死键）"
+Language=kab
+Label="kab (azerty-deadkeys)"
+
+[keyboard-dz-qwerty-gb-deadkeys]
+Description="键盘 - 柏柏尔语（阿尔及利亚，拉丁） - 卡拜尔语（QWERTY，英国，带死键）"
+Language=kab
+Label="kab (qwerty-gb-deadkeys)"
+
+[keyboard-dz-qwerty-us-deadkeys]
+Description="键盘 - 柏柏尔语（阿尔及利亚，拉丁） - 卡拜尔语（QWERTY，美国，带死键）"
+Language=kab
+Label="kab (qwerty-us-deadkeys)"
+
+[keyboard-dz-ar]
+Description="键盘 - 柏柏尔语（阿尔及利亚，拉丁） - 阿拉伯语（阿尔及利亚）"
+Language=ar
+Label=ar
+
+[keyboard-me]
+Description="键盘 - 黑山语"
+Language=sr
+Label=sr
+
+[keyboard-me-cyrillic]
+Description="键盘 - 黑山语 - 黑山语（西里尔）"
+Language=sr
+Label="me (cyrillic)"
+
+[keyboard-me-cyrillicyz]
+Description="键盘 - 黑山语 - 黑山语（西里尔，交换 ZE 和 ZHE）"
+Language=sr
+Label="me (cyrillicyz)"
+
+[keyboard-me-cyrillicalternatequotes]
+Description="键盘 - 黑山语 - 黑山语（西里尔，带书名号引号）"
+Language=sr
+Label="me (cyrillicalternatequotes)"
+
+[keyboard-me-latinunicode]
+Description="键盘 - 黑山语 - 黑山语（拉丁，Unicode）"
+Language=sr
+Label="me (latinunicode)"
+
+[keyboard-me-latinyz]
+Description="键盘 - 黑山语 - 黑山语（拉丁，QWERTY）"
+Language=sr
+Label="me (latinyz)"
+
+[keyboard-me-latinunicodeyz]
+Description="键盘 - 黑山语 - 黑山语（拉丁，Unicode，QWERTY）"
+Language=sr
+Label="me (latinunicodeyz)"
+
+[keyboard-me-latinalternatequotes]
+Description="键盘 - 黑山语 - 黑山语（拉丁，带书名号引号）"
+Language=sr
+Label="me (latinalternatequotes)"
+
+[keyboard-lv]
+Description="键盘 - 拉脱维亚语"
+Language=lv
+Label=lv
+
+[keyboard-lv-apostrophe]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（撇号）"
+Language=lv
+Label="lv (apostrophe)"
+
+[keyboard-lv-tilde]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（波浪号）"
+Language=lv
+Label="lv (tilde)"
+
+[keyboard-lv-fkey]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（F）"
+Language=lv
+Label="lv (fkey)"
+
+[keyboard-lv-modern]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（现代拉丁）"
+Language=lv
+Label="lv (modern)"
+
+[keyboard-lv-modern-cyr]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（现代西里尔）"
+Language=lv
+Label="lv (modern-cyr)"
+
+[keyboard-lv-ergonomic]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（人体工学，ŪGJRMV）"
+Language=lv
+Label="lv (ergonomic)"
+
+[keyboard-lv-adapted]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（改良）"
+Language=lv
+Label="lv (adapted)"
+
+[keyboard-lv-dvorak]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（Dvorak）"
+Language=lv
+Label="lv (dvorak)"
+
+[keyboard-lv-ykeydvorak]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（Dvorak，带 Y）"
+Language=lv
+Label="lv (ykeydvorak)"
+
+[keyboard-lv-minuskeydvorak]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（Dvorak，带减号）"
+Language=lv
+Label="lv (minuskeydvorak)"
+
+[keyboard-lv-dvorakprogr]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（适合程序员的 Dvorak）"
+Language=lv
+Label="lv (dvorakprogr)"
+
+[keyboard-lv-ykeydvorakprogr]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（适合程序员的 Dvorak，带 Y）"
+Language=lv
+Label="lv (ykeydvorakprogr)"
+
+[keyboard-lv-minuskeydvorakprogr]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（适合程序员的 Dvorak，带减号）"
+Language=lv
+Label="lv (minuskeydvorakprogr)"
+
+[keyboard-lv-colemak]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（Colemak）"
+Language=lv
+Label="lv (colemak)"
+
+[keyboard-lv-apostrophecolemak]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（Colemak，带撇号）"
+Language=lv
+Label="lv (apostrophecolemak)"
+
+[keyboard-lv-sun_type6]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（Sun Type 6/7）"
+Language=lv
+Label="lv (sun_type6)"
+
+[keyboard-lv-apostrophe-deadquotes]
+Description="键盘 - 拉脱维亚语 - 拉脱维亚语（带撇号，引号为死键）"
+Language=lv
+Label="lv (apostrophe-deadquotes)"
+
+[keyboard-ba]
+Description="键盘 - 波斯尼亚语"
+Language=bs
+Label=bs
+
+[keyboard-ba-alternatequotes]
+Description="键盘 - 波斯尼亚语 - 波斯尼亚语（带书名号引号）"
+Language=bs
+Label="ba (alternatequotes)"
+
+[keyboard-ba-unicode]
+Description="键盘 - 波斯尼亚语 - 波斯尼亚语（带波斯尼亚二重字）"
+Language=bs
+Label="ba (unicode)"
+
+[keyboard-ba-unicodeus]
+Description="键盘 - 波斯尼亚语 - 波斯尼亚语（美国，带罗马尼亚二重字）"
+Language=bs
+Label="ba (unicodeus)"
+
+[keyboard-ba-us]
+Description="键盘 - 波斯尼亚语 - 波斯尼亚语（美国）"
+Language=bs
+Label="ba (us)"
+
+[keyboard-tw]
+Description="键盘 - 台语"
+Language=
+Label=zh
+
+[keyboard-tw-indigenous]
+Description="键盘 - 台语 - 台语（原住民）"
+Language=tay
+Label="tw (indigenous)"
+
+[keyboard-tw-saisiyat]
+Description="键盘 - 台语 - 赛夏语（台湾）"
+Language=xsy
+Label="xsy (saisiyat)"
+
+[keyboard-rs]
+Description="键盘 - 塞尔维亚语"
+Language=sr
+Label=sr
+
+[keyboard-rs-alternatequotes]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚语（西里尔，带书名号引号）"
+Language=sr
+Label="rs (alternatequotes)"
+
+[keyboard-rs-yz]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚语（西里尔，交换 ZE 和 ZHE）"
+Language=sr
+Label="rs (yz)"
+
+[keyboard-rs-latin]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚语（拉丁）"
+Language=sr
+Label="rs (latin)"
+
+[keyboard-rs-latinalternatequotes]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚语（拉丁，带书名号引号）"
+Language=sr
+Label="rs (latinalternatequotes)"
+
+[keyboard-rs-latinunicode]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚语（拉丁，Unicode）"
+Language=sr
+Label="rs (latinunicode)"
+
+[keyboard-rs-latinyz]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚（拉丁，QWERTY）"
+Language=sr
+Label="rs (latinyz)"
+
+[keyboard-rs-latinunicodeyz]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚（拉丁，Unicode，QWERTY）"
+Language=sr
+Label="rs (latinunicodeyz)"
+
+[keyboard-rs-rue]
+Description="键盘 - 塞尔维亚语 - 潘诺尼亚卢森尼亚语"
+Language=rue
+Label="rs (rue)"
+
+[keyboard-rs-combiningkeys]
+Description="键盘 - 塞尔维亚语 - 塞尔维亚语（组合重音而不使用死键）"
+Language=sr
+Label="rs (combiningkeys)"
+
+[keyboard-dk]
+Description="键盘 - 丹麦语"
+Language=da
+Label=da
+
+[keyboard-dk-nodeadkeys]
+Description="键盘 - 丹麦语 - 丹麦语（无死键）"
+Language=da
+Label="dk (nodeadkeys)"
+
+[keyboard-dk-winkeys]
+Description="键盘 - 丹麦语 - 丹麦语（Windows）"
+Language=da
+Label="dk (winkeys)"
+
+[keyboard-dk-mac]
+Description="键盘 - 丹麦语 - 丹麦语（Macintosh）"
+Language=da
+Label="dk (mac)"
+
+[keyboard-dk-mac_nodeadkeys]
+Description="键盘 - 丹麦语 - 丹麦语（Macintosh，无死键）"
+Language=da
+Label="dk (mac_nodeadkeys)"
+
+[keyboard-dk-dvorak]
+Description="键盘 - 丹麦语 - 丹麦语（Dvorak）"
+Language=da
+Label="dk (dvorak)"
+
+[keyboard-dk-sun_type6]
+Description="键盘 - 丹麦语 - 丹麦语（Sun Type 6/7）"
+Language=da
+Label="dk (sun_type6)"
+
+[keyboard-bw]
+Description="键盘 - 茨瓦纳语"
+Language=tn
+Label=tn
+
+[keyboard-kr]
+Description="键盘 - 朝鲜语"
+Language=ko
+Label=ko
+
+[keyboard-kr-kr104]
+Description="键盘 - 朝鲜语 - 朝鲜语（兼容 101/104 键）"
+Language=ko
+Label="kr (kr104)"
+
+[keyboard-kr-sun_type6]
+Description="键盘 - 朝鲜语 - 朝鲜语（Sun Type 6/7）"
+Language=ko
+Label="kr (sun_type6)"
+
+[keyboard-nl]
+Description="键盘 - 荷兰语"
+Language=nl
+Label=nl
+
+[keyboard-nl-us]
+Description="键盘 - 荷兰语 - 荷兰语（美国）"
+Language=nl
+Label="nl (us)"
+
+[keyboard-nl-mac]
+Description="键盘 - 荷兰语 - 荷兰语（Macintosh）"
+Language=nl
+Label="nl (mac)"
+
+[keyboard-nl-std]
+Description="键盘 - 荷兰语 - 荷兰语（标准）"
+Language=nl
+Label="nl (std)"
+
+[keyboard-nl-sun_type6]
+Description="键盘 - 荷兰语 - 荷兰语（Sun Type 6/7）"
+Language=nl
+Label="nl (sun_type6)"
+
+[keyboard-et]
+Description="键盘 - 阿姆哈拉语"
+Language=am
+Label=am
+
+[keyboard-be]
+Description="键盘 - 比利时语"
+Language=de
+Label=be
+
+[keyboard-be-oss]
+Description="键盘 - 比利时语 - 比利时语（替代）"
+Language=de
+Label="be (oss)"
+
+[keyboard-be-oss_latin9]
+Description="键盘 - 比利时语 - 比利时语（只包含拉丁-9 字符，替代）"
+Language=de
+Label="be (oss_latin9)"
+
+[keyboard-be-iso-alternate]
+Description="键盘 - 比利时语 - 比利时语（ISO，替代）"
+Language=de
+Label="be (iso-alternate)"
+
+[keyboard-be-nodeadkeys]
+Description="键盘 - 比利时语 - 比利时语（无死键）"
+Language=de
+Label="be (nodeadkeys)"
+
+[keyboard-be-wang]
+Description="键盘 - 比利时语 - 比利时语（王安 724 型 AZERTY）"
+Language=de
+Label="be (wang)"
+
+[keyboard-be-sun_type6]
+Description="键盘 - 比利时语 - 比利时语（Sun Type 6/7）"
+Language=de
+Label="be (sun_type6)"
+
+[keyboard-la]
+Description="键盘 - 老挝语"
+Language=lo
+Label=lo
+
+[keyboard-la-stea]
+Description="键盘 - 老挝语 - 老挝语（STEA）"
+Language=lo
+Label="la (stea)"
+
+[keyboard-bt]
+Description="键盘 - 不丹语"
+Language=dz
+Label=dz
+
+[keyboard-mm]
+Description="键盘 - 缅甸语"
+Language=my
+Label=my
+
+[keyboard-mm-zawgyi]
+Description="键盘 - 缅甸语 - 缅甸语（Zawgyi）"
+Language=my
+Label="my-zwg (zawgyi)"
+
+[keyboard-mm-mnw]
+Description="键盘 - 缅甸语 - 孟语"
+Language=mnw
+Label=mnw
+
+[keyboard-mm-mnw-a1]
+Description="键盘 - 缅甸语 - 孟语（A1）"
+Language=mnw
+Label="mnw (mnw-a1)"
+
+[keyboard-mm-shn]
+Description="键盘 - 缅甸语 - 掸语"
+Language=shn
+Label=shn
+
+[keyboard-mm-zgt]
+Description="键盘 - 缅甸语 - 掸语（Zawgyi）"
+Language=shn
+Label="shn-zwg (zgt)"
+
+[keyboard-si]
+Description="键盘 - 斯洛文尼亚语"
+Language=sl
+Label=sl
+
+[keyboard-si-alternatequotes]
+Description="键盘 - 斯洛文尼亚语 - 斯洛文尼亚语（带书名号引号）"
+Language=sl
+Label="si (alternatequotes)"
+
+[keyboard-si-us]
+Description="键盘 - 斯洛文尼亚语 - 斯洛文尼亚语（美国）"
+Language=sl
+Label="si (us)"
+
+[keyboard-am]
+Description="键盘 - 亚美尼亚语"
+Language=hy
+Label=hy
+
+[keyboard-am-phonetic]
+Description="键盘 - 亚美尼亚语 - 亚美尼亚语（语音助记）"
+Language=hy
+Label="am (phonetic)"
+
+[keyboard-am-phonetic-alt]
+Description="键盘 - 亚美尼亚语 - 亚美尼亚语（替代，语音助记）"
+Language=hy
+Label="am (phonetic-alt)"
+
+[keyboard-am-eastern]
+Description="键盘 - 亚美尼亚语 - 亚美尼亚语（东部）"
+Language=hy
+Label="am (eastern)"
+
+[keyboard-am-eastern-alt]
+Description="键盘 - 亚美尼亚语 - 亚美尼亚语（替代，东部）"
+Language=hy
+Label="am (eastern-alt)"
+
+[keyboard-am-western]
+Description="键盘 - 亚美尼亚语 - 亚美尼亚语（西部）"
+Language=hy
+Label="am (western)"
+
+[keyboard-am-olpc-phonetic]
+Description="键盘 - 亚美尼亚语 - 亚美尼亚语（OLPC，语音助记）"
+Language=hy
+Label="am (olpc-phonetic)"
+
+[keyboard-by]
+Description="键盘 - 白俄罗斯语"
+Language=be
+Label=by
+
+[keyboard-by-legacy]
+Description="键盘 - 白俄罗斯语 - 白俄罗斯语（传统）"
+Language=be
+Label="by (legacy)"
+
+[keyboard-by-latin]
+Description="键盘 - 白俄罗斯语 - 白俄罗斯语（拉丁）"
+Language=be
+Label="by (latin)"
+
+[keyboard-by-intl]
+Description="键盘 - 白俄罗斯语 - 白俄罗斯语（国际）"
+Language=be
+Label="by (intl)"
+
+[keyboard-by-phonetic]
+Description="键盘 - 白俄罗斯语 - 白俄罗斯语（语音助记）"
+Language=be
+Label="by (phonetic)"
+
+[keyboard-by-ru]
+Description="键盘 - 白俄罗斯语 - 俄语（白俄罗斯）"
+Language=ru
+Label="by (ru)"
+
+[keyboard-vn]
+Description="键盘 - 越南语"
+Language=vi
+Label=vi
+
+[keyboard-vn-us]
+Description="键盘 - 越南语 - 越南语（美国）"
+Language=vi
+Label="vn (us)"
+
+[keyboard-vn-fr]
+Description="键盘 - 越南语 - 越南语（法国）"
+Language=vi
+Label="vn (fr)"
+
+[keyboard-vn-aderty]
+Description="键盘 - 越南语 - 越南语（AÐERTY）"
+Language=vi
+Label="vn (aderty)"
+
+[keyboard-vn-qderty]
+Description="键盘 - 越南语 - 越南语（QĐERTY）"
+Language=vi
+Label="vn (qderty)"
+
+[keyboard-ml]
+Description="键盘 - 班巴拉语"
+Language=bm
+Label=bm
+
+[keyboard-ml-fr-oss]
+Description="键盘 - 班巴拉语 - 法语（马里，替代）"
+Language=fr
+Label="fr (fr-oss)"
+
+[keyboard-ml-us-mac]
+Description="键盘 - 班巴拉语 - 英语（马里，美国，Macintosh）"
+Language=en
+Label="en (us-mac)"
+
+[keyboard-ml-us-intl]
+Description="键盘 - 班巴拉语 - 英语（马里，美国，国际）"
+Language=en
+Label="en (us-intl)"
+
+[keyboard-ara]
+Description="键盘 - 阿拉伯语"
+Language=ar
+Label=ar
+
+[keyboard-ara-digits]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（东阿拉伯语数字）"
+Language=ar
+Label="ara (digits)"
+
+[keyboard-ara-azerty]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（AZERTY）"
+Language=ar
+Label="ara (azerty)"
+
+[keyboard-ara-azerty_digits]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（AZERTY，东阿拉伯语数字）"
+Language=ar
+Label="ara (azerty_digits)"
+
+[keyboard-ara-buckwalter]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（Buckwalter）"
+Language=ar
+Label="ara (buckwalter)"
+
+[keyboard-ara-mac]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（Macintosh）"
+Language=ar
+Label="ara (mac)"
+
+[keyboard-ara-mac-phonetic]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（Macintosh，语音助记）"
+Language=ar
+Label="ara (mac-phonetic)"
+
+[keyboard-ara-olpc]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（OLPC）"
+Language=ar
+Label="ara (olpc)"
+
+[keyboard-ara-sun_type6]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（Sun Type 6/7）"
+Language=ar
+Label="ara (sun_type6)"
+
+[keyboard-ara-basic_ext]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（阿拉伯数字，第 4 层带扩展）"
+Language=ar
+Label="ara (basic_ext)"
+
+[keyboard-ara-basic_ext_digits]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（东阿拉伯数字，第 4 层带扩展）"
+Language=ar
+Label="ara (basic_ext_digits)"
+
+[keyboard-ara-ergoarabic]
+Description="键盘 - 阿拉伯语 - 阿拉伯语（ErgoArabic）"
+Language=ar
+Label="ara (ergoarabic)"
+
+[keyboard-ie]
+Description="键盘 - 爱尔兰语"
+Language=en
+Label=ie
+
+[keyboard-ie-UnicodeExpert]
+Description="键盘 - 爱尔兰语 - 爱尔兰语（UnicodeExpert）"
+Language=en
+Label="ie (UnicodeExpert)"
+
+[keyboard-ie-CloGaelach]
+Description="键盘 - 爱尔兰语 - CloGaelach"
+Language=ga
+Label="ie (CloGaelach)"
+
+[keyboard-ie-ogam]
+Description="键盘 - 爱尔兰语 - 欧甘语"
+Language=sga
+Label="ie (ogam)"
+
+[keyboard-ie-ogam_is434]
+Description="键盘 - 爱尔兰语 - 欧甘语（IS434）"
+Language=sga
+Label="ie (ogam_is434)"
+
+[keyboard-cm]
+Description="键盘 - 英语（喀麦隆）"
+Language=en
+Label=cm
+
+[keyboard-cm-french]
+Description="键盘 - 英语（喀麦隆） - 法语（喀麦隆）"
+Language=fr
+Label="fr (french)"
+
+[keyboard-cm-qwerty]
+Description="键盘 - 英语（喀麦隆） - 喀麦隆多语言（QWERTY，国际）"
+Language=en
+Label="cm (qwerty)"
+
+[keyboard-cm-azerty]
+Description="键盘 - 英语（喀麦隆） - 喀麦隆（AZERTY，国际）"
+Language=fr
+Label="cm (azerty)"
+
+[keyboard-cm-dvorak]
+Description="键盘 - 英语（喀麦隆） - 喀麦隆（Dvorak，国际）"
+Language=en
+Label="cm (dvorak)"
+
+[keyboard-cm-mmuock]
+Description="键盘 - 英语（喀麦隆） - 喀麦隆（Mmuock）"
+Language=en
+Label="cm (mmuock)"
+
+[keyboard-iq]
+Description="键盘 - 阿拉伯语（伊拉克）"
+Language=ar
+Label=ar
+
+[keyboard-iq-ku]
+Description="键盘 - 阿拉伯语（伊拉克） - 库尔德语（伊拉克，拉丁 Q）"
+Language=ku
+Label=ku
+
+[keyboard-iq-ku_alt]
+Description="键盘 - 阿拉伯语（伊拉克） - 库尔德语（伊拉克，拉丁 Alt-Q）"
+Language=ku
+Label="ku (ku_alt)"
+
+[keyboard-iq-ku_f]
+Description="键盘 - 阿拉伯语（伊拉克） - 库尔德语（伊拉克，F）"
+Language=ku
+Label="ku (ku_f)"
+
+[keyboard-iq-ku_ara]
+Description="键盘 - 阿拉伯语（伊拉克） - 库尔德语（伊拉克，阿拉伯-拉丁）"
+Language=ku
+Label="ku (ku_ara)"
+
+[keyboard-af]
+Description="键盘 - 达里语"
+Language=prs
+Label=fa
+
+[keyboard-af-ps]
+Description="键盘 - 达里语 - 普什图语"
+Language=ps
+Label=ps
+
+[keyboard-af-uz]
+Description="键盘 - 达里语 - 乌兹别克语（阿富汗）"
+Language=uz
+Label=uz
+
+[keyboard-af-fa-olpc]
+Description="键盘 - 达里语 - 达里语（阿富汗，OLPC）"
+Language=prs
+Label="fa (fa-olpc)"
+
+[keyboard-af-ps-olpc]
+Description="键盘 - 达里语 - 普什图语（阿富汗，OLPC）"
+Language=ps
+Label="ps (ps-olpc)"
+
+[keyboard-af-uz-olpc]
+Description="键盘 - 达里语 - 乌兹别克语（阿富汗，OLPC）"
+Language=uz
+Label="uz (uz-olpc)"
+
+[keyboard-hr]
+Description="键盘 - 克罗地亚语"
+Language=hr
+Label=hr
+
+[keyboard-hr-alternatequotes]
+Description="键盘 - 克罗地亚语 - 克罗地亚语（带书名号引号）"
+Language=hr
+Label="hr (alternatequotes)"
+
+[keyboard-hr-unicode]
+Description="键盘 - 克罗地亚语 - 克罗地亚语（带克罗地亚语二重字）"
+Language=hr
+Label="hr (unicode)"
+
+[keyboard-hr-unicodeus]
+Description="键盘 - 克罗地亚语 - 克罗地亚语（美国，带克罗地亚语二重字）"
+Language=hr
+Label="hr (unicodeus)"
+
+[keyboard-hr-us]
+Description="键盘 - 克罗地亚语 - 克罗地亚语（美国）"
+Language=hr
+Label="hr (us)"
+
+[keyboard-ma]
+Description="键盘 - 阿拉伯语（摩洛哥）"
+Language=ary
+Label=ar
+
+[keyboard-ma-tifinagh]
+Description="键盘 - 阿拉伯语（摩洛哥） - 柏柏尔语（摩洛哥，提非纳）"
+Language=
+Label="ber (tifinagh)"
+
+[keyboard-ma-tifinagh-alt]
+Description="键盘 - 阿拉伯语（摩洛哥） - 柏柏尔语（摩洛哥，提非纳，替代）"
+Language=
+Label="ber (tifinagh-alt)"
+
+[keyboard-ma-tifinagh-alt-phonetic]
+Description="键盘 - 阿拉伯语（摩洛哥） - 柏柏尔语（摩洛哥，提非纳语音助记，替代）"
+Language=
+Label="ber (tifinagh-alt-phonetic)"
+
+[keyboard-ma-tifinagh-extended]
+Description="键盘 - 阿拉伯语（摩洛哥） - 柏柏尔语（摩洛哥，提非纳扩展）"
+Language=
+Label="ber (tifinagh-extended)"
+
+[keyboard-ma-tifinagh-phonetic]
+Description="键盘 - 阿拉伯语（摩洛哥） - 柏柏尔语（摩洛哥，提非纳语音助记）"
+Language=
+Label="ber (tifinagh-phonetic)"
+
+[keyboard-ma-tifinagh-extended-phonetic]
+Description="键盘 - 阿拉伯语（摩洛哥） - 柏柏尔语（摩洛哥，提非纳扩展语音助记）"
+Language=
+Label="ber (tifinagh-extended-phonetic)"
+
+[keyboard-ma-french]
+Description="键盘 - 阿拉伯语（摩洛哥） - 法语（摩洛哥）"
+Language=fr
+Label="fr (french)"
+
+[keyboard-ma-rif]
+Description="键盘 - 阿拉伯语（摩洛哥） - 里夫语"
+Language=rif
+Label=rif
+
+[keyboard-sy]
+Description="键盘 - 阿拉伯语（叙利亚）"
+Language=syr
+Label=ar
+
+[keyboard-sy-syc]
+Description="键盘 - 阿拉伯语（叙利亚） - 叙利亚语"
+Language=syr
+Label=syc
+
+[keyboard-sy-syc_phonetic]
+Description="键盘 - 阿拉伯语（叙利亚） - 叙利亚语（语音助记）"
+Language=syr
+Label="syc (syc_phonetic)"
+
+[keyboard-sy-ku]
+Description="键盘 - 阿拉伯语（叙利亚） - 库尔德语（叙利亚，拉丁 Q）"
+Language=ku
+Label=ku
+
+[keyboard-sy-ku_alt]
+Description="键盘 - 阿拉伯语（叙利亚） - 库尔德语（叙利亚，拉丁 Alt-Q）"
+Language=ku
+Label="ku (ku_alt)"
+
+[keyboard-sy-ku_f]
+Description="键盘 - 阿拉伯语（叙利亚） - 库尔德语（叙利亚，F）"
+Language=ku
+Label="ku (ku_f)"
+
+[keyboard-at]
+Description="键盘 - 德语（奥地利）"
+Language=de
+Label=de
+
+[keyboard-at-nodeadkeys]
+Description="键盘 - 德语（奥地利） - 德语（奥地利，无死键）"
+Language=de
+Label="at (nodeadkeys)"
+
+[keyboard-at-mac]
+Description="键盘 - 德语（奥地利） - 德语（奥地利，Macintosh）"
+Language=de
+Label="at (mac)"
+
+[keyboard-nz]
+Description="键盘 - 英语（新西兰）"
+Language=en
+Label=en
+
+[keyboard-nz-mao]
+Description="键盘 - 英语（新西兰） - 毛利语"
+Language=mi
+Label="mi (mao)"
+
+[keyboard-epo]
+Description="键盘 - 世界语"
+Language=eo
+Label=eo
+
+[keyboard-epo-legacy]
+Description="键盘 - 世界语 - 世界语（传统）"
+Language=eo
+Label="epo (legacy)"
+
+[keyboard-eu]
+Description="键盘 - EurKEY（美国）"
+Language=ca
+Label=eu
+
+[keyboard-za]
+Description="键盘 - 英语（南非）"
+Language=en
+Label=en
+
+[keyboard-fo]
+Description="键盘 - 法罗语"
+Language=fo
+Label=fo
+
+[keyboard-fo-nodeadkeys]
+Description="键盘 - 法罗语 - 法罗语（无死键）"
+Language=fo
+Label="fo (nodeadkeys)"
+
+[keyboard-gb]
+Description="键盘 - 英语（英国）"
+Language=en
+Label=en
+
+[keyboard-gb-extd]
+Description="键盘 - 英语（英国） - 英语（英国，扩展，Windows）"
+Language=en
+Label="gb (extd)"
+
+[keyboard-gb-intl]
+Description="键盘 - 英语（英国） - 英语（英国，国际，带死键）"
+Language=en
+Label="gb (intl)"
+
+[keyboard-gb-dvorak]
+Description="键盘 - 英语（英国） - 英语（英国，Dvorak）"
+Language=en
+Label="gb (dvorak)"
+
+[keyboard-gb-dvorakukp]
+Description="键盘 - 英语（英国） - 英语（英国，Dvorak，带英国标点）"
+Language=en
+Label="gb (dvorakukp)"
+
+[keyboard-gb-mac]
+Description="键盘 - 英语（英国） - 英语（英国，Macintosh）"
+Language=en
+Label="gb (mac)"
+
+[keyboard-gb-mac_intl]
+Description="键盘 - 英语（英国） - 英语（英国，Macintosh，国际）"
+Language=en
+Label="gb (mac_intl)"
+
+[keyboard-gb-colemak]
+Description="键盘 - 英语（英国） - 英语（英国，Colemak）"
+Language=en
+Label="gb (colemak)"
+
+[keyboard-gb-colemak_dh]
+Description="键盘 - 英语（英国） - 英语（英国，Colemak-DH）"
+Language=en
+Label="gb (colemak_dh)"
+
+[keyboard-gb-gla]
+Description="键盘 - 英语（英国） - 苏格兰盖尔语"
+Language=en
+Label="gd (gla)"
+
+[keyboard-gb-pl]
+Description="键盘 - 英语（英国） - 波兰语（英式键盘）"
+Language=pl
+Label=pl
+
+[keyboard-gb-sun_type6]
+Description="键盘 - 英语（英国） - 英语（英国，Sun Type 6/7）"
+Language=en
+Label="gb (sun_type6)"
+
+[keyboard-ke]
+Description="键盘 - 斯瓦希里语（肯尼亚）"
+Language=sw
+Label=sw
+
+[keyboard-ke-kik]
+Description="键盘 - 斯瓦希里语（肯尼亚） - 基库尤语"
+Language=ki
+Label="ki (kik)"
+
+[keyboard-md]
+Description="键盘 - 摩尔多瓦语"
+Language=ro
+Label=ro
+
+[keyboard-md-gag]
+Description="键盘 - 摩尔多瓦语 - 加告兹语（摩尔多瓦）"
+Language=gag
+Label=gag
+
+[keyboard-us]
+Description="键盘 - 英语（美国）"
+Language=en
+Label=en
+
+[keyboard-us-euro]
+Description="键盘 - 英语（美国） - 英语（美国，5 键上是欧元符号）"
+Language=en
+Label="us (euro)"
+
+[keyboard-us-intl]
+Description="键盘 - 英语（美国） - 英语（美国，国际，带死键）"
+Language=en
+Label="us (intl)"
+
+[keyboard-us-alt-intl]
+Description="键盘 - 英语（美国） - 英语（美国，替代，国际）"
+Language=en
+Label="us (alt-intl)"
+
+[keyboard-us-altgr-intl]
+Description="键盘 - 英语（美国） - 英语（国际，带 AltGr 死键）"
+Language=en
+Label="us (altgr-intl)"
+
+[keyboard-us-mac]
+Description="键盘 - 英语（美国） - 英语（Macintosh，ABC，ANSI）"
+Language=en
+Label="us (mac)"
+
+[keyboard-us-mac-iso]
+Description="键盘 - 英语（美国） - 英语（Macintosh，ABC，ISO）"
+Language=en
+Label="us (mac-iso)"
+
+[keyboard-us-colemak]
+Description="键盘 - 英语（美国） - 英语（Colemak）"
+Language=en
+Label="us (colemak)"
+
+[keyboard-us-colemak_dh]
+Description="键盘 - 英语（美国） - 英语（Colemak-DH）"
+Language=en
+Label="us (colemak_dh)"
+
+[keyboard-us-colemak_dh_wide]
+Description="键盘 - 英语（美国） - 英语（Colemak-DH 宽版）"
+Language=en
+Label="us (colemak_dh_wide)"
+
+[keyboard-us-colemak_dh_ortho]
+Description="键盘 - 英语（美国） - 英语（Colemak-DH 正交）"
+Language=en
+Label="us (colemak_dh_ortho)"
+
+[keyboard-us-colemak_dh_iso]
+Description="键盘 - 英语（美国） - 英语（Colemak-DH ISO）"
+Language=en
+Label="us (colemak_dh_iso)"
+
+[keyboard-us-colemak_dh_wide_iso]
+Description="键盘 - 英语（美国） - 英语（Colemak-DH 宽版 ISO）"
+Language=en
+Label="us (colemak_dh_wide_iso)"
+
+[keyboard-us-dvorak]
+Description="键盘 - 英语（美国） - 英语（Dvorak）"
+Language=en
+Label="us (dvorak)"
+
+[keyboard-us-dvorak-intl]
+Description="键盘 - 英语（美国） - 英语（Dvorak，国际，带死键）"
+Language=en
+Label="us (dvorak-intl)"
+
+[keyboard-us-dvorak-alt-intl]
+Description="键盘 - 英语（美国） - 英语（Dvorak，替代，国际）"
+Language=en
+Label="us (dvorak-alt-intl)"
+
+[keyboard-us-dvorak-l]
+Description="键盘 - 英语（美国） - 英语（Dvorak，单手，左手）"
+Language=en
+Label="us (dvorak-l)"
+
+[keyboard-us-dvorak-r]
+Description="键盘 - 英语（美国） - 英语（Dvorak，单手，右手）"
+Language=en
+Label="us (dvorak-r)"
+
+[keyboard-us-dvorak-classic]
+Description="键盘 - 英语（美国） - 英语（经典 Dvorak）"
+Language=en
+Label="us (dvorak-classic)"
+
+[keyboard-us-dvp]
+Description="键盘 - 英语（美国） - 英语（适合程序员的 Dvorak）"
+Language=en
+Label="us (dvp)"
+
+[keyboard-us-dvorak-mac]
+Description="键盘 - 英语（美国） - 英语（Dvorak，Macintosh，ANSI）"
+Language=en
+Label="us (dvorak-mac)"
+
+[keyboard-us-dvorak-mac-iso]
+Description="键盘 - 英语（美国） - 英语（Dvorak，Macintosh，ISO）"
+Language=en
+Label="us (dvorak-mac-iso)"
+
+[keyboard-us-norman]
+Description="键盘 - 英语（美国） - 英语（Norman）"
+Language=en
+Label="us (norman)"
+
+[keyboard-us-symbolic]
+Description="键盘 - 英语（美国） - 英语（美国，符号）"
+Language=en
+Label="us (symbolic)"
+
+[keyboard-us-workman]
+Description="键盘 - 英语（美国） - 英语（Workman）"
+Language=en
+Label="us (workman)"
+
+[keyboard-us-workman-intl]
+Description="键盘 - 英语（美国） - 英语（Workman，国际，带死键）"
+Language=en
+Label="us (workman-intl)"
+
+[keyboard-us-olpc2]
+Description="键盘 - 英语（美国） - 英语（除/乘键切换布局）"
+Language=en
+Label="us (olpc2)"
+
+[keyboard-us-chr]
+Description="键盘 - 英语（美国） - 切罗基语"
+Language=chr
+Label=chr
+
+[keyboard-us-haw]
+Description="键盘 - 英语（美国） - 夏威夷语"
+Language=haw
+Label=haw
+
+[keyboard-us-rus]
+Description="键盘 - 英语（美国） - 俄语（美国，语音助记）"
+Language=ru
+Label="ru (rus)"
+
+[keyboard-us-hbs]
+Description="键盘 - 英语（美国） - 塞尔维亚-克罗地亚语（美国）"
+Language=en
+Label="us (hbs)"
+
+[keyboard-us-intl-unicode]
+Description="键盘 - 英语（美国） - 英语（美国，国际，AltGr Unicode 组合字符）"
+Language=en
+Label="us (intl-unicode)"
+
+[keyboard-us-alt-intl-unicode]
+Description="键盘 - 英语（美国） - 英语（美国，国际，AltGr Unicode 组合字符，替代）"
+Language=en
+Label="us (alt-intl-unicode)"
+
+[keyboard-us-ats]
+Description="键盘 - 英语（美国） - 阿特塞纳语"
+Language=en
+Label="us (ats)"
+
+[keyboard-us-crd]
+Description="键盘 - 英语（美国） - 科达莲萨利希语"
+Language=crd
+Label="us (crd)"
+
+[keyboard-us-cz_sk_de]
+Description="键盘 - 英语（美国） - 捷克语、斯洛伐克语和德语（美国）"
+Language=en
+Label="us (cz_sk_de)"
+
+[keyboard-us-cz_sk_pl_de_es_fi_sv]
+Description="键盘 - 英语（美国） - 捷克语、斯洛伐克语、波兰语、西班牙语、芬兰语、瑞典语和德语（美国）"
+Language=en
+Label="us (cz_sk_pl_de_es_fi_sv)"
+
+[keyboard-us-drix]
+Description="键盘 - 英语（美国） - 英语（Drix）"
+Language=en
+Label="us (drix)"
+
+[keyboard-us-de_se_fi]
+Description="键盘 - 英语（美国） - 德语，瑞典语和芬兰语（美国）"
+Language=en
+Label="us (de_se_fi)"
+
+[keyboard-us-ibm238l]
+Description="键盘 - 英语（美国） - 英语（美国，IBM Arabic 238_L）"
+Language=en
+Label="us (ibm238l)"
+
+[keyboard-us-sun_type6]
+Description="键盘 - 英语（美国） - 英语（美国，Sun Type 6/7）"
+Language=en
+Label="us (sun_type6)"
+
+[keyboard-us-carpalx]
+Description="键盘 - 英语（美国） - 英语（Carpalx）"
+Language=en
+Label="us (carpalx)"
+
+[keyboard-us-carpalx-intl]
+Description="键盘 - 英语（美国） - 英语（Carpalx，国际，带死键）"
+Language=en
+Label="us (carpalx-intl)"
+
+[keyboard-us-carpalx-altgr-intl]
+Description="键盘 - 英语（美国） - 英语（Carpalx，国际，带 AltGr 死键）"
+Language=en
+Label="us (carpalx-altgr-intl)"
+
+[keyboard-us-carpalx-full]
+Description="键盘 - 英语（美国） - 英语（Carpalx，完全优化）"
+Language=en
+Label="us (carpalx-full)"
+
+[keyboard-us-carpalx-full-intl]
+Description="键盘 - 英语（美国） - 英语（Carpalx，完全优化，国际，带死键）"
+Language=en
+Label="us (carpalx-full-intl)"
+
+[keyboard-us-carpalx-full-altgr-intl]
+Description="键盘 - 英语（美国） - 英语（Carpalx，完全优化，国际，带 AltGr 死键）"
+Language=en
+Label="us (carpalx-full-altgr-intl)"
+
+[keyboard-us-3l]
+Description="键盘 - 英语（美国） - 英语（3l）"
+Language=en
+Label="us (3l)"
+
+[keyboard-us-3l-cros]
+Description="键盘 - 英语（美国） - 英语（3l，Chromebook）"
+Language=en
+Label="us (3l-cros)"
+
+[keyboard-us-3l-emacs]
+Description="键盘 - 英语（美国） - 英语（3l，emacs）"
+Language=en
+Label="us (3l-emacs)"
+
+[keyboard-us-workman-p]
+Description="键盘 - 英语（美国） - 英语（Workman-P）"
+Language=en
+Label=workman-p
+
+[keyboard-us-scn]
+Description="键盘 - 英语（美国） - 西西里语（美式键盘）"
+Language=en
+Label="us (scn)"
+
+[keyboard-us-altgr-weur]
+Description="键盘 - 英语（美国） - 英语（西欧 AltGr 死键）"
+Language=en
+Label="us (altgr-weur)"
+
+[keyboard-ge]
+Description="键盘 - 格鲁吉亚语"
+Language=ka
+Label=ka
+
+[keyboard-ge-ergonomic]
+Description="键盘 - 格鲁吉亚语 - 格鲁吉亚语（人体工学）"
+Language=ka
+Label="ge (ergonomic)"
+
+[keyboard-ge-mess]
+Description="键盘 - 格鲁吉亚语 - 格鲁吉亚语（MESS）"
+Language=ka
+Label="ge (mess)"
+
+[keyboard-ge-os]
+Description="键盘 - 格鲁吉亚语 - 奥塞梯语（格鲁吉亚）"
+Language=os
+Label="ge (os)"
+
+[keyboard-ge-ru]
+Description="键盘 - 格鲁吉亚语 - 俄语（格鲁吉亚）"
+Language=ru
+Label=ru
+
+[keyboard-es]
+Description="键盘 - 西班牙语"
+Language=es
+Label=es
+
+[keyboard-es-nodeadkeys]
+Description="键盘 - 西班牙语 - 西班牙语（无死键）"
+Language=es
+Label="es (nodeadkeys)"
+
+[keyboard-es-deadtilde]
+Description="键盘 - 西班牙语 - 西班牙语（波浪号为死键）"
+Language=es
+Label="es (deadtilde)"
+
+[keyboard-es-winkeys]
+Description="键盘 - 西班牙语 - 西班牙语（Windows）"
+Language=es
+Label="es (winkeys)"
+
+[keyboard-es-dvorak]
+Description="键盘 - 西班牙语 - 西班牙语（Dvorak）"
+Language=es
+Label="es (dvorak)"
+
+[keyboard-es-ast]
+Description="键盘 - 西班牙语 - 阿斯图里亚斯语（西班牙，带底部加点的 H 和 L）"
+Language=ast
+Label=ast
+
+[keyboard-es-cat]
+Description="键盘 - 西班牙语 - 加泰罗尼亚语（西班牙，带中间加点的 L）"
+Language=ca
+Label="ca (cat)"
+
+[keyboard-es-sun_type6]
+Description="键盘 - 西班牙语 - 西班牙语（Sun Type 6/7）"
+Language=es
+Label="es (sun_type6)"
+
+[keyboard-ee]
+Description="键盘 - 爱沙尼亚语"
+Language=et
+Label=et
+
+[keyboard-ee-nodeadkeys]
+Description="键盘 - 爱沙尼亚语 - 爱沙尼亚语（无死键）"
+Language=et
+Label="ee (nodeadkeys)"
+
+[keyboard-ee-dvorak]
+Description="键盘 - 爱沙尼亚语 - 爱沙尼亚语（Dvorak）"
+Language=et
+Label="ee (dvorak)"
+
+[keyboard-ee-us]
+Description="键盘 - 爱沙尼亚语 - 爱沙尼亚语（美国）"
+Language=et
+Label="ee (us)"
+
+[keyboard-ee-sun_type6]
+Description="键盘 - 爱沙尼亚语 - 爱沙尼亚语（Sun Type 6/7）"
+Language=et
+Label="ee (sun_type6)"
+
+[keyboard-bd]
+Description="键盘 - 孟加拉语"
+Language=bn
+Label=bn
+
+[keyboard-bd-probhat]
+Description="键盘 - 孟加拉语 - 孟加拉语（Probhat）"
+Language=bn
+Label="bd (probhat)"
+
+[keyboard-ph]
+Description="键盘 - 菲律宾语"
+Language=fil
+Label=ph
+
+[keyboard-ph-qwerty-bay]
+Description="键盘 - 菲律宾语 - 菲律宾语（QWERTY，Baybayin）"
+Language=fil
+Label="ph (qwerty-bay)"
+
+[keyboard-ph-capewell-dvorak]
+Description="键盘 - 菲律宾语 - 菲律宾语（Capewell-Dvorak，拉丁）"
+Language=fil
+Label="ph (capewell-dvorak)"
+
+[keyboard-ph-capewell-dvorak-bay]
+Description="键盘 - 菲律宾语 - 菲律宾语（Capewell-Dvorak，Baybayin）"
+Language=fil
+Label="ph (capewell-dvorak-bay)"
+
+[keyboard-ph-capewell-qwerf2k6]
+Description="键盘 - 菲律宾语 - 菲律宾语（Capewell-QWERF 2006，拉丁）"
+Language=fil
+Label="ph (capewell-qwerf2k6)"
+
+[keyboard-ph-capewell-qwerf2k6-bay]
+Description="键盘 - 菲律宾语 - 菲律宾语（Capewell-QWERF 2006，Baybayin）"
+Language=fil
+Label="ph (capewell-qwerf2k6-bay)"
+
+[keyboard-ph-colemak]
+Description="键盘 - 菲律宾语 - 菲律宾语（Colemak，拉丁）"
+Language=fil
+Label="ph (colemak)"
+
+[keyboard-ph-colemak-bay]
+Description="键盘 - 菲律宾语 - 菲律宾语（Colemak，Baybayin）"
+Language=fil
+Label="ph (colemak-bay)"
+
+[keyboard-ph-dvorak]
+Description="键盘 - 菲律宾语 - 菲律宾语（Dvorak，拉丁）"
+Language=fil
+Label="ph (dvorak)"
+
+[keyboard-ph-dvorak-bay]
+Description="键盘 - 菲律宾语 - 菲律宾语（Dvorak，Baybayin）"
+Language=fil
+Label="ph (dvorak-bay)"
+
+[keyboard-uz]
+Description="键盘 - 乌兹别克语"
+Language=uz
+Label=uz
+
+[keyboard-uz-latin]
+Description="键盘 - 乌兹别克语 - 乌兹别克语（拉丁）"
+Language=uz
+Label="uz (latin)"
+
+[keyboard-lt]
+Description="键盘 - 立陶宛语"
+Language=lt
+Label=lt
+
+[keyboard-lt-std]
+Description="键盘 - 立陶宛语 - 立陶宛语（标准）"
+Language=lt
+Label="lt (std)"
+
+[keyboard-lt-us]
+Description="键盘 - 立陶宛语 - 立陶宛语（美国）"
+Language=lt
+Label="lt (us)"
+
+[keyboard-lt-ibm]
+Description="键盘 - 立陶宛语 - 立陶宛语（IBM）"
+Language=lt
+Label="lt (ibm)"
+
+[keyboard-lt-lekp]
+Description="键盘 - 立陶宛语 - 立陶宛语（LEKP）"
+Language=lt
+Label="lt (lekp)"
+
+[keyboard-lt-lekpa]
+Description="键盘 - 立陶宛语 - 立陶宛语（LEKPa）"
+Language=lt
+Label="lt (lekpa)"
+
+[keyboard-lt-ratise]
+Description="键盘 - 立陶宛语 - 立陶宛语（Ratise）"
+Language=lt
+Label="lt (ratise)"
+
+[keyboard-lt-sgs]
+Description="键盘 - 立陶宛语 - 萨莫吉提亚语"
+Language=sgs
+Label="lt (sgs)"
+
+[keyboard-lt-us_dvorak]
+Description="键盘 - 立陶宛语 - 立陶宛语（Dvorak）"
+Language=lt
+Label="lt (us_dvorak)"
+
+[keyboard-lt-sun_type6]
+Description="键盘 - 立陶宛语 - 立陶宛语（Sun Type 6/7）"
+Language=lt
+Label="lt (sun_type6)"
+
+[keyboard-fi]
+Description="键盘 - 芬兰语"
+Language=fi
+Label=fi
+
+[keyboard-fi-winkeys]
+Description="键盘 - 芬兰语 - 芬兰语（Windows）"
+Language=fi
+Label="fi (winkeys)"
+
+[keyboard-fi-classic]
+Description="键盘 - 芬兰语 - 芬兰语（经典）"
+Language=fi
+Label="fi (classic)"
+
+[keyboard-fi-nodeadkeys]
+Description="键盘 - 芬兰语 - 芬兰语（经典，无死键）"
+Language=fi
+Label="fi (nodeadkeys)"
+
+[keyboard-fi-mac]
+Description="键盘 - 芬兰语 - 芬兰语（Macintosh）"
+Language=fi
+Label="fi (mac)"
+
+[keyboard-fi-smi]
+Description="键盘 - 芬兰语 - 北萨米语（芬兰）"
+Language=se
+Label="fi (smi)"
+
+[keyboard-fi-sun_type6]
+Description="键盘 - 芬兰语 - 芬兰语（Sun Type 6/7）"
+Language=fi
+Label="fi (sun_type6)"
+
+[keyboard-fi-das]
+Description="键盘 - 芬兰语 - 芬兰语（DAS）"
+Language=fi
+Label="fi (das)"
+
+[keyboard-fi-fidvorak]
+Description="键盘 - 芬兰语 - 芬兰语（Dvorak）"
+Language=fi
+Label="fi (fidvorak)"
+
+[keyboard-cn]
+Description="键盘 - 汉语"
+Language=zh
+Label=zh
+
+[keyboard-cn-altgr-pinyin]
+Description="键盘 - 汉语 - 汉语拼音字母（带 AltGr 死键）"
+Language=zh
+Label="cn (altgr-pinyin)"
+
+[keyboard-cn-mon_trad]
+Description="键盘 - 汉语 - 蒙古语（Bichig）"
+Language=mvf
+Label="cn (mon_trad)"
+
+[keyboard-cn-mon_trad_todo]
+Description="键盘 - 汉语 - 蒙古语（Todo）"
+Language=mvf
+Label="cn (mon_trad_todo)"
+
+[keyboard-cn-mon_trad_xibe]
+Description="键盘 - 汉语 - 蒙古语（Xibe）"
+Language=sjo
+Label="cn (mon_trad_xibe)"
+
+[keyboard-cn-mon_trad_manchu]
+Description="键盘 - 汉语 - 蒙古语（Manchu）"
+Language=mnc
+Label="cn (mon_trad_manchu)"
+
+[keyboard-cn-mon_trad_galik]
+Description="键盘 - 汉语 - 蒙古语（Galik）"
+Language=mvf
+Label="cn (mon_trad_galik)"
+
+[keyboard-cn-mon_todo_galik]
+Description="键盘 - 汉语 - 蒙古语（Todo Galik）"
+Language=mvf
+Label="cn (mon_todo_galik)"
+
+[keyboard-cn-mon_manchu_galik]
+Description="键盘 - 汉语 - 蒙古语（Manchu Galik）"
+Language=mnc
+Label="cn (mon_manchu_galik)"
+
+[keyboard-cn-tib]
+Description="键盘 - 汉语 - 藏语"
+Language=bo
+Label="cn (tib)"
+
+[keyboard-cn-tib_asciinum]
+Description="键盘 - 汉语 - 藏语（带 ASCII 数字）"
+Language=bo
+Label="cn (tib_asciinum)"
+
+[keyboard-cn-ug]
+Description="键盘 - 汉语 - 维吾尔语"
+Language=ug
+Label=ug
+
+[keyboard-ca]
+Description="键盘 - 法语（加拿大）"
+Language=fr
+Label=fr
+
+[keyboard-ca-fr-dvorak]
+Description="键盘 - 法语（加拿大） - 法语（加拿大，Dvorak）"
+Language=fr
+Label="fr (fr-dvorak)"
+
+[keyboard-ca-fr-legacy]
+Description="键盘 - 法语（加拿大） - 法语（加拿大，传统）"
+Language=fr
+Label="fr (fr-legacy)"
+
+[keyboard-ca-multix]
+Description="键盘 - 法语（加拿大） - 加拿大（CSA）"
+Language=fr
+Label="ca (multix)"
+
+[keyboard-ca-eng]
+Description="键盘 - 法语（加拿大） - 英语（加拿大）"
+Language=en
+Label="en (eng)"
+
+[keyboard-ca-ike]
+Description="键盘 - 法语（加拿大） - 因纽特语"
+Language=iu
+Label=ike
+
+[keyboard-ca-kut]
+Description="键盘 - 法语（加拿大） - Kutenai 语"
+Language=fr
+Label=kut
+
+[keyboard-ca-shs]
+Description="键盘 - 法语（加拿大） - 苏斯瓦语"
+Language=fr
+Label=shs
+
+[keyboard-ca-sun_type6]
+Description="键盘 - 法语（加拿大） - 多语言（加拿大，Sun Type 6/7）"
+Language=fr
+Label="ca (sun_type6)"
+
+[keyboard-gh]
+Description="键盘 - 英语（加纳）"
+Language=en
+Label=en
+
+[keyboard-gh-generic]
+Description="键盘 - 英语（加纳） - 英语（加纳，多语言）"
+Language=en
+Label="gh (generic)"
+
+[keyboard-gh-gillbt]
+Description="键盘 - 英语（加纳） - 英语（加纳，GILLBT）"
+Language=en
+Label="gh (gillbt)"
+
+[keyboard-gh-akan]
+Description="键盘 - 英语（加纳） - 阿肯语"
+Language=ak
+Label="ak (akan)"
+
+[keyboard-gh-avn]
+Description="键盘 - 英语（加纳） - Avatime"
+Language=avn
+Label=avn
+
+[keyboard-gh-ewe]
+Description="键盘 - 英语（加纳） - 埃维语"
+Language=ee
+Label="ee (ewe)"
+
+[keyboard-gh-fula]
+Description="键盘 - 英语（加纳） - 富拉语"
+Language=ff
+Label="ff (fula)"
+
+[keyboard-gh-ga]
+Description="键盘 - 英语（加纳） - Ga 语"
+Language=gaa
+Label="gaa (ga)"
+
+[keyboard-gh-hausa]
+Description="键盘 - 英语（加纳） - 豪萨语（加纳）"
+Language=ha
+Label="ha (hausa)"
+
+[keyboard-fr]
+Description="键盘 - 法语"
+Language=fr
+Label=fr
+
+[keyboard-fr-nodeadkeys]
+Description="键盘 - 法语 - 法语（无死键）"
+Language=fr
+Label="fr (nodeadkeys)"
+
+[keyboard-fr-oss]
+Description="键盘 - 法语 - 法语（替代）"
+Language=fr
+Label="fr (oss)"
+
+[keyboard-fr-oss_nodeadkeys]
+Description="键盘 - 法语 - 法语（替代，无死键）"
+Language=fr
+Label="fr (oss_nodeadkeys)"
+
+[keyboard-fr-oss_latin9]
+Description="键盘 - 法语 - 法语（替代，只包含拉丁-9 字符）"
+Language=fr
+Label="fr (oss_latin9)"
+
+[keyboard-fr-latin9]
+Description="键盘 - 法语 - 法语（传统，替代）"
+Language=fr
+Label="fr (latin9)"
+
+[keyboard-fr-latin9_nodeadkeys]
+Description="键盘 - 法语 - 法语（传统，替代，无死键）"
+Language=fr
+Label="fr (latin9_nodeadkeys)"
+
+[keyboard-fr-azerty]
+Description="键盘 - 法语 - 法语（AZERTY）"
+Language=fr
+Label="fr (azerty)"
+
+[keyboard-fr-afnor]
+Description="键盘 - 法语 - 法语（AZERTY，AFNOR）"
+Language=fr
+Label="fr (afnor)"
+
+[keyboard-fr-bepo]
+Description="键盘 - 法语 - 法语（BEPO）"
+Language=fr
+Label="fr (bepo)"
+
+[keyboard-fr-bepo_latin9]
+Description="键盘 - 法语 - 法语（BEPO，只包含拉丁-9 字符）"
+Language=fr
+Label="fr (bepo_latin9)"
+
+[keyboard-fr-bepo_afnor]
+Description="键盘 - 法语 - 法语（BEPO，AFNOR）"
+Language=fr
+Label="fr (bepo_afnor)"
+
+[keyboard-fr-dvorak]
+Description="键盘 - 法语 - 法语（Dvorak）"
+Language=fr
+Label="fr (dvorak)"
+
+[keyboard-fr-ergol]
+Description="键盘 - 法语 - 法语（Ergo-L）"
+Language=fr
+Label="fr (ergol)"
+
+[keyboard-fr-ergol_iso]
+Description="键盘 - 法语 - 法语（Ergo-L，ISO 变种）"
+Language=fr
+Label="fr (ergol_iso)"
+
+[keyboard-fr-mac]
+Description="键盘 - 法语 - 法语（Macintosh）"
+Language=fr
+Label="fr (mac)"
+
+[keyboard-fr-us]
+Description="键盘 - 法语 - 法语（美国）"
+Language=fr
+Label="fr (us)"
+
+[keyboard-fr-bre]
+Description="键盘 - 法语 - 布列塔尼语（法国）"
+Language=br
+Label="fr (bre)"
+
+[keyboard-fr-oci]
+Description="键盘 - 法语 - 奥克语"
+Language=oc
+Label="fr (oci)"
+
+[keyboard-fr-geo]
+Description="键盘 - 法语 - 格鲁吉亚语（法国，AZERTY Tskapo）"
+Language=ka
+Label="fr (geo)"
+
+[keyboard-fr-sun_type6]
+Description="键盘 - 法语 - 法语（Sun Type 6/7）"
+Language=fr
+Label="fr (sun_type6)"
+
+[keyboard-fr-us-alt]
+Description="键盘 - 法语 - 法语（美国，带死键，替代）"
+Language=fr
+Label="fr (us-alt)"
+
+[keyboard-fr-us-azerty]
+Description="键盘 - 法语 - 法语（美国，AZERTY）"
+Language=fr
+Label="fr (us-azerty)"
+
+[keyboard-eg]
+Description="键盘 - 阿拉伯语（埃及）"
+Language=ar
+Label=ar
+
+[keyboard-eg-cop]
+Description="键盘 - 阿拉伯语（埃及） - 科普特语"
+Language=cop
+Label=cop
+
+[keyboard-cd]
+Description="键盘 - 法语（刚果民主共和国）"
+Language=fr
+Label=fr
+
+[keyboard-tg]
+Description="键盘 - 法语（多哥）"
+Language=fr
+Label=fr
+
+[keyboard-kz]
+Description="键盘 - 哈萨克语"
+Language=kk
+Label=kk
+
+[keyboard-kz-kazrus]
+Description="键盘 - 哈萨克语 - 哈萨克语（带俄语）"
+Language=kk
+Label="kz (kazrus)"
+
+[keyboard-kz-ext]
+Description="键盘 - 哈萨克语 - 哈萨克语（扩展）"
+Language=kk
+Label="kz (ext)"
+
+[keyboard-kz-latin]
+Description="键盘 - 哈萨克语 - 哈萨克语（拉丁）"
+Language=kk
+Label="kz (latin)"
+
+[keyboard-kz-ruskaz]
+Description="键盘 - 哈萨克语 - 俄语（哈萨克斯坦，带哈萨克语）"
+Language=ru
+Label="ru (ruskaz)"
+
+[keyboard-ch]
+Description="键盘 - 德语（瑞士）"
+Language=de
+Label=de
+
+[keyboard-ch-de_nodeadkeys]
+Description="键盘 - 德语（瑞士） - 德语（瑞士，无死键）"
+Language=de
+Label="de (de_nodeadkeys)"
+
+[keyboard-ch-de_mac]
+Description="键盘 - 德语（瑞士） - 德语（瑞士，Macintosh）"
+Language=de
+Label="de (de_mac)"
+
+[keyboard-ch-legacy]
+Description="键盘 - 德语（瑞士） - 德语（瑞士，传统）"
+Language=de
+Label="ch (legacy)"
+
+[keyboard-ch-fr]
+Description="键盘 - 德语（瑞士） - 法语（瑞士）"
+Language=fr
+Label=fr
+
+[keyboard-ch-fr_nodeadkeys]
+Description="键盘 - 德语（瑞士） - 法语（瑞士，无死键）"
+Language=fr
+Label="fr (fr_nodeadkeys)"
+
+[keyboard-ch-fr_mac]
+Description="键盘 - 德语（瑞士） - 法语（瑞士，Macintosh）"
+Language=fr
+Label="fr (fr_mac)"
+
+[keyboard-ch-sun_type6_de]
+Description="键盘 - 德语（瑞士） - 德语（瑞士，Sun Type 6/7）"
+Language=de
+Label="ch (sun_type6_de)"
+
+[keyboard-ch-sun_type6_fr]
+Description="键盘 - 德语（瑞士） - 法语（瑞士，Sun Type 6/7）"
+Language=de
+Label="ch (sun_type6_fr)"
+
+[keyboard-gr]
+Description="键盘 - 希腊语"
+Language=el
+Label=gr
+
+[keyboard-gr-simple]
+Description="键盘 - 希腊语 - 希腊语（简易）"
+Language=el
+Label="gr (simple)"
+
+[keyboard-gr-nodeadkeys]
+Description="键盘 - 希腊语 - 希腊语（无死键）"
+Language=el
+Label="gr (nodeadkeys)"
+
+[keyboard-gr-polytonic]
+Description="键盘 - 希腊语 - 希腊语（变音符号）"
+Language=el
+Label="gr (polytonic)"
+
+[keyboard-gr-sun_type6]
+Description="键盘 - 希腊语 - 希腊语（Sun Type 6/7）"
+Language=el
+Label="gr (sun_type6)"
+
+[keyboard-gr-colemak]
+Description="键盘 - 希腊语 - 希腊语（Colemak）"
+Language=el
+Label="gr (colemak)"
+
+[keyboard-tr]
+Description="键盘 - 土耳其语"
+Language=tr
+Label=tr
+
+[keyboard-tr-f]
+Description="键盘 - 土耳其语 - 土耳其语（F）"
+Language=tr
+Label="tr (f)"
+
+[keyboard-tr-e]
+Description="键盘 - 土耳其语 - 土耳其语（E）"
+Language=tr
+Label="tr (e)"
+
+[keyboard-tr-alt]
+Description="键盘 - 土耳其语 - 土耳其语（Alt-Q）"
+Language=tr
+Label="tr (alt)"
+
+[keyboard-tr-intl]
+Description="键盘 - 土耳其语 - 土耳其语（国际，带死键）"
+Language=tr
+Label="tr (intl)"
+
+[keyboard-tr-ku]
+Description="键盘 - 土耳其语 - 库尔德语（土耳其，拉丁 Q）"
+Language=ku
+Label=ku
+
+[keyboard-tr-ku_f]
+Description="键盘 - 土耳其语 - 库尔德语（土耳其，F）"
+Language=ku
+Label="ku (ku_f)"
+
+[keyboard-tr-ku_alt]
+Description="键盘 - 土耳其语 - 库尔德语（土耳其，拉丁 Alt-Q）"
+Language=ku
+Label="ku (ku_alt)"
+
+[keyboard-tr-sun_type6]
+Description="键盘 - 土耳其语 - 土耳其语（Sun Type 6/7）"
+Language=tr
+Label="tr (sun_type6)"
+
+[keyboard-tr-us]
+Description="键盘 - 土耳其语 - 土耳其语（交换 i 和 ı）"
+Language=tr
+Label="tr (us)"
+
+[keyboard-tr-otk]
+Description="键盘 - 土耳其语 - 古代突厥语"
+Language=tr
+Label="tr (otk)"
+
+[keyboard-tr-otkf]
+Description="键盘 - 土耳其语 - 古代突厥语（F）"
+Language=tr
+Label="tr (otkf)"
+
+[keyboard-tr-ot]
+Description="键盘 - 土耳其语 - 奥斯曼土耳其语（Q）"
+Language=tr
+Label="tr (ot)"
+
+[keyboard-tr-otf]
+Description="键盘 - 土耳其语 - 奥斯曼土耳其语（F）"
+Language=tr
+Label="tr (otf)"
+
+[keyboard-il]
+Description="键盘 - 希伯来语"
+Language=he
+Label=he
+
+[keyboard-il-si2]
+Description="键盘 - 希伯来语 - 希伯来语（SI-1452-2）"
+Language=he
+Label="il (si2)"
+
+[keyboard-il-lyx]
+Description="键盘 - 希伯来语 - 希伯来语（lyx）"
+Language=he
+Label="il (lyx)"
+
+[keyboard-il-phonetic]
+Description="键盘 - 希伯来语 - 希伯来语（语音助记）"
+Language=he
+Label="il (phonetic)"
+
+[keyboard-il-biblical]
+Description="键盘 - 希伯来语 - 希伯来语（圣经，Tiro）"
+Language=he
+Label="il (biblical)"
+
+[keyboard-il-biblicalSIL]
+Description="键盘 - 希伯来语 - 希伯来语（Biblical，SIL 语音助记）"
+Language=he
+Label="il (biblicalSIL)"
+
+[keyboard-de]
+Description="键盘 - 德语"
+Language=de
+Label=de
+
+[keyboard-de-deadacute]
+Description="键盘 - 德语 - 德语（尖音符号为死键）"
+Language=de
+Label="de (deadacute)"
+
+[keyboard-de-deadgraveacute]
+Description="键盘 - 德语 - 德语（重音符号和尖音符号为死键）"
+Language=de
+Label="de (deadgraveacute)"
+
+[keyboard-de-deadtilde]
+Description="键盘 - 德语 - 德语（波浪号为死键）"
+Language=de
+Label="de (deadtilde)"
+
+[keyboard-de-nodeadkeys]
+Description="键盘 - 德语 - 德语（无死键）"
+Language=de
+Label="de (nodeadkeys)"
+
+[keyboard-de-e1]
+Description="键盘 - 德语 - 德语（E1）"
+Language=de
+Label="de (e1)"
+
+[keyboard-de-e2]
+Description="键盘 - 德语 - 德语（E2）"
+Language=de
+Label="de (e2)"
+
+[keyboard-de-T3]
+Description="键盘 - 德语 - 德语（T3）"
+Language=de
+Label="de (T3)"
+
+[keyboard-de-us]
+Description="键盘 - 德语 - 德语（美国）"
+Language=de
+Label="de (us)"
+
+[keyboard-de-dvorak]
+Description="键盘 - 德语 - 德语（Dvorak）"
+Language=de
+Label="de (dvorak)"
+
+[keyboard-de-mac]
+Description="键盘 - 德语 - 德语（Macintosh）"
+Language=de
+Label="de (mac)"
+
+[keyboard-de-mac_nodeadkeys]
+Description="键盘 - 德语 - 德语（Macintosh，无死键）"
+Language=de
+Label="de (mac_nodeadkeys)"
+
+[keyboard-de-neo]
+Description="键盘 - 德语 - 德语（Neo 2）"
+Language=de
+Label="de (neo)"
+
+[keyboard-de-qwerty]
+Description="键盘 - 德语 - 德语（QWERTY）"
+Language=de
+Label="de (qwerty)"
+
+[keyboard-de-dsb]
+Description="键盘 - 德语 - 下索布语"
+Language=dsb
+Label="de (dsb)"
+
+[keyboard-de-dsb_qwertz]
+Description="键盘 - 德语 - 下索布语（QWERTZ）"
+Language=dsb
+Label="de (dsb_qwertz)"
+
+[keyboard-de-ro]
+Description="键盘 - 德语 - 罗马尼亚语（德国）"
+Language=ro
+Label="de (ro)"
+
+[keyboard-de-ro_nodeadkeys]
+Description="键盘 - 德语 - 罗马尼亚语（德国，无死键）"
+Language=ro
+Label="de (ro_nodeadkeys)"
+
+[keyboard-de-ru]
+Description="键盘 - 德语 - 俄语（德国，语音助记）"
+Language=ru
+Label=ru
+
+[keyboard-de-tr]
+Description="键盘 - 德语 - 土耳其语（德国）"
+Language=tr
+Label="de (tr)"
+
+[keyboard-de-hu]
+Description="键盘 - 德语 - 德语（带匈牙利字母，无死键）"
+Language=de
+Label="de (hu)"
+
+[keyboard-de-pl]
+Description="键盘 - 德语 - 波兰语（德国，无死键）"
+Language=de
+Label="de (pl)"
+
+[keyboard-de-sun_type6]
+Description="键盘 - 德语 - 德语（Sun Type 6/7）"
+Language=de
+Label="de (sun_type6)"
+
+[keyboard-de-adnw]
+Description="键盘 - 德语 - 德语（Aus der Neo-Welt）"
+Language=de
+Label="de (adnw)"
+
+[keyboard-de-koy]
+Description="键盘 - 德语 - 德语（KOY）"
+Language=de
+Label="de (koy)"
+
+[keyboard-de-bone]
+Description="键盘 - 德语 - 德语（Bone）"
+Language=de
+Label="de (bone)"
+
+[keyboard-de-bone_eszett_home]
+Description="键盘 - 德语 - 德语（Bone，eszett 在中间行）"
+Language=de
+Label="de (bone_eszett_home)"
+
+[keyboard-de-neo_qwertz]
+Description="键盘 - 德语 - 德语（Neo，QWERTZ）"
+Language=de
+Label="de (neo_qwertz)"
+
+[keyboard-de-neo_qwerty]
+Description="键盘 - 德语 - 德语（Neo，QWERTY）"
+Language=de
+Label="de (neo_qwerty)"
+
+[keyboard-de-noted]
+Description="键盘 - 德语 - 德语（Noted）"
+Language=de
+Label="de (noted)"
+
+[keyboard-de-ru-recom]
+Description="键盘 - 德语 - 俄语（德国，推荐）"
+Language=ru
+Label="ru (ru-recom)"
+
+[keyboard-de-ru-translit]
+Description="键盘 - 德语 - 俄语（德国，转写）"
+Language=ru
+Label="ru (ru-translit)"
+
+[keyboard-id]
+Description="键盘 - 印尼语（拉丁）"
+Language=id
+Label=id
+
+[keyboard-id-melayu-phonetic]
+Description="键盘 - 印尼语（拉丁） - 印尼语（Arab Melayu，语音助记）"
+Language=id
+Label="id (melayu-phonetic)"
+
+[keyboard-id-melayu-phoneticx]
+Description="键盘 - 印尼语（拉丁） - 印尼语（Arab Melayu，扩展语音助记）"
+Language=id
+Label="id (melayu-phoneticx)"
+
+[keyboard-id-pegon-phonetic]
+Description="键盘 - 印尼语（拉丁） - 印尼语（Arab Pegon，语音助记）"
+Language=id
+Label="id (pegon-phonetic)"
+
+[keyboard-id-javanese]
+Description="键盘 - 印尼语（拉丁） - 爪哇语"
+Language=jax
+Label="id (javanese)"
+
+[keyboard-sn]
+Description="键盘 - 沃洛夫语"
+Language=wo
+Label=wo
+
+[keyboard-az]
+Description="键盘 - 阿塞拜疆语"
+Language=az
+Label=az
+
+[keyboard-az-cyrillic]
+Description="键盘 - 阿塞拜疆语 - 阿塞拜疆语（西里尔）"
+Language=az
+Label="az (cyrillic)"
+
+[keyboard-kh]
+Description="键盘 - 高棉语（柬埔寨）"
+Language=km
+Label=km
+
+[keyboard-hu]
+Description="键盘 - 匈牙利语"
+Language=hu
+Label=hu
+
+[keyboard-hu-standard]
+Description="键盘 - 匈牙利语 - 匈牙利语（标准）"
+Language=hu
+Label="hu (standard)"
+
+[keyboard-hu-nodeadkeys]
+Description="键盘 - 匈牙利语 - 匈牙利语（无死键）"
+Language=hu
+Label="hu (nodeadkeys)"
+
+[keyboard-hu-qwerty]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY）"
+Language=hu
+Label="hu (qwerty)"
+
+[keyboard-hu-101_qwertz_comma_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，101 键，逗号，死键）"
+Language=hu
+Label="hu (101_qwertz_comma_dead)"
+
+[keyboard-hu-101_qwertz_comma_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，101 键，逗号，无死键）"
+Language=hu
+Label="hu (101_qwertz_comma_nodead)"
+
+[keyboard-hu-101_qwertz_dot_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，101 键，点，死键）"
+Language=hu
+Label="hu (101_qwertz_dot_dead)"
+
+[keyboard-hu-101_qwertz_dot_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，101 键，点，无死键）"
+Language=hu
+Label="hu (101_qwertz_dot_nodead)"
+
+[keyboard-hu-101_qwerty_comma_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，101 键，逗号，死键）"
+Language=hu
+Label="hu (101_qwerty_comma_dead)"
+
+[keyboard-hu-101_qwerty_comma_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，101 键，逗号，无死键）"
+Language=hu
+Label="hu (101_qwerty_comma_nodead)"
+
+[keyboard-hu-101_qwerty_dot_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，101 键，点，死键）"
+Language=hu
+Label="hu (101_qwerty_dot_dead)"
+
+[keyboard-hu-101_qwerty_dot_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，101 键，点，无死键）"
+Language=hu
+Label="hu (101_qwerty_dot_nodead)"
+
+[keyboard-hu-102_qwertz_comma_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，102 键，逗号，死键）"
+Language=hu
+Label="hu (102_qwertz_comma_dead)"
+
+[keyboard-hu-102_qwertz_comma_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，102 键，逗号，无死键）"
+Language=hu
+Label="hu (102_qwertz_comma_nodead)"
+
+[keyboard-hu-102_qwertz_dot_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，102 键，点，死键）"
+Language=hu
+Label="hu (102_qwertz_dot_dead)"
+
+[keyboard-hu-102_qwertz_dot_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTZ，102 键，点，无死键）"
+Language=hu
+Label="hu (102_qwertz_dot_nodead)"
+
+[keyboard-hu-102_qwerty_comma_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，102 键，逗号，死键）"
+Language=hu
+Label="hu (102_qwerty_comma_dead)"
+
+[keyboard-hu-102_qwerty_comma_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，102 键，逗号，无死键）"
+Language=hu
+Label="hu (102_qwerty_comma_nodead)"
+
+[keyboard-hu-102_qwerty_dot_dead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，102 键，点，死键）"
+Language=hu
+Label="hu (102_qwerty_dot_dead)"
+
+[keyboard-hu-102_qwerty_dot_nodead]
+Description="键盘 - 匈牙利语 - 匈牙利语（QWERTY，102 键，点，无死键）"
+Language=hu
+Label="hu (102_qwerty_dot_nodead)"
+
+[keyboard-hu-oldhunlig]
+Description="键盘 - 匈牙利语 - 古匈牙利语（含连字）"
+Language=hu
+Label="oldhun(lig) (oldhunlig)"
+
+[keyboard-hu-oldhun_sk_sh]
+Description="键盘 - 匈牙利语 - 古匈牙利语（喀尔巴阡高地，S 作为 Sh）"
+Language=hu
+Label="oldhun(SK,Sh) (oldhun_sk_sh)"
+
+[keyboard-hu-oldhun_sk_sz]
+Description="键盘 - 匈牙利语 - 古匈牙利语（喀尔巴阡高地，S 作为 Sz）"
+Language=hu
+Label="oldhun(SK,Sz) (oldhun_sk_sz)"
+
+[keyboard-hu-us]
+Description="键盘 - 匈牙利语 - 匈牙利语（美国）"
+Language=hu
+Label=us
+
+[keyboard-ng]
+Description="键盘 - 英语（尼日利亚）"
+Language=en
+Label=en
+
+[keyboard-ng-hausa]
+Description="键盘 - 英语（尼日利亚） - 豪萨语（尼日利亚）"
+Language=ha
+Label="ha (hausa)"
+
+[keyboard-ng-igbo]
+Description="键盘 - 英语（尼日利亚） - 伊博语"
+Language=ig
+Label="ig (igbo)"
+
+[keyboard-ng-yoruba]
+Description="键盘 - 英语（尼日利亚） - 约鲁巴语"
+Language=yo
+Label="yo (yoruba)"
+
+[keyboard-is]
+Description="键盘 - 冰岛语"
+Language=is
+Label=is
+
+[keyboard-is-mac_legacy]
+Description="键盘 - 冰岛语 - 冰岛语（Macintosh，传统）"
+Language=is
+Label="is (mac_legacy)"
+
+[keyboard-is-mac]
+Description="键盘 - 冰岛语 - 冰岛语（Macintosh）"
+Language=is
+Label="is (mac)"
+
+[keyboard-is-dvorak]
+Description="键盘 - 冰岛语 - 冰岛语（Dvorak）"
+Language=is
+Label="is (dvorak)"
+
+[keyboard-in]
+Description="键盘 - 印度语言"
+Language=hi
+Label=in
+
+[keyboard-in-asm-kagapa]
+Description="键盘 - 印度语言 - 阿萨姆语（KaGaPa，语音助记）"
+Language=as
+Label="as (asm-kagapa)"
+
+[keyboard-in-ben]
+Description="键盘 - 印度语言 - 孟加拉语（印度）"
+Language=bn
+Label="bn (ben)"
+
+[keyboard-in-ben_probhat]
+Description="键盘 - 印度语言 - 孟加拉语（印度，Probhat）"
+Language=bn
+Label="bn (ben_probhat)"
+
+[keyboard-in-ben_baishakhi]
+Description="键盘 - 印度语言 - 孟加拉语（印度，Baishakhi）"
+Language=bn
+Label="in (ben_baishakhi)"
+
+[keyboard-in-ben_bornona]
+Description="键盘 - 印度语言 - 孟加拉语（印度，Bornona）"
+Language=bn
+Label="in (ben_bornona)"
+
+[keyboard-in-ben-kagapa]
+Description="键盘 - 印度语言 - 孟加拉语（印度，KaGaPa，语音助记）"
+Language=bn
+Label="in (ben-kagapa)"
+
+[keyboard-in-ben_gitanjali]
+Description="键盘 - 印度语言 - 孟加拉语（印度，Gitanjali）"
+Language=bn
+Label="in (ben_gitanjali)"
+
+[keyboard-in-ben_inscript]
+Description="键盘 - 印度语言 - 孟加拉语（印度，Baishakhi InScript）"
+Language=bn
+Label="in (ben_inscript)"
+
+[keyboard-in-eng]
+Description="键盘 - 印度语言 - 英语（印度，带卢比符号）"
+Language=en
+Label="en (eng)"
+
+[keyboard-in-guj]
+Description="键盘 - 印度语言 - 古吉拉特语"
+Language=gu
+Label="gu (guj)"
+
+[keyboard-in-guj-kagapa]
+Description="键盘 - 印度语言 - 古吉拉特语（KaGaPa，语音助记）"
+Language=gu
+Label="gu (guj-kagapa)"
+
+[keyboard-in-bolnagri]
+Description="键盘 - 印度语言 - 印地语（Bolnagri）"
+Language=hi
+Label="hi (bolnagri)"
+
+[keyboard-in-hin-wx]
+Description="键盘 - 印度语言 - 印地语（Wx）"
+Language=hi
+Label="hi (hin-wx)"
+
+[keyboard-in-hin-kagapa]
+Description="键盘 - 印度语言 - 印地语（KaGaPa，语音助记）"
+Language=hi
+Label="hi (hin-kagapa)"
+
+[keyboard-in-kan]
+Description="键盘 - 印度语言 - 卡纳达语"
+Language=kn
+Label="kn (kan)"
+
+[keyboard-in-kan-kagapa]
+Description="键盘 - 印度语言 - 卡纳达语（KaGaPa，语音助记）"
+Language=kn
+Label="kn (kan-kagapa)"
+
+[keyboard-in-mal]
+Description="键盘 - 印度语言 - 马拉雅拉姆语"
+Language=ml
+Label="ml (mal)"
+
+[keyboard-in-mal_lalitha]
+Description="键盘 - 印度语言 - 马拉雅拉姆语（Lalitha）"
+Language=ml
+Label="ml (mal_lalitha)"
+
+[keyboard-in-mal_enhanced]
+Description="键盘 - 印度语言 - 马拉雅拉姆语（改进的 InScript，带卢比符号）"
+Language=ml
+Label="ml (mal_enhanced)"
+
+[keyboard-in-mal_poorna]
+Description="键盘 - 印度语言 - 马拉雅拉姆语（Poorna，扩展 InScript）"
+Language=ml
+Label="ml (mal_poorna)"
+
+[keyboard-in-mni]
+Description="键盘 - 印度语言 - 曼尼普尔语（梅泰）"
+Language=mni
+Label="in (mni)"
+
+[keyboard-in-mar-kagapa]
+Description="键盘 - 印度语言 - 马拉地语（KaGaPa，语音助记）"
+Language=mr
+Label="mr (mar-kagapa)"
+
+[keyboard-in-marathi]
+Description="键盘 - 印度语言 - 马拉地语（改进的 InScript）"
+Language=mr
+Label="in (marathi)"
+
+[keyboard-in-ori]
+Description="键盘 - 印度语言 - 奥里亚语"
+Language=or
+Label="or (ori)"
+
+[keyboard-in-ori-bolnagri]
+Description="键盘 - 印度语言 - 奥里亚语（Bolnagri）"
+Language=or
+Label="or (ori-bolnagri)"
+
+[keyboard-in-ori-wx]
+Description="键盘 - 印度语言 - 奥里亚语（Wx）"
+Language=or
+Label="or (ori-wx)"
+
+[keyboard-in-guru]
+Description="键盘 - 印度语言 - 旁遮普语（Gurmukhi）"
+Language=pa
+Label="pa (guru)"
+
+[keyboard-in-jhelum]
+Description="键盘 - 印度语言 - 旁遮普语（Gurmukhi Jhelum）"
+Language=pa
+Label="pa (jhelum)"
+
+[keyboard-in-san-kagapa]
+Description="键盘 - 印度语言 - 梵语（KaGaPa，语音助记）"
+Language=sa
+Label="sa (san-kagapa)"
+
+[keyboard-in-sat]
+Description="键盘 - 印度语言 - 桑塔利语（桑塔利文）"
+Language=sat
+Label=sat
+
+[keyboard-in-tamilnet]
+Description="键盘 - 印度语言 - 泰米尔语（TamilNet '99）"
+Language=ta
+Label="ta (tamilnet)"
+
+[keyboard-in-tamilnet_tamilnumbers]
+Description="键盘 - 印度语言 - 泰米尔语（TamilNet '99，带泰米尔数字）"
+Language=ta
+Label="ta (tamilnet_tamilnumbers)"
+
+[keyboard-in-tamilnet_TAB]
+Description="键盘 - 印度语言 - 泰米尔语（TamilNet '99，TAB 编码）"
+Language=ta
+Label="ta (tamilnet_TAB)"
+
+[keyboard-in-tamilnet_TSCII]
+Description="键盘 - 印度语言 - 泰米尔语（TamilNet '99，TSCII 编码）"
+Language=ta
+Label="ta (tamilnet_TSCII)"
+
+[keyboard-in-tam]
+Description="键盘 - 印度语言 - 泰米尔语（InScript，带阿拉伯数字）"
+Language=ta
+Label="ta (tam)"
+
+[keyboard-in-tam_tamilnumbers]
+Description="键盘 - 印度语言 - 泰米尔语（InScript，带泰米尔数字）"
+Language=ta
+Label="ta (tam_tamilnumbers)"
+
+[keyboard-in-tel]
+Description="键盘 - 印度语言 - 泰卢固语"
+Language=te
+Label="te (tel)"
+
+[keyboard-in-tel-kagapa]
+Description="键盘 - 印度语言 - 泰卢固语（KaGaPa，语音助记）"
+Language=te
+Label="te (tel-kagapa)"
+
+[keyboard-in-tel-sarala]
+Description="键盘 - 印度语言 - 泰卢固语（Sarala）"
+Language=te
+Label="te (tel-sarala)"
+
+[keyboard-in-urd-phonetic]
+Description="键盘 - 印度语言 - 乌尔都语（语音助记）"
+Language=ur
+Label="ur (urd-phonetic)"
+
+[keyboard-in-urd-phonetic3]
+Description="键盘 - 印度语言 - 乌尔都语（替代，语音助记）"
+Language=ur
+Label="ur (urd-phonetic3)"
+
+[keyboard-in-urd-winkeys]
+Description="键盘 - 印度语言 - 乌尔都语（Windows）"
+Language=ur
+Label="ur (urd-winkeys)"
+
+[keyboard-in-iipa]
+Description="键盘 - 印度语言 - 印度语支 IPA"
+Language=en
+Label="in (iipa)"
+
+[keyboard-in-modi-kagapa]
+Description="键盘 - 印度语言 - Modi（KaGaPa，语音助记）"
+Language=mr
+Label="mr (modi-kagapa)"
+
+[keyboard-in-san-misc]
+Description="键盘 - 印度语言 - 梵文符号"
+Language=sa
+Label="sas (san-misc)"
+
+[keyboard-in-urd-navees]
+Description="键盘 - 印度语言 - 乌尔都语（Navees）"
+Language=ur
+Label="ur (urd-navees)"
+
+[keyboard-it]
+Description="键盘 - 意大利语"
+Language=it
+Label=it
+
+[keyboard-it-nodeadkeys]
+Description="键盘 - 意大利语 - 意大利语（无死键）"
+Language=it
+Label="it (nodeadkeys)"
+
+[keyboard-it-winkeys]
+Description="键盘 - 意大利语 - 意大利语（Windows）"
+Language=it
+Label="it (winkeys)"
+
+[keyboard-it-mac]
+Description="键盘 - 意大利语 - 意大利语（Macintosh）"
+Language=it
+Label="it (mac)"
+
+[keyboard-it-us]
+Description="键盘 - 意大利语 - 意大利语（美国）"
+Language=it
+Label="it (us)"
+
+[keyboard-it-ibm]
+Description="键盘 - 意大利语 - 意大利语（IBM 142）"
+Language=it
+Label="it (ibm)"
+
+[keyboard-it-fur]
+Description="键盘 - 意大利语 - 弗留利语（意大利）"
+Language=fur
+Label="it (fur)"
+
+[keyboard-it-scn]
+Description="键盘 - 意大利语 - 西西里语"
+Language=it
+Label="it (scn)"
+
+[keyboard-it-geo]
+Description="键盘 - 意大利语 - 格鲁吉亚语（意大利）"
+Language=ka
+Label="it (geo)"
+
+[keyboard-it-sun_type6]
+Description="键盘 - 意大利语 - 意大利语（Sun Type 6/7）"
+Language=it
+Label="it (sun_type6)"
+
+[keyboard-it-lld]
+Description="键盘 - 意大利语 - 拉丁语（意大利语键盘）"
+Language=it
+Label="it_lld (lld)"
+
+[keyboard-it-lldde]
+Description="键盘 - 意大利语 - 拉丁语（德语键盘）"
+Language=de
+Label="de_lld (lldde)"
+
+[keyboard-it-dvorak]
+Description="键盘 - 意大利语 - 意大利语（Dvorak）"
+Language=it
+Label="it (dvorak)"
+
+[keyboard-jp]
+Description="键盘 - 日语"
+Language=ja
+Label=ja
+
+[keyboard-jp-kana]
+Description="键盘 - 日语 - 日语（Kana）"
+Language=ja
+Label="jp (kana)"
+
+[keyboard-jp-OADG109A]
+Description="键盘 - 日语 - 日语（OADG 109A）"
+Language=ja
+Label="jp (OADG109A)"
+
+[keyboard-jp-mac]
+Description="键盘 - 日语 - 日语（Macintosh）"
+Language=ja
+Label="jp (mac)"
+
+[keyboard-jp-dvorak]
+Description="键盘 - 日语 - 日语（Dvorak）"
+Language=ja
+Label="jp (dvorak)"
+
+[keyboard-jp-sun_type6]
+Description="键盘 - 日语 - 日语（Sun Type 6）"
+Language=ja
+Label="jp (sun_type6)"
+
+[keyboard-jp-sun_type7]
+Description="键盘 - 日语 - 日语（Sun Type 7，PC 兼容）"
+Language=ja
+Label="jp (sun_type7)"
+
+[keyboard-jp-sun_type7_suncompat]
+Description="键盘 - 日语 - 日语（Sun Type 7，Sun 兼容）"
+Language=ja
+Label="jp (sun_type7_suncompat)"
+

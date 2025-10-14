@@ -1,0 +1,6 @@
+[X-GNOME-Metatheme]
+Name=adw-gtk3-dark
+Type=X-GNOME-Metatheme
+Comment=adw-gtk3-dark theme
+Encoding=UTF-8
+GtkTheme=adw-gtk3-dark

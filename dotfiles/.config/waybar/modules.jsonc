@@ -99,19 +99,20 @@
         },
         //鼠标悬浮在wifi图标上会显示wifi名称、信号强度、ip地址、设备名
         "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}",
-        "tooltip-format-ethernet": "{ifname} : {ipaddr}",
-        "tooltip-format-disconnected": "Disconnected",
-        "on-click": "ghostty -e 'sleep 0.3 && nmtui'",
+        "tooltip-format-ethernet": "{ifname} : {ipaddr} | Click to Open GUI",
+        "tooltip-format-disconnected": "Disconnected | Click to open GUI",
+        "on-click": "kitty -e nmtui",
         "on-click-right": "nm-connection-editor",
     },
     "bluetooth": {
         //蓝牙关闭状态下的图标和鼠标悬浮时的提示
         "format-disabled": "󰂲",
+        "tooltip-format-disabled":"Click to enable",
         "format": "󰂯",
-        "tooltip-format-on": " 󰂯 {status} | Click to open GUI",
+        "tooltip-format-on": " 󰂯 Click to disable or Right click to open GUI",
         //连接状态下的图标和提示
         "format-connected": "󰂱",
-        "tooltip-format-connected": "󰂱 {device_alias}\nClick to Open GUI",
+        "tooltip-format-connected": "󰂱 {device_alias}Richt click to open GUI",
         //点击功能
         "on-click": "~/.config/waybar/scripts/toggle-bluetooth.sh",
         "on-click-right": "blueberry",
@@ -126,6 +127,13 @@
             "balanced": "",
             "power-saver": ""
         }
+    },
+    //截图
+        "custom/screenshot":{
+        "format":"",
+        "tooltip-format":"Click to Screenshot or Right Click to Edit",
+        "on-click":"~/.config/waybar/scripts/screenshot.sh",
+        "on-click-right":"~/.config/waybar/scripts/edit-screenshot.sh"
     },
     //声音模块
     "group/audio": {
@@ -268,7 +276,7 @@
         "on-click": "ddcutil --display 1 setvcp 10 5 "
     },
     //swaync通知模块
-    "custom/notification": {
+    "custom/swaync": {
         "tooltip": false,
         "format": "{icon}",
         "format-icons": {
@@ -287,6 +295,10 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true
+    },
+    "custom/mako":{
+        "format":"",
+        "on-click":"makoctl restore"
     },
     //gnome-control-center  
     "custom/settings": {
@@ -343,5 +355,6 @@
                 "tooltip-icon-size": 24
             }
         ]
-    },
+    }
+
 }

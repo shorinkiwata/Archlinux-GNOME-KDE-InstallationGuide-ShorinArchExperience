@@ -1,0 +1,334 @@
+__build_info:
+  rime_version: 1.12.0
+  timestamps:
+    default: 1758176996
+    default.custom: 1760083424
+    key_bindings: 1758176996
+    key_bindings.custom: 0
+    punctuation: 1758176996
+    punctuation.custom: 0
+    radical_pinyin.custom: 0
+    radical_pinyin.schema: 1759753670
+    rime_ice_suggestion: 1759753670
+    rime_ice_suggestion.custom: 0
+algebra_abc:
+  - "xform/^zh/<a>/"
+  - "xform/^ch/<e>/"
+  - "xform/^sh/<v>/"
+  - "xform/'zh/'<a>/"
+  - "xform/'ch/'<e>/"
+  - "xform/'sh/'<v>/"
+  - "xform/^([aoe].*)(?=^|$|')/<o>$1/"
+  - "xform/'([aoe].*)(?=^|$|')/'<o>$1/"
+  - "xform/ei(?=^|$|')/<q>/"
+  - "xform/ian(?=^|$|')/<w>/"
+  - "xform/er(?=^|$|')|iu(?=^|$|')/<r>/"
+  - "xform/[iu]ang(?=^|$|')/<t>/"
+  - "xform/ing(?=^|$|')/<y>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/uan(?=^|$|')/<p>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<s>/"
+  - "xform/[iu]a(?=^|$|')/<d>/"
+  - "xform/en(?=^|$|')/<f>/"
+  - "xform/eng(?=^|$|')/<g>/"
+  - "xform/ang(?=^|$|')/<h>/"
+  - "xform/an(?=^|$|')/<j>/"
+  - "xform/iao(?=^|$|')/<z>/"
+  - "xform/ao(?=^|$|')/<k>/"
+  - "xform/in(?=^|$|')|uai(?=^|$|')/<c>/"
+  - "xform/ai(?=^|$|')/<l>/"
+  - "xform/ie(?=^|$|')/<x>/"
+  - "xform/ou(?=^|$|')/<b>/"
+  - "xform/un(?=^|$|')/<n>/"
+  - "xform/[uv]e(?=^|$|')|ui(?=^|$|')/<m>/"
+  - "xform/'|<|>//"
+algebra_double_pinyin:
+  - "derive/^([jqxy])u(?=^|$|')/$1v/"
+  - "derive/'([jqxy])u(?=^|$|')/'$1v/"
+  - "derive/^([aoe])([ioun])(?=^|$|')/$1$1$2/"
+  - "derive/'([aoe])([ioun])(?=^|$|')/'$1$1$2/"
+  - "xform/^([aoe])(ng)?(?=^|$|')/$1$1$2/"
+  - "xform/'([aoe])(ng)?(?=^|$|')/'$1$1$2/"
+  - "xform/iu(?=^|$|')/<q>/"
+  - "xform/[iu]a(?=^|$|')/<w>/"
+  - "xform/[uv]an(?=^|$|')/<r>/"
+  - "xform/[uv]e(?=^|$|')/<t>/"
+  - "xform/ing(?=^|$|')|uai(?=^|$|')/<y>/"
+  - "xform/^sh/<u>/"
+  - "xform/^ch/<i>/"
+  - "xform/^zh/<v>/"
+  - "xform/'sh/'<u>/"
+  - "xform/'ch/'<i>/"
+  - "xform/'zh/'<v>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/[uv]n(?=^|$|')/<p>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<s>/"
+  - "xform/[iu]ang(?=^|$|')/<d>/"
+  - "xform/([a-z>])en(?=^|$|')/$1<f>/"
+  - "xform/([a-z>])eng(?=^|$|')/$1<g>/"
+  - "xform/([a-z>])ang(?=^|$|')/$1<h>/"
+  - "xform/ian(?=^|$|')/<m>/"
+  - "xform/([a-z>])an(?=^|$|')/$1<j>/"
+  - "xform/iao(?=^|$|')/<c>/"
+  - "xform/([a-z>])ao(?=^|$|')/$1<k>/"
+  - "xform/([a-z>])ai(?=^|$|')/$1<l>/"
+  - "xform/([a-z>])ei(?=^|$|')/$1<z>/"
+  - "xform/ie(?=^|$|')/<x>/"
+  - "xform/ui(?=^|$|')/<v>/"
+  - "xform/([a-z>])ou(?=^|$|')/$1<b>/"
+  - "xform/in(?=^|$|')/<n>/"
+  - "xform/'|<|>//"
+algebra_flypy:
+  - "derive/^([jqxy])u(?=^|$|')/$1v/"
+  - "derive/'([jqxy])u(?=^|$|')/'$1v/"
+  - "derive/^([aoe])([ioun])(?=^|$|')/$1$1$2/"
+  - "derive/'([aoe])([ioun])(?=^|$|')/'$1$1$2/"
+  - "xform/^([aoe])(ng)?(?=^|$|')/$1$1$2/"
+  - "xform/'([aoe])(ng)?(?=^|$|')/'$1$1$2/"
+  - "xform/iu(?=^|$|')/<q>/"
+  - "xform/(.)ei(?=^|$|')/$1<w>/"
+  - "xform/uan(?=^|$|')/<r>/"
+  - "xform/[uv]e(?=^|$|')/<t>/"
+  - "xform/un(?=^|$|')/<y>/"
+  - "xform/^sh/<u>/"
+  - "xform/^ch/<i>/"
+  - "xform/^zh/<v>/"
+  - "xform/'sh/'<u>/"
+  - "xform/'ch/'<i>/"
+  - "xform/'zh/'<v>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/ie(?=^|$|')/<p>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<s>/"
+  - "xform/ing(?=^|$|')|uai(?=^|$|')/<k>/"
+  - "xform/([a-z>])ai(?=^|$|')/$1<d>/"
+  - "xform/([a-z>])en(?=^|$|')/$1<f>/"
+  - "xform/([a-z>])eng(?=^|$|')/$1<g>/"
+  - "xform/[iu]ang(?=^|$|')/<l>/"
+  - "xform/([a-z>])ang(?=^|$|')/$1<h>/"
+  - "xform/ian(?=^|$|')/<m>/"
+  - "xform/([a-z>])an(?=^|$|')/$1<j>/"
+  - "xform/([a-z>])ou(?=^|$|')/$1<z>/"
+  - "xform/[iu]a(?=^|$|')/<x>/"
+  - "xform/iao(?=^|$|')/<n>/"
+  - "xform/([a-z>])ao(?=^|$|')/$1<c>/"
+  - "xform/ui(?=^|$|')/<v>/"
+  - "xform/in(?=^|$|')/<b>/"
+  - "xform/'|<|>//"
+algebra_jiajia:
+  - "derive/^([jqxy])u(?=^|$|')/$1v/"
+  - "derive/'([jqxy])u(?=^|$|')/'$1v/"
+  - "derive/^([aoe])([ioun])(?=^|$|')/$1$1$2/"
+  - "derive/'([aoe])([ioun])(?=^|$|')/'$1$1$2/"
+  - "xform/^([aoe])(ng)?(?=^|$|')/$1$1$2/"
+  - "xform/'([aoe])(ng)?(?=^|$|')/'$1$1$2/"
+  - "xform/iu(?=^|$|')/<n>/"
+  - "xform/[iu]a(?=^|$|')/<b>/"
+  - "xform/[uv]an(?=^|$|')/<c>/"
+  - "xform/[uv]e(?=^|$|')/<x>/"
+  - "xform/ing(?=^|$|')|er(?=^|$|')/<q>/"
+  - "xform/^sh/<i>/"
+  - "xform/^ch/<u>/"
+  - "xform/^zh/<v>/"
+  - "xform/'sh/'<i>/"
+  - "xform/'ch/'<u>/"
+  - "xform/'zh/'<v>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/[uv]n(?=^|$|')/<z>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<y>/"
+  - "xform/[iu]ang(?=^|$|')/<h>/"
+  - "xform/([a-z>])en(?=^|$|')/$1<r>/"
+  - "xform/([a-z>])eng(?=^|$|')/$1<t>/"
+  - "xform/([a-z>])ang(?=^|$|')/$1<g>/"
+  - "xform/ian(?=^|$|')/<j>/"
+  - "xform/([a-z>])an(?=^|$|')/$1<f>/"
+  - "xform/iao(?=^|$|')/<k>/"
+  - "xform/([a-z>])ao(?=^|$|')/$1<d>/"
+  - "xform/([a-z>])ai(?=^|$|')/$1<s>/"
+  - "xform/([a-z>])ei(?=^|$|')/$1<w>/"
+  - "xform/ie(?=^|$|')/<m>/"
+  - "xform/ui(?=^|$|')/<v>/"
+  - "xform/([a-z>])ou(?=^|$|')/$1<p>/"
+  - "xform/in(?=^|$|')/<l>/"
+  - "xform/'|<|>//"
+algebra_mspy:
+  - "derive/^([jqxy])u(?=^|$|')/$1v/"
+  - "derive/'([jqxy])u(?=^|$|')/'$1v/"
+  - "derive/^([aoe].*)(?=^|$|')/o$1/"
+  - "derive/'([aoe].*)(?=^|$|')/'o$1/"
+  - "xform/^([ae])(.*)(?=^|$|')/$1$1$2/"
+  - "xform/'([ae])(.*)(?=^|$|')/'$1$1$2/"
+  - "xform/iu(?=^|$|')/<q>/"
+  - "xform/[iu]a(?=^|$|')/<w>/"
+  - "xform/er(?=^|$|')|[uv]an(?=^|$|')/<r>/"
+  - "xform/[uv]e(?=^|$|')/<t>/"
+  - "xform/v(?=^|$|')|uai(?=^|$|')/<y>/"
+  - "xform/^sh/<u>/"
+  - "xform/^ch/<i>/"
+  - "xform/^zh/<v>/"
+  - "xform/'sh/'<u>/"
+  - "xform/'ch/'<i>/"
+  - "xform/'zh/'<v>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/[uv]n(?=^|$|')/<p>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<s>/"
+  - "xform/[iu]ang(?=^|$|')/<d>/"
+  - "xform/([a-z>])en(?=^|$|')/$1<f>/"
+  - "xform/([a-z>])eng(?=^|$|')/$1<g>/"
+  - "xform/([a-z>])ang(?=^|$|')/$1<h>/"
+  - "xform/ian(?=^|$|')/<m>/"
+  - "xform/([a-z>])an(?=^|$|')/$1<j>/"
+  - "xform/iao(?=^|$|')/<c>/"
+  - "xform/([a-z>])ao(?=^|$|')/$1<k>/"
+  - "xform/([a-z>])ai(?=^|$|')/$1<l>/"
+  - "xform/([a-z>])ei(?=^|$|')/$1<z>/"
+  - "xform/ie(?=^|$|')/<x>/"
+  - "xform/ui(?=^|$|')/<v>/"
+  - "derive/<t>(?=^|$|')/<v>/"
+  - "xform/([a-z>])ou(?=^|$|')/$1<b>/"
+  - "xform/in(?=^|$|')/<n>/"
+  - "xform/ing(?=^|$|')/;/"
+  - "xform/'|<|>//"
+algebra_pinyin:
+  - "xform/'//"
+  - "derive/^([nl])ue$/$1ve/"
+  - "derive/'([nl])ue$/'$1ve/"
+  - "derive/^([jqxy])u/$1v/"
+  - "derive/'([jqxy])u/'$1v/"
+algebra_sogou:
+  - "derive/^([jqxy])u(?=^|$|')/$1v/"
+  - "derive/'([jqxy])u(?=^|$|')/'$1v/"
+  - "derive/^([aoe].*)(?=^|$|')/o$1/"
+  - "derive/'([aoe].*)(?=^|$|')/'o$1/"
+  - "xform/^([ae])(.*)(?=^|$|')/$1$1$2/"
+  - "xform/'([ae])(.*)(?=^|$|')/'$1$1$2/"
+  - "xform/iu(?=^|$|')/<q>/"
+  - "xform/[iu]a(?=^|$|')/<w>/"
+  - "xform/er(?=^|$|')|[uv]an(?=^|$|')/<r>/"
+  - "xform/[uv]e(?=^|$|')/<t>/"
+  - "xform/v(?=^|$|')|uai(?=^|$|')/<y>/"
+  - "xform/^sh/<u>/"
+  - "xform/^ch/<i>/"
+  - "xform/^zh/<v>/"
+  - "xform/'sh/'<u>/"
+  - "xform/'ch/'<i>/"
+  - "xform/'zh/'<v>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/[uv]n(?=^|$|')/<p>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<s>/"
+  - "xform/[iu]ang(?=^|$|')/<d>/"
+  - "xform/([a-z>])en(?=^|$|')/$1<f>/"
+  - "xform/([a-z>])eng(?=^|$|')/$1<g>/"
+  - "xform/([a-z>])ang(?=^|$|')/$1<h>/"
+  - "xform/ian(?=^|$|')/<m>/"
+  - "xform/([a-z>])an(?=^|$|')/$1<j>/"
+  - "xform/iao(?=^|$|')/<c>/"
+  - "xform/([a-z>])ao(?=^|$|')/$1<k>/"
+  - "xform/([a-z>])ai(?=^|$|')/$1<l>/"
+  - "xform/([a-z>])ei(?=^|$|')/$1<z>/"
+  - "xform/ie(?=^|$|')/<x>/"
+  - "xform/ui(?=^|$|')/<v>/"
+  - "xform/([a-z>])ou(?=^|$|')/$1<b>/"
+  - "xform/in(?=^|$|')/<n>/"
+  - "xform/ing(?=^|$|')/;/"
+  - "xform/'|<|>//"
+algebra_ziguang:
+  - "derive/^([jqxy])u(?=^|$|')/$1v/"
+  - "derive/'([jqxy])u(?=^|$|')/'$1v/"
+  - "xform/'([aoe].*)(?=^|$|')/'<o>$1/"
+  - "xform/^([aoe].*)(?=^|$|')/<o>$1/"
+  - "xform/en(?=^|$|')/<w>/"
+  - "xform/eng(?=^|$|')/<t>/"
+  - "xform/in(?=^|$|')|uai(?=^|$|')/<y>/"
+  - "xform/^zh/<u>/"
+  - "xform/^sh/<i>/"
+  - "xform/'zh/'<u>/"
+  - "xform/'sh/'<i>/"
+  - "xform/uo(?=^|$|')/<o>/"
+  - "xform/ai(?=^|$|')/<p>/"
+  - "xform/^ch/<a>/"
+  - "xform/'ch/'<a>/"
+  - "xform/[iu]ang(?=^|$|')/<g>/"
+  - "xform/ang(?=^|$|')/<s>/"
+  - "xform/ie(?=^|$|')/<d>/"
+  - "xform/ian(?=^|$|')/<f>/"
+  - "xform/([a-z>])i?ong(?=^|$|')/$1<h>/"
+  - "xform/er(?=^|$|')|iu(?=^|$|')/<j>/"
+  - "xform/ei(?=^|$|')/<k>/"
+  - "xform/uan(?=^|$|')/<l>/"
+  - "xform/ing(?=^|$|')/;/"
+  - "xform/ou(?=^|$|')/<z>/"
+  - "xform/[iu]a(?=^|$|')/<x>/"
+  - "xform/iao(?=^|$|')/<b>/"
+  - "xform/ue(?=^|$|')|ui(?=^|$|')|ve(?=^|$|')/<n>/"
+  - "xform/un(?=^|$|')/<m>/"
+  - "xform/ao(?=^|$|')/<q>/"
+  - "xform/an(?=^|$|')/<r>/"
+  - "xform/'|<|>//"
+engine:
+  filters:
+    - uniquifier
+  processors:
+    - key_binder
+    - speller
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - abc_segmentor
+  translators:
+    - echo_translator
+    - table_translator
+key_binder:
+  bindings:
+    - {accept: "Shift+Tab", send: "Shift+Left", when: composing}
+    - {accept: Tab, send: "Shift+Right", when: composing}
+    - {accept: "Alt+Left", send: "Shift+Left", when: composing}
+    - {accept: "Alt+Right", send: "Shift+Right", when: composing}
+    - {accept: minus, send: Page_Up, when: has_menu}
+    - {accept: equal, send: Page_Down, when: has_menu}
+    - {accept: "Control+Shift+3", toggle: ascii_punct, when: always}
+    - {accept: "Control+Shift+numbersign", toggle: ascii_punct, when: always}
+    - {accept: "Control+Shift+4", toggle: traditionalization, when: always}
+    - {accept: "Control+Shift+dollar", toggle: traditionalization, when: always}
+    - {accept: KP_0, send: 0, when: composing}
+    - {accept: KP_1, send: 1, when: composing}
+    - {accept: KP_2, send: 2, when: composing}
+    - {accept: KP_3, send: 3, when: composing}
+    - {accept: KP_4, send: 4, when: composing}
+    - {accept: KP_5, send: 5, when: composing}
+    - {accept: KP_6, send: 6, when: composing}
+    - {accept: KP_7, send: 7, when: composing}
+    - {accept: KP_8, send: 8, when: composing}
+    - {accept: KP_9, send: 9, when: composing}
+    - {accept: KP_Decimal, send: period, when: composing}
+    - {accept: KP_Multiply, send: asterisk, when: composing}
+    - {accept: KP_Add, send: plus, when: composing}
+    - {accept: KP_Subtract, send: minus, when: composing}
+    - {accept: KP_Divide, send: slash, when: composing}
+  select_first_character: bracketleft
+  select_last_character: bracketright
+menu:
+  page_size: 5
+schema:
+  author: Mirtle
+  description: |
+    用拼音按顺序打出偏旁部件，组合出汉字
+    码表：开放词典 / henrysting / Mirtle
+    注音、校对、方案：Mirtle
+    仓库：https://github.com/mirtlecn/rime_radical_pinyin
+
+  name: "部件拆字 | 全拼双拼"
+  schema_id: radical_pinyin
+  version: 2.0.0
+speller:
+  algebra:
+    - "xform/'//"
+    - "derive/^([nl])ue$/$1ve/"
+    - "derive/'([nl])ue$/'$1ve/"
+    - "derive/^([jqxy])u/$1v/"
+    - "derive/'([jqxy])u/'$1v/"
+  alphabet: "abcdefghijklmnopqrstuvwxyz;"
+  delimiter: " '"
+translator:
+  dictionary: radical_pinyin
+  enable_user_dict: false

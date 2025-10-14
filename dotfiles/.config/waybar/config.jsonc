@@ -21,7 +21,7 @@
         "custom/left_div#3",
         "bluetooth",
         "network",
-        "custom/settings",
+        "custom/screenshot",
         "custom/left_div#2",
         "idle_inhibitor",
         "custom/colorpicker",
@@ -50,10 +50,7 @@
         "custom/left_div#8",
         "custom/cava",
         "mpris",
-         
-        "custom/left_div#6",
-        "custom/notification",
         "custom/left_div#5",
-        "group/powermenu",
-    ],
+        "group/powermenu"
+    ]
 }

@@ -1,0 +1,29 @@
+[Groups/0]
+# Group Name
+Name=默认
+# Layout
+Default Layout=us
+# Default Input Method
+DefaultIM=rime
+
+[Groups/0/Items/0]
+# Name
+Name=keyboard-us
+# Layout
+Layout=
+
+[Groups/0/Items/1]
+# Name
+Name=rime
+# Layout
+Layout=
+
+[Groups/0/Items/2]
+# Name
+Name=mozc
+# Layout
+Layout=
+
+[GroupOrder]
+0=默认
+

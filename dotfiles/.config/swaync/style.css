@@ -1,186 +1,106 @@
 @import 'colors.css';
-/* button {
-    border-radius: 0;
-    border: none;
-} */
 
+/* 通知中心的背景颜色、圆角、边框、透明度 */
+.control-center {
+    background: var(--surface_container);
+    color: var(--on_surface);
+    border-radius: 12px;
+    border: 2px solid var(--outline);
+    opacity: 0.9;
+}
+
+/* 通知列表的背景和离通知中心边界的边距*/
+.control-center .control-center-list {
+    margin: 5px 0;
+    background-color: var(--surface_bright);
+}
+
+/* 通知列表通知的阴影*/
+.control-center .control-center-list .notification {
+    box-shadow: 1em;
+}
+
+/* 通知上面的关闭按钮颜色*/
 .close-button {
     background: var(--secondary);
     color: var(--on_secondary);
-    text-shadow: none;
-    padding: 0;
-    margin: 0;
-    border-radius: 0;
-    box-shadow: none;
-    border: none;
+    opacity: 0.9;
 }
-
-.close-button:hover {
-    box-shadow: none;
-    background: var(--secondary);
-    transition: .3s;
-    border: none;
-}
-
-.notification-row {
-    background: transparent;
-    outline: none;
-    border-radius: 0;
-    padding: 0;
-    margin: 0;
-}
-
-.notification-row:focus {
-    background: var(seondary);
-}
-
+/* 通知的背景、通知与通知之间的间距 */
 .notification-row .notification-background {
     padding: 0;
-    margin: 8px 16px;
-    border-radius: 0;
+    margin: 5px 5px;
+    opacity: 0.9;
+
 }
 
+/* 通知的边框、圆角、*/
 .notification-row .notification-background .notification {
-    border-radius: 0;
-    border: 1px solid var(surface);
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    transition: .3s;
-    background: rgba(var(--surface_container), var(--surface_bright));
+    border-radius: 12px;
+    border: 1px solid var(--outline);
 }
 
+/* 默认状态下的通知的背景颜色*/
 .notification-row .notification-background .notification .notification-default-action {
-    border-radius: 0;
-    box-shadow: none;
-    border: var(--outline);
-    background: var(--surface_container_high);
-    color: var(--primary);
-    transition: .3s;
+    background: var(--surface_container);
 }
-
+/* 鼠标放上去的状态下 */
 .notification-row .notification-background .notification .notification-default-action:hover {
     -gtk-icon-filter: none;
-    background: var(--surface_container);
-    border-radius: 8;
+    background-color: var(--secondary_container);
 }
-
-.notification-row .notification-background .notification .notification-default-action .notification-content {
-    padding: 0;
-    margin: 0;
-    box-shadow: none;
-    border: none;
-    border-radius: 0;
-}
-
+/* 通知内容的图片*/
 .notification-row .notification-background .notification .notification-default-action .notification-content .image {
     padding: 0;
-    margin: 0;
-    margin-right: 16px;
-    box-shadow: none;
-    border: none;
+    margin: 0 10px 0 0;
     border-radius: 0;
 }
 
 .notification-row .notification-background .notification .notification-default-action .notification-content .app-icon {
     padding: 0;
     margin: 0;
+    border-radius: 0;
 }
 
+/* 通知标题文字大小 */
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .summary {
     font-size: 18px;
     font-weight: 600;
 }
+/* 通知时间文字 */
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .time {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 400;
 }
-
+/* 通知内容文字 */
 .notification-row .notification-background .notification .notification-default-action .notification-content .text-box .body {
     font-size: 16px;
     font-weight: 400;
 }
-
-.notification-row .notification-background .notification .notification-alt-actions {
-    border-radius: 0;
-    padding: 0;
-}
-
-.notification-row .notification-background .notification .notification-action {
-    background: var(--on_surface);
-    margin: 0;
-    padding: 0;
-    border-radius: 0;
-}
-
-.notification-row .notification-background .notification .notification-action > button:hover {
-    background: var(--surface);
-    transition: .3s;
-}
-
-.notification-row .notification-background .notification .notification-action > button {
-    background: var(--surface);
-    color: var(--on_surface);
-    border-radius: 0;
-    min-width: 400px;
-    filter: none;
-    margin: 0;
-}
-
+/* 堆叠通知的背景 */
 .notification-group {
-    transition: .3s;
+    transition: 10s;
+    border-radius: 12px;
 }
-
+/* 通知的关闭按钮*/
 .notification-group .notification-group-close-button .close-button {
-    margin: 8px 16px 0 0;
+    border-radius: 4px;
+    margin: 10px 10px 0 0;
 }
-
-.notification-group.collapsed {
-    opacity: 1;
-}
-
-
-
-.control-center {
-    background: var(--surface_bright);
-    border-radius:100;
-    border: 3px solid var(--outline);
-    box-shadow: none;
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-}
-
-.control-center .control-center-list-placeholder {
-    opacity: 1;
-}
-
-.control-center .control-center-list {
-    margin: 8px 0;
-}
-
-.control-center .control-center-list .notification {
-    box-shadow: none;
-}
-
-
-
+/* notification标题*/
 .widget-title {
-    background-color: var(--surface-dim);
-    color: var(--on_surface);
-    margin: 0;
-    font-size: 24px;
-    font-weight: 600;
+    background-color: var(--surface_container);
+    margin:0;
 }
-
-.widget-title > label {
+/* 标题文字 */
+.widget-title>label {
     margin: 0;
     margin-left: 16px;
     font-size: 24px;
     font-weight: 600;
 }
-
-.widget-title > button {
+/* 标题按钮 */
+.widget-title>button {
     background: var(--secondary);
     color: var(--on_secondary);
     padding: 8px 12px;
@@ -188,54 +108,50 @@
     font-size: 16px;
     font-weight: 600;
 }
-
-.widget-title > button:hover {
+/* 鼠标移动到标题按钮上*/
+.widget-title>button:hover {
     background: var(--primary);
 }
-
-
-
+/* 免打扰模式整体背景*/
 .widget-dnd {
-    background: var(--on_surface);
-    color: var(--secondary);
+    background: var(--surface_container_lowest);
     margin: 0;
-    font-size: 16px;
 }
-
+/* 免打扰模式文字 */
 .widget-dnd label {
-    color: var(--on_secondary);
+    color: var(--on_surface);
     font-size: 16px;
     margin-left: 16px;
 }
-
-.widget-dnd > switch {
-    min-height: 25px;
-    min-width: 50px;
-    border-radius: 100;
+/* 切换模块常态设置 */
+.widget-dnd>switch {
+    min-height: 16px;
+    min-width: 40px;
+    border-radius: 12px;
     padding: 0;
     margin: 4px;
     box-shadow: none;
     border: none;
-    background: var(--surface_bright);
-}
-z
-.widget-dnd > switch:checked {
-  background: var(--secondary);
+    background: var(--surface_container_high);
 }
 
-.widget-dnd > switch slider {
-    background: var(--secondary_container);
+z .widget-dnd>switch:checked {
+    background: var(--secondary);
+}
+
+.widget-dnd>switch slider {
+    background: var(--secondary_container_high);
     border-radius: 100;
     padding: 0;
     margin: 0;
     box-shadow: none;
 }
 
-.widget-dnd > switch slider:hover {
+.widget-dnd>switch slider:hover {
     box-shadow: none;
 }
 
-.widget-dnd > switch:checked slider {
+.widget-dnd>switch:checked slider {
     background: var(--secondary);
 }
 
@@ -259,28 +175,28 @@ z
     margin: 0;
 }
 
-.widget-buttons-grid flowboxchild > button {
+.widget-buttons-grid flowboxchild>button {
     border-radius: 0;
     padding: 8px 0;
     font-size: 20px;
 }
 
-.widget-buttons-grid flowboxchild > button.toggle:checked {
+.widget-buttons-grid flowboxchild>button.toggle:checked {
     background: var(--backlight-bg-highlight-inverse);
 }
 
-.widget-buttons-grid flowboxchild > button.toggle:checked:hover {
+.widget-buttons-grid flowboxchild>button.toggle:checked:hover {
     background: var(--backlight-bg-highlight-inverse);
 }
 
-.widget-buttons-grid flowboxchild > button.toggle,
-.widget-buttons-grid flowboxchild > button {
+.widget-buttons-grid flowboxchild>button.toggle,
+.widget-buttons-grid flowboxchild>button {
     background: var(--noti-bg);
     color: var(--text-color);
 }
 
-.widget-buttons-grid flowboxchild > button.toggle:hover,
-.widget-buttons-grid flowboxchild > button:hover {
+.widget-buttons-grid flowboxchild>button.toggle:hover,
+.widget-buttons-grid flowboxchild>button:hover {
     background: var(--noti-bg-hover);
 }
 
@@ -295,7 +211,7 @@ z
     padding: 4px 4px 0 4px;
     margin: 0;
     border-radius: 0;
-    
+
     background: var(--text-color);
     color: var(--cc-bg);
 }
@@ -314,7 +230,7 @@ z
 }
 
 .widget-volume slider,
-.widget-backlight slider{
+.widget-backlight slider {
     opacity: 0;
 }
 

@@ -1,14 +1,14 @@
-cursor #eee0d5
-cursor_text_color #d5c4b5
+cursor #f1dfdc
+cursor_text_color #d8c2be
 
-foreground            #eee0d5
-background            #19120c
-selection_foreground  #402d17
-selection_background  #e0c1a3
-url_color             #fbba73
+foreground            #f1dfdc
+background            #1a1110
+selection_foreground  #442925
+selection_background  #e7bdb6
+url_color             #ffb4a8
 
 # black
-color8   #9d8e81
+color8   #a08c89
 color0   #4c4c4c
 
 # red
@@ -25,7 +25,7 @@ color11  #c4c19e
 
 # blue
 /* color4  #8f8aac */
-color4  #fbba73
+color4  #ffb4a8
 color12 #a39ec4
 
 # magenta

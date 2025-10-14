@@ -157,7 +157,7 @@ window#waybar {
 
 #bluetooth {
     padding: 0px 7px;
-    font-size: 21px;
+    font-size: 20px;
 }
 #network {
     padding: 0px 7px;
@@ -169,9 +169,16 @@ window#waybar {
     padding: 0px 7px;
     font-size: 19px;
 }
+
+#custom-screenshot{
+    padding: 0 7px;
+    font-size: 22px;
+}
+
 #bluetooth,
 #network,
-#custom-settings {
+#custom-settings,
+#custom-screenshot {
 background-color: @secondary_container;
     color: @on_secondary_container;
 }
@@ -197,7 +204,6 @@ background-color: @secondary_container;
 }
 #tray{
     background-color: @on_secondary;
-    color: @on_surface_container;
 }
 #custom-left_div.4 {
     /* background-color: @surface_container_high; */
@@ -216,26 +222,30 @@ background-color: @secondary_container;
 #custom-reboot,
 #custom-lockscreen,
 #custom-logout {
-    background-color: @surface;
+    background-color: @surface_container_high;
     color: @error;
     padding: 0px 10px;
 }
 
 #custom-left_div.5 {
-    background-color: @surface_container_high;
-    color: @surface;
+    background-color: @surface;
+    color: @surface_container_high;
     padding: 0px;
     font-size: 30px;
 }
 
 /* 最右边第二级 */
 
-#custom-notification {
+#custom-swaync {
     background-color: @surface_container_high;
     color: @on_surface_container;
     padding: 0px 15px;
 }
-
+#custom-mako{
+        background-color: @surface_container_high;
+    color: @on_surface_container;
+    padding: 0px 15px;
+}
 #custom-left_div.6 {
     background-color: @surface;
     color: @surface_container_high;
@@ -288,7 +298,7 @@ background-color: @secondary_container;
     opacity: 0;
     background-image: none;
     box-shadow: none;
-    background-color: @primary_;
+    background: none;
 }
 #pulseaudio-slider trough {
     min-height: 10px;
@@ -330,7 +340,7 @@ background-color: @secondary_container;
     background-image: none;
     border: none;
     box-shadow: none;
-    background-color: @primary;
+    background: none;
 }
 #backlight-slider trough {
     min-height: 10px;
