@@ -41,3 +41,18 @@
 ### 小黄鸭补帧 VMware虚拟机网游单机版 wine兼容层运行旧游戏
 
 ![](pictures/小黄鸭补帧、wine运行老游戏、vmware网游单机版.png)
+
+### 我的niri/hyprland配置
+
+![](pictures/WM-images1.png)
+
+- Waybar
+
+![](pictures/waybar.png)
+
+- matugen基于壁纸生成主题颜色
+
+![](pictures/WM-images2.png)
+
+![](pictures/WM-iamges4.png)
+
