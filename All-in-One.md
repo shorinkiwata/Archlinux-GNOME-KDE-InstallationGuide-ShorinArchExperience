@@ -1310,15 +1310,15 @@ wm相关内容施工中🚧……
 
   4. 登出
 
-### 声音固件和声音服务
+### 音视频固件和服务
 
-1. 安装声音固件
+1. 安装音视频固件
 
    ```
    sudo pacman -S --needed sof-firmware alsa-ucm-conf alsa-firmware 
    ```
 
-   `sof-firmware`为现代音频设备提供固件，通常装这个就可以了
+   `sof-firmware`为现代音视频设备提供固件，通常装这个就可以了
 
    `alsa-ucm-conf`提供必要的配置文件
 
@@ -1525,15 +1525,15 @@ xdg-user-dirs-update
 
   4. 登出
 
-### 声音固件和音视频服务
+### 音视频固件和服务
 
-1. 安装声音固件
+1. 安装音视频固件
 
    ```
    sudo pacman -S --needed sof-firmware alsa-ucm-conf alsa-firmware 
    ```
 
-   `sof-firmware`为现代音频设备提供固件，通常装这个就可以了
+   `sof-firmware`为现代音视频设备提供固件，通常装这个就可以了
 
    `alsa-ucm-conf`提供必要的配置文件
 
