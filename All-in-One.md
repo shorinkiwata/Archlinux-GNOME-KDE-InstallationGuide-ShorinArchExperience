@@ -1146,7 +1146,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
 - Nvidia
 
   ```
-  pacman -S nvidia-open nvidia-utils lib32-nvidia-utils
+  pacman -S nvidia-open 
   ```
 
   显卡驱动的选择在[CodeNames · freedesktop.org](https://nouveau.freedesktop.org/CodeNames.html)这个页面搜索自己的显卡，看看对应的family是什么。然后在[NVIDIA - ArchWiki](https://wiki.archlinux.org/title/NVIDIA)这个页面查找对应的显卡驱动。nv160family往后的显卡用nvidia-open，nv110到190如果nvidia-open表现不佳的话可以使用nvidia。nvidia-open是内核模块开源的驱动，不是完全的开源驱动。非标准内核要安装的驱动不一样，具体看wiki，例如zen内核装nvidia-open-dkms。
@@ -1156,10 +1156,8 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   A卡不需要自己安装驱动，已经由`linux-firmware`和`mesa`提供了，检查一下vulkan驱动就行
 
   ```
-  pacman -S --needed vulkan-radeon vulkan-mesa-layers
+  pacman -S --needed vulkan-radeon 
   ```
-
-  vulkan-mesa-layers是为了解决混合模式下gnome-shell仍运行在独立显卡上导致显卡占用异常这个问题。
 
 ### 硬件编解码
 
@@ -1168,14 +1166,10 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
  - nvidia
 
    ```
-   pacman -S nvidia-vaapi-driver-git
-   ```
-
-   如果无效的话试试：   
-
-   ```
    pacman -S libva-nvidia-driver
    ```
+
+   `libva-nvidia-driver`可以开启硬件编解码，但是archwiki推荐安装`nvidia-vaapi-driver-git`，说是性能表现更好，这个包在aur里，要用yay安装，有兴趣的可以更换。
 
 * amd
 
@@ -4960,6 +4954,8 @@ sudo pacman -S --needed yazi ffmpeg 7zip jq poppler fd ripgrep fzf zoxide resvg 
 
 9. [virsh list --all不显示虚拟机加上sudo后显示](#virsh不显示虚拟机加上sudo后显示)
 
+10. [GNOME混合模式独显占用异常](#GNOME混合模式独显占用异常)
+
 ## 星火商店在fish下的问题
 
 （2025.9.15记：重启电脑之后桌面快捷方式还是会消失。就算自己创建.desktop新安装的软件也没法自动创建.desktop，每次手动创建太麻烦了，如果要用星火商店的话还是用[zsh](#zsh)吧 T_T）
@@ -5072,6 +5068,12 @@ sudo vim /etc/environment
 
 ```
 VIRSH_DEFAULT_CONNECT_URI=qemu:///system
+```
+
+## GNOME混合模式独显占用异常
+
+```
+sudo pacman -S vulkan-mesa-layers
 ```
 
 # 附录
