@@ -1888,7 +1888,11 @@ GNOME和KDE桌面的配置方法会略有不同，注意区分。
 
    - GNOME的话
 
-     商店搜索extension，安装蓝色的extensionmanager。安装[input method panel](https://extensions.gnome.org/extension/261/kimpanel/)扩展
+    1. 打开fcitx5配置添加rime
+
+    2. 安装扩展
+        
+        商店搜索extension，安装蓝色的extensionmanager。安装[input method panel](https://extensions.gnome.org/extension/261/kimpanel/)扩展
 
    - KDE的话
 
