@@ -1166,10 +1166,10 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
  - nvidia
 
    ```
-   pacman -S libva-nvidia-driver
+   pacman -S nvidia-vaapi-driver
    ```
 
-   `libva-nvidia-driver`可以开启硬件编解码，但是archwiki推荐安装`nvidia-vaapi-driver-git`，说是性能表现更好，这个包在aur里，要用yay安装，有兴趣的可以更换。
+   注意，这个包在archlinuxcn里。
 
 * amd
 
@@ -1773,6 +1773,14 @@ AUR是archlinux用户仓库，让archlinux拥有了远超其他发行版的软�
 
 ## 方法一：直接从archlinuxcn源安装（推荐）
 
+前面[安装桌面环境前的准备](#安装桌面环境前的准备)部分已经添加了archlinuxcn，可以直接pacman安装yay。
+
+   ```
+   sudo pacman -S yay 
+   ```
+
+如果你没有添加archlinuxcn的话这里是添加方法：
+
 1. 编辑pacman配置文件添加archlinuxcn源
 
    ```
@@ -1793,12 +1801,6 @@ AUR是archlinux用户仓库，让archlinux拥有了远超其他发行版的软�
 
    ```
    sudo pacman -Sy archlinuxcn-keyring 
-   ```
-
-4. 安装yay
-
-   ```
-   sudo pacman -S yay 
    ```
 
 ## 方法二：从github安装
