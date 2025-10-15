@@ -3227,7 +3227,7 @@ confirm_os_window_close 0
 2. 编辑grub源文件
 
    ```
-   /etc/default/grub
+   vim /etc/default/grub
    ```
 
    - 主题路径
@@ -3239,7 +3239,7 @@ confirm_os_window_close 0
 3. 生成grub的配置文件
 
    ```
-   `grub-mkconfig -o /efi/grub/grub.cfg`
+   grub-mkconfig -o /efi/grub/grub.cfg
    ```
 
 我喜欢的主题：
