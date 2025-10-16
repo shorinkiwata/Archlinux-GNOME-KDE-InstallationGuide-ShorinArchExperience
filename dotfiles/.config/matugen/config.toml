@@ -83,7 +83,7 @@ post_hook = 'hyprctl reload'
 [templates.fcitx5]
 input_path = '~/.config/matugen/templates/fcitx5-theme.conf'
 output_path = '~/.local/share/fcitx5/themes/default/theme.conf'
-post_hook= 'pkill fcitx5 && fcitx5 & disown'
+post_hook= 'fcitx5 -r & disown'
 
 
 [templates.mako]
