@@ -9,15 +9,15 @@
     "height": 30,
     "reload_style_on_change": true,
     "modules-left": [
-        "hyprland/workspaces",
+        "niri/workspaces",
         "custom/right_div#5",
-        "hyprland/window",
+        "niri/window",
         "custom/right_div#6"
     ],
     "modules-center": [
         "custom/left_div#4",
         "tray",
-        "custom/updates",
+        "custom/pacman",
         "custom/left_div#3",
         "bluetooth",
         "network",

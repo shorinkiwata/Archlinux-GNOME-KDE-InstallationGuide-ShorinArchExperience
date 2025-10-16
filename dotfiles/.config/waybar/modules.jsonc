@@ -332,17 +332,17 @@
         "format": "󱋱"
     },
     //archupdater
-    "custom/updates": {
-        "format": "{}{icon}",
-        "return-type": "json",
-        "format-icons": {
-            "has-updates": "󰅢",
-            "updated": "󰅢"
-        },
-        "exec-if": "which waybar-module-pacman-updates",
-        "exec": "waybar-module-pacman-updates --no-zero-output",
-        "on-click": "kitty -e yay"
-    },
+
+"custom/pacman": {
+  "format": "{icon}{0}",
+  "return-type": "json",
+  "format-icons": {
+    "pending-updates": " "
+  },
+  "exec-if": "which waybar-updates",
+  "exec": "waybar-updates",
+  "on-click":"kitty -e yay"
+},
     //隐私
     "privacy": {
         "icon-spacing": 10,

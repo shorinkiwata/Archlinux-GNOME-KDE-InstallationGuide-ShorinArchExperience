@@ -1,39 +1,6 @@
-ignore-empty-password
-
-font=JetBrainsMono NF
-font-size=30
-
-grace=0
-
+screenshots
 clock
-timestr=%H:%M:%S
-datestr=%a %d %b %Y
-
 indicator
-indicator-radius=100
-indicator-thickness=10
-
-# Backgrounds (inside areas)
-inside-color=16161d
-inside-clear-color=957fb8
-inside-ver-color=76946a
-inside-wrong-color=c34043
-
-# Text Colors
-text-color=dcd7ba
-text-clear-color=16161d
-text-caps-lock-color=c34043
-text-ver-color=16161d
-text-wrong-color=16161d
-
-# Ring (indicator border)
-ring-color=16161d
-ring-ver-color=76946a
-ring-clear-color=957fb8
-ring-wrong-color=c34043
-
-# Highlights
-key-hl-color=7e9cd8
-bs-hl-color=c0a36e
-separator-color=7e9cd8
-line-color=16161d
+indicator-radius=200
+indicator-thickness=15
+effect-blur=10x5

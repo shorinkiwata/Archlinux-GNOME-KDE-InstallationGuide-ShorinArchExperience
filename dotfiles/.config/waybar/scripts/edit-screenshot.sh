@@ -23,4 +23,3 @@ fi
 # 2. 运行 grim 捕捉选区，并将输出通过管道传给 tee
 grim -g "$SELECTION" - | tee "$SAVE_PATH" >(wl-copy) | swappy -f - -o $SAVE_PATH
 
-notify-send "截图复制到剪贴板，编辑后文件保存至~/Pictures。"

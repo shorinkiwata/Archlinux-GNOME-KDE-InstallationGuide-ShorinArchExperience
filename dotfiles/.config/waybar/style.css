@@ -192,11 +192,18 @@ background-color: @secondary_container;
 
 
 /* 中间左边第四级 */
-#custom-updates {
-    padding: 0px 7px;
-    font-size:22px;
-    background-color:@on_secondary;
+
+#custom-pacman {
+    padding: 0 7px;
+    background-color: @on_secondary;
     color:@error;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+#custom-pacman.pending-updates {
+	animation-name: blink-update;
+	animation-duration: 3s;
 }
 #tray {
     padding: 0px 7px 0px 7px;
@@ -302,7 +309,7 @@ background-color: @secondary_container;
 }
 #pulseaudio-slider trough {
     min-height: 10px;
-    min-width: 100px;
+    min-width: 80px;
     border-radius: 5px;
     background-color: @background;
 }
