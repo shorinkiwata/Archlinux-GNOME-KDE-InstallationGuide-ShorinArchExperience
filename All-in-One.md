@@ -1156,7 +1156,7 @@ linux替换为自己的内核，比如zen内核是linux-zen-headers
   A卡不需要自己安装驱动，已经由`linux-firmware`和`mesa`提供了，检查一下vulkan驱动就行
 
   ```
-  pacman -S --needed vulkan-radeon 
+  pacman -S  vulkan-radeon 
   ```
 
 ### 硬件编解码
