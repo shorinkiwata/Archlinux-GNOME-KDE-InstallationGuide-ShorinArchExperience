@@ -2,6 +2,8 @@
 
 使用btrfs文件系统，不涉及加密和安全启动。具体内容包括：系统的手动和脚本安装、win+linux双系统、N卡驱动、GNOME和KDE Plasma桌面环境、Hyprland和Niri、中文输入法、常用虚拟机程序（vmware、virtualbox、winapps、distrobox、qemu/kvm）、虚拟机安装windows、qemu/kvm虚拟机显卡直通、虚拟机调优和伪装、Linux玩游戏、系统性能调优等等，最后一步干净删除Linux系统。
 
+文档有点长了，难免会有错漏，如果发现有错别字或者有错误的地方可以帮忙提交一下。
+
 ## [Wiki-文档本体在这里](https://github.com/SHORiN-KiWATA/ShorinArchExperience-ArchlinuxGuide/wiki)
 
 10-17日开始新增了Hyprland和Niri相关内容。
