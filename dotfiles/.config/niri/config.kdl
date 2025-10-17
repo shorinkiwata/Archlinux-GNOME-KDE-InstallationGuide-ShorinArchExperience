@@ -412,7 +412,8 @@ binds {
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }
     Mod+Shift+T { spawn "ghostty"; }
-    Mod+E hotkey-overlay-title="Open a FilesManager: nautilus" { spawn "nautilus"; }
+    Mod+E hotkey-overlay-title="Open a FilesManager: nautilus" { spawn "thunar"; }
+    Mod+Alt+E {spawn "nautilus";}
     Mod+B hotkey-overlay-title="打开浏览器: firefox" { spawn "firefox"; }
     Mod+Z hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
