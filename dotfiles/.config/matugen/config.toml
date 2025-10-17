@@ -89,3 +89,8 @@ post_hook= 'fcitx5 -r -d & disown'
 input_path = '~/.config/matugen/templates/mako-colors.conf'
 output_path = '~/.config/mako/colors.conf'
 post_hook='makoctl reload'
+
+[templates.niriswitcher]
+input_path = '~/.config/matugen/templates/niriswitcher-colors.css'
+output_path = '~/.config/niriswitcher/style.css'
+post_hook= 'pkill niriswitcher || true && niriswitcher & disown'

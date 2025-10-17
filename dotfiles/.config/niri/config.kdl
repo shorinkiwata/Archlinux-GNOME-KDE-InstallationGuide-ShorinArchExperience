@@ -288,6 +288,7 @@ spawn-at-startup "mako"
 spawn-at-startup "waybar"
 spawn-at-startup "fcitx5" 
 spawn-sh-at-startup "wl-paste --watch cliphist store" 
+spawn-at-startup "niriswitcher"
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
 // spawn-sh-at-startup "qs -c ~/source/qs/MyAwesomeShell"
 
@@ -408,6 +409,8 @@ binds {
     // Mod-Shift-/, which is usually the same as Mod-?,
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
+    //niriswitcher
+    Alt+Tab repeat=false {spawn "niriswitcherctl" "show" "--window";}
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+T hotkey-overlay-title="Open a Terminal" { spawn "kitty"; }

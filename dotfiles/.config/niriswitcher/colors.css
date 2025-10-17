@@ -1,0 +1,11 @@
+:root {
+  --bg-color: rgb(241, 183, 196);
+  --label-color: rgb(241, 183, 196);
+  --alternate-label-color: rgb(241, 183, 196);
+  --dim-label-color: rgb(241, 183, 196);
+  --border-color: rgba(72, 72, 74, .95);
+  --highlight-color: rgba(99,99,102,0.95);
+  --urgency-color: rgb(241, 183, 196);
+  --indicator-focus-color: rgba(10, 132, 255, 0.95);
+  --indicator-color: rgba(58, 58, 60, .95);
+}
