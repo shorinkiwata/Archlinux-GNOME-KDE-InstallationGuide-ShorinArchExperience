@@ -107,7 +107,7 @@
     "bluetooth": {
         //蓝牙关闭状态下的图标和鼠标悬浮时的提示
         "format-disabled": "󰂲",
-        "tooltip-format-disabled":"Click to enable",
+        "tooltip-format-disabled": "Click to enable",
         "format": "󰂯",
         "tooltip-format-on": " 󰂯 Click to disable or Right click to open GUI",
         //连接状态下的图标和提示
@@ -129,11 +129,11 @@
         }
     },
     //截图
-        "custom/screenshot":{
-        "format":"",
-        "tooltip-format":"Click to Screenshot or Right Click to Edit",
-        "on-click":"~/.config/waybar/scripts/screenshot.sh",
-        "on-click-right":"~/.config/waybar/scripts/edit-screenshot.sh"
+    "custom/screenshot": {
+        "format": "",
+        "tooltip-format": "Click to Screenshot or Right Click to Edit",
+        "on-click": "~/.config/waybar/scripts/screenshot.sh",
+        "on-click-right": "~/.config/waybar/scripts/edit-screenshot.sh"
     },
     //声音模块
     "group/audio": {
@@ -147,7 +147,6 @@
         ],
     },
     "pulseaudio": {
-
         "format": "{icon} {format_source} ",
         "format-source": "{volume}%",
         "format-source-muted": "",
@@ -296,9 +295,9 @@
         "on-click-right": "swaync-client -d -sw",
         "escape": true
     },
-    "custom/mako":{
-        "format":"",
-        "on-click":"makoctl restore"
+    "custom/mako": {
+        "format": "",
+        "on-click": "makoctl restore"
     },
     //gnome-control-center  
     "custom/settings": {
@@ -329,20 +328,20 @@
     },
     //分隔符󰇝 󱋱
     "custom/separator#1": {
-        "format": "󱋱"
+        "format": "󱋱",
+        "tooltip":false
     },
     //archupdater
-
-"custom/pacman": {
-  "format": "{icon}{0}",
-  "return-type": "json",
-  "format-icons": {
-    "pending-updates": " "
-  },
-  "exec-if": "which waybar-updates",
-  "exec": "waybar-updates",
-  "on-click":"kitty -e yay"
-},
+    "custom/pacman": {
+        "format": "{icon}{0}",
+        "return-type": "json",
+        "format-icons": {
+            "pending-updates": " "
+        },
+        "exec-if": "which waybar-updates",
+        "exec": "waybar-updates",
+        "on-click": "kitty -e yay"
+    },
     //隐私
     "privacy": {
         "icon-spacing": 10,
@@ -355,6 +354,17 @@
                 "tooltip-icon-size": 24
             }
         ]
+    },
+    "cffi/niri-taskbar": {
+        // module_path
+        "module_path": "/usr/lib/waybar/libniri_taskbar.so",
+        "apps": {
+            "signal": [
+                {
+                    "match": "\\([0-9]+\\)$",
+                    "class": "unread",
+                },
+            ],
+        },
     }
-
 }

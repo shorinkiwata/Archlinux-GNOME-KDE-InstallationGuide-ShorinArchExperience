@@ -94,3 +94,8 @@ post_hook='makoctl reload'
 input_path = '~/.config/matugen/templates/niriswitcher-colors.css'
 output_path = '~/.config/niriswitcher/style.css'
 post_hook= 'pkill niriswitcher || true && niriswitcher & disown'
+
+#当前版本的niri暂时不支持include
+#[templates.niri]
+#input_path = '~/.config/matugen/templates/niri-colors.kdl'
+#output_path = '~/.config/niri/colors.kdl'

@@ -127,8 +127,8 @@ output "DP-2"{
 // https://yalter.github.io/niri/Configuration:-Layout
 layout {
     // Set gaps around windows in logical pixels.
-    gaps 16
-
+    gaps 12
+    //empty-workspace-above-first
     // When to center a column when changing focus, options are:
     // - "never", default behavior, focusing an off-screen column will keep at the left
     //   or right edge of the screen.
@@ -144,7 +144,6 @@ layout {
         proportion 0.33333
         proportion 0.5
         proportion 0.66667
-
         // Fixed sets the width in logical pixels exactly.
         // fixed 1920
     }
@@ -171,7 +170,7 @@ layout {
     // You can change how the focus ring looks.
     focus-ring {
         // Uncomment this line to disable the focus ring.
-         off
+        // off
         // How many logical pixels the ring extends out from the windows.
         width 3
 
@@ -181,7 +180,7 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        //active-color "#89B4FAFF"
+        active-color "#89B4FAFF"
         //active-color "#00000000"
         // Color of the ring on inactive monitors.
         //
@@ -196,7 +195,7 @@ layout {
         // You can use any CSS linear-gradient tool on the web to set these up.
         // Changing the color space is also supported, check the wiki for more info.
         //
-         active-gradient from="#80c8ff" to="#c7ff7f" angle=45
+        // active-gradient from="#80c8ff" to="#c7ff7f" angle=45
 
         // You can also color the gradient relative to the entire view
         // of the workspace, rather than relative to just the window itself.
@@ -275,7 +274,6 @@ layout {
         // bottom 64
     }
 }
-
 // Add lines like this to spawn processes at startup.
 // Note that running niri as a session supports xdg-desktop-autostart,
 // which may be more convenient to use.
@@ -320,7 +318,7 @@ animations {
     // off
 
     // Slow down all animations by this factor. Values below 1 speed them up instead.
-    // slowdown 3.0
+    // slowdown 1.0 
 }
 
 // Window rules let you adjust behavior for individual windows.
@@ -352,15 +350,15 @@ window-rule {
     match app-id="org.pulseaudio.pavucontrol" title="音量控制"
     match app-id="org.gnome.clocks" title="时钟"
     match app-id="fcitx" title="Fcitx5 Input Window"
-    
+    match app-id="org.gnome.FileRoller"
+    match app-id="thunar" title="文件操作进度"
     open-floating true
 }
 
-window-rule {
+/-window-rule {
     // This app-id regular expression will work for both:
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
-    match app-id="thunar" title="文件操作进度"
     default-floating-position x=0 y=0 relative-to="bottom-right"
     open-floating true
 }
@@ -392,6 +390,8 @@ window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
     opacity 0.99
+    draw-border-with-background false
+
 }
 
 
