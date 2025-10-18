@@ -31,12 +31,6 @@ set smartcase
 " 开启持久化撤销（undo），即使关闭再打开文件，也能撤销之前的更改
 set undofile
 
-" 为备份、交换和撤销文件创建一个统一的目录
-" a) 创建目录
-silent !mkdir -p ~/.vim/backup
-silent !mkdir -p ~/.vim/swap
+" undo目录
 silent !mkdir -p ~/.vim/undo
-" b) 设置 Vim 使用这些目录
-set backupdir=~/.vim/backup
-set directory=~/.vim/swap
 set undodir=~/.vim/undo
