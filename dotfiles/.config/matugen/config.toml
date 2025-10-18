@@ -1,7 +1,7 @@
 [config.wallpaper]
 command = "swww"
-arguments = ["img", "--transition-type", "center"]
-set =false 
+#arguments = ["img", "--transition-type", "center"]
+#set = false 
 
 [templates.waybar]
 input_path = '~/.config/matugen/templates/colors.css'
@@ -52,10 +52,10 @@ post_hook = 'gsettings set org.gnome.desktop.interface gtk-theme ""; gsettings s
 input_path ='~/.config/matugen/templates/gtk-colors.css'
 output_path = '~/.config/gtk-4.0/colors.css'
 post_hook = 'nautilus -q'
-[templates.swaync]
-input_path = '~/.config/matugen/templates/swaync-colors.css'
-output_path = '~/.config/swaync/colors.css'
-post_hook = 'swaync-client -rs'
+#[templates.swaync]
+#input_path = '~/.config/matugen/templates/swaync-colors.css'
+#output_path = '~/.config/swaync/colors.css'
+#post_hook = 'swaync-client -rs'
 
 [templates.ghostty]
 input_path = '~/.config/matugen/templates/ghostty-colors.conf'

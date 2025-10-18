@@ -183,12 +183,12 @@
         "toooltip": "{dynamic}",
         "enable-tooltip-len-limits": true,
     },
-    //麦克风
     //logo+程序启动器
     "custom/applauncher": {
-        "tooltip": false,
+        "tooltip-format": "Click to Open Applauncher or Right-Click to Select Wallpaper",
         "format": "󰣇",
-        "on-click": "~/.config/waybar/scripts/fuzzel.sh",
+        "on-click": "fuzzel",
+        "on-click-right":"waypaper"
     },
     //电源菜单
     "group/powermenu": {
